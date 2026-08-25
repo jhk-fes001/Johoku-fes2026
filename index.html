@@ -48,21 +48,22 @@
             position: relative;
         }
 
+        /* 桜・青い花びらエフェクト（最背面に配置） */
         .petal {
             position: fixed;
             background: linear-gradient(135deg, #00a2ff 0%, #004ecc 100%);
             border-radius: 80% 0 80% 80%;
             pointer-events: none;
-            z-index: 50;
+            z-index: 0;
             animation: fall linear infinite;
             transform-origin: center;
-            opacity: 0.75;
-            filter: drop-shadow(0 2px 5px rgba(0, 86, 179, 0.25));
+            opacity: 0.6;
+            filter: drop-shadow(0 2px 5px rgba(0, 86, 179, 0.2));
         }
         @keyframes fall {
             0% { transform: translateY(-5vh) translateX(0) rotate(0deg) scale(0.6); opacity: 0; }
-            15% { opacity: 0.85; }
-            85% { opacity: 0.85; }
+            15% { opacity: 0.75; }
+            85% { opacity: 0.75; }
             100% { transform: translateY(105vh) translateX(120px) rotate(480deg) scale(1); opacity: 0; }
         }
 
@@ -171,7 +172,6 @@
         }
         .menu-link:hover { color: #0056b3; transform: translateX(6px); }
 
-        /* 企画カード */
         .project-card { 
             position: relative;
             background: #ffffff;
@@ -196,7 +196,7 @@
         .project-card:hover::before { width: 6px; }
 
         .project-icon-placeholder {
-            width: 72px; height: 72px;
+            width: 68px; height: 68px;
             background: #edf5ff;
             border: 1px solid #bfdbfe;
             border-radius: 14px;
@@ -275,8 +275,8 @@
             box-shadow: 0 6px 16px rgba(0, 86, 179, 0.18);
         }
 
-        /* 階数別アコーディオン */
-        .floor-accordion-header {
+        /* 学年・カテゴリ別アコーディオン */
+        .group-accordion-header {
             background: #ffffff;
             border: 1px solid var(--border-soft);
             border-radius: 14px;
@@ -284,16 +284,16 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .floor-accordion-header:hover {
+        .group-accordion-header:hover {
             border-color: #0056b3;
             background: #f8fbff;
         }
-        .floor-content {
+        .group-content {
             overflow: hidden;
             max-height: 0;
             transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .floor-section.is-open .floor-content {
+        .group-section.is-open .group-content {
             max-height: 40000px;
         }
         .icon-plus {
@@ -301,7 +301,7 @@
             font-weight: 700;
             color: #0056b3;
         }
-        .floor-section.is-open .icon-plus {
+        .group-section.is-open .icon-plus {
             transform: rotate(45deg);
         }
 
@@ -318,7 +318,7 @@
             box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.12);
         }
 
-        .filter-btn, .bldg-btn {
+        .filter-btn {
             transition: all 0.2s ease;
             font-weight: 700;
         }
@@ -351,9 +351,9 @@
         <button class="menu-link text-left w-full" onclick="switchPage('about'); toggleMenu()">ご挨拶</button>
         <button class="menu-link text-left w-full" onclick="switchPage('timetable'); toggleMenu()">タイムテーブル</button>
         <button class="menu-link text-left w-full" onclick="switchPage('groups'); toggleMenu()">企画紹介</button>
+        <button class="menu-link text-left w-full" onclick="switchPage('vote'); toggleMenu()">企画投票</button>
         <button class="menu-link text-left w-full" onclick="switchPage('food'); toggleMenu()">飲食・グッズ</button>
         <button class="menu-link text-left w-full" onclick="switchPage('map'); toggleMenu()">校内マップ</button>
-        <button class="menu-link text-left w-full" onclick="switchPage('vote'); toggleMenu()">企画投票</button>
         <button class="menu-link text-left w-full" onclick="switchPage('examinee'); toggleMenu()">各種ご案内</button>
         <div class="mt-8 space-y-3 pt-6 border-t border-slate-200">
             <a href="https://www.johoku.ac.jp/" target="_blank" class="block text-xs font-bold text-slate-600 hover:text-[#0056b3] transition uppercase tracking-wider">城北学園 公式HP ↗</a>
@@ -376,9 +376,9 @@
             <button class="nav-btn nav-btn-about" onclick="switchPage('about')">ご挨拶</button>
             <button class="nav-btn nav-btn-timetable" onclick="switchPage('timetable')">タイムテーブル</button>
             <button class="nav-btn nav-btn-groups" onclick="switchPage('groups')">企画紹介</button>
+            <button class="nav-btn nav-btn-vote" onclick="switchPage('vote')">企画投票</button>
             <button class="nav-btn nav-btn-food" onclick="switchPage('food')">飲食・グッズ</button>
             <button class="nav-btn nav-btn-map" onclick="switchPage('map')">校内マップ</button>
-            <button class="nav-btn nav-btn-vote" onclick="switchPage('vote')">企画投票</button>
             <button class="nav-btn nav-btn-examinee" onclick="switchPage('examinee')">各種ご案内</button>
         </nav>
 
@@ -393,7 +393,7 @@
     <!-- ========================================================== -->
     <!-- 【ホーム】ページコンテナ                                   -->
     <!-- ========================================================== -->
-    <main id="page-home" class="w-full pt-[65px] page-slide-in">
+    <main id="page-home" class="w-full pt-[65px] page-slide-in relative z-10">
         <section class="hero-container relative">
             <img src="ポスター切り取り.png" alt="第85回 城北祭 男前 ポスター" class="hero-bg-img">
             
@@ -478,48 +478,54 @@
             </div>
         </div>
 
-        <!-- クイックナビゲーション -->
+        <!-- クイックナビゲーション（順序変更対応） -->
         <section class="w-full max-w-6xl mx-auto px-4 md:px-8 my-16">
             <div class="text-center mb-10">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Quick Navigation</span>
                 <h3 class="text-2xl md:text-4xl font-black text-slate-900 font-brush">メインメニュー案内</h3>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <button onclick="switchPage('about')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                <button onclick="switchPage('about')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">ご挨拶</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">ご挨拶</span>
                 </button>
-                <button onclick="switchPage('timetable')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <button onclick="switchPage('timetable')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">タイムテーブル</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">タイムテーブル</span>
                 </button>
-                <button onclick="switchPage('groups')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <button onclick="switchPage('groups')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">企画紹介</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">企画紹介</span>
                 </button>
-                <button onclick="switchPage('food')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <button onclick="switchPage('vote')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">飲食・グッズ</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">企画投票</span>
                 </button>
-                <button onclick="switchPage('map')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                <button onclick="switchPage('food')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">校内マップ</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">飲食・グッズ</span>
                 </button>
-                <button onclick="switchPage('vote')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-6 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
-                    <div class="w-10 h-10 mb-3 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                <button onclick="switchPage('map')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
-                    <span class="text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">企画投票</span>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">校内マップ</span>
+                </button>
+                <button onclick="switchPage('examinee')" class="bg-white hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] p-5 rounded-2xl text-center transition shadow-sm hover:shadow-md group flex flex-col items-center">
+                    <div class="w-10 h-10 mb-2.5 rounded-xl bg-blue-50 text-[#0056b3] flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-slate-800 group-hover:text-[#0056b3] whitespace-nowrap">各種ご案内</span>
                 </button>
             </div>
         </section>
@@ -566,7 +572,7 @@
     <!-- ========================================================== -->
     <!-- 【ご挨拶】ページコンテナ                                   -->
     <!-- ========================================================== -->
-    <main id="page-about" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
+    <main id="page-about" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
         <section class="max-w-6xl mx-auto reveal">
             <div class="text-center mb-16">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Greetings</span>
@@ -602,11 +608,11 @@
                     </div>
                 </div>
 
-                <!-- 生徒会長挨拶 -->
+                <!-- 生徒会長挨拶（平山 千紘に訂正） -->
                 <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm border-t-4 border-t-[#00a2ff] flex flex-col">
                     <div class="mb-6 border-b border-slate-100 pb-4">
                         <span class="text-xs text-[#00a2ff] font-black tracking-widest uppercase block mb-1">生徒会長</span>
-                        <h4 class="text-2xl font-black text-slate-900 font-brush whitespace-nowrap">平山 千尋</h4>
+                        <h4 class="text-2xl font-black text-slate-900 font-brush whitespace-nowrap">平山 千紘</h4>
                     </div>
                     <div class="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                         <p>皆さんこんにちは、生徒会長の平山千紘です。今年でついに85回目を迎える城北祭。伝統あるこの行事に参加できることをとても嬉しく思います。</p>
@@ -620,7 +626,7 @@
                 </div>
             </div>
 
-            <!-- 文化祭実行委員会 委員紹介（指定通りの最新版） -->
+            <!-- 文化祭実行委員会 委員紹介（指定の最新順序・体制） -->
             <div class="mb-20">
                 <div class="text-center mb-12">
                     <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Committee Members</span>
@@ -629,38 +635,59 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <h4 class="text-lg font-black text-[#0056b3] mb-1">団体管理部門</h4>
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-lg font-black text-[#0056b3]">団体管理部門</h4>
+                            <span class="text-xs bg-blue-50 text-[#0056b3] font-bold px-2 py-0.5 rounded">委員長 松本 成生</span>
+                        </div>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">Group Management Division</p>
-                        <p class="text-sm font-bold text-slate-700 leading-relaxed">松本成生 / 吉澤英佑 / 小塚誠太 / 今田直希 / 清水智文</p>
+                        <p class="text-sm font-bold text-slate-700 leading-relaxed">吉澤英佑 / 小塚誠太 / 清水智文 / 今田直希</p>
                     </div>
+
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="text-lg font-black text-[#0056b3] mb-1">建築部門</h4>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">Architecture Division</p>
-                        <p class="text-sm font-bold text-slate-700 leading-relaxed">武田遙人 / 狩野優希 / 高橋大輝 / 石根優希 / 佐々木奏太郎 / 町田蒼太 / 田隝弘丞</p>
+                        <p class="text-sm font-bold text-slate-700 leading-relaxed mb-3">武田遙人 / 狩野優希 / 高橋大輝 / 石根優希 / 佐々木奏太郎 / 町田蒼太 / 田隝弘丞</p>
+                        <div class="pt-2 border-t border-slate-100">
+                            <span class="text-xs text-[#0070f3] font-bold">【垂れ幕・入場門デザイン】</span>
+                            <p class="text-xs font-bold text-slate-600 mt-0.5">追杉洋光 と 建築部門全員</p>
+                        </div>
                     </div>
+
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <h4 class="text-lg font-black text-[#0056b3] mb-1">広報部門</h4>
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-lg font-black text-[#0056b3]">広報部門</h4>
+                            <span class="text-xs bg-blue-50 text-[#0056b3] font-bold px-2 py-0.5 rounded">副委員長 浅野 友希</span>
+                        </div>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">Public Relations Division</p>
-                        <p class="text-sm font-bold text-slate-700 leading-relaxed mb-3">浅野友希 / 追杉洋光 / 砂谷英希 / 松崎悠人 / 小塚誠太</p>
+                        <p class="text-sm font-bold text-slate-700 leading-relaxed mb-3">追杉洋光 / 砂谷英希 / 松崎悠人 / 小塚誠太</p>
                         <div class="pt-2 border-t border-slate-100">
                             <span class="text-xs text-[#0070f3] font-bold">【ポスター制作】</span>
                             <p class="text-xs font-bold text-slate-600 mt-0.5">広報部門全員</p>
                         </div>
                     </div>
+
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="text-lg font-black text-[#0056b3] mb-1">飲食部門</h4>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">Food and Beverage Division</p>
                         <p class="text-sm font-bold text-slate-700 leading-relaxed">山口翔 / 伊藤優一 / 斎藤千優路</p>
                     </div>
+
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="text-lg font-black text-[#0056b3] mb-1">ICT部門</h4>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">ICT Division</p>
-                        <p class="text-sm font-bold text-slate-700 leading-relaxed mb-3">鎌田真 / 山森拓翔 / 小塚誠太 / 五十嵐隼 / 康芸旗</p>
-                        <div class="pt-2 border-t border-slate-100">
-                            <span class="text-xs text-[#0070f3] font-bold">【サイト制作】</span>
-                            <p class="text-xs font-bold text-slate-600 mt-0.5">小塚誠太 / 石根優希 / 追杉洋光 / 林 毅樺</p>
+                        <p class="text-sm font-bold text-slate-700 leading-relaxed mb-2.5">鎌田真 / 山森拓翔 / 林 毅樺 / 小塚誠太 / 五十嵐隼 / 康芸旗</p>
+                        <div class="pt-2 border-t border-slate-100 space-y-1">
+                            <div>
+                                <span class="text-xs text-[#0070f3] font-bold">【サイト制作】</span>
+                                <p class="text-xs font-bold text-slate-600">林 毅樺 / 小塚誠太 / 石根優希 / 追杉洋光</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-[#0070f3] font-bold">【動画編集】</span>
+                                <p class="text-xs font-bold text-slate-600">五十嵐隼 / 小塚誠太</p>
+                            </div>
                         </div>
                     </div>
+
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="text-lg font-black text-[#0056b3] mb-1">補佐</h4>
                         <p class="text-[10px] text-slate-400 font-bold mb-3 uppercase">Assistant Team</p>
@@ -741,7 +768,7 @@
     <!-- ========================================================== -->
     <!-- 【タイムテーブル】ページコンテナ                           -->
     <!-- ========================================================== -->
-    <main id="page-timetable" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
+    <main id="page-timetable" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
         <section class="max-w-6xl mx-auto">
             <div class="reveal text-center mb-12">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Timeline & Schedule</span>
@@ -778,18 +805,24 @@
                         <div class="time-label">09:00</div><div class="time-label">10:00</div><div class="time-label">11:00</div><div class="time-label">12:00</div><div class="time-label">13:00</div><div class="time-label">14:00</div><div class="time-label">15:00</div>
                     </div>
                     <div class="venue-column">
-                        <div class="event-block" style="top: 25px; height: 150px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/26 09:15-10:45)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:45</span><p class="font-bold leading-tight text-slate-900">城北の愉快なソリストたち</p></div>
-                        <div class="event-block" style="top: 191px; height: 75px;" onclick="openDetail('PTA', 'プリマヴェーラ', '講堂 (9/26 10:50-11:50)', 'PTAコーラスの会 プリマヴェーラによるハートフルな合唱ステージ。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:50 - 11:50</span><p class="font-bold leading-tight text-slate-900">PTA プリマヴェーラ</p></div>
-                        <div class="event-block" style="top: 295px; height: 45px;" onclick="openDetail('生徒有志', 'のど自慢 (カラオケ大会)', '講堂 (9/26 11:55-12:25)', '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:55 - 12:25</span><p class="font-bold leading-tight text-slate-900">カラオケ大会</p></div>
-                        <div class="event-block" style="top: 350px; height: 45px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/26 12:30-13:00)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:30 - 13:00</span><p class="font-bold leading-tight text-slate-900">少林寺拳法部</p></div>
-                        <div class="event-block" style="top: 410px; height: 90px;" onclick="openDetail('ダンス部', 'ダンス部', '講堂 (9/26 13:10-14:10)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">13:10 - 14:10</span><p class="font-bold leading-tight text-slate-900">ダンス部</p></div>
-                        <div class="event-block" style="top: 566px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/26 14:40-16:10)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:40 - 16:10</span><p class="font-bold leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
+                        <div class="event-block" style="top: 25px; height: 150px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/26 09:15-10:45)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">城北の愉快なソリストたち</p></div>
+                        <div class="event-block" style="top: 191px; height: 75px;" onclick="openDetail('PTA', 'プリマヴェーラ', '講堂 (9/26 10:50-11:50)', 'PTAコーラスの会 プリマヴェーラによるハートフルな合唱ステージ。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:50 - 11:50</span><p class="font-bold text-xs leading-tight text-slate-900">PTA プリマヴェーラ</p></div>
+                        <div class="event-block" style="top: 295px; height: 45px;" onclick="openDetail('生徒有志', 'のど自慢 (カラオケ大会)', '講堂 (9/26 11:55-12:25)', '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:55 - 12:25</span><p class="font-bold text-xs leading-tight text-slate-900">カラオケ大会</p></div>
+                        <div class="event-block" style="top: 350px; height: 45px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/26 12:30-13:00)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:30 - 13:00</span><p class="font-bold text-xs leading-tight text-slate-900">少林寺拳法部</p></div>
+                        <div class="event-block" style="top: 410px; height: 90px;" onclick="openDetail('ダンス部', 'ダンス部', '講堂 (9/26 13:10-14:10)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">13:10 - 14:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
+                        <div class="event-block" style="top: 566px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/26 14:40-16:10)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:40 - 16:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
                     </div>
-                    <div class="venue-column"><div class="event-block" style="top: 100px; height: 600px;"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:30 - 16:00</span><p class="font-bold leading-tight text-slate-900">軽音楽部 LIVE</p></div></div>
-                    <div class="venue-column"><div class="event-block" style="top: 300px; height: 400px;"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:00 - 16:00</span><p class="font-bold leading-tight text-slate-900">中学ハンドボール部招待試合</p></div></div>
-                    <div class="venue-column"><div class="event-block" style="top: 400px; height: 300px;"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">13:00 - 16:00</span><p class="font-bold leading-tight text-slate-900">中学野球部招待試合 (先生対生徒ガチンコ対決)</p></div></div>
                     <div class="venue-column">
-                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/26 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
+                        <div class="event-block" style="top: 100px; height: 600px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">09:30 - 16:00</span><p class="font-black text-sm md:text-base leading-tight text-slate-900">軽音楽部 LIVE</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 300px; height: 400px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">12:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">中学ハンドボール部<br>招待試合</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 400px; height: 300px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">13:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">中学野球部招待試合<br>(先生対生徒ガチンコ対決)</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/26 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold text-xs leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
                     </div>
                 </div>
             </div>
@@ -809,29 +842,29 @@
                     </div>
                     <!-- 講堂 (Day 2) -->
                     <div class="venue-column">
-                        <div class="event-block" style="top: 25px; height: 100px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/27 09:15-10:15)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:15</span><p class="font-bold leading-tight text-slate-900">ソリスト</p></div>
-                        <div class="event-block" style="top: 145px; height: 50px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/27 10:25-10:55)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:25 - 10:55</span><p class="font-bold leading-tight text-slate-900">少林寺拳法部</p></div>
-                        <div class="event-block" style="top: 215px; height: 145px;" onclick="openDetail('生徒有志', 'Ms.JOHOKU CONTEST (ミスコン)', '講堂 (9/27 11:10-12:40)', '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:10 - 12:40</span><p class="font-bold leading-tight text-slate-900">ミスコン</p></div>
-                        <div class="event-block" style="top: 375px; height: 100px;" onclick="openDetail('ダンス部', 'ダンス部 explosive stage', '講堂 (9/27 12:45-13:45)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:45 - 13:45</span><p class="font-bold leading-tight text-slate-900">ダンス部</p></div>
-                        <div class="event-block" style="top: 550px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/27 14:30-16:00)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:30 - 16:00</span><p class="font-bold leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
+                        <div class="event-block" style="top: 25px; height: 100px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/27 09:15-10:15)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:15</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ソリスト</p></div>
+                        <div class="event-block" style="top: 145px; height: 50px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/27 10:25-10:55)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:25 - 10:55</span><p class="font-bold text-xs leading-tight text-slate-900">少林寺拳法部</p></div>
+                        <div class="event-block" style="top: 215px; height: 145px;" onclick="openDetail('生徒有志', 'Ms.JOHOKU CONTEST (ミスコン)', '講堂 (9/27 11:10-12:40)', '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:10 - 12:40</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ミスコン</p></div>
+                        <div class="event-block" style="top: 375px; height: 100px;" onclick="openDetail('ダンス部', 'ダンス部 explosive stage', '講堂 (9/27 12:45-13:45)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:45 - 13:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
+                        <div class="event-block" style="top: 550px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/27 14:30-16:00)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:30 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
                     </div>
                     <!-- 多目的ホール (Day 2) -->
                     <div class="venue-column">
-                        <div class="event-block" style="top: 100px; height: 440px;"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:30 - 14:15</span><p class="font-bold leading-tight text-slate-900">軽音楽部 LIVE</p></div>
-                        <div class="event-block" style="top: 575px; height: 125px; border-left-color: #7c3aed; background: #faf5ff;" onclick="openDetail('文化祭実行委員会', '後夜祭', '多目的ホール (9/27 14:45-16:00)', '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!', 'exhibition')"><span class="text-[9px] font-black text-purple-600 block mb-0.5">14:45 - 16:00</span><p class="font-bold leading-tight text-purple-950">後夜祭</p></div>
+                        <div class="event-block" style="top: 100px; height: 440px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">09:30 - 14:15</span><p class="font-black text-sm md:text-base leading-tight text-slate-900">軽音楽部 LIVE</p></div>
+                        <div class="event-block" style="top: 575px; height: 125px; border-left-color: #7c3aed; background: #faf5ff;" onclick="openDetail('文化祭実行委員会', '後夜祭', '多目的ホール (9/27 14:45-16:00)', '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!', 'exhibition')"><span class="text-[9px] font-black text-purple-600 block mb-0.5">14:45 - 16:00</span><p class="font-black text-sm md:text-base leading-tight text-purple-950">後夜祭</p></div>
                     </div>
                     <!-- 中学棟前中庭 (Day 2) -->
                     <div class="venue-column">
-                        <div class="event-block" style="top: 300px; height: 400px;"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:00 - 16:00</span><p class="font-bold leading-tight text-slate-900">高校ハンドボール部招待試合</p></div>
+                        <div class="event-block" style="top: 300px; height: 400px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">12:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">高校ハンドボール部<br>招待試合</p></div>
                     </div>
                     <!-- 校庭 (Day 2) -->
                     <div class="venue-column">
-                        <div class="event-block" style="top: 300px; height: 50px;" onclick="openDetail('物理部', 'ペットボトルロケット', '校庭 (9/27 12:00-12:30)', '大迫力のペットボトルロケット発射実験！青空高く打ち上がる瞬間をお見逃しなく！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:00 - 12:30</span><p class="font-bold leading-tight text-slate-900">物理部 ロケット実験</p></div>
-                        <div class="event-block" style="top: 600px; height: 50px;" onclick="openDetail('陸上競技部', '第4回城北ダービー', '校庭 (9/27 15:00-15:30)', '今年で４回目となる陸上部による全力のリレー対決！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">15:00 - 15:30</span><p class="font-bold leading-tight text-slate-900">陸上部 リレー対決</p></div>
+                        <div class="event-block" style="top: 300px; height: 50px;" onclick="openDetail('物理部', 'ペットボトルロケット', '校庭 (9/27 12:00-12:30)', '大迫力のペットボトルロケット発射実験！青空高く打ち上がる瞬間をお見逃しなく！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:00 - 12:30</span><p class="font-bold text-xs leading-tight text-slate-900">物理部 ロケット実験</p></div>
+                        <div class="event-block" style="top: 600px; height: 50px;" onclick="openDetail('陸上競技部', '第4回城北ダービー', '校庭 (9/27 15:00-15:30)', '今年で４回目となる陸上部による全力のリレー対決！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">15:00 - 15:30</span><p class="font-bold text-xs leading-tight text-slate-900">陸上部 リレー対決</p></div>
                     </div>
                     <!-- 高校視聴覚室 (Day 2) -->
                     <div class="venue-column">
-                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/27 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
+                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/27 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold text-xs leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
                     </div>
                 </div>
             </div>
@@ -839,9 +872,9 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【企画紹介】ページコンテナ                                   -->
+    <!-- 【企画紹介】ページコンテナ (学年・カテゴリ別アコーディオン) -->
     <!-- ========================================================== -->
-    <main id="page-groups" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16">
+    <main id="page-groups" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 relative z-10">
         <section class="max-w-6xl mx-auto px-4 md:px-8">
             <div class="mb-10 text-center">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Project Search & Filter</span>
@@ -850,110 +883,112 @@
                 <div class="w-full max-w-xl mx-auto">
                     <input type="text" id="project-search" placeholder="クラス名、企画名、部活名で検索..." class="search-input w-full text-base font-medium shadow-sm" onkeyup="filterProjects()">
                     
-                    <!-- カテゴリー絞り込み -->
+                    <!-- カテゴリー絞り込み（ハッシュタグ形式） -->
                     <div class="flex flex-wrap justify-center gap-2 mt-6">
-                        <button class="filter-btn bg-[#0056b3] text-white px-4 py-2 text-xs md:text-sm font-bold rounded-full shadow-sm" data-filter="all" onclick="setCategory('all', this)">すべて</button>
+                        <button class="filter-btn bg-[#0056b3] text-white px-4 py-2 text-xs md:text-sm font-bold rounded-full shadow-sm" data-filter="all" onclick="setCategory('all', this)">#すべて</button>
                         <button class="filter-btn bg-white text-slate-600 border border-slate-300 px-4 py-2 text-xs md:text-sm font-bold rounded-full hover:bg-slate-50" data-filter="attraction" onclick="setCategory('attraction', this)">#アトラクション</button>
                         <button class="filter-btn bg-white text-slate-600 border border-slate-300 px-4 py-2 text-xs md:text-sm font-bold rounded-full hover:bg-slate-50" data-filter="exhibition" onclick="setCategory('exhibition', this)">#展示・公演</button>
                     </div>
                 </div>
             </div>
-
-            <!-- 棟ごとの大きな絞り込みボタン -->
-            <div class="sticky top-[65px] z-[7000] bg-white/95 backdrop-blur-md py-4 border-y border-slate-200 shadow-sm mb-12 -mx-4 px-4">
-                <div class="flex flex-wrap justify-center items-center gap-2.5 max-w-4xl mx-auto">
-                    <span class="text-xs text-[#0056b3] font-black mr-1 uppercase tracking-wider">棟で絞り込み:</span>
-                    <button class="bldg-btn bg-[#0056b3] text-white px-5 py-2 text-sm font-black rounded-xl shadow-sm" onclick="filterBuilding('all', this)">すべて</button>
-                    <button class="bldg-btn bg-white border border-slate-300 text-slate-700 px-4 py-2 text-sm font-bold rounded-xl hover:bg-slate-50" onclick="filterBuilding('junior', this)">中学棟</button>
-                    <button class="bldg-btn bg-white border border-slate-300 text-slate-700 px-4 py-2 text-sm font-bold rounded-xl hover:bg-slate-50" onclick="filterBuilding('senior', this)">高校棟</button>
-                    <button class="bldg-btn bg-white border border-slate-300 text-slate-700 px-4 py-2 text-sm font-bold rounded-xl hover:bg-slate-50" onclick="filterBuilding('common', this)">共通棟</button>
-                    <button class="bldg-btn bg-white border border-slate-300 text-slate-700 px-4 py-2 text-sm font-bold rounded-xl hover:bg-slate-50" onclick="filterBuilding('other', this)">その他施設</button>
-                </div>
-            </div>
      
-            <!-- 階数別アコーディオンコンテナ（押すと展開） -->
+            <!-- 学年・カテゴリ別アコーディオンコンテナ（押すと展開） -->
             <div class="accordion-container w-full space-y-6">
-                <!-- 1階 -->
-                <div class="floor-section is-open" id="section-floor-1">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-1')">
+                <!-- 中学1年 -->
+                <div class="group-section is-open" id="section-m1">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('m1')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">1F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">1階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">M1</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">中学1年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-1"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-m1"></div>
                     </div>
                 </div>
 
-                <!-- 2階 -->
-                <div class="floor-section is-open" id="section-floor-2">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-2')">
+                <!-- 中学2年 -->
+                <div class="group-section is-open" id="section-m2">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('m2')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">2F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">2階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">M2</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">中学2年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-2"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-m2"></div>
                     </div>
                 </div>
 
-                <!-- 3階 -->
-                <div class="floor-section is-open" id="section-floor-3">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-3')">
+                <!-- 中学3年 -->
+                <div class="group-section is-open" id="section-m3">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('m3')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">3F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">3階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">M3</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">中学3年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-3"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-m3"></div>
                     </div>
                 </div>
 
-                <!-- 4階 -->
-                <div class="floor-section is-open" id="section-floor-4">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-4')">
+                <!-- 高校1年 -->
+                <div class="group-section is-open" id="section-h1">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('h1')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">4F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">4階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">H1</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">高校1年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-4"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-h1"></div>
                     </div>
                 </div>
 
-                <!-- 5階 -->
-                <div class="floor-section is-open" id="section-floor-5">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-5')">
+                <!-- 高校2年 -->
+                <div class="group-section is-open" id="section-h2">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('h2')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">5F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">5階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">H2</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">高校2年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-5"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-h2"></div>
                     </div>
                 </div>
 
-                <!-- 6階 -->
-                <div class="floor-section is-open" id="section-floor-6">
-                    <div class="floor-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleFloor('floor-6')">
+                <!-- 部活・同好会 -->
+                <div class="group-section is-open" id="section-club">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('club')">
                         <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-sm">6F</span>
-                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">6階 企画一覧</h4>
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-xs">部活</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">部活・同好会 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
-                    <div class="floor-content">
-                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-floor-6"></div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-club"></div>
+                    </div>
+                </div>
+
+                <!-- その他（教員企画・ステージ・有志） -->
+                <div class="group-section is-open" id="section-other">
+                    <div class="group-accordion-header p-5 md:p-6 flex justify-between items-center" onclick="toggleGroupSection('other')">
+                        <div class="flex items-center gap-3">
+                            <span class="w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-black flex items-center justify-center text-xs">他</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush">その他（ステージ・教員・有志）企画一覧</h4>
+                        </div>
+                        <span class="icon-plus text-2xl font-light">+</span>
+                    </div>
+                    <div class="group-content">
+                        <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="container-other"></div>
                     </div>
                 </div>
             </div>
@@ -961,111 +996,9 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【飲食・グッズ】ページコンテナ (旧 FOOD)                      -->
+    <!-- 【企画投票】ページコンテナ (企画紹介の隣へ配置)            -->
     <!-- ========================================================== -->
-    <main id="page-food" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
-        <section class="max-w-6xl mx-auto reveal">
-            <div class="text-center mb-12">
-                <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Food & Official Goods</span>
-                <h3 class="text-4xl md:text-6xl font-black mb-8 text-slate-900 font-brush">飲食・グッズ</h3>
-               
-                <div class="flex justify-center space-x-6 text-slate-500 font-bold mb-8">
-                    <button class="food-tab-btn active pb-2 text-xl font-black tracking-wider transition" onclick="switchFoodTab('kcar')">キッチンカー</button>
-                    <button class="food-tab-btn pb-2 text-xl font-black tracking-wider transition" onclick="switchFoodTab('cafe')">学食・PTA・売店</button>
-                </div>
-            </div>
-
-            <!-- キッチンカー (初期表示) -->
-            <div id="food-kcar" class="food-content grid grid-cols-1 md:grid-cols-2 gap-6"></div>
- 
-            <!-- 学食・Jラウンジ・売店（その他） -->
-            <div id="food-cafe" class="food-content space-y-12 hidden">
-                <!-- ① 食堂（学食） -->
-                <div>
-                    <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-6 bg-[#0056b3] rounded-full"></span>
-                            <div>
-                                <h4 class="text-2xl font-black text-slate-900 font-brush">食堂（講堂地下1階）</h4>
-                                <p class="text-xs text-slate-500 font-bold">10:00〜 営業（※なくなり次第終了）</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cafe-general-list"></div>
-                </div>
-
-                <!-- ② Jラウンジ（PTAカフェ） -->
-                <div class="bg-blue-50/70 p-6 md:p-8 rounded-3xl border border-blue-200 shadow-sm">
-                    <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-6 bg-[#0070f3] rounded-full"></span>
-                            <div>
-                                <h4 class="text-2xl font-black text-[#0056b3] font-brush">Jラウンジ（高校棟2階 会議室）</h4>
-                                <p class="text-xs text-slate-500 font-bold">PTA運営の憩いのカフェスペース。焼きたてパン・スイーツをご提供！</p>
-                            </div>
-                        </div>
-                        <span class="bg-[#0056b3] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">9:00〜 営業</span>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cafe-jlounge-list"></div>
-                </div>
-
-                <!-- ③ 特設売店・グッズ販売 -->
-                <div class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm">
-                    <div class="mb-6 flex items-center gap-3">
-                        <span class="w-2.5 h-6 bg-amber-500 rounded-full"></span>
-                        <div>
-                            <h4 class="text-2xl font-black text-slate-900 font-brush">売店・特設屋台・グッズ販売</h4>
-                            <p class="text-xs text-slate-500 font-bold">毎年大人気の城北オリジナルグッズや熱々グルメ！</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="goods-booth-list">
-                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
-                            <span class="text-xs text-amber-600 font-bold block mb-1">正門入って左側 (10:00〜15:00)</span>
-                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">JOY やきそば (PTA主催)</h5>
-                            <p class="text-xs text-slate-600 font-medium mb-3">香ばしいソースが自慢の伝統の味！</p>
-                            <span class="text-xl font-black text-[#0056b3]">¥400</span>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
-                            <span class="text-xs text-amber-600 font-bold block mb-1">高校棟中庭 (10:00〜)</span>
-                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">芋煮汁 (同窓会)</h5>
-                            <p class="text-xs text-slate-600 font-medium mb-3">城北OBたちの絆が詰まった絶品芋煮！</p>
-                            <span class="text-xl font-black text-[#0056b3]">¥300</span>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
-                            <span class="text-xs text-blue-600 font-bold block mb-1">高校棟2階 会議室 & 売店</span>
-                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">城北オリジナルグッズ</h5>
-                            <p class="text-xs text-slate-600 font-medium mb-3">限定タオル・文具・合格祈願オクトパスなど多数！</p>
-                            <span class="text-base font-black text-[#0056b3]">売場にて案内</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ========================================================== -->
-    <!-- 【校内マップ】ページコンテナ                                -->
-    <!-- ========================================================== -->
-    <main id="page-map" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
-        <section class="max-w-6xl mx-auto text-center reveal">
-            <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Floor Map & Campus Guide</span>
-            <h3 class="text-4xl md:text-6xl font-black mb-10 text-slate-900 font-brush">校内マップ</h3>
-            <div class="w-full bg-white border border-slate-200 p-8 md:p-12 relative aspect-video flex flex-col items-center justify-center rounded-3xl shadow-sm">
-                <div class="w-16 h-16 rounded-full bg-blue-50 text-[#0056b3] flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                </div>
-                <p class="text-slate-700 font-black text-xl md:text-2xl text-center leading-relaxed font-brush">
-                    [ 校内マップ / 校内全体図 画像配置スペース ]
-                </p>
-                <span class="text-xs md:text-sm font-bold text-slate-400 mt-3">※パンフレット校内案内図・見取り図画像をここに表示</span>
-            </div>
-        </section>
-    </main>
-
-    <!-- ========================================================== -->
-    <!-- 【企画投票】ページコンテナ                                   -->
-    <!-- ========================================================== -->
-    <main id="page-vote" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
+    <main id="page-vote" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
         <section class="max-w-6xl mx-auto reveal text-center">
             <div class="mb-14">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Official Award</span>
@@ -1138,9 +1071,111 @@
     </main>
 
     <!-- ========================================================== -->
+    <!-- 【飲食・グッズ】ページコンテナ (旧 FOOD)                      -->
+    <!-- ========================================================== -->
+    <main id="page-food" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
+        <section class="max-w-6xl mx-auto reveal">
+            <div class="text-center mb-12">
+                <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Food & Official Goods</span>
+                <h3 class="text-4xl md:text-6xl font-black mb-8 text-slate-900 font-brush">飲食・グッズ</h3>
+               
+                <div class="flex justify-center space-x-6 text-slate-500 font-bold mb-8">
+                    <button class="food-tab-btn active pb-2 text-xl font-black tracking-wider transition" onclick="switchFoodTab('kcar')">キッチンカー</button>
+                    <button class="food-tab-btn pb-2 text-xl font-black tracking-wider transition" onclick="switchFoodTab('cafe')">学食・PTA・売店</button>
+                </div>
+            </div>
+
+            <!-- キッチンカー (初期表示) -->
+            <div id="food-kcar" class="food-content grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+ 
+            <!-- 学食・Jラウンジ・売店（その他） -->
+            <div id="food-cafe" class="food-content space-y-12 hidden">
+                <!-- ① 食堂（学食） -->
+                <div>
+                    <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-6 bg-[#0056b3] rounded-full"></span>
+                            <div>
+                                <h4 class="text-2xl font-black text-slate-900 font-brush">食堂（講堂地下1階）</h4>
+                                <p class="text-xs text-slate-500 font-bold">10:00〜 営業（※なくなり次第終了 / 右側の食券機は新札使用不可）</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cafe-general-list"></div>
+                </div>
+
+                <!-- ② Jラウンジ（PTAカフェ） -->
+                <div class="bg-blue-50/70 p-6 md:p-8 rounded-3xl border border-blue-200 shadow-sm">
+                    <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-6 bg-[#0070f3] rounded-full"></span>
+                            <div>
+                                <h4 class="text-2xl font-black text-[#0056b3] font-brush">Jラウンジ（高校棟2階 会議室）</h4>
+                                <p class="text-xs text-slate-500 font-bold">PTA運営の憩いのカフェスペース。焼きたてパン・スイーツをご提供！</p>
+                            </div>
+                        </div>
+                        <span class="bg-[#0056b3] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">9:00〜 営業</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cafe-jlounge-list"></div>
+                </div>
+
+                <!-- ③ 特設売店・グッズ販売 -->
+                <div class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="w-2.5 h-6 bg-amber-500 rounded-full"></span>
+                        <div>
+                            <h4 class="text-2xl font-black text-slate-900 font-brush">売店・特設屋台・グッズ販売</h4>
+                            <p class="text-xs text-slate-500 font-bold">毎年大人気の城北オリジナルグッズや熱々グルメ！</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="goods-booth-list">
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                            <span class="text-xs text-amber-600 font-bold block mb-1">正門入って左側 (10:00〜15:00)</span>
+                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">JOY やきそば (PTA主催)</h5>
+                            <p class="text-xs text-slate-600 font-medium mb-3">保護者が愛情を込めて秘伝のレシピで作る最高の焼きそば！</p>
+                            <span class="text-xl font-black text-[#0056b3]">¥400</span>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                            <span class="text-xs text-amber-600 font-bold block mb-1">高校棟中庭 (10:00〜)</span>
+                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">芋煮汁 (同窓会)</h5>
+                            <p class="text-xs text-slate-600 font-medium mb-3">城北OBたちの絆が詰まった絶品芋煮！</p>
+                            <span class="text-xl font-black text-[#0056b3]">¥300</span>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                            <span class="text-xs text-blue-600 font-bold block mb-1">高校棟2階 会議室 & 売店</span>
+                            <h5 class="text-lg font-black text-slate-900 mb-1 font-brush">城北オリジナルグッズ</h5>
+                            <p class="text-xs text-slate-600 font-medium mb-3">限定タオル・文具・合格祈願オクトパスなど多数！</p>
+                            <span class="text-base font-black text-[#0056b3]">売場にて案内</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================== -->
+    <!-- 【校内マップ】ページコンテナ                                -->
+    <!-- ========================================================== -->
+    <main id="page-map" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
+        <section class="max-w-6xl mx-auto text-center reveal">
+            <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Floor Map & Campus Guide</span>
+            <h3 class="text-4xl md:text-6xl font-black mb-10 text-slate-900 font-brush">校内マップ</h3>
+            <div class="w-full bg-white border border-slate-200 p-8 md:p-12 relative aspect-video flex flex-col items-center justify-center rounded-3xl shadow-sm">
+                <div class="w-16 h-16 rounded-full bg-blue-50 text-[#0056b3] flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                </div>
+                <p class="text-slate-700 font-black text-xl md:text-2xl text-center leading-relaxed font-brush">
+                    [ 校内マップ / 校内全体図 画像配置スペース ]
+                </p>
+                <span class="text-xs md:text-sm font-bold text-slate-400 mt-3">※パンフレット校内案内図・見取り図画像をここに表示</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================== -->
     <!-- 【各種ご案内】ページコンテナ                                -->
     <!-- ========================================================== -->
-    <main id="page-examinee" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8">
+    <main id="page-examinee" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
         <section class="max-w-6xl mx-auto reveal">
             <div class="text-center mb-14">
                 <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">General Guide & For Examinees</span>
@@ -1203,7 +1238,7 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         </div>
                         <h5 class="text-lg font-black text-slate-900 mb-2">おむつ替え・授乳スペース</h5>
-                        <p class="text-sm text-slate-600 leading-relaxed font-medium">おむつ替えや授乳をご希望の方は、事務室あるいは保健室までお気軽にお声かけください。</p>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium">高校棟2階 事務室あるいは保健室までお気軽にお声かけください。</p>
                     </div>
                 </div>
             </div>
@@ -1240,7 +1275,7 @@
                         <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
                             学校生活や受験の悩みを気軽に相談できるブース。限定の城北グッズやパン・焼き菓子も販売しています！
                         </p>
-                        <p class="text-xs md:text-sm font-bold text-indigo-500">場所: 会議室 (高校棟)</p>
+                        <p class="text-xs md:text-sm font-bold text-indigo-500">場所: 会議室 (高校棟2階)</p>
                     </div>
                 </div>
 
@@ -1251,8 +1286,8 @@
                             <h6 class="text-lg font-bold text-[#0056b3] mb-3">A. 中学受験生向け</h6>
                             <ul class="space-y-2 text-sm md:text-base text-slate-700 font-medium">
                                 <li>● 学校説明会: 10/17(土)・11/7(土)</li>
-                                <li>● 学校見学ツアー: 10/11(土)・11/14(土) など</li>
-                                <li>● 入試説明会 (小6限定): 11/23(祝)・11/29(日)</li>
+                                <li>● 学校見学ツアー: 10/11(日)・11/14(土) など</li>
+                                <li>● 入試説明会 (小6限定): 11/23(祝・月)・11/29(日)</li>
                             </ul>
                         </div>
                         <div>
@@ -1267,7 +1302,7 @@
                 </div>
 
                 <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 text-center border border-blue-200">
-                    <h5 class="text-xl md:text-3xl font-black text-[#0056b3] mb-4 font-brush">生徒会長 平山千尋より 受験生の皆さんへ</h5>
+                    <h5 class="text-xl md:text-3xl font-black text-[#0056b3] mb-4 font-brush">生徒会長 平山千紘より 受験生の皆さんへ</h5>
                     <p class="text-base md:text-xl font-bold text-slate-800 max-w-3xl mx-auto leading-relaxed">
                         「息抜きだと思ってたくさん楽しんでいってね！<br>皆さんの受験が上手くいくことを願っています！」
                     </p>
@@ -1392,7 +1427,6 @@
         const TARGET_DATE = new Date("September 26, 2026 09:00:00").getTime();
         let currentProject = "";
         let currentFilterCategory = "all";
-        let currentBuilding = "all";
  
         const juniorClasses = ['M1A', 'M1B', 'M1C', 'M1D', 'M1E', 'M1F', 'M1G', 'M2A', 'M2B', 'M2C', 'M2D', 'M2E', 'M2F', 'M2G'];
         const seniorClasses = [
@@ -1414,105 +1448,109 @@
             '数学研究部', '文化祭実行委員会', '文実'
         ];
 
-        /* クラス企画データ */
+        /* クラス企画データ（学年グループ指定対応） */
         const classProjectsCustomData = {
-            'M1A': { title: 'A組の神隠し〜教室の迷宮〜', img: '『A組の神隠し〜教室の迷宮〜』.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: 'かつて入った者が次々と消えた、物置室だったA組。誰も近寄らないこの教室の恐ろしい真相を、君は暴くことができるのか？' },
-            'M1B': { title: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～', img: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: 'みなさん、ごきげんよう。僕たち1年B組は、初めての文化祭で気配斬りをやります。ご家族やお友達を誘って、ぜひ来てください！' },
-            'M1C': { title: 'オノノカジノ', img: 'オノノカジノ.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '文化祭で本格カジノを開催！ブラックジャックやルーレットなどで、白熱の頭脳戦を体験できます。初心者も大歓迎、ぜひ来てね！' },
-            'M1D': { title: '縁日', img: '縁日中学1年D組.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '僕たちのクラスでは、「射的」と「ボーリング」を楽しむことができます。友達や家族と気軽に遊べるので、ぜひ来てください！' },
-            'M1E': { title: '射的', img: '射的.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '簡単にできる射的です。みんな遊びにきてね！' },
-            'M1F': { title: '縁日', img: '縁日中学１年F組.png', loc: '中学棟 1階', floor: '1階', bldg: 'junior', type: 'attraction', desc: 'M1Fでは縁日を行います。景品もありみんなが楽しめる要素がたっぷりあります♪ぜひ足を運んでいってみてください！' },
-            'M1G': { title: 'サバゲー', img: 'サバゲー.png', loc: '中学棟 1階', floor: '1階', bldg: 'junior', type: 'attraction', desc: '平凡な教室？いや違う！この教室ではM1Gの生徒が暴れ回っている！この生徒達を撃って退治しよう！あなたは何人倒せるかな？' },
+            'M1A': { title: 'A組の神隠し〜教室の迷宮〜', img: '『A組の神隠し〜教室の迷宮〜』.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: 'かつて入った者が次々と消えた、物置室だったA組。誰も近寄らないこの教室の恐ろしい真相を、君は暴くことができるのか？' },
+            'M1B': { title: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～', img: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: 'みなさん、ごきげんよう。僕たち1年B組は、初めての文化祭で気配斬りをやります。ご家族やお友達を誘って、ぜひ来てください！' },
+            'M1C': { title: 'オノノカジノ', img: 'オノノカジノ.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: '文化祭で本格カジノを開催！ブラックジャックやルーレットなどで、白熱の頭脳戦を体験できます。初心者も大歓迎、ぜひ来てね！' },
+            'M1D': { title: '縁日', img: '縁日中学1年D組.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: '僕たちのクラスでは、「射的」と「ボーリング」を楽しむことができます。友達や家族と気軽に遊べるので、ぜひ来てください！' },
+            'M1E': { title: '射的', img: '射的.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: '簡単にできる射的です。みんな遊びにきてね！' },
+            'M1F': { title: '縁日', img: '縁日中学１年F組.png', loc: '中学棟 1階', groupKey: 'm1', type: 'attraction', desc: 'M1Fでは縁日を行います。景品もありみんなが楽しめる要素がたっぷりあります♪ぜひ足を運んでいってみてください！' },
+            'M1G': { title: 'サバゲー', img: 'サバゲー.png', loc: '中学棟 1階', groupKey: 'm1', type: 'attraction', desc: '平凡な教室？いや違う！この教室ではM1Gの生徒が暴れ回っている！この生徒達を撃って退治しよう！あなたは何人倒せるかな？' },
 
-            'M2A': { title: 'めっちゃカジノ', img: 'めっちゃカジノ.png', loc: '中学棟 2階', floor: '2階', bldg: 'junior', type: 'attraction', desc: 'ようこそM2Aへ！ここではとっても楽しいカジノをやっているよぉ！生きて帰れるかはわからないぞぉ。是非来てね！' },
-            'M2B': { title: '人類VS10本のピン', img: '人類VS10本のピン.png', loc: '中学棟 2階', floor: '2階', bldg: 'junior', type: 'attraction', desc: '今年M2Bに10本のピンが襲来！？みんなでピンに立ち向かえ！普段ははちゃめちゃなM2Bの仲間達で一生懸命考えました！' },
-            'M2C': { title: '【白熱】競玉グランプリ', img: '【白熱】競玉グランプリ.png', loc: '中学棟 2階', floor: '2階', bldg: 'junior', type: 'attraction', desc: 'ビー玉で競馬！？ ２つの大きなコースで競馬の緊張感をビー玉で、着順を予想してお菓子を勝ち取れ※ドーパミン注意！' },
-            'M2D': { title: 'マッハ台車でgo!! 〜ターゲットミッション〜', img: 'マッハ台車でgo!! 〜ターゲットミッション〜.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '台車に乗って進みながら的を狙う、新感覚の的当てゲーム！年齢は関係ない。さあ、あなたも挑戦してみませんか？' },
-            'M2E': { title: 'あつまれえんにちの森!?', img: 'あつまれえんにちの森!.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '君たちが迷い込んだのはえんにちの森。ここではM2Eの愉快な仲間たちがたくさん楽しませてくれる。もう行くっきゃないっしょ！' },
-            'M2F': { title: '賭博の刃', img: '賭博の刃.png', loc: '中学棟 3階', floor: '3階', bldg: 'junior', type: 'attraction', desc: '「全集中カネの呼吸 Fの型 合法賭博ッ、、、」成績はド底辺、気分は有頂天！そんな2-Fが送る最高の賭博体験をご堪能あれ！' },
-            'M2G': { title: 'JOHOQ', img: 'JOHOQ.png', loc: '中学棟 4階', floor: '4階', bldg: 'junior', type: 'attraction', desc: '城北学園を知っていただくため、城北学園全体を使った、こだわりの謎が織りなす周遊謎解きの世界へみなさんをご招待します！' },
+            'M2A': { title: 'めっちゃカジノ', img: 'めっちゃカジノ.png', loc: '中学棟 2階', groupKey: 'm2', type: 'attraction', desc: 'ようこそM2Aへ！ここではとっても楽しいカジノをやっているよぉ！生きて帰れるかはわからないぞぉ。是非来てね！' },
+            'M2B': { title: '人類VS10本のピン', img: '人類VS10本のピン.png', loc: '中学棟 2階', groupKey: 'm2', type: 'attraction', desc: '今年M2Bに10本のピンが襲来！？みんなでピンに立ち向かえ！普段ははちゃめちゃなM2Bの仲間達で一生懸命考えました！' },
+            'M2C': { title: '【白熱】競玉グランプリ', img: '【白熱】競玉グランプリ.png', loc: '中学棟 2階', groupKey: 'm2', type: 'attraction', desc: 'ビー玉で競馬！？ ２つの大きなコースで競馬の緊張感をビー玉で、着順を予想してお菓子を勝ち取れ※ドーパミン注意！' },
+            'M2D': { title: 'マッハ台車でgo!! 〜ターゲットミッション〜', img: 'マッハ台車でgo!! 〜ターゲットミッション〜.png', loc: '中学棟 3階', groupKey: 'm2', type: 'attraction', desc: '台車に乗って進みながら的を狙う、新感覚の的当てゲーム！年齢は関係ない。さあ、あなたも挑戦してみませんか？' },
+            'M2E': { title: 'あつまれえんにちの森!?', img: 'あつまれえんにちの森!.png', loc: '中学棟 3階', groupKey: 'm2', type: 'attraction', desc: '君たちが迷い込んだのはえんにちの森。ここではM2Eの愉快な仲間たちがたくさん楽しませてくれる。もう行くっきゃないっしょ！' },
+            'M2F': { title: '賭博の刃', img: '賭博の刃.png', loc: '中学棟 3階', groupKey: 'm2', type: 'attraction', desc: '「全集中カネの呼吸 Fの型 合法賭博ッ、、、」成績はド底辺、気分は有頂天！そんな2-Fが送る最高の賭博体験をご堪能あれ！' },
+            'M2G': { title: 'JOHOQ', img: 'JOHOQ.png', loc: '中学棟 4階', groupKey: 'm2', type: 'attraction', desc: '城北学園を知っていただくため、城北学園全体を使った、こだわりの謎が織りなす周遊謎解きの世界へみなさんをご招待します！' },
 
-            'M3A': { title: '深夜の巡回教師', img: '深夜の巡回教師.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: 'M3Aには巡回教師という名の怨霊「デバイス取りの千苦損」が住み着いてしまった！デバイスを死守してM3Aから抜け出そう！' },
-            'M3B': { title: 'High & low', img: 'High & low.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: 'こんにちは。中学3年B組です！ M3Bでは出し物としてカジノをします。ウマ娘(人間ver)もやります！来てね！' },
-            'M3C': { title: '城北カート', img: '城北カート.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: '2台の二人乗りカートによる、アイテム（赤甲羅、バナナ、爆弾などのぬいぐるみ）を投げ合う大乱闘！' },
-            'M3D': { title: '馬漢(うまおとこ)', img: '馬漢(うまおとこ).png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'exhibition', desc: '馬漢(うまおとこ)のエンターテインメント展示ブース！' },
-            'M3E': { title: '男前ボッチャ', img: '男前ボッチャ.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: '男前を決めるのはゲームではなく、『ボッチャ』だ。個性豊かな相手とボッチャでバトル。より「男前」なのはどちらか、いざ勝負！' },
-            'M3F': { title: 'HOPE', img: 'HOPE.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: 'ノリで夜のコンビニで○○きを試みるあなた。果たして目的のものを持ってバレずに帰れるのか！(最後はちゃんとお仕置きです！)' },
-            'M3G': { title: '動く迷路', img: '動く迷路.png', loc: '高校棟 2階', floor: '2階', bldg: 'senior', type: 'attraction', desc: 'あなたは文化祭で迷路に迷い込んでしまった…しかもそこは珍しい動く迷路… あなたはそこから無事に脱出できるのか…' },
+            'M3A': { title: '深夜の巡回教師', img: '深夜の巡回教師.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: 'M3Aには巡回教師という名の怨霊「デバイス取りの千苦損」が住み着いてしまった！デバイスを死守してM3Aから抜け出そう！' },
+            'M3B': { title: 'High & low', img: 'High & low.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: 'こんにちは。中学3年B組です！ M3Bでは出し物としてカジノをします。ウマ娘(人間ver)もやります！来てね！' },
+            'M3C': { title: '城北カート', img: '城北カート.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: '2台の二人乗りカートによる、アイテム（赤甲羅、バナナ、爆弾などのぬいぐるみ）を投げ合う大乱闘！' },
+            'M3D': { title: '馬漢(うまおとこ)', img: '馬漢(うまおとこ).png', loc: '高校棟 2階', groupKey: 'm3', type: 'exhibition', desc: '幅広い人に楽しんでいただくために競馬式のゲームを作らせていただきました！是非来てください！' },
+            'M3E': { title: '男前ボッチャ', img: '男前ボッチャ.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: '男前を決めるのはゲームではなく、『ボッチャ』だ。個性豊かな相手とボッチャでバトル。より「男前」なのはどちらか、いざ勝負！' },
+            'M3F': { title: 'HOPE', img: 'HOPE.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: 'ノリで夜のコンビニで○○きを試みるあなた。果たして目的のものを持ってバレずに帰れるのか！(最後はちゃんとお仕置きです！)' },
+            'M3G': { title: '動く迷路', img: '動く迷路.png', loc: '高校棟 2階', groupKey: 'm3', type: 'attraction', desc: 'あなたは文化祭で迷路に迷い込んでしまった…しかもそこは珍しい動く迷路… あなたはそこから無事に脱出できるのか…' },
 
-            'H1A': { title: 'ミサンガ作り', img: 'ミサンガ作り.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'exhibition', desc: '城北生が心を込めて皆様と一緒にミサンガを編みます。友情、青春、そして汗。あなたの願いをミサンガに託そう！' },
-            'H1B': { title: 'ギャンブル', img: 'ギャンブル.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: 'みんなで楽しいギャンブルをします。未経験の人でも大歓迎！！！！！みんなで楽しくギャンブルをしましょう。' },
-            'H1C': { title: '1-C パビリオン', img: '1-C パビリオン.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'exhibition', desc: '高校1年C組がお届けする体験型展示です。' },
-            'H1D': { title: 'ここからは、お静かに', img: 'ここからは、お静かに.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: 'ある日、興味本位で心霊スポットである廃病院に入っていった。何事もないと思っていたが、様々な恐怖体験に見舞われていく!' },
-            'H1E': { title: 'FRIDAY THE 13TH', img: 'FRIDAY THE 13TH.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: '今、あなたは石神井川付近でキャンプをしていました。途中、パトカーや救急車を見かけたけど、一体何があったんだろう…' },
-            'H1F': { title: 'テストを捨てろ！', img: 'テストを捨てろ！.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: '対策不可能なテストからみんなの成績を守るために立ち上がれ！謎を解いてテスト用紙を探し出し、破棄しよう！' },
-            'H1G': { title: '占いの館 in城北', img: '占いの館　in城北.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'exhibition', desc: 'H1Gでは色々な占いができます。手相占いや水晶占いなどができます。占いに行ったことがないという人もぜひきてください！' },
-            'H1H': { title: '城北生格付けチェック', img: '城北生格付けチェック.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: 'いろんな勉強に関することや知識などいろいろなクイズで格付けをします！！' },
-            'H1I': { title: 'ブロサバ', img: 'ブロサバ.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: 'kill. kill. kill. 敵を倒して勝利をつかみ取れ！ 楽しい楽しいサバイバルゲーム！ぜひ来てください！' },
+            'H1A': { title: 'ミサンガ作り', img: 'ミサンガ作り.png', loc: '高校棟 3階', groupKey: 'h1', type: 'exhibition', desc: '城北生が心を込めて皆様と一緒にミサンガを編みます。友情、青春、そして汗。あなたの願いをミサンガに託そう！' },
+            'H1B': { title: 'ギャンブル', img: 'ギャンブル.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: 'みんなで楽しいギャンブルをします。未経験の人でも大歓迎！！！！！みんなで楽しくギャンブルをしましょう。' },
+            'H1C': { title: '1-C パビリオン', img: '1-C パビリオン.png', loc: '高校棟 3階', groupKey: 'h1', type: 'exhibition', desc: '高校1年C組がお届けする体験型展示です。' },
+            'H1D': { title: 'ここからは、お静かに', img: 'ここからは、お静かに.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: 'ある日、興味本位で心霊スポットである廃病院に入っていった。何事もないと思っていたが、様々な恐怖体験に見舞われていく!' },
+            'H1E': { title: 'FRIDAY THE 13TH', img: 'FRIDAY THE 13TH.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: '今、あなたは石神井川付近でキャンプをしていました。途中、パトカーや救急車を見かけたけど、一体何があったんだろう…' },
+            'H1F': { title: 'テストを捨てろ！', img: 'テストを捨てろ！.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: '対策不可能なテストからみんなの成績を守るために立ち上がれ！謎を解いてテスト用紙を探し出し、破棄しよう！' },
+            'H1G': { title: '占いの館 in城北', img: '占いの館　in城北.png', loc: '高校棟 3階', groupKey: 'h1', type: 'exhibition', desc: 'H1Gでは色々な占いができます。手相占いや水晶占いなどができます。占いに行ったことがないという人もぜひきてください！' },
+            'H1H': { title: '城北生格付けチェック', img: '城北生格付けチェック.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: 'いろんな勉強に関することや知識などいろいろなクイズで格付けをします！！' },
+            'H1I': { title: 'ブロサバ', img: 'ブロサバ.png', loc: '高校棟 3階', groupKey: 'h1', type: 'attraction', desc: 'kill. kill. kill. 敵を倒して勝利をつかみ取れ！ 楽しい楽しいサバイバルゲーム！ぜひ来てください！' },
 
-            'H2A': { title: '城北に登校してみよう', img: '城北に登校してみよう.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: '見慣れた電車に乗って、無事に城北へ登校してみよう！シューティングゲーム×トロッコの融合型アトラクションです。' },
-            'H2B': { title: '2-B パビリオン', img: '未定.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'exhibition', desc: '高校2年B組による特別展示です。' },
-            'H2C': { title: 'ジャングルシューティング', img: 'ジャングルシューティング.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: 'なぁ…射的で一獲千金、狙わないか…？ ジャングルの奥地で待ってるぜ。あ、安全第一で営業中！' },
-            'H2D': { title: 'お化け屋敷', img: 'お化け屋敷高校2年D組.png', loc: '高校棟 3階', floor: '3階', bldg: 'senior', type: 'attraction', desc: '謎解きをしながらお化け屋敷を攻略しよう！' },
-            'H2E': { title: 'Eのボードゲーム大全', img: 'Eのボードゲーム大全.png', loc: '高校棟 4階', floor: '4階', bldg: 'senior', type: 'attraction', desc: 'みんなが知ってるゲームからちょっとマイナーなゲームまで、クラスから選ばれた5つのゲームを遊べます。ぜひ来てね！' },
-            'H2F': { title: '怨念掃討作戦：列車', img: '怨念掃討作戦：列車.png', loc: '高校棟 4階', floor: '4階', bldg: 'senior', type: 'attraction', desc: 'トロッコに乗り武器を持って迫り来るお化けを撃退しよう！' },
-            'H2G': { title: 'お化け屋敷', img: 'お化け屋敷.png', loc: '高校棟 4階', floor: '4階', bldg: 'senior', type: 'attraction', desc: '高2Gがお届けする、森に潜む恐怖のお化け屋敷。勇気のある女の子は、ぜひ挑戦してください！' },
-            'H2H': { title: '新感覚コースター', img: '新感覚コースター.png', loc: '高校棟 4階', floor: '4階', bldg: 'senior', type: 'attraction', desc: '新感覚の乗り物開催中！！！ みんな楽しく乗りこなしましょう。' },
-            'H2I': { title: '人生、回してみる？', img: '人生、回してみる.png', loc: '高校棟 4階', floor: '4階', bldg: 'senior', type: 'attraction', desc: '高2I組はコーヒーカップを作りました。笑顔と遠心力、多めでお届けします。ぜひお楽しみください。' }
+            'H2A': { title: '城北に登校してみよう', img: '城北に登校してみよう.png', loc: '高校棟 3階', groupKey: 'h2', type: 'attraction', desc: '見慣れた電車に乗って、無事に城北へ登校してみよう！シューティングゲーム×トロッコの融合型アトラクションです。' },
+            'H2B': { title: '2-B パビリオン', img: '未定.png', loc: '高校棟 3階', groupKey: 'h2', type: 'exhibition', desc: '高校2年B組による特別展示です。' },
+            'H2C': { title: 'ジャングルシューティング', img: 'ジャングルシューティング.png', loc: '高校棟 3階', groupKey: 'h2', type: 'attraction', desc: 'なぁ…射的で一獲千金、狙わないか…？ ジャングルの奥地で待ってるぜ。あ、安全第一で営業中！' },
+            'H2D': { title: '猿忌 (お化け屋敷)', img: 'お化け屋敷高校2年D組.png', loc: '高校棟 3階', groupKey: 'h2', type: 'attraction', desc: '謎解きをしながらお化け屋敷を攻略しよう！' },
+            'H2E': { title: 'Eのボードゲーム大全', img: 'Eのボードゲーム大全.png', loc: '高校棟 4階', groupKey: 'h2', type: 'attraction', desc: 'みんなが知ってるゲームからちょっとマイナーなゲームまで、クラスから選ばれた5つのゲームを遊べます。ぜひ来てね！' },
+            'H2F': { title: '怨念掃討作戦：列車', img: '怨念掃討作戦：列車.png', loc: '高校棟 4階', groupKey: 'h2', type: 'attraction', desc: 'トロッコに乗り武器を持って迫り来るお化けを撃退しよう！' },
+            'H2G': { title: 'お化け屋敷', img: 'お化け屋敷.png', loc: '高校棟 4階', groupKey: 'h2', type: 'attraction', desc: '高2Gがお届けする、森に潜む恐怖のお化け屋敷。勇気のある女の子は、ぜひ挑戦してください！' },
+            'H2H': { title: '新感覚コースター', img: '新感覚コースター.png', loc: '高校棟 4階', groupKey: 'h2', type: 'attraction', desc: '新感覚の乗り物開催中！！！ みんな楽しく乗りこなしましょう。' },
+            'H2I': { title: '人生、回してみる？', img: '人生、回してみる.png', loc: '高校棟 4階', groupKey: 'h2', type: 'attraction', desc: '高2I組はコーヒーカップを作りました。笑顔と遠心力、多めでお届けします。ぜひお楽しみください。' }
         };
 
-        /* 部活・有志企画データ（フード・物販を除く） */
+        /* 部活・有志・その他企画データ */
         const nonClassProjects = [
-            { group: '囲碁将棋部', title: '囲碁将棋部 展示・対局', img: 'それでも歩は寄せてくる.png', loc: '予備室３ (1階)', floor: '1階', bldg: 'junior', type: 'exhibition', desc: '日頃の盤上研究の成果を披露。自由に対局できるスペースもあります！' },
-            { group: '中学ハンドボール部', title: '中学ハンドボール部 招待試合', img: '紅白戦.png', loc: '中学棟中庭', floor: '1階', bldg: 'junior', type: 'exhibition', desc: '熱い戦いが中庭で繰り広げられます！応援よろしくお願いします！' },
-            { group: '高校ハンドボール部', title: '高校ハンドボール部 招待試合', img: 'OBと練習試合.png', loc: '中学棟中庭', floor: '1階', bldg: 'junior', type: 'exhibition', desc: '高校生ならではのスピードと迫力あるハンドボールをぜひご覧ください。' },
-            { group: '歴史部', title: '名古屋三人衆〜ノブとヤスと、時々、ヒデ〜', img: '名古屋三人衆～ノブとヤスと、時々、ヒデ～.png', loc: 'H3F (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '歴史部の今年のテーマは信長と家康。ゆかりの地である愛知県を巡り、空母「飛龍」の模型も再現しました。ぜひご来場ください。' },
-            { group: '物理部', title: 'ペットボトルロケット', img: 'ペットボトルロケット.png', loc: '物理室 (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '今年度の物理部は例年通りの真空砲、パルスジェットエンジンなどから、個性的な実験を行いますのでぜひ来てください。' },
-            { group: '百人一首部', title: '畳上の格闘技 〜継承せし魂〜', img: '畳の上の格闘技　〜継承せし魂〜　百人一首部.png', loc: 'H3H (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '百人一首部ってthe文化部そうだな。そう思ったそこの君！実際に百人一首を体験して演武を見てみよう！ぜひお待ちしてます！！' },
-            { group: '釣り部', title: '釣れすぎて滅！', img: '釣れすぎて滅！.png', loc: '国語科ゼミ室 (3階)', floor: '3階', bldg: 'senior', type: 'exhibition', desc: 'お子様大歓迎！釣り部特製の金魚すくいコーナーだよ。はじめてでも大丈夫！みんなで最高記録を目指そう！' },
-            { group: '地理部', title: '地理部ジオラマ・研究展示', img: '地理部.png', loc: 'H3C (4階)', floor: '4階', bldg: 'senior', type: 'exhibition', desc: '船を降りるとそこは別世界。東京の離島、伊豆大島の魅力を私達と一緒に感じてみませんか？' },
-            { group: '地学部', title: '地学のセカイへ来ませんか？', img: '地学のセカイへ来ませんか.png', loc: '地学教室 (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: 'プラネタリウムの上映や鉱物展示などを行っています。ぜひ来て、幅広い地学のセカイをお楽しみください。' },
-            { group: '生物部', title: 'Seibutsu 〜伝説が始まる〜', img: '生物研究の発表と飼育生物の展示.png', loc: '生物実験室 (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: 'どんな虫でもはなまる飲み込む！生物部員キュアアンサー！' },
-            { group: '数学研究部', title: '数研2026', img: '数研2026.png', loc: 'H3D (4階)', floor: '4階', bldg: 'senior', type: 'attraction', desc: '「幾何学的折り紙」や「計算王への道」などの体験イベント！自作問題・入試解説冊子も配布します。ぜひお越しください!' },
-            { group: '写真部', title: 'レンズの向こうの世界', img: 'レンズの向こうの世界.png', loc: 'H3E (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '個性あふれる部員たちが撮影した四季の写真を展示。来場された方には作品のポストカードを配布しています。ぜひご覧ください。' },
-            { group: '語学部', title: 'Helloween haunt', img: 'Helloween haunt.png', loc: 'H3I (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: 'もうすぐハロウィン！！！ということで、語学部ではハロウィンにまつわる展示や、英語劇を実施します！ぜひ来てください！10:00〜10:30、1:00〜1:30の時間で公演' },
-            { group: '化学部', title: '激アツ‼︎化学のセカイ', img: '激アツ‼︎化学のセカイ.png', loc: '第２化学実験室 (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '化学部では藍染め体験を開催！演示実験も実施。対象は小学生以下です。朝9時45分から整理券配布(変更あり)。高校棟第二実験室にぜひお越しください！' },
-            { group: '演劇部', title: '演劇部 公演ステージ', img: '2026 城北学園演劇部.png', loc: 'H3B (4階)', floor: '4階', bldg: 'senior', type: 'exhibition', desc: '今年は去年の3月からなんと部員が8倍になり、より賑やかでより面白い演劇をお送りします。ぜひ見てください！公演時間 11:00〜11:30 / 14:30〜15:00' },
-            { group: 'ラジオ部', title: 'Are you radio?', img: 'Are you radio.png', loc: '社会科ゼミ室 (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '部員が作製した電子工作の展示、アマチュア無線体験、電子工作体験と屋上見学を行っています。ぜひお越しください。' },
-            { group: '奇術同好会', title: '夢と魔法の部屋', img: '夢と魔法の部屋.png', loc: 'ゼミ３１ (3階)', floor: '3階', bldg: 'senior', type: 'exhibition', desc: '城北のマジシャンたちが「不思議〜」と思うマジックを見せてくれます。ぜひゼミ31に来て城北マジックを楽しんでください！' },
-            { group: '山岳ワンダーフォーゲル部', title: '山岳ワンゲル部', img: '山岳ワンゲル部.png', loc: 'H3G (5階)', floor: '5階', bldg: 'senior', type: 'exhibition', desc: '展示やってます！日本の名峰に挑んだ軌跡。本格的な登山道具の紹介や山の魅力を語ります。' },
-            { group: '陸上競技部', title: '第4回城北ダービー', img: '第4回城北ダービー.png', loc: 'ゼミ４１ (4階)', floor: '4階', bldg: 'senior', type: 'exhibition', desc: '今年で４回目となる陸上部による全力のリレー対決！順位を予想して豪華景品を当てよう！！受付はゼミ41まで' },
-            { group: 'デジタル創作部', title: 'デジ創フェス2026', img: 'デジ創フェス2026.png', loc: 'PC室 (5階)', floor: '5階', bldg: 'senior', type: 'attraction', desc: '今年も部員たちが独自で開発したゲームをぜひ楽しんでください！開発秘話もご用意していますので、気軽に話しかけてください！' },
-            { group: '歴史総合', title: '歴史総合(2025)', img: '歴史総合(2025).png', loc: 'ゼミ４２ (4階)', floor: '4階', bldg: 'senior', type: 'exhibition', desc: '高１時の年度末レポートを、知的好奇心溢れる高２の強者達が志願して掲示する特別展。疑問に感じたら、何でもテーマになるぞ。' },
-            { group: '吹奏楽部有志', title: '吹奏楽部の休日', img: '吹奏楽部の休日.png', loc: '高校視聴覚室 (4階)', floor: '4階', bldg: 'senior', type: 'exhibition', desc: '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！' },
-            { group: 'PTAアート倶楽部', title: '憧れの名画にチャレンジ', img: 'アート倶楽部.png', loc: '会議室 (2階)', floor: '2階', bldg: 'senior', type: 'exhibition', desc: '素敵♥と思った名画の模写に挑戦しました。誰の作品か判るかな? 名画ぬり絵もできるよ。ぜひ遊びに来てね。' },
-            { group: 'PTA読書会', title: '〜源氏物語の世界へようこそ〜', loc: '会議室 (2階)', floor: '2階', bldg: 'senior', type: 'exhibition', desc: 'イケメン源氏と個性溢れる女君たち！恋愛だけじゃない、政治抗争、豊かな人間模様も満載。圧倒的な紫式部の世界観を感じよう❣' },
-            { group: 'PTA食育の会', title: '新設サークル「食育の会」紹介展示', loc: '会議室 (2階)', floor: '2階', bldg: 'senior', type: 'exhibition', desc: '今年発足の食育の会です。手作り発酵食品の魅力を大公開!美味しい、楽しいだけじゃない。なるほど!の詰まった世界へようこそ。' },
-            { group: 'PTAコーラス プリマヴェーラ', title: '秋の調べ ～響き合う心〜', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '響き合う声に想いを重ね、心を込めて歌います。音楽の彩るひとときをお楽しみください。（9/26 10:50〜11:50 講堂にて発表）' },
-            { group: '中学理科', title: '中学理科自由研究', img: '中学理科自由研究.png', loc: 'ゼミ２１ (2階)', floor: '2階', bldg: 'senior', type: 'exhibition', desc: '今年度の中学1・2年生の理科自由研究で金賞を受賞した研究のポスターを展示しております。是非，ご覧ください！' },
-            { group: '広報', title: '広報委員会 城北アーカイブス', loc: '数学ゼミ室 (3階)', floor: '3階', bldg: 'senior', type: 'exhibition', desc: '城北学園の歴史や、学校パンフレット・広報誌のバックナンバーを閲覧可能。' },
-            { group: '美術部', title: '美術部★作品展', img: '美術部★作品展.png', loc: '中学美術室 (5階)', floor: '5階', bldg: 'common', type: 'exhibition', desc: '油絵を中心に、中１〜高２の美術部員たちが制作してきた作品を展示しています。巨大作品もあるよ！是非見に来てください！' },
-            { group: '鉄道研究部', title: '新たな風と共に〜2026JRC 〜', img: '新たな風と共に～2026JRC ～.png', loc: '体育館 (3階)', floor: '3階', bldg: 'common', type: 'exhibition', desc: '鉄道模型、シミュレーターに発車メロディー体験まで！城北の鉄道研究部です！' },
-            { group: '書道部', title: '書道展示', img: '書道展示.png', loc: '書道室 (4階)', floor: '4階', bldg: 'common', type: 'exhibition', desc: 'こんにちは！書道部です。部員や高校書道選択者の作品展示のほか、無料のしおり配布も行っています。ぜひお越しください！' },
-            { group: '教員企画(書道)', title: '城北書道展', img: '城北書道展.png', loc: '書道室 (4階)', floor: '4階', bldg: 'common', type: 'exhibition', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。' },
-            { group: '弦楽部', title: '弦楽部 ミニコンサート', img: '弦楽部.png', loc: '器楽室 (6階)', floor: '6階', bldg: 'common', type: 'exhibition', desc: '弦楽部では、1時半から2時半まで、バイオリンやビオラ等を使った演奏を行います。場所は器楽室です。ぜひお越しください。（13:30〜14:30）' },
-            { group: '軽音部', title: '軽音学部ライブ', img: '軽音楽部ライブ.png', loc: '多目的ホール (4階)', floor: '4階', bldg: 'common', type: 'exhibition', desc: 'それぞれ個性のあるバンドが演奏をします！きっと知っている曲もあるので、ぜひ共通棟4階の多目的ホールにお立ち寄りください！' },
-            { group: 'グリークラブ', title: '完全感覚グリークラブ', img: '完全感覚グリークラブ.png', loc: '声楽室 (6階)', floor: '6階', bldg: 'common', type: 'exhibition', desc: '合唱曲や最近のポップスまで幅広いジャンルを部員一同、心を込めて歌います。今までの練習の成果をぜひご覧ください。（12:00〜12:30）' },
-            { group: '吹奏楽部', title: 'JBB in the House!!!', img: 'JBB in the House!!!.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！' },
-            { group: 'ダンス部', title: 'ダンス部 explosive stage', img: 'ダンス部.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！' },
-            { group: '弓道部', title: '射てポン!', img: '射てポン！.png', loc: '弓道場 (1階)', floor: '1階', bldg: 'other', type: 'attraction', desc: '実際の弓矢を使って的を射抜く体験型企画です! 君も弓道男子、弓道女子になろう!' },
-            { group: '少林寺拳法部', title: '少林寺拳法部 演武会', img: '少林寺拳法部 演武会.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。' },
-            { group: '中学野球部', title: '先生対生徒ガチンコ野球対決', img: '先生対生徒ガチンコ野球対決.png', loc: 'グラウンド (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '年に一度のスペシャルマッチ! いつもは教壇に立つ先生たちが、グラウンドで生徒チームと真剣勝負を繰り広げます。（13:00〜16:00）' },
-            { group: '城北のゆかいなソリストたち', title: '城北の愉快なソリストたち', img: '城北の愉快なソリストたち.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。' },
-            { group: '生徒有志', title: 'のど自慢 (カラオケ大会)', img: 'のど自慢.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!' },
-            { group: '生徒有志', title: 'Ms.JOHOKU CONTEST (ミスコン)', img: 'Ms.JOHOKU CONTEST.png', loc: '講堂 (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!' },
-            { group: 'ハンドボール部', title: 'ハンドボール部 紅白戦 & OB戦', img: '紅白戦.png', loc: 'ハンドボールコート (1階)', floor: '1階', bldg: 'other', type: 'exhibition', desc: 'ハンドボールコートで紅白戦およびOBと練習試合を行います。ぜひ見に来てください。（12:00〜16:00）' },
-            { group: '文化祭実行委員会', title: '後夜祭', img: '後夜祭.png', loc: '多目的ホール / 共通棟 (4階)', floor: '4階', bldg: 'other', type: 'exhibition', desc: '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!（14:45〜16:00）' }
+            { group: '囲碁将棋部', title: '囲碁将棋部 展示・対局', img: 'それでも歩は寄せてくる.png', loc: '予備室３ (1階)', groupKey: 'club', type: 'exhibition', desc: '日頃の盤上研究の成果を披露。自由に対局できるスペースもあります！' },
+            { group: '中学ハンドボール部', title: '中学ハンドボール部 招待試合', img: '紅白戦.png', loc: '中学棟中庭', groupKey: 'club', type: 'exhibition', desc: '熱い戦いが中庭で繰り広げられます！応援よろしくお願いします！' },
+            { group: '高校ハンドボール部', title: '高校ハンドボール部 招待試合', img: 'OBと練習試合.png', loc: '中学棟中庭', groupKey: 'club', type: 'exhibition', desc: '高校生ならではのスピードと迫力あるハンドボールをぜひご覧ください。' },
+            { group: '歴史部', title: '名古屋三人衆〜ノブとヤスと、時々、ヒデ〜', img: '名古屋三人衆～ノブとヤスと、時々、ヒデ～.png', loc: 'H3F (5階)', groupKey: 'club', type: 'exhibition', desc: '歴史部の今年のテーマは信長と家康。ゆかりの地である愛知県を巡り、空母「飛龍」の模型も再現しました。ぜひご来場ください。' },
+            { group: '物理部', title: 'ペットボトルロケット', img: 'ペットボトルロケット.png', loc: '物理室 (5階)', groupKey: 'club', type: 'exhibition', desc: '今年度の物理部は例年通りの真空砲、パルスジェットエンジンなどから、個性的な実験を行いますのでぜひ来てください。' },
+            { group: '百人一首部', title: '畳上の格闘技 〜継承せし魂〜', img: '畳の上の格闘技　〜継承せし魂〜　百人一首部.png', loc: 'H3H (5階)', groupKey: 'club', type: 'exhibition', desc: '百人一首部ってthe文化部そうだな。そう思ったそこの君！実際に百人一首を体験して演武を見てみよう！ぜひお待ちしてます！！' },
+            { group: '釣り部', title: '釣れすぎて滅！', img: '釣れすぎて滅！.png', loc: '国語科ゼミ室 (3階)', groupKey: 'club', type: 'exhibition', desc: 'お子様大歓迎！釣り部特製の金魚すくいコーナーだよ。はじめてでも大丈夫！みんなで最高記録を目指そう！' },
+            { group: '地理部', title: '地理部ジオラマ・研究展示', img: '地理部.png', loc: 'H3C (4階)', groupKey: 'club', type: 'exhibition', desc: '船を降りるとそこは別世界。東京の離島、伊豆大島の魅力を私達と一緒に感じてみませんか？' },
+            { group: '地学部', title: '地学のセカイへ来ませんか？', img: '地学のセカイへ来ませんか.png', loc: '地学教室 (5階)', groupKey: 'club', type: 'exhibition', desc: 'プラネタリウムの上映や鉱物展示などを行っています。ぜひ来て、幅広い地学のセカイをお楽しみください。' },
+            { group: '生物部', title: 'Seibutsu 〜伝説が始まる〜', img: '生物研究の発表と飼育生物の展示.png', loc: '生物実験室 (5階)', groupKey: 'club', type: 'exhibition', desc: 'どんな虫でもはなまる飲み込む！生物部員キュアアンサー！' },
+            { group: '数学研究部', title: '数研2026', img: '数研2026.png', loc: 'H3D (4階)', groupKey: 'club', type: 'attraction', desc: '「幾何学的折り紙」や「計算王への道」などの体験イベント！自作問題・入試解説冊子も配布します。ぜひお越しください!' },
+            { group: '写真部', title: 'レンズの向こうの世界', img: 'レンズの向こうの世界.png', loc: 'H3E (5階)', groupKey: 'club', type: 'exhibition', desc: '個性あふれる部員たちが撮影した四季の写真を展示。来場された方には作品のポストカードを配布しています。ぜひご覧ください。' },
+            { group: '語学部', title: 'Halloween haunt', img: 'Helloween haunt.png', loc: 'H3I (5階)', groupKey: 'club', type: 'exhibition', desc: 'もうすぐハロウィン！！！ということで、語学部ではハロウィンにまつわる展示や、英語劇を実施します！ぜひ来てください！10:00〜10:30、1:00〜1:30の時間で公演' },
+            { group: '化学部', title: '激アツ‼︎化学のセカイ', img: '激アツ‼︎化学のセカイ.png', loc: '第２化学実験室 (5階)', groupKey: 'club', type: 'exhibition', desc: '化学部では藍染め体験を開催！演示実験も実施。対象は小学生以下です。朝9時45分から整理券配布(変更あり)。高校棟第二実験室にぜひお越しください！' },
+            { group: '演劇部', title: '演劇部 公演ステージ', img: '2026 城北学園演劇部.png', loc: 'H3B (4階)', groupKey: 'club', type: 'exhibition', desc: '今年は去年の3月からなんと部員が8倍になり、より賑やかでより面白い演劇をお送りします。ぜひ見てください！公演時間 11:00〜11:30 / 14:30〜15:00' },
+            { group: 'ラジオ部', title: 'Are you radio?', img: 'Are you radio.png', loc: '社会科ゼミ室 (5階)', groupKey: 'club', type: 'exhibition', desc: '部員が作製した電子工作の展示、アマチュア無線体験、電子工作体験と屋上見学を行っています。ぜひお越しください。' },
+            { group: '奇術同好会', title: '夢と魔法の部屋', img: '夢と魔法の部屋.png', loc: 'ゼミ３１ (3階)', groupKey: 'club', type: 'exhibition', desc: '城北のマジシャンたちが「不思議〜」と思うマジックを見せてくれます。ぜひゼミ31に来て城北マジックを楽しんでください！' },
+            { group: '山岳ワンダーフォーゲル部', title: '山岳ワンゲル部', img: '山岳ワンゲル部.png', loc: 'H3G (5階)', groupKey: 'club', type: 'exhibition', desc: '展示やってます！日本の名峰に挑んだ軌跡。本格的な登山道具の紹介や山の魅力を語ります。' },
+            { group: '陸上競技部', title: '第4回城北ダービー', img: '第4回城北ダービー.png', loc: 'ゼミ４１ (4階)', groupKey: 'club', type: 'exhibition', desc: '今年で４回目となる陸上部による全力のリレー対決！順位を予想して豪華景品を当てよう！！受付はゼミ41まで' },
+            { group: 'デジタル創作部', title: 'デジ創フェス2026', img: 'デジ創フェス2026.png', loc: 'PC室 (5階)', groupKey: 'club', type: 'attraction', desc: '今年も部員たちが独自で開発したゲームをぜひ楽しんでください！開発秘話もご用意していますので、気軽に話しかけてください！' },
+            { group: '吹奏楽部有志', title: '吹奏楽部の休日', img: '吹奏楽部の休日.png', loc: '高校視聴覚室 (4階)', groupKey: 'club', type: 'exhibition', desc: '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！' },
+            { group: '美術部', title: '美術部★作品展', img: '美術部★作品展.png', loc: '中学美術室 (5階)', groupKey: 'club', type: 'exhibition', desc: '油絵を中心に、中１〜高２の美術部員たちが制作してきた作品を展示しています。巨大作品もあるよ！是非見に来てください！' },
+            { group: '鉄道研究部', title: '新たな風と共に〜2026JRC 〜', img: '新たな風と共に～2026JRC ～.png', loc: '体育館 (3階)', groupKey: 'club', type: 'exhibition', desc: '鉄道模型、シミュレーターに発車メロディー体験まで！城北の鉄道研究部です！' },
+            { group: '書道部', title: '書道展示', img: '書道展示.png', loc: '書道室 (4階)', groupKey: 'club', type: 'exhibition', desc: 'こんにちは！書道部です。部員や高校書道選択者の作品展示のほか、無料のしおり配布も行っています。ぜひお越しください！' },
+            { group: '弦楽部', title: '弦楽部 ミニコンサート', img: '弦楽部.png', loc: '器楽室 (6階)', groupKey: 'club', type: 'exhibition', desc: '弦楽部では、1時半から2時半まで、バイオリンやビオラ等を使った演奏を行います。場所は器楽室です。ぜひお越しください。（13:30〜14:30）' },
+            { group: '軽音部', title: '軽音学部ライブ', img: '軽音楽部ライブ.png', loc: '多目的ホール (4階)', groupKey: 'club', type: 'exhibition', desc: 'それぞれ個性のあるバンドが演奏をします！きっと知っている曲もあるので、ぜひ共通棟4階の多目的ホールにお立ち寄りください！' },
+            { group: 'グリークラブ', title: '完全感覚グリークラブ', img: '完全感覚グリークラブ.png', loc: '声楽室 (6階)', groupKey: 'club', type: 'exhibition', desc: '合唱曲や最近のポップスまで幅広いジャンルを部員一同、心を込めて歌います。今までの練習の成果をぜひご覧ください。（12:00〜12:30）' },
+            { group: '吹奏楽部', title: 'JBB in the House!!!', img: 'JBB in the House!!!.png', loc: '講堂 (1階)', groupKey: 'club', type: 'exhibition', desc: '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！' },
+            { group: 'ダンス部', title: 'ダンス部 explosive stage', img: 'ダンス部.png', loc: '講堂 (1階)', groupKey: 'club', type: 'exhibition', desc: '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！' },
+            { group: '弓道部', title: '射てポン!', img: '射てポン！.png', loc: '弓道場 (1階)', groupKey: 'club', type: 'attraction', desc: '実際の弓矢を使って的を射抜く体験型企画です! 君も弓道男子、弓道女子になろう!' },
+            { group: '少林寺拳法部', title: '少林寺拳法部 演武会', img: '少林寺拳法部 演武会.png', loc: '講堂 (1階)', groupKey: 'club', type: 'exhibition', desc: '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。' },
+            { group: '中学野球部', title: '先生対生徒ガチンコ野球対決', img: '先生対生徒ガチンコ野球対決.png', loc: 'グラウンド (1階)', groupKey: 'club', type: 'exhibition', desc: '年に一度のスペシャルマッチ! いつもは教壇に立つ先生たちが、グラウンドで生徒チームと真剣勝負を繰り広げます。（13:00〜16:00）' },
+            { group: 'ハンドボール部', title: 'ハンドボール部 紅白戦 & OB戦', img: '紅白戦.png', loc: 'ハンドボールコート (1階)', groupKey: 'club', type: 'exhibition', desc: 'ハンドボールコートで紅白戦およびOBと練習試合を行います。ぜひ見に来てください。（12:00〜16:00）' },
+
+            /* その他（ステージ・教員・有志・PTA展示） */
+            { group: '教員企画', title: "Johoku teacher's Live", img: '教員企画.png', loc: '中学視聴覚室 (4階)', groupKey: 'other', type: 'exhibition', desc: '城北の先生による、城北の先生の自己満足のためのLiveパフォーマンス。普段見ることのないロックな先生の姿は如何ですか？' },
+            { group: '教員企画(書道)', title: '城北書道展', img: '城北書道展.png', loc: '書道室 (4階)', groupKey: 'other', type: 'exhibition', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。' },
+            { group: '歴史総合', title: '歴史総合(2025)', img: '歴史総合(2025).png', loc: 'ゼミ４２ (4階)', groupKey: 'other', type: 'exhibition', desc: '高１時の年度末レポートを、知的好奇心溢れる高２の強者達が志願して掲示する特別展。疑問に感じたら、何でもテーマになるぞ。' },
+            { group: '中学理科', title: '中学理科自由研究', img: '中学理科自由研究.png', loc: 'ゼミ２１ (2階)', groupKey: 'other', type: 'exhibition', desc: '今年度の中学1・2年生の理科自由研究で金賞を受賞した研究のポスターを展示しております。是非，ご覧ください！' },
+            { group: '広報', title: '広報委員会 城北アーカイブス', loc: '数学ゼミ室 (3階)', groupKey: 'other', type: 'exhibition', desc: '城北学園の歴史や、学校パンフレット・広報誌のバックナンバーを閲覧可能。' },
+            { group: '高校3年A組', title: '忌み屋', img: '忌み屋.png', loc: '高校棟 4階 (H3A)', groupKey: 'other', type: 'attraction', desc: '入ったら最後、生きては帰れない。油断した瞬間に襲いくる、圧倒的な絶望。……全ては自己責任。' },
+            { group: '城北のゆかいなソリストたち', title: '城北の愉快なソリストたち', img: '城北の愉快なソリストたち.png', loc: '講堂 (1階)', groupKey: 'other', type: 'exhibition', desc: 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。' },
+            { group: '生徒有志', title: 'のど自慢 (カラオケ大会)', img: 'のど自慢.png', loc: '講堂 (1階)', groupKey: 'other', type: 'exhibition', desc: '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!' },
+            { group: '生徒有志', title: 'Ms.JOHOKU CONTEST (ミスコン)', img: 'Ms.JOHOKU CONTEST.png', loc: '講堂 (1階)', groupKey: 'other', type: 'exhibition', desc: '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!' },
+            { group: '文化祭実行委員会', title: '後夜祭', img: '後夜祭.png', loc: '多目的ホール (4階)', groupKey: 'other', type: 'exhibition', desc: '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!（14:45〜16:00）' },
+            { group: 'PTAアート倶楽部', title: '憧れの名画にチャレンジ', img: 'アート倶楽部.png', loc: '会議室 (2階)', groupKey: 'other', type: 'exhibition', desc: '素敵♥と思った名画の模写に挑戦しました。誰の作品か判るかな? 名画ぬり絵もできるよ。ぜひ遊びに来てね。' },
+            { group: 'PTA読書会', title: '〜源氏物語の世界へようこそ〜', loc: '会議室 (2階)', groupKey: 'other', type: 'exhibition', desc: 'イケメン源氏と個性溢れる女君たち！恋愛だけじゃない、政治抗争、豊かな人間模様も満載。圧倒的な紫式部の世界観を感じよう❣' },
+            { group: 'PTA食育の会', title: '新設サークル「食育の会」紹介展示', loc: '会議室 (2階)', groupKey: 'other', type: 'exhibition', desc: '今年発足の食育の会です。手作り発酵食品の魅力を大公開!美味しい、楽しいだけじゃない。なるほど!の詰まった世界へようこそ。' },
+            { group: 'PTAコーラス プリマヴェーラ', title: '秋の調べ ～響き合う心〜', loc: '講堂 (1階)', groupKey: 'other', type: 'exhibition', desc: '響き合う声に想いを重ね、心を込めて歌います。音楽の彩るひとときをお楽しみください。（9/26 10:50〜11:50 講堂にて発表）' }
         ];
  
         const generalCafeData = [
-            { name: '城北スペシャルランチ', price: '¥700' },
-            { name: 'ネギ盛りソースチキンカツ丼', price: '¥490' },
+            { name: '城北スペシャルプレート (ハンバーグ・エビフライ・グラタン)', price: '¥750' },
+            { name: '唐揚げ丼甘辛たれ', price: '¥490' },
             { name: 'カツカレー', price: '¥490' },
             { name: 'カレーライス, ハヤシライス', price: '¥400' },
             { name: '醤油ラーメン', price: '¥410' }
@@ -1530,9 +1568,9 @@
  
         const kcarData = [
             { name: 'COOKUS', file: 'COOKUS.png', label: 'SWEETS & DRINKS', desc: '11種類の味を選べてアイスやホイップクリームのトッピングができる可愛らしくサクサクもちもち食感の新感覚スイーツです。 【アレルギー: 卵・乳・小麦】' },
-            { name: '多幸屋', file: '多幸屋.png', label: 'TAKOYAKI & YAKISOBA', desc: '多幸家のたこ焼は外はカリっと、中はトロ〜り、厳選されたタコを使用いた‼︎タコヤキです！ 【アレルギー: 卵・乳・小麦】' },
+            { name: '多幸家', file: '多幸屋.png', label: 'TAKOYAKI & YAKISOBA', desc: '多幸家のたこ焼は外はカリっと、中はトロ〜り、厳選されたタコを使用いた‼︎タコヤキです！ 【アレルギー: 卵・乳・小麦】' },
             { name: 'M.H Kitchen', file: 'M.H Kitchen.png', label: 'BEEF', desc: '当店の牛ハラミは自社独自の低温調理にて余分な脂をなくしてどなた様でも食べやすい逸品となります。 【アレルギー: 牛・豚・鶏・乳】' },
-            { name: 'ROCKET CHICKEN', file: 'ROCKET CHICKEN.png', label: 'ORIGINAL CHICKEN', desc: '独自配合のスパイスと特製衣で仕上げた、サクふわジューシーで軽い食感のフライドチキンです。 【アレルギー: 店頭にて一覧表を掲示】' },
+            { name: 'ROCKET CHICKEN', file: 'ROCKET CHICKEN.png', label: 'ORIGINAL CHICKEN', desc: '数十種類のスパイスを使った、サクふわジューシーで軽いチキン！油っぽさを抑え、女性や子どもにも食べやすい味わいです。学生さんは学割でお得に！ 【アレルギー: 店頭にて一覧表を掲示】' },
             { name: 'いきなりステーキ', file: 'いきなりステーキ.png', label: 'STEAK', desc: '『いきなりステーキ』のサーロインステーキや牛肉100％のハンバーグをリーズナブルな価格で提供しています! 【アレルギー: 卵・乳・小麦】' },
             { name: 'ふるーつなのに', file: 'ふるーつなのに.png', label: 'SWEETS', desc: '旬のフルーツを贅沢に使用。見た目も味わいもこだわったいちご飴と、スムージーです。 【アレルギー: 卵・乳・小麦】' }
         ];
@@ -1541,14 +1579,14 @@
  
         function generateClassCards() {
             try {
-                // 階数ごとのコンテナマッピング
-                const floorMap = {
-                    '1階': document.getElementById('container-floor-1'),
-                    '2階': document.getElementById('container-floor-2'),
-                    '3階': document.getElementById('container-floor-3'),
-                    '4階': document.getElementById('container-floor-4'),
-                    '5階': document.getElementById('container-floor-5'),
-                    '6階': document.getElementById('container-floor-6')
+                const groupMap = {
+                    'm1': document.getElementById('container-m1'),
+                    'm2': document.getElementById('container-m2'),
+                    'm3': document.getElementById('container-m3'),
+                    'h1': document.getElementById('container-h1'),
+                    'h2': document.getElementById('container-h2'),
+                    'club': document.getElementById('container-club'),
+                    'other': document.getElementById('container-other')
                 };
      
                 // クラス企画カード生成
@@ -1560,16 +1598,14 @@
                     const title = custom.title || `${className} の展示企画`;
                     const loc = custom.loc || `${className} 教室`;
                     const desc = custom.desc || `${className}クラス全員で作り上げた特設体験展示です。`;
-                    const flr = custom.floor || '3階';
-                    const bldg = custom.bldg || 'senior';
+                    const gKey = custom.groupKey || 'm1';
                     const imgSrc = custom.img || `${className}.png`;
-                    const targetContainer = floorMap[flr];
+                    const targetContainer = groupMap[gKey];
                     
                     if(targetContainer) {
                         const card = document.createElement('div');
                         card.className = "project-card p-5 md:p-6 flex flex-col justify-between min-h-[220px]";
                         card.setAttribute('data-category', cardType);
-                        card.setAttribute('data-building', bldg);
                         card.onclick = () => openDetail(className, title, loc, desc, cardType, imgSrc);
                         card.innerHTML = `
                             <div>
@@ -1593,18 +1629,17 @@
                     }
                 });
      
-                // 部活・有志企画カード生成
+                // 部活・有志・その他企画カード生成
                 nonClassProjects.forEach(proj => {
                     const label = typeLabels[proj.type] || '展示・公演';
                     const imgSrc = proj.img || '';
-                    const flr = proj.floor || '1階';
-                    const targetContainer = floorMap[flr];
+                    const gKey = proj.groupKey || 'other';
+                    const targetContainer = groupMap[gKey];
                     
                     if(targetContainer) {
                         const card = document.createElement('div');
                         card.className = "project-card p-5 md:p-6 flex flex-col justify-between min-h-[220px]";
                         card.setAttribute('data-category', proj.type);
-                        card.setAttribute('data-building', proj.bldg || 'other');
                         card.onclick = () => openDetail(proj.group, proj.title, proj.loc, proj.desc, proj.type, imgSrc);
                         
                         const iconContent = imgSrc 
@@ -1781,9 +1816,9 @@
             if(menu) menu.classList.toggle('active'); 
         }
 
-        /* 階数アコーディオンの開閉 */
-        function toggleFloor(floorId) {
-            const sec = document.getElementById('section-' + floorId);
+        /* 学年・カテゴリ別アコーディオンの開閉 */
+        function toggleGroupSection(groupKey) {
+            const sec = document.getElementById('section-' + groupKey);
             if(sec) sec.classList.toggle('is-open');
         }
  
@@ -1799,19 +1834,6 @@
             }
             filterProjects();
         }
-
-        function filterBuilding(bldg, btnEl) {
-            currentBuilding = bldg;
-            document.querySelectorAll('.bldg-btn').forEach(b => {
-                b.classList.remove('bg-[#0056b3]', 'text-white');
-                b.classList.add('bg-white', 'text-slate-700');
-            });
-            if(btnEl) {
-                btnEl.classList.remove('bg-white', 'text-slate-700');
-                btnEl.classList.add('bg-[#0056b3]', 'text-white');
-            }
-            filterProjects();
-        }
  
         function filterProjects() {
             const input = document.getElementById('project-search');
@@ -1819,12 +1841,10 @@
             document.querySelectorAll('.project-card').forEach(card => {
                 const content = card.textContent.toLowerCase();
                 const cardCat = card.getAttribute('data-category');
-                const cardBldg = card.getAttribute('data-building');
                 const matchQuery = content.includes(query);
                 const matchCat = (currentFilterCategory === 'all' || cardCat === currentFilterCategory);
-                const matchBldg = (currentBuilding === 'all' || cardBldg === currentBuilding);
                 
-                if (matchQuery && matchCat && matchBldg) {
+                if (matchQuery && matchCat) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -1832,7 +1852,7 @@
             });
         }
  
-        /* 企画詳細モーダル（動画あり／巨大アイコンの自動切り替え＆重複表記修正） */
+        /* 企画詳細モーダル */
         function openDetail(group, title, loc, desc, type, imgSrc) {
             currentProject = title;
             const modalTitle = document.getElementById('modal-title');
@@ -1847,7 +1867,6 @@
 
             if(modalTitle) modalTitle.innerText = title;
             
-            // 重複表示防止：locにすでにグループ名が含まれているか判定
             if(modalLoc) {
                 if(loc.includes(group)) {
                     modalLoc.innerText = loc;
@@ -1859,7 +1878,6 @@
             if(modalDesc) modalDesc.innerText = desc;
             if(tagEl) tagEl.innerText = "# " + (typeLabels[type] || '企画');
 
-            // 動画対象団体かどうか判定
             const isVideoAllowed = videoAllowedGroups.includes(group) || videoAllowedGroups.includes(title);
 
             if(isVideoAllowed) {
@@ -2033,7 +2051,7 @@
         }
 
         function switchPage(pageId) {
-            const pages = ['home', 'about', 'timetable', 'food', 'groups', 'map', 'vote', 'examinee'];
+            const pages = ['home', 'about', 'timetable', 'groups', 'vote', 'food', 'map', 'examinee'];
             
             pages.forEach(p => {
                 const el = document.getElementById('page-' + p);
