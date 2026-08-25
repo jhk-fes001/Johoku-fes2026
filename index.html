@@ -80,7 +80,7 @@
             pointer-events: none;
         }
 
-        /* ヒーローエリア（左寄せ・文字背後に写真） */
+        /* ヒーローエリア（左の真ん中・写真の鮮明さを保持したオーバーレイ） */
         .hero-container {
             position: relative;
             width: 100%;
@@ -88,6 +88,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: flex-start;
             overflow: hidden;
             background-color: #ffffff;
         }
@@ -96,14 +97,13 @@
             top: 0; right: 0; bottom: 0; left: 0;
             width: 100%; height: 100%;
             object-fit: cover;
-            object-position: center right;
-            opacity: 0.88;
+            object-position: right center;
             z-index: 1;
         }
         .hero-gradient-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.78) 48%, rgba(255,255,255,0.25) 100%);
+            background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 45%, rgba(255,255,255,0.15) 100%);
             z-index: 2;
         }
 
@@ -379,7 +379,7 @@
     </header>
  
     <!-- ========================================================== -->
-    <!-- 【ホーム】ページコンテナ（左寄せ＆背景にサイト.png）         -->
+    <!-- 【ホーム】ページコンテナ                                   -->
     <!-- ========================================================== -->
     <main id="page-home" class="w-full pt-[65px] page-slide-in relative z-10">
         <section class="hero-container relative">
@@ -501,16 +501,38 @@
             </div>
         </section>
 
-        <!-- リアルタイム更新お知らせ -->
+        <!-- お知らせ（当日HTML更新対応・シンプル構成） -->
         <section id="news-home" class="w-full max-w-6xl mx-auto px-4 md:px-8 mb-20">
             <div class="reveal bg-white border border-slate-200 rounded-3xl p-6 md:p-10 shadow-sm">
                 <div class="flex justify-between items-end mb-6 border-b border-slate-100 pb-4">
                     <div>
-                        <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Realtime Updates</span>
-                        <h3 class="text-2xl md:text-4xl font-black text-slate-900 font-brush">お知らせ（リアルタイム）</h3>
+                        <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Information</span>
+                        <h3 class="text-2xl md:text-4xl font-black text-slate-900 font-brush">お知らせ</h3>
                     </div>
                 </div>
-                <div class="h-[360px] overflow-y-auto space-y-4 pr-2" id="news-container">
+                <div class="space-y-4">
+                    <div class="pb-4 border-b border-slate-100 last:border-0">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-xs font-bold text-slate-400 tracking-wider">2026.09.26</span>
+                            <span class="text-xs font-bold text-[#0056b3]">[全体連絡]</span>
+                            <span class="bg-[#0056b3] text-white font-black text-[10px] px-2 py-0.5 rounded-full uppercase ml-1">NEW</span>
+                        </div>
+                        <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">第85回 城北祭が開幕しました！皆様のご来場を心より歓迎いたします。</p>
+                    </div>
+                    <div class="pb-4 border-b border-slate-100 last:border-0">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-xs font-bold text-slate-400 tracking-wider">2026.08.15</span>
+                            <span class="text-xs font-bold text-[#0056b3]">[全体連絡]</span>
+                        </div>
+                        <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">特設サイトをプレオープンしました！企画一覧やマップをご確認いただけます。</p>
+                    </div>
+                    <div class="pb-4 border-b border-slate-100 last:border-0">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-xs font-bold text-slate-400 tracking-wider">2026.08.10</span>
+                            <span class="text-xs font-bold text-[#0056b3]">[全体連絡]</span>
+                        </div>
+                        <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">第85回 城北祭 "男前" 公式ホームページを開設しました。</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -579,7 +601,7 @@
                     </div>
                 </div>
 
-                <!-- 生徒会長挨拶（平山 千紘） -->
+                <!-- 生徒会長挨拶 -->
                 <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm border-t-4 border-t-[#00a2ff] flex flex-col">
                     <div class="mb-6 border-b border-slate-100 pb-4">
                         <span class="text-xs text-[#00a2ff] font-black tracking-widest uppercase block mb-1">生徒会長</span>
@@ -677,7 +699,7 @@
                     <h4 class="text-2xl md:text-4xl font-black mb-4 font-brush text-slate-900 tracking-wider">
                         総合デザイン　追杉 洋光
                     </h4>
-                    <div class="inline-block bg-slate-50 border border-slate-200 rounded-2xl px-6 py-3 text-xs md:text-sm text-slate-700 font-medium space-y-1">
+                    <div class="inline-block bg-slate-50 border border-slate-200 rounded-2xl px-6 py-3 text-xs md:text-sm text-slate-700 font-medium space-y-1 text-left sm:text-center">
                         <p>● 入場門・垂れ幕・パンフレットデザイン：<strong class="text-slate-900">追杉 洋光</strong></p>
                         <p>● ポスター・サイトデザイン：<strong class="text-slate-900">追杉 洋光 ・ 小塚 誠太</strong></p>
                     </div>
@@ -736,7 +758,112 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【企画紹介】ページコンテナ (初期全閉じ・学年別アコーディオン)-->
+    <!-- 【タイムテーブル】ページコンテナ                           -->
+    <!-- ========================================================== -->
+    <main id="page-timetable" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
+        <section class="max-w-6xl mx-auto">
+            <div class="reveal text-center mb-12">
+                <span class="text-xs text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Timeline & Schedule</span>
+                <h3 class="text-4xl md:text-6xl font-black mb-6 text-slate-900 font-brush">タイムテーブル</h3>
+                
+                <div class="bg-amber-50 border border-amber-300 text-amber-900 px-4 py-2.5 rounded-2xl max-w-xl mx-auto mb-8 font-bold text-xs md:text-sm flex items-center justify-center gap-2">
+                    <span>⚠️</span>
+                    <span>共通棟3階 体育館は終日「鉄道研究部」が展示中！</span>
+                </div>
+
+                <div class="flex justify-center space-x-6 text-slate-500 font-bold mb-8">
+                    <button class="schedule-tab-btn active pb-2 text-xl font-black tracking-wider transition" onclick="switchTab('day1')">
+                        Day 01 <span class="text-xs font-normal block text-slate-400">9/26 (土)</span>
+                    </button>
+                    <button class="schedule-tab-btn pb-2 text-xl font-black tracking-wider transition" onclick="switchTab('day2')">
+                        Day 02 <span class="text-xs font-normal block text-slate-400">9/27 (日)</span>
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 block md:hidden">※ 表は横にスクロールしてご確認いただけます（時間は左端に固定表示されます）</p>
+            </div>
+           
+            <!-- Day 01 タイムテーブル -->
+            <div id="schedule-day1" class="schedule-content active overflow-x-auto pb-4">
+                <div class="timetable-container">
+                    <div class="timetable-header time-col-head text-xs flex items-center justify-center">時間</div>
+                    <div class="timetable-header text-sm">講堂</div>
+                    <div class="timetable-header text-sm">多目的ホール</div>
+                    <div class="timetable-header text-sm">中学棟前中庭</div>
+                    <div class="timetable-header text-sm">校庭</div>
+                    <div class="timetable-header text-sm">高校視聴覚室</div>
+                    
+                    <div class="time-col flex flex-col">
+                        <div class="time-label">09:00</div><div class="time-label">10:00</div><div class="time-label">11:00</div><div class="time-label">12:00</div><div class="time-label">13:00</div><div class="time-label">14:00</div><div class="time-label">15:00</div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 25px; height: 150px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/26 09:15-10:45)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">城北の愉快なソリストたち</p></div>
+                        <div class="event-block" style="top: 191px; height: 75px;" onclick="openDetail('PTA', 'プリマヴェーラ', '講堂 (9/26 10:50-11:50)', 'PTAコーラスの会 プリマヴェーラによるハートフルな合唱ステージ。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:50 - 11:50</span><p class="font-bold text-xs leading-tight text-slate-900">PTA プリマヴェーラ</p></div>
+                        <div class="event-block" style="top: 295px; height: 45px;" onclick="openDetail('生徒有志', 'のど自慢 (カラオケ大会)', '講堂 (9/26 11:55-12:25)', '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:55 - 12:25</span><p class="font-bold text-xs leading-tight text-slate-900">カラオケ大会</p></div>
+                        <div class="event-block" style="top: 350px; height: 45px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/26 12:30-13:00)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:30 - 13:00</span><p class="font-bold text-xs leading-tight text-slate-900">少林寺拳法部</p></div>
+                        <div class="event-block" style="top: 410px; height: 90px;" onclick="openDetail('ダンス部', 'ダンス部', '講堂 (9/26 13:10-14:10)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">13:10 - 14:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
+                        <div class="event-block" style="top: 566px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/26 14:40-16:10)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:40 - 16:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 100px; height: 600px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">09:30 - 16:00</span><p class="font-black text-sm md:text-base leading-tight text-slate-900">軽音楽部 LIVE</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 300px; height: 400px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">12:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">中学ハンドボール部<br>招待試合</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 400px; height: 300px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">13:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">中学野球部招待試合<br>(先生対生徒ガチンコ対決)</p></div>
+                    </div>
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/26 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold text-xs leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 02 タイムテーブル -->
+            <div id="schedule-day2" class="schedule-content overflow-x-auto pb-4 hidden">
+                <div class="timetable-container">
+                    <div class="timetable-header time-col-head text-xs flex items-center justify-center">時間</div>
+                    <div class="timetable-header text-sm">講堂</div>
+                    <div class="timetable-header text-sm">多目的ホール</div>
+                    <div class="timetable-header text-sm">中学棟前中庭</div>
+                    <div class="timetable-header text-sm">校庭</div>
+                    <div class="timetable-header text-sm">高校視聴覚室</div>
+                    
+                    <div class="time-col flex flex-col">
+                        <div class="time-label">09:00</div><div class="time-label">10:00</div><div class="time-label">11:00</div><div class="time-label">12:00</div><div class="time-label">13:00</div><div class="time-label">14:00</div><div class="time-label">15:00</div>
+                    </div>
+                    <!-- 講堂 (Day 2) -->
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 25px; height: 100px;" onclick="openDetail('講堂', '城北の愉快なソリストたち', '講堂 (9/27 09:15-10:15)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:15</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ソリスト</p></div>
+                        <div class="event-block" style="top: 145px; height: 50px;" onclick="openDetail('少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/27 10:25-10:55)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:25 - 10:55</span><p class="font-bold text-xs leading-tight text-slate-900">少林寺拳法部</p></div>
+                        <div class="event-block" style="top: 215px; height: 145px;" onclick="openDetail('生徒有志', 'Ms.JOHOKU CONTEST (ミスコン)', '講堂 (9/27 11:10-12:40)', '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">11:10 - 12:40</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ミスコン</p></div>
+                        <div class="event-block" style="top: 375px; height: 100px;" onclick="openDetail('ダンス部', 'ダンス部 explosive stage', '講堂 (9/27 12:45-13:45)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:45 - 13:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
+                        <div class="event-block" style="top: 550px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('吹奏楽部', 'JBB in the House!!!', '講堂 (9/27 14:30-16:00)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[9px] font-black text-[#0284c7] block mb-0.5">14:30 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
+                    </div>
+                    <!-- 多目的ホール (Day 2) -->
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 100px; height: 440px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">09:30 - 14:15</span><p class="font-black text-sm md:text-base leading-tight text-slate-900">軽音楽部 LIVE</p></div>
+                        <div class="event-block" style="top: 575px; height: 125px; border-left-color: #7c3aed; background: #faf5ff;" onclick="openDetail('文化祭実行委員会', '後夜祭', '多目的ホール (9/27 14:45-16:00)', '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!', 'exhibition')"><span class="text-[9px] font-black text-purple-600 block mb-0.5">14:45 - 16:00</span><p class="font-black text-sm md:text-base leading-tight text-purple-950">後夜祭</p></div>
+                    </div>
+                    <!-- 中学棟前中庭 (Day 2) -->
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 300px; height: 400px;"><span class="text-[10px] font-black text-[#0056b3] block mb-1">12:00 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">高校ハンドボール部<br>招待試合</p></div>
+                    </div>
+                    <!-- 校庭 (Day 2) -->
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 300px; height: 50px;" onclick="openDetail('物理部', 'ペットボトルロケット', '校庭 (9/27 12:00-12:30)', '大迫力のペットボトルロケット発射実験！青空高く打ち上がる瞬間をお見逃しなく！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">12:00 - 12:30</span><p class="font-bold text-xs leading-tight text-slate-900">物理部 ロケット実験</p></div>
+                        <div class="event-block" style="top: 600px; height: 50px;" onclick="openDetail('陸上競技部', '第4回城北ダービー', '校庭 (9/27 15:00-15:30)', '今年で４回目となる陸上部による全力のリレー対決！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">15:00 - 15:30</span><p class="font-bold text-xs leading-tight text-slate-900">陸上部 リレー対決</p></div>
+                    </div>
+                    <!-- 高校視聴覚室 (Day 2) -->
+                    <div class="venue-column">
+                        <div class="event-block" style="top: 100px; height: 150px;" onclick="openDetail('吹奏楽部有志', '吹奏楽部の休日', '高校視聴覚室 (9/27 10:00-11:30)', '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！', 'exhibition')"><span class="text-[9px] font-black text-[#0056b3] block mb-0.5">10:00 - 11:30</span><p class="font-bold text-xs leading-tight text-slate-900">吹奏楽部有志 アンサンブル</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================== -->
+    <!-- 【企画紹介】ページコンテナ (初期全閉じアコーディオン)      -->
     <!-- ========================================================== -->
     <main id="page-groups" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 relative z-10">
         <section class="max-w-6xl mx-auto px-4 md:px-8">
@@ -860,7 +987,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【企画投票】ページコンテナ (企画紹介の隣へ配置)            -->
+    <!-- 【企画投票】ページコンテナ                                -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-4 md:px-8 relative z-10">
         <section class="max-w-6xl mx-auto reveal text-center">
@@ -1171,39 +1298,10 @@
             </div>
         </section>
     </main>
-
-    <!-- 管理者パネル -->
-    <div id="admin-panel" class="fixed inset-0 z-[11000] bg-slate-900/90 backdrop-blur-md text-white p-6 md:p-12 hidden overflow-y-auto">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex justify-between items-center mb-8 border-b border-slate-700 pb-4">
-                <h2 class="text-xl md:text-2xl font-black text-[#4da3ff] tracking-widest uppercase">ADMIN DASHBOARD</h2>
-                <button onclick="document.getElementById('admin-panel').classList.add('hidden')" class="font-bold bg-white text-slate-900 rounded-lg px-4 py-2 hover:bg-slate-200 transition text-xs">CLOSE</button>
-            </div>
-
-            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl border border-slate-700 mb-8">
-                <h3 class="text-lg md:text-xl font-black text-white mb-4">📢 お知らせ（リアルタイム）投稿・更新</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="text-xs font-bold text-slate-400 block mb-1">カテゴリー</label>
-                        <select id="news-type" class="bg-slate-900 border border-slate-600 text-white rounded-xl px-4 py-2.5 w-full text-sm outline-none">
-                            <option value="全体連絡">全体連絡</option>
-                            <option value="本部より落とし物連絡">本部より落とし物連絡</option>
-                            <option value="イベント情報">イベント情報</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-slate-400 block mb-1">本文</label>
-                        <textarea id="news-content" placeholder="全端末に即時反映するメッセージを入力..." class="bg-slate-900 border border-slate-600 text-white rounded-xl p-3 w-full text-sm h-24 outline-none"></textarea>
-                    </div>
-                    <button onclick="postNews()" class="bg-[#0056b3] hover:bg-[#0070f3] hover:text-white font-bold text-sm px-6 py-2.5 rounded-xl transition">投稿・反映する</button>
-                </div>
-            </div>
-        </div>
-    </div>
  
     <!-- 全ページ共通表示：フッター -->
-    <footer class="w-full bg-[#0f172a] text-white py-14 px-6 relative z-10 mt-auto">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-slate-800">
+    <footer class="w-full bg-[#0f172a] text-white py-12 px-6 relative z-10 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-slate-800">
             <div class="flex items-center space-x-4">
                 <img src="https://cdn.phototourl.com/uploads/2026-03-21-f66a94c4-fd93-487d-a3bb-5c7180f15da9.png" class="w-12 h-12 invert opacity-90" alt="城北学園 校章">
                 <div class="text-left leading-tight">
@@ -1223,11 +1321,6 @@
                     <span class="text-[10px] text-slate-500 uppercase tracking-wider block">制作</span>
                     <span class="text-xs font-bold text-slate-300">文化祭実行委員会 ICT部門</span>
                 </div>
-            </div>
-
-            <div class="w-full md:w-auto flex items-center justify-center gap-2 pt-4 md:pt-0">
-                <input type="password" id="admin-pass" placeholder="PASSWORD" class="bg-slate-900 border border-slate-700 text-xs rounded-lg px-3 py-2 text-white outline-none w-32">
-                <button onclick="checkAdmin()" class="bg-[#0056b3] text-white text-xs rounded-lg px-3.5 py-2 font-bold hover:bg-[#0070f3] transition">ENTER</button>
             </div>
         </div>
         
@@ -1290,7 +1383,7 @@
             '数学研究部', '文化祭実行委員会', '文実'
         ];
 
-        /* クラス企画データ（学年グループ指定対応） */
+        /* クラス企画データ */
         const classProjectsCustomData = {
             'M1A': { title: 'A組の神隠し〜教室の迷宮〜', img: '『A組の神隠し〜教室の迷宮〜』.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: 'かつて入った者が次々と消えた、物置室だったA組。誰も近寄らないこの教室の恐ろしい真相を、君は暴くことができるのか？' },
             'M1B': { title: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～', img: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～.png', loc: '中学棟 3階', groupKey: 'm1', type: 'attraction', desc: 'みなさん、ごきげんよう。僕たち1年B組は、初めての文化祭で気配斬りをやります。ご家族やお友達を誘って、ぜひ来てください！' },
@@ -1408,13 +1501,50 @@
             { name: '限定 城北グッズ各種', price: '売場にて案内' }
         ];
  
+        /* キッチンカーデータ（アレルギー分離・強調対応） */
         const kcarData = [
-            { name: 'COOKUS', file: 'COOKUS.png', label: 'SWEETS & DRINKS', desc: '11種類の味を選べてアイスやホイップクリームのトッピングができる可愛らしくサクサクもちもち食感の新感覚スイーツです。 【アレルギー: 卵・乳・小麦】' },
-            { name: '多幸家', file: '多幸屋.png', label: 'TAKOYAKI & YAKISOBA', desc: '多幸家のたこ焼は外はカリっと、中はトロ〜り、厳選されたタコを使用いた‼︎タコヤキです！ 【アレルギー: 卵・乳・小麦】' },
-            { name: 'M.H Kitchen', file: 'M.H Kitchen.png', label: 'BEEF', desc: '当店の牛ハラミは自社独自の低温調理にて余分な脂をなくしてどなた様でも食べやすい逸品となります。 【アレルギー: 牛・豚・鶏・乳】' },
-            { name: 'ROCKET CHICKEN', file: 'ROCKET CHICKEN.png', label: 'ORIGINAL CHICKEN', desc: '数十種類のスパイスを使った、サクふわジューシーで軽いチキン！油っぽさを抑え、女性や子どもにも食べやすい味わいです。学生さんは学割でお得に！ 【アレルギー: 店頭にて一覧表を掲示】' },
-            { name: 'いきなりステーキ', file: 'いきなりステーキ.png', label: 'STEAK', desc: '『いきなりステーキ』のサーロインステーキや牛肉100％のハンバーグをリーズナブルな価格で提供しています! 【アレルギー: 卵・乳・小麦】' },
-            { name: 'ふるーつなのに', file: 'ふるーつなのに.png', label: 'SWEETS', desc: '旬のフルーツを贅沢に使用。見た目も味わいもこだわったいちご飴と、スムージーです。 【アレルギー: 卵・乳・小麦】' }
+            { 
+                name: 'COOKUS', 
+                file: 'COOKUS.png', 
+                label: 'SWEETS & DRINKS', 
+                desc: '11種類の味を選べてアイスやホイップクリームのトッピングができる可愛らしくサクサクもちもち食感の新感覚スイーツです。',
+                allergy: '卵・乳・小麦'
+            },
+            { 
+                name: '多幸家', 
+                file: '多幸屋.png', 
+                label: 'TAKOYAKI & YAKISOBA', 
+                desc: '多幸家のたこ焼は外はカリっと、中はトロ〜り、厳選されたタコを使用いた‼︎タコヤキです！',
+                allergy: '卵・乳・小麦'
+            },
+            { 
+                name: 'M.H Kitchen', 
+                file: 'M.H Kitchen.png', 
+                label: 'BEEF', 
+                desc: '当店の牛ハラミは自社独自の低温調理にて余分な脂をなくしてどなた様でも食べやすい逸品となります。',
+                allergy: '牛・豚・鶏・乳'
+            },
+            { 
+                name: 'ROCKET CHICKEN', 
+                file: 'ROCKET CHICKEN.png', 
+                label: 'ORIGINAL CHICKEN', 
+                desc: '数十種類のスパイスを使った、サクふわジューシーで軽いチキン！油っぽさを抑え、女性や子どもにも食べやすい味わいです。学生さんは学割でお得に！',
+                allergy: '店頭にて一覧表を掲示'
+            },
+            { 
+                name: 'いきなりステーキ', 
+                file: 'いきなりステーキ.png', 
+                label: 'STEAK', 
+                desc: '『いきなりステーキ』のサーロインステーキや牛肉100％のハンバーグをリーズナブルな価格で提供しています!',
+                allergy: '卵・乳・小麦'
+            },
+            { 
+                name: 'ふるーつなのに', 
+                file: 'ふるーつなのに.png', 
+                label: 'SWEETS', 
+                desc: '旬のフルーツを贅沢に使用。見た目も味わいもこだわったいちご飴と、スムージーです。',
+                allergy: '卵・乳・小麦'
+            }
         ];
  
         const typeLabels = { 'attraction': 'アトラクション', 'exhibition': '展示・公演' };
@@ -1558,7 +1688,13 @@
                                             <h4 class="font-black text-xl md:text-2xl text-[#0056b3] font-brush">${k.name}</h4>
                                             <span class="text-[10px] bg-blue-50 text-[#0056b3] border border-blue-200 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">${k.label}</span>
                                         </div>
-                                        <p class="text-sm md:text-base text-slate-600 leading-relaxed font-medium">${k.desc}</p>
+                                        <p class="text-sm text-slate-600 leading-relaxed font-medium mb-4">${k.desc}</p>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
+                                        <span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-300 text-xs px-2.5 py-1 font-bold rounded-lg shadow-sm">
+                                            <svg class="w-3.5 h-3.5 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                            アレルギー情報: ${k.allergy}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -1603,7 +1739,6 @@
             generateClassCards();
             generateFoodData();
             createPetals();
-            renderNews();
         });
  
         window.addEventListener('load', () => {
@@ -1754,62 +1889,6 @@
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
-        }
- 
-        function checkAdmin() {
-            const pass = document.getElementById('admin-pass');
-            if(pass && pass.value === 'Johoku') {
-                const panel = document.getElementById('admin-panel');
-                if(panel) panel.classList.remove('hidden');
-            } else {
-                alert('パスワードが違います');
-            }
-        }
-
-        function postNews() {
-            const typeEl = document.getElementById('news-type');
-            const contentEl = document.getElementById('news-content');
-            if(!contentEl || !contentEl.value.trim()) { alert('本文を入力してください'); return; }
-            
-            const now = new Date();
-            const dateStr = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')}`;
-            
-            let newsList = JSON.parse(localStorage.getItem('j_news')) || [];
-            newsList.unshift({ date: dateStr, type: typeEl ? typeEl.value : '全体連絡', content: contentEl.value, isNew: true });
-            localStorage.setItem('j_news', JSON.stringify(newsList));
-            
-            alert('お知らせをリアルタイム投稿しました。全画面に反映されます。');
-            contentEl.value = "";
-            renderNews();
-        }
-
-        function renderNews() {
-            const container = document.getElementById('news-container');
-            if(!container) return;
-            
-            const defaultNews = [
-                { date: '2026.08.15', type: '全体連絡', content: '特設サイトをプレオープンしました！企画一覧やマップを確認できます。', isNew: true },
-                { date: '2026.08.10', type: '全体連絡', content: '第85回 城北祭 "男前" 公式ホームページを開設しました。', isNew: false }
-            ];
-
-            const customNews = JSON.parse(localStorage.getItem('j_news')) || [];
-            const allNews = [...customNews, ...defaultNews];
-
-            container.innerHTML = "";
-            allNews.forEach(item => {
-                const badgeHtml = item.isNew ? `<span class="bg-[#0056b3] text-white font-black text-[10px] px-2 py-0.5 rounded-full uppercase ml-2">NEW</span>` : '';
-                const itemDiv = document.createElement('div');
-                itemDiv.className = "pb-4 border-b border-slate-100 last:border-0";
-                itemDiv.innerHTML = `
-                    <div class="flex items-center gap-2 mb-1.5">
-                        <span class="text-xs font-bold text-slate-400 tracking-wider">${item.date}</span>
-                        <span class="text-xs font-bold text-[#0056b3]">[${item.type}]</span>
-                        ${badgeHtml}
-                    </div>
-                    <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">${item.content}</p>
-                `;
-                container.appendChild(itemDiv);
-            });
         }
 
         function switchPage(pageId) {
