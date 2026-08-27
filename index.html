@@ -635,7 +635,7 @@
                     </div>
                 </div>
 
-                <!-- 生徒会長挨拶（平山 千紘） -->
+                <!-- 生徒会長挨拶 -->
                 <div class="bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-sm border-t-4 border-t-[#00a2ff] flex flex-col">
                     <div class="mb-6 border-b border-slate-100 pb-4">
                         <span class="text-xs md:text-sm text-[#00a2ff] font-black tracking-widest uppercase block mb-1">生徒会長</span>
@@ -833,8 +833,8 @@
                         <div class="time-label">09:00</div><div class="time-label">10:00</div><div class="time-label">11:00</div><div class="time-label">12:00</div><div class="time-label">13:00</div><div class="time-label">14:00</div><div class="time-label">15:00</div>
                     </div>
                     <div class="venue-column">
-                        <div class="event-block" style="top: 25px; height: 150px;" onclick="openDetail('c_stage_solist', '城北のゆかいなソリストたち', '城北の愉快なソリストたち', '講堂 (9/26 09:15-10:45)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">城北の愉快なソリストたち</p></div>
-                        <div class="event-block" style="top: 191px; height: 75px;" onclick="openDetail('pta_primavera', 'PTA', '秋の調べ ～響き合う心〜 (プリマヴェーラ)', '講堂 (9/26 10:50-11:50)', 'PTAコーラスの会 プリマヴェーラによるハートフルな合唱ステージ。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">10:50 - 11:50</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">PTA プリマヴェーラ</p></div>
+                        <div class="event-block" style="top: 25px; height: 150px;" onclick="openDetail('stage_solist', '城北のゆかいなソリストたち', '城北の愉快なソリストたち', '講堂 (9/26 09:15-10:45)', 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">09:15 - 10:45</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">城北の愉快なソリストたち</p></div>
+                        <div class="event-block" style="top: 191px; height: 75px;" onclick="openDetail('stage_primavera', 'PTA', '秋の調べ ～響き合う心〜 (プリマヴェーラ)', '講堂 (9/26 10:50-11:50)', 'PTAコーラスの会 プリマヴェーラによるハートフルな合唱ステージ。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">10:50 - 11:50</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">PTA プリマヴェーラ</p></div>
                         <div class="event-block" style="top: 295px; height: 45px;" onclick="openDetail('stage_karaoke', '生徒有志', 'のど自慢 (カラオケ大会)', '講堂 (9/26 11:55-12:25)', '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">11:55 - 12:25</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">カラオケ大会</p></div>
                         <div class="event-block" style="top: 350px; height: 45px;" onclick="openDetail('stage_shorinji', '少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/26 12:30-13:00)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">12:30 - 13:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">少林寺拳法部</p></div>
                         <div class="event-block" style="top: 410px; height: 90px;" onclick="openDetail('stage_dance', 'ダンス部', 'ダンス部', '講堂 (9/26 13:10-14:10)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">13:10 - 14:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
@@ -1071,15 +1071,26 @@
                 </div>
             </div>
 
-            <!-- 投票方法案内 -->
-            <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm max-w-3xl mx-auto space-y-4">
-                <h4 class="text-2xl font-black text-slate-900 font-brush">🗳️ 投票方法</h4>
-                <p class="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
-                    <button onclick="switchPage('groups')" class="text-[#0056b3] underline font-black hover:opacity-80 transition">「企画紹介」ページ</button> から気に入った企画カードを開き、モーダル内の <strong class="text-[#0056b3]">「この企画に投票する」</strong> ボタンを押すだけで完了です！
-                </p>
-                <div class="inline-block bg-blue-50 border border-blue-200 px-5 py-2.5 rounded-2xl text-xs md:text-sm font-bold text-[#0056b3]">
-                    💡 同一端末から1つの企画につき1票まで。別企画には何回でも投票可能です！
+            <!-- 投票結果発表告知枠 -->
+            <div class="bg-gradient-to-r from-blue-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-12 mb-10 shadow-lg border border-blue-400/30 text-center max-w-4xl mx-auto">
+                <div class="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-400/40 text-[#4da3ff] flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 </div>
+                <span class="text-xs md:text-sm font-bold text-cyan-300 tracking-[0.3em] uppercase block mb-1">Award Announcement</span>
+                <h4 class="text-2xl md:text-4xl font-black mb-4 font-brush text-white">投票結果の発表について</h4>
+                <p class="text-base md:text-xl font-medium text-slate-200 max-w-2xl mx-auto leading-relaxed mb-6">
+                    各部門賞・総合賞の最終結果は、文化祭2日目の<span class="text-[#4da3ff] font-bold">「後夜祭（多目的ホール 14:45〜）」</span>ステージにて堂々発表されます！
+                </p>
+                <div class="inline-block bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 text-sm font-bold text-cyan-200">
+                    栄冠を手にするのはどの企画か？！ ぜひ後夜祭会場へお越しください！
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm max-w-3xl mx-auto space-y-4">
+                <p class="text-lg md:text-2xl font-bold text-slate-800">
+                    投票は <button onclick="switchPage('groups')" class="text-[#0056b3] underline font-black hover:opacity-80 transition">「企画紹介」</button> ページにて各企画カードを開いて投票可能です！
+                </p>
+                <p class="text-sm text-slate-500 font-medium">（※同一端末から1つの企画につき1票まで。別企画には何回でも投票可能です）</p>
             </div>
         </section>
     </main>
@@ -1168,18 +1179,16 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【校内マップ】ページコンテナ (全体図＋棟別・階数切り替え)    -->
+    <!-- 【校内マップ】ページコンテナ                                -->
     <!-- ========================================================== -->
     <main id="page-map" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
-        <section class="max-w-[1400px] mx-auto reveal">
-            <div class="text-center mb-12">
-                <span class="text-xs md:text-sm text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Floor Map & Campus Guide</span>
-                <h3 class="text-4xl md:text-6xl font-black mb-4 text-slate-900 font-brush">校内マップ</h3>
-                <p class="text-sm md:text-base font-bold text-slate-500">※敷地内に高低差があり、高校棟・芸術棟の昇降口は2階です。</p>
-            </div>
+        <section class="max-w-[1400px] mx-auto text-center reveal">
+            <span class="text-xs md:text-sm text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Floor Map & Campus Guide</span>
+            <h3 class="text-4xl md:text-6xl font-black mb-4 text-slate-900 font-brush">校内マップ</h3>
+            <p class="text-sm md:text-base font-bold text-slate-500">※敷地内に高低差があり、高校棟・芸術棟の昇降口は2階です。</p>
 
             <!-- ① 敷地内全体図 -->
-            <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm mb-12">
+            <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm mb-12 text-left">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="w-3 h-7 bg-[#0056b3] rounded-full"></span>
                     <div>
@@ -1198,7 +1207,7 @@
             </div>
 
             <!-- ② 棟別・階数切り替えフロアマップ -->
-            <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm text-left">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div class="flex items-center gap-3">
                         <span class="w-3 h-7 bg-[#0070f3] rounded-full"></span>
@@ -1400,7 +1409,7 @@
         <p class="text-xs text-center text-slate-500 font-bold tracking-[0.2em] uppercase mt-8">© THE 85TH JOHOKU FESTIVAL 2026</p>
     </footer>
  
-    <!-- 企画詳細モーダル（投票システム完全連携） -->
+    <!-- 企画詳細モーダル（投票＆取り消し機能連動） -->
     <div id="detail-modal" class="fixed inset-0 z-[10000] bg-slate-900/60 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeDetail()">
         <div id="detail-modal-card" class="bg-white border border-slate-200 w-full max-w-4xl p-6 md:p-8 relative overflow-y-auto max-h-[92vh] rounded-3xl shadow-2xl" onclick="event.stopPropagation()">
             <button onclick="closeDetail()" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-900 transition">✕</button>
@@ -1427,7 +1436,7 @@
                         <iframe id="iframe-short" class="hidden w-full h-full border-0 rounded-2xl" src="" allowfullscreen></iframe>
                         <div id="placeholder-short" class="flex flex-col items-center justify-center">
                             <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center mb-2 shadow-md">
-                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73z"/></svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
                             </div>
                             <span class="text-xs bg-red-500/20 text-red-300 font-bold px-2 py-0.5 rounded-full mb-2">Shorts</span>
                             <p id="release-date-short" class="font-black text-base text-cyan-300 font-brush tracking-wider whitespace-nowrap">近日公開予定！</p>
@@ -1441,7 +1450,7 @@
                     <img id="modal-big-img" src="" alt="企画アイコン" class="w-full h-full object-contain">
                 </div>
 
-                <!-- 企画情報＆投票ボタン -->
+                <!-- 企画情報＆投票/取り消しボタン -->
                 <div class="flex flex-col h-full justify-between">
                     <div>
                         <span id="modal-tag" class="inline-block bg-blue-50 text-[#0056b3] border border-blue-200 text-xs md:text-sm px-3 py-1 font-bold rounded-lg mb-3"></span>
@@ -1450,9 +1459,9 @@
                         <p id="modal-desc" class="text-sm md:text-base text-slate-700 leading-relaxed mb-6 font-medium"></p>
                     </div>
 
-                    <!-- 投票ボタンUI（状態連動） -->
+                    <!-- 投票 / 投票取り消しボタンUI -->
                     <div class="pt-4 border-t border-slate-100">
-                        <button id="vote-action-btn" onclick="submitVote()" class="w-full py-4 rounded-xl font-bold text-base md:text-lg transition shadow-md flex items-center justify-center gap-2">
+                        <button id="vote-action-btn" onclick="handleVoteAction()" class="w-full py-4 rounded-xl font-bold text-base md:text-lg transition shadow-md flex items-center justify-center gap-2">
                             <span>この企画に投票する</span>
                         </button>
                         <p id="vote-note-text" class="text-center text-xs text-slate-400 mt-2 font-medium">※同一端末から1つの企画につき1票まで投票できます</p>
@@ -1490,6 +1499,12 @@
                 votedList.push(pId);
                 localStorage.setItem('johoku_voted_projects', JSON.stringify(votedList));
             }
+        }
+
+        function unmarkProjectAsVoted(pId) {
+            let votedList = JSON.parse(localStorage.getItem('johoku_voted_projects') || '[]');
+            votedList = votedList.filter(id => id !== pId);
+            localStorage.setItem('johoku_voted_projects', JSON.stringify(votedList));
         }
  
         const juniorClasses = ['M1A', 'M1B', 'M1C', 'M1D', 'M1E', 'M1F', 'M1G', 'M2A', 'M2B', 'M2C', 'M2D', 'M2E', 'M2F', 'M2G'];
@@ -1919,7 +1934,7 @@
         }
  
         window.addEventListener('DOMContentLoaded', () => {
-            getDeviceId(); // 端末ID初期化
+            getDeviceId();
             generateClassCards();
             generateFoodData();
             createPetals();
@@ -2020,7 +2035,7 @@
             });
         }
  
-        /* 企画詳細モーダル（動画＆投票システム連動） */
+        /* 企画詳細モーダル */
         function openDetail(pId, group, title, loc, desc, type, imgSrc) {
             currentProjectId = pId;
             currentProjectTitle = title;
@@ -2051,7 +2066,7 @@
             if(modalDesc) modalDesc.innerText = desc;
             if(tagEl) tagEl.innerText = "# " + (typeLabels[type] || '企画');
 
-            // 投票ボタンの状態更新
+            // 投票/取り消しボタンUI更新
             updateVoteButtonUI();
 
             // 動画判定
@@ -2114,32 +2129,38 @@
             }
         }
 
+        /* 投票 / 取り消しボタンのUI状態更新 */
         function updateVoteButtonUI() {
             const btn = document.getElementById('vote-action-btn');
             const note = document.getElementById('vote-note-text');
             if(!btn) return;
 
             if (isProjectVoted(currentProjectId)) {
-                btn.disabled = true;
-                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-emerald-600 text-white cursor-not-allowed shadow-none flex items-center justify-center gap-2";
-                btn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span>この企画に投票済みです</span>`;
-                if(note) note.innerText = "※同一端末から同じ企画への多重投票はできません";
+                // 投票済み状態：取り消しボタン（グレー/赤系）
+                btn.disabled = false;
+                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-slate-600 hover:bg-slate-700 text-white transition shadow-md flex items-center justify-center gap-2";
+                btn.innerHTML = `<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg><span>投票を取り消す</span>`;
+                if(note) note.innerText = "※現在この企画に投票済みです（クリックで取り消し可能）";
             } else {
+                // 未投票状態：新規投票ボタン（青色）
                 btn.disabled = false;
                 btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-[#0056b3] hover:bg-[#0070f3] text-white transition shadow-md hover:shadow-lg flex items-center justify-center gap-2";
-                btn.innerHTML = `<span>この企画に投票する</span>`;
+                btn.innerHTML = `<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>この企画に投票する</span>`;
                 if(note) note.innerText = "※同一端末から1つの企画につき1票まで投票できます";
             }
         }
 
-        /* 投票処理 (Vercel Serverless Function API 連携) */
-        async function submitVote() {
+        /* 投票 / 取り消し実行ハンドラー */
+        async function handleVoteAction() {
             const btn = document.getElementById('vote-action-btn');
-            if (!currentProjectId || isProjectVoted(currentProjectId)) return;
+            if (!currentProjectId) return;
 
             const deviceId = getDeviceId();
+            const isVoted = isProjectVoted(currentProjectId);
+            const actionType = isVoted ? 'unvote' : 'vote';
+
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span><span>投票送信中...</span>`;
+            btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span><span>通信中...</span>`;
 
             try {
                 const res = await fetch('/api/vote', {
@@ -2147,26 +2168,32 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         projectId: currentProjectId,
-                        deviceId: deviceId
+                        deviceId: deviceId,
+                        action: actionType
                     })
                 });
 
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    markProjectAsVoted(currentProjectId);
+                    if (actionType === 'vote') {
+                        markProjectAsVoted(currentProjectId);
+                        alert(`「${currentProjectTitle}」への投票が完了しました！\nご投票ありがとうございました！`);
+                    } else {
+                        unmarkProjectAsVoted(currentProjectId);
+                        alert(`「${currentProjectTitle}」への投票を取り消しました。`);
+                    }
                     updateVoteButtonUI();
-                    alert(`「${currentProjectTitle}」への投票が完了しました！\nご投票ありがとうございました！`);
-                } else if (res.status === 409 || data.error === 'already_voted') {
+                } else if (res.status === 409) {
                     markProjectAsVoted(currentProjectId);
                     updateVoteButtonUI();
                     alert('この企画には既に投票済みです。');
                 } else {
-                    alert('投票に失敗しました。電波の良い場所で再度お試しください。');
+                    alert('処理に失敗しました。電波の良い場所で再度お試しください。');
                     updateVoteButtonUI();
                 }
             } catch (err) {
-                console.error('Vote submit error:', err);
+                console.error('Vote action error:', err);
                 alert('通信エラーが発生しました。ネットワーク接続をご確認ください。');
                 updateVoteButtonUI();
             }
