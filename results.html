@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第85回 城北祭 | 企画投票 集計ダッシュボード</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-6 md:p-12 font-sans">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 border-b border-slate-800 pb-6">
+            <div>
+                <span class="text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">Johoku Festival 2026</span>
+                <h1 class="text-3xl md:text-4xl font-black text-white">🏆 企画投票 集計結果ダッシュボード</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <input type="password" id="auth-token" placeholder="管理者パスワード" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white outline-none">
+                <button onclick="loadResults()" class="bg-[#0056b3] hover:bg-[#0070f3] px-5 py-2 rounded-xl text-sm font-bold transition">更新・集計</button>
+            </div>
+        </div>
+
+        <div id="status-msg" class="text-sm text-slate-400 mb-6">パスワードを入力して「更新・集計」を押してください。</div>
+
+        <!-- 4部門ランキンググリッド -->
+        <div id="dashboard-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 hidden">
+            <!-- 総合賞 -->
+            <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 flex flex-col">
+                <h2 class="text-lg font-black text-amber-400 border-b border-slate-700 pb-3 mb-4 flex items-center justify-between">
+                    <span>👑 総合賞</span>
+                    <span id="badge-overall" class="text-xs bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full font-bold"></span>
+                </h2>
+                <div id="list-overall" class="space-y-2.5 overflow-y-auto max-h-[600px] pr-1"></div>
+            </div>
+
+            <!-- クラス賞 -->
+            <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 flex flex-col">
+                <h2 class="text-lg font-black text-emerald-400 border-b border-slate-700 pb-3 mb-4 flex items-center justify-between">
+                    <span>🏫 クラス賞</span>
+                    <span id="badge-class" class="text-xs bg-emerald-400/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold"></span>
+                </h2>
+                <div id="list-class" class="space-y-2.5 overflow-y-auto max-h-[600px] pr-1"></div>
+            </div>
+
+            <!-- 展示部門賞 -->
+            <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 flex flex-col">
+                <h2 class="text-lg font-black text-cyan-400 border-b border-slate-700 pb-3 mb-4 flex items-center justify-between">
+                    <span>🎨 展示部門賞</span>
+                    <span id="badge-exhibition" class="text-xs bg-cyan-400/20 text-cyan-300 px-2 py-0.5 rounded-full font-bold"></span>
+                </h2>
+                <div id="list-exhibition" class="space-y-2.5 overflow-y-auto max-h-[600px] pr-1"></div>
+            </div>
+
+            <!-- パフォーマンス賞 -->
+            <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 flex flex-col">
+                <h2 class="text-lg font-black text-purple-400 border-b border-slate-700 pb-3 mb-4 flex items-center justify-between">
+                    <span>🎸 パフォーマンス賞</span>
+                    <span id="badge-performance" class="text-xs bg-purple-400/20 text-purple-300 px-2 py-0.5 rounded-full font-bold"></span>
+                </h2>
+                <div id="list-performance" class="space-y-2.5 overflow-y-auto max-h-[600px] pr-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadResults() {
+            const token = document.getElementById('auth-token').value.trim() || 'Johoku2026Admin';
+            const msg = document.getElementById('status-msg');
+            msg.innerText = '集計中...';
+
+            try {
+                const res = await fetch(`/api/results?token=${encodeURIComponent(token)}`);
+                const json = await res.json();
+
+                if (!res.ok || !json.success) {
+                    msg.innerHTML = `<span class="text-red-400">エラー: ${json.error || 'パスワードが違います'}</span>`;
+                    return;
+                }
+
+                msg.innerHTML = `<span class="text-green-400">集計完了 (総投票数: ${json.ranking.total_votes} 票)</span>`;
+                document.getElementById('dashboard-grid').classList.remove('hidden');
+
+                renderList('overall', json.ranking.overall);
+                renderList('class', json.ranking.class);
+                renderList('exhibition', json.ranking.exhibition);
+                renderList('performance', json.ranking.performance);
+
+            } catch (e) {
+                msg.innerHTML = `<span class="text-red-400">通信エラーが発生しました</span>`;
+            }
+        }
+
+        function renderList(category, items) {
+            const container = document.getElementById(`list-${category}`);
+            container.innerHTML = '';
+
+            items.forEach((item, index) => {
+                const rankColor = index === 0 ? 'text-amber-400 font-black text-base' : (index === 1 ? 'text-slate-300 font-bold' : (index === 2 ? 'text-amber-600 font-bold' : 'text-slate-400 text-xs'));
+                const card = document.createElement('div');
+                card.className = "bg-slate-900/70 p-3 rounded-xl border border-slate-700/60 flex items-center justify-between gap-2";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <span class="${rankColor} w-6 text-center shrink-0">${index + 1}</span>
+                        <div class="overflow-hidden">
+                            <span class="text-xs text-blue-300 font-bold block">${item.group_name}</span>
+                            <span class="text-sm font-bold text-white truncate block">${item.title}</span>
+                        </div>
+                    </div>
+                    <span class="text-base font-black text-cyan-300 shrink-0">${item.votes} <span class="text-[10px] text-slate-400">票</span></span>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
