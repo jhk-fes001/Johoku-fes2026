@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { projectId, deviceId } = req.body || {};
+        const { projectId, deviceId, action } = req.body || {};
 
         if (!projectId || !deviceId) {
             return res.status(400).json({ error: 'projectId と deviceId は必須です' });
@@ -32,6 +32,27 @@ module.exports = async (req, res) => {
             .update(`${deviceId}_${salt}`)
             .digest('hex');
 
+        // === 【投票取り消し (キャンセル) 処理】 ===
+        if (action === 'unvote') {
+            const { error: delError } = await supabase
+                .from('votes')
+                .delete()
+                .eq('project_id', projectId)
+                .eq('device_hash', deviceHash);
+
+            if (delError) {
+                console.error('Supabase delete error:', delError);
+                return res.status(500).json({ success: false, error: 'Database Error' });
+            }
+
+            return res.status(200).json({ 
+                success: true, 
+                action: 'unvoted',
+                message: '投票を取り消しました' 
+            });
+        }
+
+        // === 【新規投票 処理】 ===
         const { data, error } = await supabase
             .from('votes')
             .insert([{ project_id: projectId, device_hash: deviceHash }]);
@@ -41,7 +62,7 @@ module.exports = async (req, res) => {
                 return res.status(409).json({ 
                     success: false, 
                     error: 'already_voted',
-                    message: 'この企画には既に投票済みです（1企画につき1票まで）' 
+                    message: 'この企画には既に投票済みです' 
                 });
             }
             console.error('Supabase insert error:', error);
@@ -50,6 +71,7 @@ module.exports = async (req, res) => {
 
         return res.status(200).json({ 
             success: true, 
+            action: 'voted',
             message: '投票が完了しました！' 
         });
 
