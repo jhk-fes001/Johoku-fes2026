@@ -69,7 +69,7 @@
             100% { transform: translate3d(130px, 105vh, 0) rotate(480deg) scale(1.05); opacity: 0; }
         }
 
-        /* オープニングローダー & 神アニメーション */
+        /* オープニングローダー */
         #opening-loader {
             position: fixed; inset: 0; z-index: 10000;
             background: #ffffff;
@@ -384,41 +384,47 @@
             border-bottom: 3px solid #0056b3;
         }
 
-        /* 企画プロモーションスライダー */
+        /* 企画プロモーションスライダー（強化版） */
         .promo-slider-wrap {
             position: relative;
             width: 100%;
             overflow: hidden;
-            padding: 10px 0;
+            padding: 12px 0;
         }
         .promo-slider-track {
             display: flex;
-            gap: 16px;
-            transition: transform 0.4s ease-out;
+            gap: 20px;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
         }
         .promo-card-item {
-            flex: 0 0 280px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 20px;
-            padding: 16px 20px;
+            flex: 0 0 320px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 22px 24px;
             cursor: pointer;
             text-align: left;
-            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(0, 86, 179, 0.06);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .promo-card-item::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+            background: linear-gradient(180deg, #4da3ff 0%, #0056b3 100%);
         }
         .promo-card-item:hover {
-            background: rgba(255, 255, 255, 0.22);
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+            transform: translateY(-6px);
+            border-color: #93c5fd;
+            box-shadow: 0 16px 36px rgba(0, 86, 179, 0.14);
         }
     </style>
 </head>
 <body class="bg-sky-canvas text-slate-900">
  
-    <!-- オープニングローダー（巨大「最初.png」& 神アニメーション） -->
+    <!-- オープニングローダー -->
     <div id="opening-loader">
         <div class="text-center px-6 flex flex-col items-center justify-center">
             <div class="relative flex items-center justify-center">
@@ -452,7 +458,7 @@
         </div>
     </div>
  
-    <!-- 固定ヘッダー（左上ロゴ：JOHOKU.png） -->
+    <!-- 固定ヘッダー -->
     <header class="fixed top-0 w-full z-[8000] px-4 md:px-8 py-2.5 flex justify-between items-center bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="flex items-center cursor-pointer py-1" onclick="switchPage('home')">
             <img src="JOHOKU.png" alt="城北学園 第85回 城北祭" class="h-9 sm:h-10 md:h-11 object-contain transition hover:opacity-85" onerror="this.onerror=null; this.src='https://cdn.phototourl.com/uploads/2026-03-21-f66a94c4-fd93-487d-a3bb-5c7180f15da9.png';">
@@ -478,7 +484,7 @@
     </header>
  
     <!-- ========================================================== -->
-    <!-- 【ホーム】ページコンテナ (ワイド幅 & テーマ・企画スライダー統合)-->
+    <!-- 【ホーム】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-home" class="w-full pt-[65px] page-slide-in relative z-10">
         <!-- ヒーローセクション -->
@@ -521,45 +527,51 @@
             </div>
         </section>
 
-        <!-- テーマ「男前」× 企画プロモーションスライダー（左右操作・自動ループ連動） -->
-        <section class="w-full bg-gradient-to-br from-[#0a235c] via-[#0056b3] to-[#003d80] py-16 md:py-20 text-center text-white shadow-lg relative overflow-hidden">
+        <!-- テーマ「男前」セクション -->
+        <section class="w-full bg-gradient-to-br from-[#0a235c] via-[#0056b3] to-[#003d80] py-16 md:py-24 text-center text-white shadow-lg relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
                 <span class="text-xs md:text-sm font-bold tracking-[0.6em] text-cyan-300 uppercase block mb-3">2026 THEME</span>
                 <h2 class="text-7xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black tracking-[0.45em] font-brush select-none pl-[0.45em] drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)] leading-none mb-6">
                     男前
                 </h2>
                 
-                <p class="text-base md:text-xl tracking-[0.12em] font-medium text-blue-50 max-w-3xl mx-auto leading-relaxed mb-10">
+                <p class="text-base md:text-2xl tracking-[0.12em] font-medium text-blue-50 max-w-3xl mx-auto leading-relaxed">
                     困難にも前向きに挑戦し、仲間を思いやりながら最後までやり抜く。<br class="hidden sm:inline">
                     伝統と誇りを胸に、生徒一人ひとりの情熱と創意工夫が交差する二日間。<br>
                     城北生の熱き魂と、ここでしか見られない最高の青春の輝きをその目に。
                 </p>
+            </div>
+        </section>
 
-                <!-- 企画スライダーコンテナ -->
-                <div class="w-full max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-left">
-                            <span class="text-[11px] md:text-xs tracking-[0.3em] text-cyan-200 uppercase font-black block">Featured Projects</span>
-                            <h3 class="text-lg md:text-2xl font-black text-white font-brush">注目企画 ピックアップ！</h3>
-                        </div>
-                        <!-- 左右手動操作ボタン -->
-                        <div class="flex items-center gap-2">
-                            <button onclick="prevPromoSlide()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition border border-white/30" title="前へ">❮</button>
-                            <button onclick="nextPromoSlide()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition border border-white/30" title="次へ">❯</button>
-                        </div>
+        <!-- 【独立・特大化】注目企画 ピックアップスライダーセクション -->
+        <section class="w-full max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-24">
+            <div class="bg-gradient-to-br from-white via-blue-50/40 to-slate-50 border border-blue-200/80 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-200/80 pb-6">
+                    <div>
+                        <span class="text-xs md:text-sm tracking-[0.35em] text-[#0056b3] uppercase font-black block mb-2">Featured Projects</span>
+                        <h3 class="text-3xl md:text-5xl font-black text-slate-900 font-brush">注目企画 ピックアップ！</h3>
+                        <p class="text-sm md:text-base text-slate-500 font-bold mt-2">城北生が総力を結集した多彩な展示・アトラクションをチェック！</p>
                     </div>
+                    <!-- 左右手動操作ボタン -->
+                    <div class="flex items-center gap-3 self-end md:self-auto">
+                        <button onclick="prevPromoSlide()" class="w-12 h-12 rounded-2xl bg-white hover:bg-blue-50 text-[#0056b3] flex items-center justify-center transition border border-slate-200 shadow-sm hover:shadow-md text-lg font-black" title="前へ">❮</button>
+                        <button onclick="nextPromoSlide()" class="w-12 h-12 rounded-2xl bg-[#0056b3] hover:bg-[#0070f3] text-white flex items-center justify-center transition border border-blue-600 shadow-md hover:shadow-lg text-lg font-black" title="次へ">❯</button>
+                    </div>
+                </div>
 
-                    <!-- スライダー本体 -->
-                    <div class="promo-slider-wrap" id="promo-slider-wrap">
-                        <div class="promo-slider-track" id="promo-slider-track"></div>
-                    </div>
-                    <p class="text-[11px] text-cyan-200/80 mt-3 font-medium">※カードをタップすると該当企画の詳細を開きます（左右ボタンで手動スクロール可能）</p>
+                <!-- スライダー本体 -->
+                <div class="promo-slider-wrap" id="promo-slider-wrap">
+                    <div class="promo-slider-track" id="promo-slider-track"></div>
+                </div>
+                <div class="flex items-center justify-between mt-4 text-xs text-slate-400 font-bold">
+                    <span>※カードをクリックすると各企画の詳細モーダルが開きます</span>
+                    <span>自動スクロール中（左右ボタンで操作可能）</span>
                 </div>
             </div>
         </section>
 
         <!-- クイックナビゲーション -->
-        <section class="w-full max-w-[1400px] mx-auto px-5 md:px-10 my-16 md:my-20">
+        <section class="w-full max-w-[1400px] mx-auto px-5 md:px-10 mb-16 md:mb-20">
             <div class="text-center mb-12">
                 <span class="text-xs md:text-sm text-[#0056b3] font-black tracking-[0.3em] uppercase block mb-1">Quick Navigation</span>
                 <h3 class="text-3xl md:text-5xl font-black text-slate-900 font-brush">メインメニュー案内</h3>
@@ -672,7 +684,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【ご挨拶】ページコンテナ                                   -->
+    <!-- 【ご挨拶】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-about" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto reveal">
@@ -751,7 +763,7 @@
                         <p class="text-base font-bold text-slate-700 leading-relaxed mb-3">武田遙人 / 狩野優希 / 高橋大輝 / 石根優希 / 佐々木奏太郎 / 町田蒼太 / 田隝弘丞</p>
                         <div class="pt-2 border-t border-slate-100">
                             <span class="text-xs text-[#0070f3] font-bold">【垂れ幕・入場門デザイン】</span>
-                            <p class="text-xs font-bold text-slate-600 mt-0.5">多くのクラス委員の協力のもと、垂れ幕、アーチの製作をしました。（追杉洋光 と 建築部門全員）</p>
+                            <p class="text-xs font-bold text-slate-600 mt-0.5">クラス委員 / 追杉洋光 / 建築部門全員</p>
                         </div>
                     </div>
 
@@ -801,7 +813,7 @@
                     </div>
                 </div>
 
-                <!-- 総合デザイン 追杉洋光（上質ロイヤルネイビーカード） -->
+                <!-- 総合デザイン 追杉洋光 -->
                 <div class="mt-8 relative overflow-hidden bg-gradient-to-br from-[#0c1e3d] via-[#102a56] to-[#0a192f] text-white rounded-3xl p-8 md:p-12 text-center border-2 border-blue-400/40 shadow-xl">
                     <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="relative z-10">
@@ -845,7 +857,7 @@
                 </div>
             </div>
 
-            <!-- 公式サイト制作後記（小塚誠太の確定文章を反映） -->
+            <!-- 公式サイト制作後記 -->
             <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm">
                 <h4 class="text-2xl md:text-4xl font-black text-slate-900 mb-6 border-b border-slate-100 pb-4 font-brush">公式サイト制作後記</h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -857,8 +869,7 @@
                     <div class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200 flex flex-col">
                         <span class="text-xs md:text-sm text-[#0056b3] font-black block mb-1">H1C</span>
                         <h5 class="text-xl md:text-2xl font-black text-slate-900 mb-2 whitespace-nowrap">小塚 誠太</h5>
-                        <p class="text-sm md:text-base text-slate-700 font-medium leading-relaxed">本日は第85回城北学園文化祭「男前」にお越しいただき、誠にありがとうございます。今年、文化祭初の試みとなる公式サイトの制作を担当しました。HTMLを一つひとつ書き、皆様にとって見やすく、文化祭をより楽しんでいただけるサイトを目指しました。制作にあたり、構築に携わってくださった林先輩、デザインに協力してくださった追杉先輩、運営方針を一緒に考え、最初のデータを作ってくださった石根君に感謝申し上げます。また、先生方や文化祭実行委員の皆さんをはじめ、関わってくださったすべての皆様に心より御礼申し上げます。それでは、第85回城北学園文化祭「男前」を存分にお楽しみください。
-</p>
+                        <p class="text-sm md:text-base text-slate-700 font-medium leading-relaxed">本日は第85回城北学園文化祭「男前」にお越しいただき、誠にありがとうございます。今年、文化祭初の試みとなる公式サイトの制作を担当しました。HTMLを一つひとつ書き、皆様にとって見やすく、文化祭をより楽しんでいただけるサイトを目指しました。制作にあたり、構築に携わってくださった林先輩、デザインに協力してくださった追杉先輩、運営方針を一緒に考え、最初のデータを作ってくださった石根君に感謝申し上げます。また、先生方や文化祭実行委員の皆さんをはじめ、関わってくださったすべての皆様に心より御礼申し上げます。それでは、第85回城北学園文化祭「男前」を存分にお楽しみください。</p>
                     </div>
                     <div class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200 flex flex-col">
                         <span class="text-xs md:text-sm text-[#00a2ff] font-black block mb-1">M3C</span>
@@ -871,7 +882,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【タイムテーブル】ページコンテナ                           -->
+    <!-- 【タイムテーブル】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-timetable" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto">
@@ -895,7 +906,7 @@
                 <p class="text-xs md:text-sm text-slate-400 mb-4 block md:hidden">※ 表は横にスクロールしてご確認いただけます（時間は左端に固定表示されます）</p>
             </div>
            
-            <!-- Day 01 タイムテーブル -->
+            <!-- Day 01 タイムテーブル (吹奏楽部終了時間を16:00に変更) -->
             <div id="schedule-day1" class="schedule-content active overflow-x-auto pb-4">
                 <div class="timetable-container">
                     <div class="timetable-header time-col-head text-xs flex items-center justify-center">時間</div>
@@ -914,7 +925,7 @@
                         <div class="event-block" style="top: 295px; height: 45px;" onclick="openDetail('stage_karaoke', '生徒有志', 'のど自慢 (カラオケ大会)', '講堂 (9/26 11:55-12:25)', '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">11:55 - 12:25</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">カラオケ大会</p></div>
                         <div class="event-block" style="top: 350px; height: 45px;" onclick="openDetail('stage_shorinji', '少林寺拳法部', '少林寺拳法部 演武会', '講堂 (9/26 12:30-13:00)', '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">12:30 - 13:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">少林寺拳法部</p></div>
                         <div class="event-block" style="top: 410px; height: 90px;" onclick="openDetail('stage_dance', 'ダンス部', 'ダンス部', '講堂 (9/26 13:10-14:10)', '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！', 'exhibition')"><span class="text-[10px] font-black text-[#0056b3] block mb-0.5">13:10 - 14:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">ダンス部</p></div>
-                        <div class="event-block" style="top: 566px; height: 150px; border-left-color: #0284c7;" onclick="openDetail('stage_brass', '吹奏楽部', 'JBB in the House!!!', '講堂 (9/26 14:40-16:10)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[10px] font-black text-[#0284c7] block mb-0.5">14:40 - 16:10</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
+                        <div class="event-block" style="top: 566px; height: 134px; border-left-color: #0284c7;" onclick="openDetail('stage_brass', '吹奏楽部', 'JBB in the House!!!', '講堂 (9/26 14:40-16:00)', '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！', 'exhibition')"><span class="text-[10px] font-black text-[#0284c7] block mb-0.5">14:40 - 16:00</span><p class="font-bold text-xs md:text-sm leading-tight text-slate-900">吹奏楽部 定期演奏</p></div>
                     </div>
                     <div class="venue-column">
                         <div class="event-block" style="top: 100px; height: 600px;"><span class="text-[11px] font-black text-[#0056b3] block mb-1">09:30 - 16:00</span><p class="font-black text-sm md:text-base leading-tight text-slate-900">軽音楽部 LIVE</p></div>
@@ -976,7 +987,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【企画紹介】ページコンテナ                                -->
+    <!-- 【企画紹介】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-groups" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 relative z-10">
         <section class="max-w-[1400px] mx-auto px-5 md:px-10">
@@ -987,7 +998,6 @@
                 <div class="w-full max-w-xl mx-auto">
                     <input type="text" id="project-search" placeholder="クラス名、企画名、部活名で検索..." class="search-input w-full text-base font-medium shadow-sm" onkeyup="filterProjects()">
                     
-                    <!-- カテゴリー絞り込み（お気に入り★連動） -->
                     <div class="flex flex-wrap justify-center gap-2 mt-6">
                         <button class="filter-btn bg-[#0056b3] text-white px-5 py-2 text-sm font-bold rounded-full shadow-sm" data-filter="all" onclick="setCategory('all', this)">#すべて</button>
                         <button class="filter-btn bg-white text-amber-600 border border-amber-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-50" data-filter="favorite" onclick="setCategory('favorite', this)">★ 行きたいリスト</button>
@@ -1101,7 +1111,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【企画投票】ページコンテナ                                -->
+    <!-- 【企画投票】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto reveal text-center">
@@ -1173,7 +1183,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【飲食・グッズ】ページコンテナ                                -->
+    <!-- 【飲食・グッズ】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-food" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto reveal">
@@ -1187,7 +1197,7 @@
                 </div>
             </div>
 
-            <!-- キッチンカー (初期表示) -->
+            <!-- キッチンカー -->
             <div id="food-kcar" class="food-content grid grid-cols-1 md:grid-cols-2 gap-8"></div>
  
             <!-- 学食・Jラウンジ・売店 -->
@@ -1256,7 +1266,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【校内マップ】ページコンテナ（神連動フロア企画一覧搭載）    -->
+    <!-- 【校内マップ】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-map" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto text-center reveal">
@@ -1283,7 +1293,7 @@
                 </div>
             </div>
 
-            <!-- ② 棟別・階数切り替えフロアマップ & 連動企画リスト -->
+            <!-- ② 棟別・階数切り替えフロアマップ -->
             <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm text-left">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div class="flex items-center gap-3">
@@ -1294,7 +1304,6 @@
                         </div>
                     </div>
 
-                    <!-- 棟切り替えタブ -->
                     <div class="inline-flex p-1.5 bg-slate-100 rounded-2xl self-start md:self-auto">
                         <button class="building-tab-btn active px-5 py-2 rounded-xl text-sm font-black transition bg-[#0056b3] text-white shadow-sm" onclick="switchBuilding('high', this)">高校棟</button>
                         <button class="building-tab-btn px-5 py-2 rounded-xl text-sm font-black transition text-slate-600 hover:text-slate-900" onclick="switchBuilding('common', this)">共通棟</button>
@@ -1302,10 +1311,8 @@
                     </div>
                 </div>
 
-                <!-- 階数切り替えボタンバー -->
                 <div class="flex flex-wrap gap-2 mb-6" id="floor-btn-container"></div>
 
-                <!-- 階層マップ画像表示エリア -->
                 <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-6 text-center mb-8">
                     <div class="w-16 h-16 rounded-full bg-blue-50 text-[#0056b3] flex items-center justify-center mb-3">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
@@ -1316,7 +1323,6 @@
                     <p class="text-xs md:text-sm text-slate-400 font-medium">※各フロアの見取り図画像をここに表示</p>
                 </div>
 
-                <!-- 【神連動】このフロアにある企画一覧タグ -->
                 <div class="pt-6 border-t border-slate-100">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
@@ -1332,7 +1338,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【各種ご案内】ページコンテナ                                -->
+    <!-- 【各種ご案内】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-examinee" class="w-full pt-[65px] custom-page-bg hidden flex-grow py-16 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto reveal">
@@ -1498,7 +1504,7 @@
         <p class="text-xs text-center text-slate-500 font-bold tracking-[0.2em] uppercase mt-8">© THE 85TH JOHOKU FESTIVAL 2026</p>
     </footer>
  
-    <!-- 企画詳細モーダル（投票機能・タイムテーブルジャンプ連動） -->
+    <!-- 企画詳細モーダル -->
     <div id="detail-modal" class="fixed inset-0 z-[10000] bg-slate-900/60 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeDetail()">
         <div id="detail-modal-card" class="bg-white border border-slate-200 w-full max-w-4xl p-6 md:p-8 relative overflow-y-auto max-h-[92vh] rounded-3xl shadow-2xl" onclick="event.stopPropagation()">
             <button onclick="closeDetail()" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-900 transition">✕</button>
@@ -1534,9 +1540,10 @@
                     </div>
                 </div>
 
-                <!-- 動画なし団体用：画像表示枠 -->
-                <div id="modal-image-box" class="hidden aspect-square bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden items-center justify-center p-4">
+                <!-- 動画なし団体用：画像 / 状態バッジ表示枠 -->
+                <div id="modal-image-box" class="hidden aspect-square bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-4">
                     <img id="modal-big-img" src="" alt="企画アイコン" class="w-full h-full object-contain">
+                    <div id="modal-custom-placeholder" class="hidden w-full h-full flex flex-col items-center justify-center text-center p-6"></div>
                 </div>
 
                 <!-- 企画情報＆投票/取り消しボタン -->
@@ -1553,7 +1560,6 @@
                         <h4 id="modal-title" class="text-2xl md:text-3xl font-black mb-2 text-slate-900 font-brush"></h4>
                         <p id="modal-location" class="text-xs md:text-sm text-slate-500 mb-3 font-bold border-l-2 border-[#0056b3] pl-2.5"></p>
                         
-                        <!-- 開催時間案内バッジ -->
                         <div id="modal-time-box" class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-xs font-bold text-slate-700 space-y-1">
                             <div class="flex items-center justify-between">
                                 <span class="text-slate-500">Day1 (9/26 土):</span>
@@ -1567,7 +1573,6 @@
 
                         <p id="modal-desc" class="text-sm md:text-base text-slate-700 leading-relaxed mb-4 font-medium"></p>
 
-                        <!-- タイムテーブル連動ボタン（ステージ・公演系のみ表示） -->
                         <button id="modal-timetable-btn" onclick="goToTimetableFromModal()" class="hidden w-full mb-4 py-2.5 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-xl text-xs md:text-sm font-black transition flex items-center justify-center gap-1.5 shadow-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span>タイムテーブルで詳細時間を見る ↗</span>
@@ -1590,7 +1595,6 @@
         let currentProjectId = "";
         let currentProjectTitle = "";
         let currentFilterCategory = "all";
-        let currentModalProjectData = null;
 
         /* 端末UUIDの取得・自動生成 (localStorage) */
         function getDeviceId() {
@@ -1622,7 +1626,7 @@
             localStorage.setItem('johoku_voted_projects', JSON.stringify(votedList));
         }
 
-        /* 【新機能①】行きたいリスト（お気に入り★）ローカル保存・判定 */
+        /* 行きたいリスト（お気に入り★）ローカル保存・判定 */
         function isFavorite(pId) {
             const favs = JSON.parse(localStorage.getItem('johoku_favorites') || '[]');
             return favs.includes(pId);
@@ -1654,7 +1658,6 @@
                     btn.innerHTML = '☆';
                 }
             });
-            // モーダル内のボタン更新
             if (currentProjectId) {
                 const isFav = isFavorite(currentProjectId);
                 const starEl = document.getElementById('modal-fav-star');
@@ -1722,7 +1725,33 @@
             '生徒会': { date: '9月25日', mode: 'short' }
         };
 
-        /* クラス企画データ (時間・フロア紐付け完備) */
+        /* アイコン表示形式の定義（安全上非表示・未提出対応） */
+        function getIconHtml(proj) {
+            if (proj.statusBadge === 'safety_hidden') {
+                return `
+                    <div class="w-full h-full bg-slate-100 flex flex-col items-center justify-center p-1 text-center border border-slate-300 rounded-xl">
+                        <svg class="w-5 h-5 text-amber-500 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <span class="text-[9px] font-black text-slate-700 leading-tight">安全上<br>非表示</span>
+                    </div>
+                `;
+            } else if (proj.statusBadge === 'not_submitted') {
+                return `
+                    <div class="w-full h-full bg-slate-100 flex flex-col items-center justify-center p-1 text-center border border-slate-300 rounded-xl">
+                        <svg class="w-5 h-5 text-slate-400 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span class="text-[9px] font-black text-slate-600 leading-tight">未提出</span>
+                    </div>
+                `;
+            } else if (proj.img) {
+                return `
+                    <img src="${proj.img}" alt="${proj.group || proj.title}" class="project-icon-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="text-xl font-black font-brush hidden items-center justify-center w-full h-full text-[#0056b3]">${(proj.group || proj.title).charAt(0)}</span>
+                `;
+            } else {
+                return `<span class="text-xl font-black font-brush text-[#0056b3]">${(proj.group || proj.title).charAt(0)}</span>`;
+            }
+        }
+
+        /* クラス企画データ */
         const classProjectsCustomData = {
             'M1A': { id: 'c_m1a', title: 'A組の神隠し〜教室の迷宮〜', img: '『A組の神隠し〜教室の迷宮〜』.png', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm1', type: 'attraction', d1: '終日', d2: '終日', desc: 'かつて入った者が次々と消えた、物置室だったA組。誰も近寄らないこの教室の恐ろしい真相を、君は暴くことができるのか？' },
             'M1B': { id: 'c_m1b', title: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～', img: 'KAZUA Kingdom ～戦慄ノ双戦（デュエル）～.png', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm1', type: 'attraction', d1: '終日', d2: '終日', desc: 'みなさん、ごきげんよう。僕たち1年B組は、初めての文化祭で気配斬りをやります。ご家族やお友達を誘って、ぜひ来てください！' },
@@ -1736,13 +1765,13 @@
             'M2B': { id: 'c_m2b', title: '人類VS10本のピン', img: '人類VS10本のピン.png', loc: '中学棟 2階', floorKey: 'junior_2F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '今年M2Bに10本のピンが襲来！？みんなでピンに立ち向かえ！普段ははちゃめちゃなM2Bの仲間達で一生懸命考えました！' },
             'M2C': { id: 'c_m2c', title: '【白熱】競玉グランプリ', img: '【白熱】競玉グランプリ.png', loc: '中学棟 2階', floorKey: 'junior_2F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: 'ビー玉で競馬！？ ２つの大きなコースで競馬の緊張感をビー玉で再現！着順を予想してお菓子を勝ち取れ！※ドーパミン注意！' },
             'M2D': { id: 'c_m2d', title: 'マッハ台車でgo!! 〜ターゲットミッション〜', img: 'マッハ台車でgo!! 〜ターゲットミッション〜.png', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '台車に乗って進みながら的を狙う、新感覚の的当てゲーム！年齢は関係ない。さあ、あなたも挑戦してみませんか？' },
-            'M2E': { id: 'c_m2e', title: 'あつまれえんにちの森!?', img: 'あつまれえんにちの森!.png', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '君たちが迷い込んだのはえんにちの森。ここではM2Eの愉快な仲間たちがたくさん楽しませてくれる。もう行くっきゃないっしょ！' },
-            'M2F': { id: 'c_m2f', title: '賭博の刃', img: '賭博の刃.png', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '「全集中カネの呼吸 Fの型 合法賭博ッ、、、」成績はド底辺、気分は有頂天！そんな2-Fが送る最高の賭博体験をご堪能あれ！' },
+            'M2E': { id: 'c_m2e', title: 'あつまれえんにちの森!?', statusBadge: 'safety_hidden', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '君たちが迷い込んだのはえんにちの森。ここではM2Eの愉快な仲間たちがたくさん楽しませてくれる。もう行くっきゃないっしょ！' },
+            'M2F': { id: 'c_m2f', title: '賭博の刃', statusBadge: 'safety_hidden', loc: '中学棟 3階', floorKey: 'junior_3F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '「全集中カネの呼吸 Fの型 合法賭博ッ、、、」成績はド底辺、気分は有頂天！そんな2-Fが送る最高の賭博体験をご堪能あれ！' },
             'M2G': { id: 'c_m2g', title: 'JOHOQ', img: 'JOHOQ.png', loc: '中学棟 4階', floorKey: 'junior_4F', groupKey: 'm2', type: 'attraction', d1: '終日', d2: '終日', desc: '城北学園を知っていただくため、城北学園全体を使った、こだわりの謎が織りなす周遊謎解きの世界へみなさんをご招待します！' },
 
-            'M3A': { id: 'c_m3a', title: '深夜の巡回教師', img: '深夜の巡回教師.png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: 'M3Aには巡回教師という名の怨霊「デバイス取りの千苦損」が住み着いてしまった！デバイスを死守してM3Aから抜け出そう！' },
+            'M3A': { id: 'c_m3a', title: '深夜の巡回教師', statusBadge: 'safety_hidden', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: 'M3Aには巡回教師という名の怨霊「デバイス取りの千苦損」が住み着いてしまった！デバイスを死守してM3Aから抜け出そう！' },
             'M3B': { id: 'c_m3b', title: 'High & low', img: 'High & low.png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: 'こんにちは。中学3年B組です！ M3Bでは出し物としてカジノをします。ウマ娘(人間ver)もやります！来てね！' },
-            'M3C': { id: 'c_m3c', title: '城北カート', img: '城北カート.png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: '2台の二人乗りカートによる、アイテム（赤甲羅、バナナ、爆弾などのぬいぐるみ）を投げ合う大乱闘！' },
+            'M3C': { id: 'c_m3c', title: '城北カート', statusBadge: 'safety_hidden', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: '2台の二人乗りカートによる、アイテム（赤甲羅、バナナ、爆弾などのぬいぐるみ）を投げ合う大乱闘！' },
             'M3D': { id: 'c_m3d', title: '馬漢(うまおとこ)', img: '馬漢(うまおとこ).png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'exhibition', d1: '終日', d2: '終日', desc: '幅広い人に楽しんでいただくために競馬式のゲームを作らせていただきました！是非来てください！' },
             'M3E': { id: 'c_m3e', title: '男前ボッチャ', img: '男前ボッチャ.png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: '男前を決めるのはゲームではなく、『ボッチャ』だ。個性豊かな相手とボッチャでバトル。より「男前」なのはどちらか、いざ勝負！' },
             'M3F': { id: 'c_m3f', title: 'HOPE', img: 'HOPE.png', loc: '高校棟 2階', floorKey: 'high_2F', groupKey: 'm3', type: 'attraction', d1: '終日', d2: '終日', desc: 'ノリで夜のコンビニで○○きを試みるあなた。果たして目的のものを持ってバレずに帰れるのか！(最後はちゃんとお仕置きです！)' },
@@ -1750,9 +1779,9 @@
 
             'H1A': { id: 'c_h1a', title: 'ミサンガ作り', img: 'ミサンガ作り.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'exhibition', d1: '終日', d2: '終日', desc: '城北生が心を込めて皆様と一緒にミサンガを編みます。友情、青春、そして汗。あなたの願いをミサンガに託そう！' },
             'H1B': { id: 'c_h1b', title: 'ギャンブル', img: 'ギャンブル.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: 'みんなで楽しいギャンブルをします。未経験の人でも大歓迎！！！！！みんなで楽しくギャンブルをしましょう。' },
-            'H1C': { id: 'c_h1c', title: '1-C パビリオン', img: '1-C パビリオン.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校1年C組がお届けする体験型展示です。' },
+            'H1C': { id: 'c_h1c', title: '1-C パビリオン', statusBadge: 'not_submitted', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校1年C組がお届けする体験型展示です。' },
             'H1D': { id: 'c_h1d', title: 'ここからは、お静かに', img: 'ここからは、お静かに.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: 'ある日、興味本位で心霊スポットである廃病院に入っていった。何事もないと思っていたが、様々な恐怖体験に見舞われていく!' },
-            'H1E': { id: 'c_h1e', title: 'FRIDAY THE 13TH', img: 'FRIDAY THE 13TH.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: '今、あなたは石神井川付近でキャンプをしていました。途中、パトカーや救急車を見かけたけど、一体何があったんだろう…' },
+            'H1E': { id: 'c_h1e', title: 'FRIDAY THE 13TH', statusBadge: 'safety_hidden', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: '今、あなたは石神井川付近でキャンプをしていました。途中、パトカーや救急車を見かけたけど、一体何があったんだろう…' },
             'H1F': { id: 'c_h1f', title: 'テストを捨てろ！', img: 'テストを捨てろ！.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: '対策不可能なテストからみんなの成績を守るために立ち上がれ！謎を解いてテスト用紙を探し出し、破棄しよう！' },
             'H1G': { id: 'c_h1g', title: '占いの館 in城北', img: '占いの館　in城北.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'exhibition', d1: '終日', d2: '終日', desc: 'H1Gでは色々な占いができます。手相占いや水晶占いなどができます。占いに行ったことがないという人もぜひきてください！' },
             'H1H': { id: 'c_h1h', title: '城北生格付けチェック', img: '城北生格付けチェック.png', loc: '高校棟 3階', floorKey: 'high_3F', groupKey: 'h1', type: 'attraction', d1: '終日', d2: '終日', desc: 'いろんな勉強に関することや知識などいろいろなクイズで格付けをします！！' },
@@ -1769,7 +1798,7 @@
             'H2I': { id: 'c_h2i', title: '人生、回してみる？', img: '人生、回してみる.png', loc: '高校棟 4階', floorKey: 'high_4F', groupKey: 'h2', type: 'attraction', d1: '終日', d2: '終日', desc: '高2I組はコーヒーカップを作りました。笑顔と遠心力、多めでお届けします。ぜひお楽しみください。' }
         };
 
-        /* 部活・有志・その他企画データ (時間・フロア・タイムテーブル連動完備) */
+        /* 部活・有志・その他企画データ */
         const nonClassProjects = [
             { id: 'club_shogi', group: '囲碁将棋部', title: '囲碁将棋部 展示・対局', img: 'それでも歩は寄せてくる.png', loc: '予備室３ (1階)', floorKey: 'junior_1F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '日頃の盤上研究の成果を披露。自由に対局できるスペースもあります！' },
             { id: 'stage_handball_j', group: '中学ハンドボール部', title: '中学ハンドボール部 招待試合', img: '紅白戦.png', loc: '中学棟前中庭', floorKey: 'junior_1F', groupKey: 'club', type: 'exhibition', d1: '12:00 - 16:00', d2: 'なし', isStage: true, desc: '熱い戦いが中庭で繰り広げられます！応援よろしくお願いします！' },
@@ -1798,7 +1827,7 @@
             { id: 'stage_strings', group: '弦楽部', title: '弦楽部 ミニコンサート', img: '弦楽部.png', loc: '器楽室 (6階)', floorKey: 'common_6F', groupKey: 'club', type: 'exhibition', d1: '13:30 - 14:30', d2: '13:30 - 14:30', isStage: true, desc: '弦楽部では、1時半から2時半まで、バイオリンやビオラ等を使った演奏を行います。場所は器楽室です。ぜひお越しください。（13:30〜14:30）' },
             { id: 'stage_keion', group: '軽音部', title: '軽音学部ライブ', img: '軽音楽部ライブ.png', loc: '多目的ホール (4階)', floorKey: 'common_4F', groupKey: 'club', type: 'exhibition', d1: '09:30 - 16:00', d2: '09:30 - 14:15', isStage: true, desc: 'それぞれ個性のあるバンドが演奏をします！きっと知っている曲もあるので、ぜひ共通棟4階の多目的ホールにお立ち寄りください！' },
             { id: 'stage_glee', group: 'グリークラブ', title: '完全感覚グリークラブ', img: '完全感覚グリークラブ.png', loc: '声楽室 (6階)', floorKey: 'common_6F', groupKey: 'club', type: 'exhibition', d1: '12:00 - 12:30', d2: '12:00 - 12:30', isStage: true, desc: '合唱曲や最近のポップスまで幅広いジャンルを部員一同、心を込めて歌います。今までの練習の成果をぜひご覧ください。（12:00〜12:30）' },
-            { id: 'stage_brass', group: '吹奏楽部', title: 'JBB in the House!!!', img: 'JBB in the House!!!.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '14:40 - 16:10', d2: '14:30 - 16:00', isStage: true, desc: '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！' },
+            { id: 'stage_brass', group: '吹奏楽部', title: 'JBB in the House!!!', img: 'JBB in the House!!!.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '14:40 - 16:00', d2: '14:30 - 16:00', isStage: true, desc: '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！' },
             { id: 'stage_dance', group: 'ダンス部', title: 'ダンス部 explosive stage', img: 'ダンス部.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '13:10 - 14:10', d2: '12:45 - 13:45', isStage: true, desc: '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！' },
             { id: 'club_kyudo', group: '弓道部', title: '射てポン!', img: '射てポン！.png', loc: '弓道場 (1階)', floorKey: 'junior_1F', groupKey: 'club', type: 'attraction', d1: '終日', d2: '終日', desc: '実際の弓矢を使って的を射抜く体験型企画です! 君も弓道男子、弓道女子になろう!' },
             { id: 'stage_shorinji', group: '少林寺拳法部', title: '少林寺拳法部 演武会', img: '少林寺拳法部 演武会.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '12:30 - 13:00', d2: '10:25 - 10:55', isStage: true, desc: '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。' },
@@ -1808,7 +1837,7 @@
             /* その他（ステージ・教員・有志・PTA展示・図書委員会） */
             { id: 'other_library', group: '図書委員会', title: '古本市', loc: '共通棟2階 図書館', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年も古本市を開催します。ラノベ/小説/雑誌/海外小説など、沢山取り揃えていますので、ぜひ足を運んでみて下さい。' },
             { id: 'stage_teachers', group: '教員企画', title: "Johoku teacher's Live", img: '教員企画.png', loc: '中学視聴覚室 (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', isStage: true, desc: '城北の先生による、城北の先生の自己満足のためのLiveパフォーマンス。普段見ることのないロックな先生の姿は如何ですか？' },
-            { id: 'other_shodo_teacher', group: '教員企画(書道)', title: '城北書道展', img: '城北書道展.png', loc: '書道室 (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。' },
+            { id: 'other_shodo_teacher', group: '教員企画(書道)', title: '城北書道展', statusBadge: 'safety_hidden', loc: '書道室 (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。' },
             { id: 'other_rekishi_sogo', group: '歴史総合', title: '歴史総合(2025)', img: '歴史総合(2025).png', loc: 'ゼミ４２ (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高１時の年度末レポートを、知的好奇心溢れる高２の強者達が志願して掲示する特別展。疑問に感じたら、何でもテーマになるぞ。' },
             { id: 'other_pr', group: '広報', title: '広報委員会 城北アーカイブス', loc: '数学ゼミ室 (3階)', floorKey: 'high_3F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '城北学園の歴史や、学校パンフレット・広報誌のバックナンバーを閲覧可能。' },
             { id: 'other_h3a', group: '高校3年A組', title: '忌み屋', img: '忌み屋.png', loc: '高校棟 4階 (H3A)', floorKey: 'high_4F', groupKey: 'other', type: 'attraction', d1: '終日', d2: '終日', desc: '入ったら最後、生きては帰れない。油断した瞬間に襲いくる、圧倒的な絶望。……全ては自己責任。' },
@@ -1878,22 +1907,24 @@
                     const loc = custom.loc || `${className} 教室`;
                     const desc = custom.desc || `${className}クラス全員で作り上げた特設体験展示です。`;
                     const gKey = custom.groupKey || 'm1';
-                    const imgSrc = custom.img || `${className}.png`;
+                    const imgSrc = custom.img || '';
                     const pId = custom.id || `c_${className.toLowerCase()}`;
                     const d1 = custom.d1 || '終日';
                     const d2 = custom.d2 || '終日';
+                    const statusBadge = custom.statusBadge || '';
                     const targetContainer = groupMap[gKey];
 
-                    allProjectsLookup[pId] = {
-                        id: pId, group: className, title: title, loc: loc, desc: desc, type: cardType, img: imgSrc, d1: d1, d2: d2, floorKey: custom.floorKey || ''
+                    const projObj = {
+                        id: pId, group: className, title: title, loc: loc, desc: desc, type: cardType, img: imgSrc, d1: d1, d2: d2, floorKey: custom.floorKey || '', statusBadge: statusBadge
                     };
+                    allProjectsLookup[pId] = projObj;
                     
                     if(targetContainer) {
                         const card = document.createElement('div');
                         card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
                         card.setAttribute('data-category', cardType);
                         card.setAttribute('data-project-id', pId);
-                        card.onclick = () => openDetail(pId, className, title, loc, desc, cardType, imgSrc, d1, d2);
+                        card.onclick = () => openDetail(pId);
                         
                         card.innerHTML = `
                             <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
@@ -1907,8 +1938,7 @@
                                         <p class="text-2xl md:text-3xl font-black text-[#0056b3] tracking-wide mb-1 font-brush">${className}</p>
                                     </div>
                                     <div class="project-icon-placeholder">
-                                        <img src="${imgSrc}" alt="${className}" class="project-icon-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                        <span class="text-2xl font-bold font-brush hidden">${className.charAt(0)}</span>
+                                        ${getIconHtml(projObj)}
                                     </div>
                                 </div>
                                 <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${title}</h5>
@@ -1931,22 +1961,20 @@
                     const pId = proj.id || 'p_other';
                     const d1 = proj.d1 || '終日';
                     const d2 = proj.d2 || '終日';
+                    const statusBadge = proj.statusBadge || '';
                     const targetContainer = groupMap[gKey];
 
-                    allProjectsLookup[pId] = {
-                        id: pId, group: proj.group, title: proj.title, loc: proj.loc, desc: proj.desc, type: proj.type, img: imgSrc, d1: d1, d2: d2, floorKey: proj.floorKey || '', isStage: proj.isStage
+                    const projObj = {
+                        id: pId, group: proj.group, title: proj.title, loc: proj.loc, desc: proj.desc, type: proj.type, img: imgSrc, d1: d1, d2: d2, floorKey: proj.floorKey || '', isStage: proj.isStage, statusBadge: statusBadge
                     };
+                    allProjectsLookup[pId] = projObj;
                     
                     if(targetContainer) {
                         const card = document.createElement('div');
                         card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
                         card.setAttribute('data-category', proj.type);
                         card.setAttribute('data-project-id', pId);
-                        card.onclick = () => openDetail(pId, proj.group, proj.title, proj.loc, proj.desc, proj.type, imgSrc, d1, d2, proj.isStage);
-                        
-                        const iconContent = imgSrc 
-                            ? `<img src="${imgSrc}" alt="${proj.group}" class="project-icon-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span class="text-lg font-bold hidden">${proj.group.charAt(0)}</span>`
-                            : `<span class="text-lg font-bold">${proj.group.charAt(0)}</span>`;
+                        card.onclick = () => openDetail(pId);
         
                         card.innerHTML = `
                             <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
@@ -1960,7 +1988,7 @@
                                         <p class="text-xl md:text-2xl font-black text-[#0056b3] tracking-wide mb-1 font-brush">${proj.group}</p>
                                     </div>
                                     <div class="project-icon-placeholder">
-                                        ${iconContent}
+                                        ${getIconHtml(projObj)}
                                     </div>
                                 </div>
                                 <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${proj.title}</h5>
@@ -2065,7 +2093,7 @@
             }
         }
 
-        /* 棟別マップ切り替えデータ & 【神連動】フロア企画一覧制御 */
+        /* 棟別マップ切り替えデータ & 連動企画リスト制御 */
         const buildingFloors = {
             'high': { name: '高校棟', floors: ['2F', '3F', '4F', '5F'] },
             'common': { name: '共通棟', floors: ['2F', '3F', '4F', '5F', '6F'] },
@@ -2115,7 +2143,6 @@
             updateMapDisplay();
         }
 
-        /* マップの階層タイトル & 【神連動】該当階企画タグの描画 */
         function updateMapDisplay() {
             const titleEl = document.getElementById('map-display-title');
             const pTitleEl = document.getElementById('floor-projects-title');
@@ -2139,7 +2166,7 @@
                     matchedProjects.forEach(p => {
                         const tag = document.createElement('button');
                         tag.className = "group bg-slate-50 hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0056b3] px-3.5 py-2 rounded-xl text-left transition flex items-center gap-2.5 shadow-sm";
-                        tag.onclick = () => openDetail(p.id, p.group, p.title, p.loc, p.desc, p.type, p.img, p.d1, p.d2, p.isStage);
+                        tag.onclick = () => openDetail(p.id);
                         tag.innerHTML = `
                             <span class="w-2 h-2 rounded-full bg-[#0056b3]"></span>
                             <span class="text-xs font-black text-[#0056b3] whitespace-nowrap">${p.group}</span>
@@ -2152,7 +2179,7 @@
             }
         }
 
-        /* 企画プロモーションスライダー（自動＆手動） */
+        /* 企画プロモーションスライダー */
         let promoIndex = 0;
         let promoAutoTimer = null;
 
@@ -2162,23 +2189,22 @@
             track.innerHTML = "";
             const keys = Object.keys(allProjectsLookup);
             
-            // ピックアップ企画をいくつか抽出
             const featuredList = keys.slice(0, 16).map(k => allProjectsLookup[k]);
 
             featuredList.forEach(p => {
                 const item = document.createElement('div');
                 item.className = "promo-card-item";
-                item.onclick = () => openDetail(p.id, p.group, p.title, p.loc, p.desc, p.type, p.img, p.d1, p.d2, p.isStage);
+                item.onclick = () => openDetail(p.id);
                 item.innerHTML = `
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-black text-cyan-300 uppercase tracking-wider">${p.group}</span>
-                        <span class="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-bold">#${typeLabels[p.type] || '企画'}</span>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-black text-[#0056b3] bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">${p.group}</span>
+                        <span class="text-[11px] bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full font-bold">#${typeLabels[p.type] || '企画'}</span>
                     </div>
-                    <h5 class="text-base font-black text-white font-brush leading-snug line-clamp-1 mb-1">${p.title}</h5>
-                    <p class="text-xs text-blue-100 line-clamp-2 leading-relaxed opacity-90 font-medium mb-3">${p.desc}</p>
-                    <div class="flex justify-between items-center text-[10px] text-cyan-200 font-bold pt-2 border-t border-white/15">
-                        <span>📍 ${p.loc}</span>
-                        <span class="underline">詳細を見る ↗</span>
+                    <h5 class="text-lg font-black text-slate-900 font-brush leading-snug line-clamp-1 mb-2">${p.title}</h5>
+                    <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed font-medium mb-4">${p.desc}</p>
+                    <div class="flex justify-between items-center text-xs text-[#0056b3] font-bold pt-3 border-t border-slate-100">
+                        <span class="text-slate-500 font-medium">📍 ${p.loc}</span>
+                        <span class="underline hover:text-blue-700">詳細を見る ↗</span>
                     </div>
                 `;
                 track.appendChild(item);
@@ -2190,14 +2216,14 @@
         function updatePromoSlide() {
             const track = document.getElementById('promo-slider-track');
             if(!track) return;
-            const cardWidth = 296; // 280px + 16px gap
+            const cardWidth = 340; // 320px + 20px gap
             track.style.transform = `translateX(-${promoIndex * cardWidth}px)`;
         }
 
         function nextPromoSlide() {
             const track = document.getElementById('promo-slider-track');
             if(!track) return;
-            const max = track.children.length - 2;
+            const max = Math.max(0, track.children.length - 2);
             promoIndex = promoIndex >= max ? 0 : promoIndex + 1;
             updatePromoSlide();
             resetPromoAutoTimer();
@@ -2206,7 +2232,7 @@
         function prevPromoSlide() {
             const track = document.getElementById('promo-slider-track');
             if(!track) return;
-            const max = track.children.length - 2;
+            const max = Math.max(0, track.children.length - 2);
             promoIndex = promoIndex <= 0 ? max : promoIndex - 1;
             updatePromoSlide();
             resetPromoAutoTimer();
@@ -2281,7 +2307,6 @@
             if(menu) menu.classList.toggle('active'); 
         }
 
-        /* 学年・カテゴリ別アコーディオンの開閉 */
         function toggleGroupSection(groupKey) {
             const sec = document.getElementById('section-' + groupKey);
             if(sec) sec.classList.toggle('is-open');
@@ -2334,25 +2359,30 @@
             });
         }
  
-        /* 企画詳細モーダル */
-        function openDetail(pId, group, title, loc, desc, type, imgSrc, d1, d2, isStage) {
+        /* 企画詳細モーダル表示（画像リセット・完全同期対応） */
+        function openDetail(pId, explicitGroup, explicitTitle, explicitLoc, explicitDesc, explicitType, explicitImg, explicitD1, explicitD2, explicitIsStage) {
             currentProjectId = pId;
-            currentProjectTitle = title;
 
-            // ルックアップデータ補完
-            if (!d1 || !d2) {
-                const lp = allProjectsLookup[pId];
-                if(lp) {
-                    d1 = d1 || lp.d1;
-                    d2 = d2 || lp.d2;
-                    isStage = isStage !== undefined ? isStage : lp.isStage;
-                }
-            }
+            // ルックアップより完全な情報を取得
+            const lp = allProjectsLookup[pId] || {};
+            const group = explicitGroup || lp.group || '';
+            const title = explicitTitle || lp.title || '';
+            const loc = explicitLoc || lp.loc || '';
+            const desc = explicitDesc || lp.desc || '';
+            const type = explicitType || lp.type || 'exhibition';
+            const imgSrc = (explicitImg !== undefined && explicitImg !== '') ? explicitImg : (lp.img || '');
+            const d1 = explicitD1 || lp.d1 || '終日 (09:00 - 16:00)';
+            const d2 = explicitD2 || lp.d2 || '終日 (09:00 - 16:00)';
+            const isStage = explicitIsStage !== undefined ? explicitIsStage : !!lp.isStage;
+            const statusBadge = lp.statusBadge || '';
+
+            currentProjectTitle = title;
 
             const modalTitle = document.getElementById('modal-title');
             const modalLoc = document.getElementById('modal-location');
             const modalDesc = document.getElementById('modal-desc');
-            const tagEl = document.getElementById('modal-tag');
+            const tagEl = document.getElementById('modal-tag
+                                                  const tagEl = document.getElementById('modal-tag');
             const modal = document.getElementById('detail-modal');
 
             const timeD1 = document.getElementById('modal-time-day1');
@@ -2365,6 +2395,7 @@
             const shortWrapper = document.getElementById('short-video-wrapper');
             const imageBox = document.getElementById('modal-image-box');
             const bigImg = document.getElementById('modal-big-img');
+            const customPlaceholder = document.getElementById('modal-custom-placeholder');
 
             const iframeLong = document.getElementById('iframe-long');
             const placeholderLong = document.getElementById('placeholder-long');
@@ -2374,6 +2405,11 @@
             const placeholderShort = document.getElementById('placeholder-short');
             const dateShort = document.getElementById('release-date-short');
 
+            // 前回の画像・iframeの残留を初期化（不具合の根本防止）
+            if (bigImg) bigImg.src = "";
+            if (iframeLong) iframeLong.src = "";
+            if (iframeShort) iframeShort.src = "";
+
             if(modalTitle) modalTitle.innerText = title;
             if(modalLoc) modalLoc.innerText = loc.includes(group) ? loc : `${loc} (${group})`;
             if(modalDesc) modalDesc.innerText = desc;
@@ -2382,7 +2418,6 @@
             if(timeD1) timeD1.innerText = d1 || '終日 (09:00 - 16:00)';
             if(timeD2) timeD2.innerText = d2 || '終日 (09:00 - 16:00)';
 
-            // ステージ企画の場合タイムテーブルジャンプボタンを表示
             if (timetableBtn) {
                 if (isStage || loc.includes('講堂') || loc.includes('多目的ホール') || loc.includes('中庭') || loc.includes('視聴覚室')) {
                     timetableBtn.classList.remove('hidden');
@@ -2391,11 +2426,9 @@
                 }
             }
 
-            // 投票/取り消しボタンUI & お気に入りUI更新
             updateVoteButtonUI();
             updateAllFavButtons();
 
-            // 動画判定（動画ありの場合は画像枠を表示せずYouTube/プレースホルダーのみ表示）
             const sData = videoScheduleData[group] || videoScheduleData[title];
 
             if(sData && sData.mode !== 'none') {
@@ -2442,9 +2475,42 @@
                 if(imageBox) {
                     imageBox.classList.remove('hidden');
                     imageBox.style.display = 'flex';
-                    if(bigImg && imgSrc) {
+                    
+                    if (statusBadge === 'safety_hidden') {
+                        if (bigImg) bigImg.classList.add('hidden');
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `
+                                <div class="w-16 h-16 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mb-3">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                </div>
+                                <h5 class="text-xl font-black text-slate-800 font-brush mb-1">安全上非表示</h5>
+                                <p class="text-xs text-slate-500 font-bold">著作権・規約配慮のためアイコン表示を制限しています</p>
+                            `;
+                        }
+                    } else if (statusBadge === 'not_submitted') {
+                        if (bigImg) bigImg.classList.add('hidden');
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `
+                                <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mb-3">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                </div>
+                                <h5 class="text-xl font-black text-slate-800 font-brush mb-1">未提出</h5>
+                                <p class="text-xs text-slate-500 font-bold">企画アイコン画像は現在未提出です</p>
+                            `;
+                        }
+                    } else if(bigImg && imgSrc) {
+                        if (customPlaceholder) customPlaceholder.classList.add('hidden');
+                        bigImg.classList.remove('hidden');
                         bigImg.src = imgSrc;
                         bigImg.alt = title;
+                    } else {
+                        if (bigImg) bigImg.classList.add('hidden');
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `<span class="text-4xl font-black font-brush text-[#0056b3]">${group || title}</span>`;
+                        }
                     }
                 }
             }
@@ -2455,7 +2521,6 @@
             }
         }
 
-        /* モーダルからタイムテーブルへ移動 */
         function goToTimetableFromModal() {
             closeDetail();
             switchPage('timetable');
@@ -2480,7 +2545,7 @@
             }
         }
 
-        /* 投票 / 取り消し実行ハンドラー（API・Supabase連携を完全維持） */
+        /* 投票 / 取り消し実行ハンドラー（API・Supabase連携完全維持） */
         async function handleVoteAction() {
             const btn = document.getElementById('vote-action-btn');
             if (!currentProjectId) return;
