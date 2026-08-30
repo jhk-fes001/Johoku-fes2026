@@ -75,13 +75,14 @@
             background: #ffffff;
             color: var(--deep-navy);
             display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.5s cubic-bezier(0.85, 0, 0.15, 1), transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+            transition: opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1), transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
             will-change: opacity, transform;
+            cursor: pointer;
         }
         .loaded #opening-loader {
-            opacity: 0;
-            transform: scale(1.08);
-            pointer-events: none;
+            opacity: 0 !important;
+            transform: scale(1.05);
+            pointer-events: none !important;
         }
 
         .loader-logo-anim {
@@ -252,7 +253,6 @@
             object-fit: cover; object-position: center;
         }
 
-        /* 企画カード内の時間・場所ミニバッジ */
         .card-meta-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -265,7 +265,7 @@
             gap: 6px 12px;
         }
 
-        /* タイムテーブル (Sticky) */
+        /* タイムテーブル */
         .timetable-container {
             display: grid;
             grid-template-columns: 85px repeat(5, minmax(180px, 1fr));
@@ -331,7 +331,7 @@
             box-shadow: 0 6px 16px rgba(0, 86, 179, 0.18);
         }
 
-        /* 学年・カテゴリ別アコーディオン */
+        /* アコーディオン */
         .group-accordion-header {
             background: #ffffff;
             border: 1px solid var(--border-soft);
@@ -384,7 +384,7 @@
             border-bottom: 3px solid #0056b3;
         }
 
-        /* 企画プロモーションスライダー（強化版） */
+        /* 企画プロモーションスライダー */
         .promo-slider-wrap {
             position: relative;
             width: 100%;
@@ -424,9 +424,9 @@
 </head>
 <body class="bg-sky-canvas text-slate-900">
  
-    <!-- オープニングローダー -->
-    <div id="opening-loader">
-        <div class="text-center px-6 flex flex-col items-center justify-center">
+    <!-- オープニングローダー（タップでも解除可能） -->
+    <div id="opening-loader" onclick="hideLoader()">
+        <div class="text-center px-6 flex flex-col items-center justify-center pointer-events-none">
             <div class="relative flex items-center justify-center">
                 <img src="最初.png" alt="第85回 城北祭 男前" class="loader-logo-anim w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain mx-auto" onerror="this.onerror=null; this.src='JOHOKU.png';">
             </div>
@@ -552,14 +552,12 @@
                         <h3 class="text-3xl md:text-5xl font-black text-slate-900 font-brush">注目企画 ピックアップ！</h3>
                         <p class="text-sm md:text-base text-slate-500 font-bold mt-2">城北生が総力を結集した多彩な展示・アトラクションをチェック！</p>
                     </div>
-                    <!-- 左右手動操作ボタン -->
                     <div class="flex items-center gap-3 self-end md:self-auto">
                         <button onclick="prevPromoSlide()" class="w-12 h-12 rounded-2xl bg-white hover:bg-blue-50 text-[#0056b3] flex items-center justify-center transition border border-slate-200 shadow-sm hover:shadow-md text-lg font-black" title="前へ">❮</button>
                         <button onclick="nextPromoSlide()" class="w-12 h-12 rounded-2xl bg-[#0056b3] hover:bg-[#0070f3] text-white flex items-center justify-center transition border border-blue-600 shadow-md hover:shadow-lg text-lg font-black" title="次へ">❯</button>
                     </div>
                 </div>
 
-                <!-- スライダー本体 -->
                 <div class="promo-slider-wrap" id="promo-slider-wrap">
                     <div class="promo-slider-track" id="promo-slider-track"></div>
                 </div>
@@ -906,7 +904,7 @@
                 <p class="text-xs md:text-sm text-slate-400 mb-4 block md:hidden">※ 表は横にスクロールしてご確認いただけます（時間は左端に固定表示されます）</p>
             </div>
            
-            <!-- Day 01 タイムテーブル (吹奏楽部終了時間を16:00に変更) -->
+            <!-- Day 01 タイムテーブル (吹奏楽部終了を16:00に変更) -->
             <div id="schedule-day1" class="schedule-content active overflow-x-auto pb-4">
                 <div class="timetable-container">
                     <div class="timetable-header time-col-head text-xs flex items-center justify-center">時間</div>
@@ -1475,7 +1473,6 @@
             </div>
         </section>
     </main>
- 
     <!-- 全ページ共通表示：フッター -->
     <footer class="w-full bg-[#0f172a] text-white py-14 px-6 relative z-10 mt-auto">
         <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-slate-800">
@@ -2249,11 +2246,16 @@
             startPromoAutoScroll();
         }
 
+        /* 確実なローダー解除関数 */
         function hideLoader() {
             document.body.classList.add('loaded');
             const loader = document.getElementById('opening-loader');
             if (loader) {
-                setTimeout(() => { loader.style.display = 'none'; }, 450);
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+                setTimeout(() => { 
+                    loader.style.display = 'none'; 
+                }, 500);
             }
         }
  
@@ -2266,12 +2268,13 @@
         });
  
         window.addEventListener('load', () => {
-            setTimeout(hideLoader, 250);
+            setTimeout(hideLoader, 800);
             const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }), {threshold: 0.1});
             document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         });
 
-        setTimeout(hideLoader, 1200);
+        /* 何もしなくても2秒（2000ms）で絶対に自動解除される安全タイマー */
+        setTimeout(hideLoader, 2000);
  
         function switchTab(day) {
             const e = window.event || arguments.callee.caller.arguments[0];
@@ -2381,8 +2384,7 @@
             const modalTitle = document.getElementById('modal-title');
             const modalLoc = document.getElementById('modal-location');
             const modalDesc = document.getElementById('modal-desc');
-            const tagEl = document.getElementById('modal-tag
-                                                  const tagEl = document.getElementById('modal-tag');
+            const tagEl = document.getElementById('modal-tag');
             const modal = document.getElementById('detail-modal');
 
             const timeD1 = document.getElementById('modal-time-day1');
@@ -2405,7 +2407,7 @@
             const placeholderShort = document.getElementById('placeholder-short');
             const dateShort = document.getElementById('release-date-short');
 
-            // 前回の画像・iframeの残留を初期化（不具合の根本防止）
+            // 前回の画像・iframeの残留を初期化（不具合防止）
             if (bigImg) bigImg.src = "";
             if (iframeLong) iframeLong.src = "";
             if (iframeShort) iframeShort.src = "";
