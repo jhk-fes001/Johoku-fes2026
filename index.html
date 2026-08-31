@@ -1152,7 +1152,7 @@
             </div>
         </section>
     </main>
-    <!-- ========================================================== -->
+     <!-- ========================================================== -->
     <!-- 【企画投票】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
@@ -1866,4 +1866,888 @@
             { id: 'club_mountain', group: '山岳ワンダーフォーゲル部', title: '山岳ワンゲル部', img: '山岳ワンゲル部.png', loc: 'H3G (5階)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '展示やってます！日本の名峰に挑んだ軌跡。本格的な登山道具の紹介や山の魅力を語ります。' },
             { id: 'stage_derby', group: '陸上競技部', title: '第4回城北ダービー', img: '第4回城北ダービー.png', loc: 'ゼミ４１ (4階) / 校庭', floorKey: 'high_4F', groupKey: 'club', type: 'exhibition', d1: '終日(予想受付)', d2: '15:00 - 15:30(対決)', isStage: true, desc: '今年で４回目となる陸上部による全力のリレー対決！順位を予想して豪華景品を当てよう！！受付はゼミ41まで' },
             { id: 'club_digisou', group: 'デジタル創作部', title: 'デジ創フェス2026', img: 'デジ創フェス2026.png', loc: 'PC室 (5階)', floorKey: 'high_5F', groupKey: 'club', type: 'attraction', d1: '終日', d2: '終日', desc: '今年も部員たちが独自で開発したゲームをぜひ楽しんでください！開発秘話もご用意していますので、気軽に話しかけてください！' },
-            { id: 'stage_brass_yushi', group: '吹奏楽部有志', title: '吹奏楽部の休日', img: '吹奏楽部の休日.png', loc: '高校視聴覚室 (4階)', floorKey: 'high_4F', groupKey: 'club', type: 'exhibition', d1: '10:00 - 11:30'
+            { id: 'stage_brass_yushi', group: '吹奏楽部有志', title: '吹奏楽部の休日', img: '吹奏楽部の休日.png', loc: '高校視聴覚室 (4階)', floorKey: 'high_4F', groupKey: 'club', type: 'exhibition', d1: '10:00 - 11:30', d2: '10:00 - 11:30', isStage: true, desc: '吹奏楽部の有志による心を込めた少人数のアンサンブル演奏です。気軽に立ち寄って、間近で響く音楽をお楽しみください！' },
+            { id: 'club_art', group: '美術部', title: '美術部★作品展', img: '美術部★作品展.png', loc: '中学美術室 (5階)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '油絵を中心に、中１〜高２の美術部員たちが制作してきた作品を展示しています。巨大作品もあるよ！是非見に来てください！' },
+            { id: 'club_railway', group: '鉄道研究部', title: '新たな風と共に〜2026JRC 〜', img: '新たな風と共に～2026JRC ～.png', loc: '体育館 (3階)', floorKey: 'common_3F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '鉄道模型、シミュレーターに発車メロディー体験まで！城北の鉄道研究部です！' },
+            { id: 'club_shodo', group: '書道部', title: '書道展示', img: '書道展示.png', loc: '書道室 (4階)', floorKey: 'high_4F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: 'こんにちは！書道部です。部員や高校書道選択者の作品展示のほか、無料のしおり配布も行っています。ぜひお越しください！' },
+            { id: 'stage_strings', group: '弦楽部', title: '弦楽部 ミニコンサート', img: '弦楽部.png', loc: '器楽室 (6階)', floorKey: 'common_6F', groupKey: 'club', type: 'exhibition', d1: '13:30 - 14:30', d2: '13:30 - 14:30', isStage: true, desc: '弦楽部では、1時半から2時半まで、バイオリンやビオラ等を使った演奏を行います。場所は器楽室です。ぜひお越しください。（13:30〜14:30）' },
+            { id: 'stage_keion', group: '軽音部', title: '軽音学部ライブ', img: '軽音楽部ライブ.png', loc: '多目的ホール (4階)', floorKey: 'common_4F', groupKey: 'club', type: 'exhibition', d1: '09:30 - 16:00', d2: '09:30 - 14:15', isStage: true, desc: 'それぞれ個性のあるバンドが演奏をします！きっと知っている曲もあるので、ぜひ共通棟4階の多目的ホールにお立ち寄りください！' },
+            { id: 'stage_glee', group: 'グリークラブ', title: '完全感覚グリークラブ', img: '完全感覚グリークラブ.png', loc: '声楽室 (6階)', floorKey: 'common_6F', groupKey: 'club', type: 'exhibition', d1: '12:00 - 12:30', d2: '12:00 - 12:30', isStage: true, desc: '合唱曲や最近のポップスまで幅広いジャンルを部員一同、心を込めて歌います。今までの練習の成果をぜひご覧ください。（12:00〜12:30）' },
+            { id: 'stage_brass', group: '吹奏楽部', title: 'JBB in the House!!!', img: 'JBB in the House!!!.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '14:40 - 16:00', d2: '14:30 - 16:00', isStage: true, desc: '毎年城北祭の大トリを飾る吹奏楽部！吹奏楽曲からpopsまで幅広くお楽しみいただけます！皆さんぜひお越しください！' },
+            { id: 'stage_dance', group: 'ダンス部', title: 'ダンス部 explosive stage', img: 'ダンス部.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '13:10 - 14:10', d2: '12:45 - 13:45', isStage: true, desc: '今年も文化祭の季節がやってきた！新しい仲間たちと作り上げたダンスをご覧あれ！' },
+            { id: 'club_kyudo', group: '弓道部', title: '射てポン!', img: '射てポン!.png', loc: '弓道場 (1階)', floorKey: 'junior_1F', groupKey: 'club', type: 'attraction', d1: '終日', d2: '終日', desc: '実際の弓矢を使って的を射抜く体験型企画です! 君も弓道男子、弓道女子になろう!' },
+            { id: 'stage_shorinji', group: '少林寺拳法部', title: '少林寺拳法部 演武会', img: '少林寺拳法部 演武会.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'club', type: 'exhibition', d1: '12:30 - 13:00', d2: '10:25 - 10:55', isStage: true, desc: '昨年度は全国中学生大会3位,インターハイ3位,全国選抜大会優勝となりました。日本一の演武と毎年恒例の劇も行います。' },
+            { id: 'stage_baseball', group: '中学野球部', title: '先生対生徒ガチンコ野球対決', img: '先生対生徒ガチンコ野球対決.png', loc: 'グラウンド (1階)', floorKey: 'junior_1F', groupKey: 'club', type: 'exhibition', d1: '13:00 - 16:00', d2: 'なし', isStage: true, desc: '年に一度のスペシャルマッチ! いつもは教壇に立つ先生たちが、グラウンドで生徒チームと真剣勝負を繰り広げます。（13:00〜16:00）' },
+            { id: 'stage_handball', group: 'ハンドボール部', title: 'ハンドボール部 紅白戦 & OB戦', img: '紅白戦.png', loc: 'ハンドボールコート (1階)', floorKey: 'junior_1F', groupKey: 'club', type: 'exhibition', d1: '12:00 - 16:00', d2: '12:00 - 16:00', isStage: true, desc: 'ハンドボールコートで紅白戦およびOBと練習試合を行います。ぜひ見に来てください。（12:00〜16:00）' },
+
+            /* その他（ステージ・教員・有志・PTA展示・図書委員会） */
+            { id: 'other_library', group: '図書委員会', title: '古本市', img: '古本一.png', loc: '共通棟2階 図書館', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年も古本市を開催します。ラノベ/小説/雑誌/海外小説など、沢山取り揃えていますので、ぜひ足を運んでみて下さい。' },
+            { id: 'stage_teachers', group: '教員企画', title: "Johoku teacher's Live", img: '教員企画.png', loc: '中学視聴覚室 (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', isStage: true, desc: '城北の先生による、城北の先生の自己満足のためのLiveパフォーマンス。普段見ることのないロックな先生の姿は如何ですか？' },
+            { id: 'other_shodo_teacher', group: '教員企画(書道)', title: '城北書道展', img: '書道展示.png', loc: '書道室 (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。' },
+            { id: 'other_rekishi_sogo', group: '歴史総合', title: '歴史総合(2025)', img: '歴史総合(2025).png', loc: 'ゼミ４２ (4階)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高１時の年度末レポートを、知的好奇心溢れる高２の強者達が志願して掲示する特別展。疑問に感じたら、何でもテーマになるぞ。' },
+            { id: 'other_pr', group: '広報', title: '広報委員会 城北アーカイブス', img: 'JOHOKU.png', loc: '数学ゼミ室 (3階)', floorKey: 'high_3F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '城北学園の歴史や、学校パンフレット・広報誌のバックナンバーを閲覧可能。' },
+            { id: 'other_h3a', group: '高校3年A組', title: '忌み屋', img: '忌み屋.png', loc: '高校棟 4階 (H3A)', floorKey: 'high_4F', groupKey: 'other', type: 'attraction', d1: '終日', d2: '終日', desc: '入ったら最後、生きては帰れない。油断した瞬間に襲いくる、圧倒的な絶望。……全ては自己責任。' },
+            { id: 'stage_solist', group: '城北のゆかいなソリストたち', title: '城北の愉快なソリストたち', img: '城北の愉快なソリストたち.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '09:15 - 10:45', d2: '09:15 - 10:15', isStage: true, desc: 'あの雲の尊さも、小夜時雨の虚しさも、全てが偽りだとしても、この一瞬だけは信じていたい。そうやって彼らは息を吸う。' },
+            { id: 'stage_karaoke', group: '生徒有志', title: 'のど自慢 (カラオケ大会)', img: 'のど自慢.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '11:55 - 12:25', d2: 'なし', isStage: true, desc: '今年はやります!のど自慢大会! 城北生が自慢の歌声を響かせます。一緒に盛りあがろう!' },
+            { id: 'stage_misscon', group: '生徒有志', title: 'Ms.JOHOKU CONTEST (ミスコン)', img: 'Ms.JOHOKU CONTEST.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: 'なし', d2: '11:10 - 12:40', isStage: true, desc: '今年もやります女装ミスコン!才色兼備、百花繚乱、容姿端麗、あらゆる美しい城北生が出演します!かわいい城北生を見逃すな!' },
+            { id: 'stage_koyasai', group: '文化祭実行委員会', title: '後夜祭', img: '後夜祭.png', loc: '多目的ホール (4階)', floorKey: 'common_4F', groupKey: 'other', type: 'exhibition', d1: 'なし', d2: '14:45 - 16:00', isStage: true, desc: '文化祭の締め‼ダンス部・軽音・教員バンドの熱演、IPPONや部門別ランキング発表！最後まで盛り上がろう!（14:45〜16:00）' },
+            
+            /* ① PTA各団体アイコン完全設定 */
+            { id: 'pta_shugei', group: 'PTA手芸の会', title: 'バザー オクトパスとほっこり雑貨', img: 'PTAバザー.png', loc: '会議室 (2階)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '城北伝統の合格祈願！置くと試験にパスできるオクトパス＆かわいいハンドメイド雑貨は売切れ必至！ご来店をお待ちしています。' },
+            { id: 'pta_art', group: 'PTAアート倶楽部', title: '憧れの名画にチャレンジ', img: 'PTAアートクラブ.png', loc: '会議室 (2階)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '素敵♥と思った名画の模写に挑戦しました。誰の作品か判るかな? 名画ぬり絵もできるよ。ぜひ遊びに来てね。' },
+            { id: 'pta_dokusho', group: 'PTA読書会', title: '〜源氏物語の世界へようこそ〜', img: 'PTA読書会.png', loc: '会議室 (2階)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: 'イケメン源氏と個性溢れる女君たち！恋愛だけじゃない、政治抗争、豊かな人間模様も満載。圧倒的な紫式部の世界観を感じよう❣' },
+            { id: 'pta_shokuiku', group: 'PTA食育の会', title: '新設サークル「食育の会」紹介展示', img: 'PTA食育の会.png', loc: '会議室 (2階)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年発足の食育の会です。手作り発酵食品の魅力を大公開!美味しい、楽しいだけじゃない。なるほど!の詰まった世界へようこそ。' },
+            { id: 'stage_primavera', group: 'PTAコーラス プリマヴェーラ', title: '秋の調べ ～響き合う心〜', img: 'PTAコーラスの会.png', loc: '講堂 (1階)', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '10:50 - 11:50', d2: 'なし', isStage: true, desc: '響き合う声に想いを重ね、心を込めて歌います。音楽の彩るひとときをお楽しみください。（9/26 10:50〜11:50 講堂にて発表）' }
+        ];
+ 
+        const generalCafeData = [
+            { name: '城北スペシャルプレート (ハンバーグ・エビフライ・グラタン)', price: '¥750' },
+            { name: '唐揚げ丼甘辛たれ', price: '¥490' },
+            { name: 'カツカレー', price: '¥490' },
+            { name: 'カレーライス, ハヤシライス', price: '¥400' },
+            { name: '醤油ラーメン', price: '¥410' }
+        ];
+
+        const jloungeData = [
+            { name: 'バターメロンパン', price: '¥250' },
+            { name: 'チョココロネ', price: '¥250' },
+            { name: 'トマトピザ', price: '¥250' },
+            { name: '焼きカレーパン', price: '¥250' },
+            { name: 'ボルドー・カヌレ', price: '¥300' },
+            { name: 'ガトーショコラ・クラシック', price: '¥300' },
+            { name: '限定 城北グッズ各種', price: '売場にて案内' }
+        ];
+ 
+        /* キッチンカーデータ */
+        const kcarData = [
+            { name: 'COOKUS', file: 'COOKUS.png', label: 'SWEETS & DRINKS', desc: '11種類の味を選べてアイスやホイップクリームのトッピングができる可愛らしくサクサクもちもち食感の新感覚スイーツです。', allergy: '卵・乳・小麦' },
+            { name: '多幸屋', file: '多幸屋.png', label: 'TAKOYAKI & YAKISOBA', desc: '多幸屋のたこ焼は外はカリっと、中はトロ〜り、厳選されたタコを使用いた‼︎タコヤキです！', allergy: '卵・乳・小麦' },
+            { name: 'M.H Kitchen', file: 'M.H Kitchen.png', label: 'BEEF', desc: '当店の牛ハラミは自社独自の低温調理にて余分な脂をなくしてどなた様でも食べやすい逸品となります。', allergy: '牛・豚・鶏・乳' },
+            { name: 'ROCKET CHICKEN', file: 'ROCKET CHICKEN.png', label: 'ORIGINAL CHICKEN', desc: '数十種類のスパイスを使った、サクふわジューシーで軽いチキン！油っぽさを抑え、女性や子どもにも食べやすい味わいです。学生さんは学割でお得に！', allergy: '店頭にて一覧表を掲示' },
+            { name: 'いきなりステーキ', file: 'いきなりステーキ.png', label: 'STEAK', desc: '『いきなりステーキ』のサーロインステーキや牛肉100％のハンバーグをリーズナブルな価格で提供しています!', allergy: '卵・乳・小麦' },
+            { name: 'ふるーつなのに', file: 'ふるーつなのに.png', label: 'SWEETS', desc: '旬のフルーツを贅沢に使用。見た目も味わいもこだわったいちご飴と、スムージーです。', allergy: '卵・乳・小麦' }
+        ];
+ 
+        const typeLabels = { 'attraction': 'アトラクション', 'exhibition': '展示・公演' };
+
+        /* 全企画を統合したルックアップ辞書 */
+        const allProjectsLookup = {};
+ 
+        function generateClassCards() {
+            try {
+                const groupMap = {
+                    'm1': document.getElementById('container-m1'),
+                    'm2': document.getElementById('container-m2'),
+                    'm3': document.getElementById('container-m3'),
+                    'h1': document.getElementById('container-h1'),
+                    'h2': document.getElementById('container-h2'),
+                    'club': document.getElementById('container-club'),
+                    'other': document.getElementById('container-other')
+                };
+     
+                // クラス企画カード生成
+                const allClasses = [...juniorClasses, ...seniorClasses];
+                allClasses.forEach(className => {
+                    const custom = classProjectsCustomData[className] || {};
+                    const cardType = custom.type || 'exhibition';
+                    const label = typeLabels[cardType] || '展示・公演';
+                    const title = custom.title || `${className} の展示企画`;
+                    const loc = custom.loc || `${className} 教室`;
+                    const desc = custom.desc || `${className}クラス全員で作り上げた特設体験展示です。`;
+                    const gKey = custom.groupKey || 'm1';
+                    const imgSrc = custom.img || '';
+                    const pId = custom.id || `c_${className.toLowerCase()}`;
+                    const d1 = custom.d1 || '終日';
+                    const d2 = custom.d2 || '終日';
+                    const statusBadge = custom.statusBadge || '';
+                    const targetContainer = groupMap[gKey];
+
+                    const projObj = {
+                        id: pId, group: className, title: title, loc: loc, desc: desc, type: cardType, img: imgSrc, d1: d1, d2: d2, floorKey: custom.floorKey || '', statusBadge: statusBadge
+                    };
+                    allProjectsLookup[pId] = projObj;
+                    
+                    if(targetContainer) {
+                        const card = document.createElement('div');
+                        card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
+                        card.setAttribute('data-category', cardType);
+                        card.setAttribute('data-project-id', pId);
+                        card.onclick = () => openDetail(pId);
+                        
+                        card.innerHTML = `
+                            <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
+                            <div>
+                                <div class="flex justify-between items-center mb-3 pr-10">
+                                    <span class="inline-block bg-blue-50 text-[#0052cc] border border-blue-200 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
+                                    <span class="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-wider">${loc}</span>
+                                </div>
+                                <div class="flex justify-between items-start gap-4 mb-2">
+                                    <div>
+                                        <p class="text-2xl md:text-3xl font-black text-[#0052cc] tracking-wide mb-1 font-brush">${className}</p>
+                                    </div>
+                                    <div class="project-icon-placeholder">
+                                        ${getIconHtml(projObj)}
+                                    </div>
+                                </div>
+                                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${title}</h5>
+                            </div>
+                            
+                            <div class="card-meta-box">
+                                <div><span class="text-slate-400 block">Day1:</span><strong class="text-slate-800">${d1}</strong></div>
+                                <div><span class="text-slate-400 block">Day2:</span><strong class="text-slate-800">${d2}</strong></div>
+                            </div>
+                        `;
+                        targetContainer.appendChild(card);
+                    }
+                });
+     
+                // 部活・有志・その他企画カード生成
+                nonClassProjects.forEach(proj => {
+                    const label = typeLabels[proj.type] || '展示・公演';
+                    const imgSrc = proj.img || '';
+                    const gKey = proj.groupKey || 'other';
+                    const pId = proj.id || 'p_other';
+                    const d1 = proj.d1 || '終日';
+                    const d2 = proj.d2 || '終日';
+                    const statusBadge = proj.statusBadge || '';
+                    const targetContainer = groupMap[gKey];
+
+                    const projObj = {
+                        id: pId, group: proj.group, title: proj.title, loc: proj.loc, desc: proj.desc, type: proj.type, img: imgSrc, d1: d1, d2: d2, floorKey: proj.floorKey || '', isStage: proj.isStage, statusBadge: statusBadge
+                    };
+                    allProjectsLookup[pId] = projObj;
+                    
+                    if(targetContainer) {
+                        const card = document.createElement('div');
+                        card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
+                        card.setAttribute('data-category', proj.type);
+                        card.setAttribute('data-project-id', pId);
+                        card.onclick = () => openDetail(pId);
+        
+                        card.innerHTML = `
+                            <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
+                            <div>
+                                <div class="flex justify-between items-center mb-3 pr-10">
+                                    <span class="inline-block bg-blue-50 text-[#0052cc] border border-blue-200 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
+                                    <span class="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-wider">${proj.loc}</span>
+                                </div>
+                                <div class="flex justify-between items-start gap-4 mb-2">
+                                    <div>
+                                        <p class="text-xl md:text-2xl font-black text-[#0052cc] tracking-wide mb-1 font-brush">${proj.group}</p>
+                                    </div>
+                                    <div class="project-icon-placeholder">
+                                        ${getIconHtml(projObj)}
+                                    </div>
+                                </div>
+                                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${proj.title}</h5>
+                            </div>
+                            
+                            <div class="card-meta-box">
+                                <div><span class="text-slate-400 block">Day1:</span><strong class="text-slate-800">${d1}</strong></div>
+                                <div><span class="text-slate-400 block">Day2:</span><strong class="text-slate-800">${d2}</strong></div>
+                            </div>
+                        `;
+                        targetContainer.appendChild(card);
+                    }
+                });
+
+                // スライダー初期化
+                initPromoSlider();
+            } catch(e) {
+                console.error("Card generation error:", e);
+            }
+        }
+       
+        function generateFoodData() {
+            try {
+                const generalContainer = document.getElementById('cafe-general-list');
+                const jloungeContainer = document.getElementById('cafe-jlounge-list');
+                const kcarContainer = document.getElementById('food-kcar');
+               
+                if(generalContainer) {
+                    generalCafeData.forEach(c => {
+                        generalContainer.insertAdjacentHTML('beforeend', `
+                            <div class="bg-white border border-slate-200 p-6 rounded-2xl flex justify-between items-center shadow-sm hover:border-[#0052cc] transition">
+                                <span class="font-bold text-lg md:text-xl text-slate-900">${c.name}</span>
+                                <span class="font-black text-xl md:text-2xl text-[#0052cc] whitespace-nowrap">${c.price}</span>
+                            </div>
+                        `);
+                    });
+                }
+    
+                if(jloungeContainer) {
+                    jloungeData.forEach(j => {
+                        jloungeContainer.insertAdjacentHTML('beforeend', `
+                            <div class="bg-white border border-blue-100 p-6 rounded-2xl flex justify-between items-center shadow-sm hover:border-[#0070f3] transition">
+                                <span class="font-bold text-lg md:text-xl text-slate-900">${j.name}</span>
+                                <span class="font-black text-xl md:text-2xl text-[#0070f3] whitespace-nowrap">${j.price}</span>
+                            </div>
+                        `);
+                    });
+                }
+               
+                if(kcarContainer) {
+                    kcarData.forEach(k => {
+                        kcarContainer.insertAdjacentHTML('beforeend', `
+                            <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:border-[#0052cc] transition flex flex-col">
+                                <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-slate-100 border-b border-slate-200 flex flex-col items-center justify-center text-slate-400 p-2 overflow-hidden relative">
+                                    <img src="${k.file}" alt="${k.name}" class="w-full h-full object-cover rounded-t-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="hidden flex-col items-center justify-center p-4 text-center">
+                                        <svg class="w-12 h-12 mb-1 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                        <span class="text-sm font-bold tracking-wider uppercase text-slate-500">${k.name} 写真</span>
+                                    </div>
+                                </div>
+                                <div class="p-6 md:p-8 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4 class="font-black text-2xl md:text-3xl text-[#0052cc] font-brush">${k.name}</h4>
+                                            <span class="text-xs bg-blue-50 text-[#0052cc] border border-blue-200 px-3 py-1 rounded-full font-bold uppercase tracking-wider">${k.label}</span>
+                                        </div>
+                                        <p class="text-base text-slate-600 leading-relaxed font-medium mb-5">${k.desc}</p>
+                                    </div>
+                                    <div class="pt-4 border-t border-slate-100 flex items-center gap-2">
+                                        <span class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-900 border border-amber-300 text-xs md:text-sm px-3 py-1.5 font-bold rounded-xl shadow-sm">
+                                            <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                            アレルギー情報: ${k.allergy}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    });
+                }
+            } catch(e) {
+                console.error("Food generation error:", e);
+            }
+        }
+
+        /* 桜・青い花びら生成 */
+        function createPetals() {
+            try {
+                const container = document.body;
+                const petalCount = 18;
+                for (let i = 0; i < petalCount; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = Math.random() * 8 + 6 + 'px';
+                    petal.style.height = Math.random() * 14 + 10 + 'px';
+                    petal.style.animationDuration = Math.random() * 8 + 7 + 's';
+                    petal.style.animationDelay = Math.random() * 5 + 's';
+                    container.appendChild(petal);
+                }
+            } catch(e) {
+                console.error("Petal creation error:", e);
+            }
+        }
+
+        /* 棟別マップ切り替えデータ & 連動企画リスト制御 */
+        const buildingFloors = {
+            'high': { name: '高校棟', floors: ['2F', '3F', '4F', '5F'] },
+            'common': { name: '共通棟', floors: ['2F', '3F', '4F', '5F', '6F'] },
+            'junior': { name: '中学棟', floors: ['1F', '2F', '3F', '4F'] }
+        };
+        let currentBuilding = 'high';
+        let currentFloor = '2F';
+
+        function switchBuilding(bKey, btnEl) {
+            currentBuilding = bKey;
+            document.querySelectorAll('.building-tab-btn').forEach(b => {
+                b.classList.remove('bg-[#0052cc]', 'text-white', 'shadow-sm');
+                b.classList.add('text-slate-600');
+            });
+            if(btnEl) {
+                btnEl.classList.remove('text-slate-600');
+                btnEl.classList.add('bg-[#0052cc]', 'text-white', 'shadow-sm');
+            }
+            renderFloorButtons();
+        }
+
+        function renderFloorButtons() {
+            const container = document.getElementById('floor-btn-container');
+            if(!container) return;
+            container.innerHTML = "";
+            const bData = buildingFloors[currentBuilding];
+            currentFloor = bData.floors[0];
+
+            bData.floors.forEach((f, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition ${idx === 0 ? 'bg-blue-50 border-[#0052cc] text-[#0052cc] font-black' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`;
+                btn.innerText = f;
+                btn.onclick = () => selectFloor(f, btn);
+                container.appendChild(btn);
+            });
+            updateMapDisplay();
+        }
+
+        function selectFloor(floor, btnEl) {
+            currentFloor = floor;
+            document.querySelectorAll('.floor-select-btn').forEach(b => {
+                b.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition bg-white border-slate-200 text-slate-600 hover:bg-slate-50';
+            });
+            if(btnEl) {
+                btnEl.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-black border transition bg-blue-50 border-[#0052cc] text-[#0052cc]';
+            }
+            updateMapDisplay();
+        }
+
+        function updateMapDisplay() {
+            const titleEl = document.getElementById('map-display-title');
+            const pTitleEl = document.getElementById('floor-projects-title');
+            const pContainer = document.getElementById('floor-projects-container');
+            const bName = buildingFloors[currentBuilding].name;
+            const floorKey = `${currentBuilding}_${currentFloor}`;
+
+            if(titleEl) {
+                titleEl.innerText = `${bName} ${currentFloor} フロアマップ`;
+            }
+            if(pTitleEl) {
+                pTitleEl.innerText = `${bName} ${currentFloor} の企画一覧`;
+            }
+            if(pContainer) {
+                pContainer.innerHTML = "";
+                const matchedProjects = Object.values(allProjectsLookup).filter(p => p.floorKey === floorKey);
+
+                if(matchedProjects.length === 0) {
+                    pContainer.innerHTML = `<span class="text-sm font-bold text-slate-400 py-2">このフロアには登録された企画がありません（特別教室・管理施設等）</span>`;
+                } else {
+                    matchedProjects.forEach(p => {
+                        const tag = document.createElement('button');
+                        tag.className = "group bg-slate-50 hover:bg-[#edf5ff] border border-slate-200 hover:border-[#0052cc] px-3.5 py-2 rounded-xl text-left transition flex items-center gap-2.5 shadow-sm";
+                        tag.onclick = () => openDetail(p.id);
+                        tag.innerHTML = `
+                            <span class="w-2 h-2 rounded-full bg-[#0052cc]"></span>
+                            <span class="text-xs font-black text-[#0052cc] whitespace-nowrap">${p.group}</span>
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-[#0052cc] whitespace-nowrap">${p.title}</span>
+                            <span class="text-[10px] text-slate-400 bg-white border border-slate-200 px-1.5 py-0.5 rounded ml-1 whitespace-nowrap">${p.loc}</span>
+                        `;
+                        pContainer.appendChild(tag);
+                    });
+                }
+            }
+        }
+
+        /* ⑤ 企画プロモーションスライダー（特製広告カード4種を先頭に配置） */
+        let promoIndex = 0;
+        let promoAutoTimer = null;
+
+        function initPromoSlider() {
+            const track = document.getElementById('promo-slider-track');
+            if(!track) return;
+            track.innerHTML = "";
+
+            // ⑤ 広告カードリスト
+            const adCards = [
+                { id: 'stage_karaoke', img: 'のど自慢広告.png', alt: 'のど自慢 カラオケ大会' },
+                { id: 'stage_dance', img: 'ダンス部広告.png', alt: 'ダンス部 explosive stage' },
+                { id: 'stage_misscon', img: 'ミスコン広告.png', alt: 'Ms.JOHOKU CONTEST ミスコン' },
+                { id: 'stage_shorinji', img: '少林寺拳法部広告.png', alt: '少林寺拳法部 演武会' }
+            ];
+
+            // 広告カードを先頭に追加
+            adCards.forEach(ad => {
+                const item = document.createElement('div');
+                item.className = "promo-card-item promo-ad-card aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer";
+                item.onclick = () => openDetail(ad.id);
+                item.innerHTML = `
+                    <div class="relative w-full h-full overflow-hidden">
+                        <img src="${ad.img}" alt="${ad.alt}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full text-white font-bold font-brush text-lg p-4\\'>${ad.alt}</div>'">
+                        <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-cyan-300">
+                            SPECIAL STAGE ↗
+                        </div>
+                    </div>
+                `;
+                track.appendChild(item);
+            });
+
+            // 既存の注目企画カードを追加
+            const keys = Object.keys(allProjectsLookup);
+            const featuredList = keys.slice(0, 16).map(k => allProjectsLookup[k]);
+
+            featuredList.forEach(p => {
+                const item = document.createElement('div');
+                item.className = "promo-card-item";
+                item.onclick = () => openDetail(p.id);
+                item.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-black text-[#0052cc] bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">${p.group}</span>
+                            <span class="text-[11px] bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full font-bold">#${typeLabels[p.type] || '企画'}</span>
+                        </div>
+                        <h5 class="text-lg font-black text-slate-900 font-brush leading-snug line-clamp-1 mb-1.5">${p.title}</h5>
+                        <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed font-medium mb-3">${p.desc}</p>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-[#0052cc] font-bold pt-2.5 border-t border-slate-100">
+                        <span class="text-slate-500 font-medium truncate max-w-[170px]">📍 ${p.loc}</span>
+                        <span class="underline hover:text-blue-700 whitespace-nowrap">詳細 ↗</span>
+                    </div>
+                `;
+                track.appendChild(item);
+            });
+
+            startPromoAutoScroll();
+        }
+
+        function updatePromoSlide() {
+            const track = document.getElementById('promo-slider-track');
+            if(!track) return;
+            const cardWidth = 340; // 320px + 20px gap
+            track.style.transform = `translateX(-${promoIndex * cardWidth}px)`;
+        }
+
+        function nextPromoSlide() {
+            const track = document.getElementById('promo-slider-track');
+            if(!track) return;
+            const max = Math.max(0, track.children.length - 2);
+            promoIndex = promoIndex >= max ? 0 : promoIndex + 1;
+            updatePromoSlide();
+            resetPromoAutoTimer();
+        }
+
+        function prevPromoSlide() {
+            const track = document.getElementById('promo-slider-track');
+            if(!track) return;
+            const max = Math.max(0, track.children.length - 2);
+            promoIndex = promoIndex <= 0 ? max : promoIndex - 1;
+            updatePromoSlide();
+            resetPromoAutoTimer();
+        }
+
+        function startPromoAutoScroll() {
+            if(promoAutoTimer) clearInterval(promoAutoTimer);
+            promoAutoTimer = setInterval(() => {
+                nextPromoSlide();
+            }, 3600);
+        }
+
+        function resetPromoAutoTimer() {
+            startPromoAutoScroll();
+        }
+
+        /* 確実なローダー解除関数 */
+        function hideLoader() {
+            document.body.classList.add('loaded');
+            const loader = document.getElementById('opening-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+                setTimeout(() => { 
+                    loader.style.display = 'none'; 
+                }, 500);
+            }
+        }
+ 
+        window.addEventListener('DOMContentLoaded', () => {
+            getDeviceId();
+            generateClassCards();
+            generateFoodData();
+            createPetals();
+            renderFloorButtons();
+        });
+ 
+        window.addEventListener('load', () => {
+            setTimeout(hideLoader, 800);
+            const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }), {threshold: 0.08});
+            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        });
+
+        /* 何もしなくても2秒（2000ms）で絶対に自動解除される安全タイマー */
+        setTimeout(hideLoader, 2000);
+ 
+        function switchTab(day) {
+            const e = window.event || arguments.callee.caller.arguments[0];
+            document.querySelectorAll('.schedule-tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(e && e.currentTarget) e.currentTarget.classList.add('active');
+            document.querySelectorAll('.schedule-content').forEach(c => {
+                c.classList.remove('active');
+                c.classList.add('hidden');
+            });
+            const target = document.getElementById('schedule-' + day);
+            if(target) {
+                target.classList.remove('hidden');
+                target.classList.add('active');
+            }
+        }
+       
+        function switchFoodTab(type) {
+            const e = window.event || arguments.callee.caller.arguments[0];
+            document.querySelectorAll('.food-tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(e && e.currentTarget) e.currentTarget.classList.add('active');
+           
+            const cafeEl = document.getElementById('food-cafe');
+            const kcarEl = document.getElementById('food-kcar');
+            if(cafeEl) cafeEl.classList.add('hidden');
+            if(kcarEl) kcarEl.classList.add('hidden');
+           
+            const target = document.getElementById(`food-${type}`);
+            if(target) target.classList.remove('hidden');
+        }
+ 
+        function toggleMenu() { 
+            const menu = document.getElementById('side-menu');
+            if(menu) menu.classList.toggle('active'); 
+        }
+
+        function toggleGroupSection(groupKey) {
+            const sec = document.getElementById('section-' + groupKey);
+            if(sec) sec.classList.toggle('is-open');
+        }
+ 
+        function setCategory(cat, btnEl) {
+            currentFilterCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('bg-[#0052cc]', 'text-white', 'bg-amber-500');
+                if (b.getAttribute('data-filter') === 'favorite') {
+                    b.className = 'filter-btn bg-white text-amber-600 border border-amber-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-50';
+                } else {
+                    b.className = 'filter-btn bg-white text-slate-600 border border-slate-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-50';
+                }
+            });
+            if(btnEl) {
+                if (cat === 'favorite') {
+                    btnEl.className = 'filter-btn bg-amber-500 text-white px-5 py-2 text-sm font-bold rounded-full shadow-sm';
+                } else {
+                    btnEl.className = 'filter-btn bg-[#0052cc] text-white px-5 py-2 text-sm font-bold rounded-full shadow-sm';
+                }
+            }
+            filterProjects();
+        }
+ 
+        function filterProjects() {
+            const input = document.getElementById('project-search');
+            const query = input ? input.value.toLowerCase() : '';
+            
+            document.querySelectorAll('.project-card').forEach(card => {
+                const content = card.textContent.toLowerCase();
+                const cardCat = card.getAttribute('data-category');
+                const pId = card.getAttribute('data-project-id');
+                const matchQuery = content.includes(query);
+                
+                let matchCat = false;
+                if (currentFilterCategory === 'all') {
+                    matchCat = true;
+                } else if (currentFilterCategory === 'favorite') {
+                    matchCat = isFavorite(pId);
+                } else {
+                    matchCat = (cardCat === currentFilterCategory);
+                }
+                
+                if (matchQuery && matchCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+ 
+        /* 企画詳細モーダル表示（完全修正版：動画あり/なしの排他切り替え・属性＆スタイル初期化） */
+        function openDetail(pId, explicitGroup, explicitTitle, explicitLoc, explicitDesc, explicitType, explicitImg, explicitD1, explicitD2, explicitIsStage) {
+            currentProjectId = pId;
+
+            // ルックアップより完全な情報を取得
+            const lp = allProjectsLookup[pId] || {};
+            const group = explicitGroup || lp.group || '';
+            const title = explicitTitle || lp.title || '';
+            const loc = explicitLoc || lp.loc || '';
+            const desc = explicitDesc || lp.desc || '';
+            const type = explicitType || lp.type || 'exhibition';
+            const imgSrc = (explicitImg !== undefined && explicitImg !== '') ? explicitImg : (lp.img || '');
+            const d1 = explicitD1 || lp.d1 || '終日 (09:00 - 16:00)';
+            const d2 = explicitD2 || lp.d2 || '終日 (09:00 - 16:00)';
+            const isStage = explicitIsStage !== undefined ? explicitIsStage : !!lp.isStage;
+            const statusBadge = lp.statusBadge || '';
+
+            currentProjectTitle = title;
+
+            const modalTitle = document.getElementById('modal-title');
+            const modalLoc = document.getElementById('modal-location');
+            const modalDesc = document.getElementById('modal-desc');
+            const tagEl = document.getElementById('modal-tag');
+            const modal = document.getElementById('detail-modal');
+
+            const timeD1 = document.getElementById('modal-time-day1');
+            const timeD2 = document.getElementById('modal-time-day2');
+            const timetableBtn = document.getElementById('modal-timetable-btn');
+
+            const videoSection = document.getElementById('modal-video-section');
+            const videoTabs = document.getElementById('modal-video-tabs');
+            const longWrapper = document.getElementById('long-video-wrapper');
+            const shortWrapper = document.getElementById('short-video-wrapper');
+            const imageBox = document.getElementById('modal-image-box');
+            const bigImg = document.getElementById('modal-big-img');
+            const customPlaceholder = document.getElementById('modal-custom-placeholder');
+
+            const iframeLong = document.getElementById('iframe-long');
+            const placeholderLong = document.getElementById('placeholder-long');
+            const dateLong = document.getElementById('release-date-long');
+
+            const iframeShort = document.getElementById('iframe-short');
+            const placeholderShort = document.getElementById('placeholder-short');
+            const dateShort = document.getElementById('release-date-short');
+
+            // 【完全初期化】前回の画像・動画iframe・alt・インラインスタイルの残留を確実にリセット
+            if (videoSection) {
+                videoSection.classList.add('hidden');
+                videoSection.style.display = '';
+            }
+            if (imageBox) {
+                imageBox.classList.add('hidden');
+                imageBox.style.display = '';
+            }
+            if (bigImg) {
+                bigImg.src = "";
+                bigImg.alt = "";
+                bigImg.classList.add('hidden');
+            }
+            if (customPlaceholder) {
+                customPlaceholder.classList.add('hidden');
+                customPlaceholder.innerHTML = "";
+            }
+            if (iframeLong) {
+                iframeLong.src = "";
+                iframeLong.classList.add('hidden');
+            }
+            if (iframeShort) {
+                iframeShort.src = "";
+                iframeShort.classList.add('hidden');
+            }
+
+            if(modalTitle) modalTitle.innerText = title;
+            if(modalLoc) modalLoc.innerText = loc.includes(group) ? loc : `${loc} (${group})`;
+            if(modalDesc) modalDesc.innerText = desc;
+            if(tagEl) tagEl.innerText = "# " + (typeLabels[type] || '企画');
+
+            if(timeD1) timeD1.innerText = d1 || '終日 (09:00 - 16:00)';
+            if(timeD2) timeD2.innerText = d2 || '終日 (09:00 - 16:00)';
+
+            if (timetableBtn) {
+                if (isStage || loc.includes('講堂') || loc.includes('多目的ホール') || loc.includes('中庭') || loc.includes('視聴覚室')) {
+                    timetableBtn.classList.remove('hidden');
+                } else {
+                    timetableBtn.classList.add('hidden');
+                }
+            }
+
+            updateVoteButtonUI();
+            updateAllFavButtons();
+
+            const sData = videoScheduleData[group] || videoScheduleData[title];
+
+            /* 【動画公開団体】動画枠のみを表示（画像枠は完全に非表示・存在しない状態にする） */
+            if(sData && sData.mode !== 'none') {
+                if(videoSection) videoSection.classList.remove('hidden');
+
+                const targetDateText = `${sData.date} 公開予定！`;
+                const longUrl = sData.longUrl || "";
+                const shortUrl = sData.shortUrl || "";
+
+                if(sData.mode === 'both') {
+                    if(videoTabs) videoTabs.classList.remove('hidden');
+                    switchModalVideoTab('long');
+                } else if(sData.mode === 'short') {
+                    if(videoTabs) videoTabs.classList.add('hidden');
+                    if(longWrapper) longWrapper.classList.add('hidden');
+                    if(shortWrapper) shortWrapper.classList.remove('hidden');
+                } else {
+                    if(videoTabs) videoTabs.classList.add('hidden');
+                    if(longWrapper) longWrapper.classList.remove('hidden');
+                    if(shortWrapper) shortWrapper.classList.add('hidden');
+                }
+
+                if(longUrl) {
+                    if(iframeLong) { iframeLong.src = longUrl; iframeLong.classList.remove('hidden'); }
+                    if(placeholderLong) placeholderLong.classList.add('hidden');
+                } else {
+                    if(iframeLong) { iframeLong.src = ""; iframeLong.classList.add('hidden'); }
+                    if(placeholderLong) placeholderLong.classList.remove('hidden');
+                    if(dateLong) dateLong.innerText = targetDateText;
+                }
+
+                if(shortUrl) {
+                    if(iframeShort) { iframeShort.src = shortUrl; iframeShort.classList.remove('hidden'); }
+                    if(placeholderShort) placeholderShort.classList.add('hidden');
+                } else {
+                    if(iframeShort) { iframeShort.src = ""; iframeShort.classList.add('hidden'); }
+                    if(placeholderShort) placeholderShort.classList.remove('hidden');
+                    if(dateShort) dateShort.innerText = targetDateText;
+                }
+
+            } else {
+                /* 【動画なし団体】動画枠は非表示にし、アイコン・状態バッジ枠のみを表示 */
+                if(imageBox) {
+                    imageBox.classList.remove('hidden');
+                    
+                    if (statusBadge === 'safety_hidden') {
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `
+                                <div class="w-16 h-16 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mb-3">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                </div>
+                                <h5 class="text-xl font-black text-slate-800 font-brush mb-1">安全上非表示</h5>
+                                <p class="text-xs text-slate-500 font-bold">著作権・規約配慮のためアイコン表示を制限しています</p>
+                            `;
+                        }
+                    } else if (statusBadge === 'not_submitted') {
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `
+                                <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mb-3">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                </div>
+                                <h5 class="text-xl font-black text-slate-800 font-brush mb-1">未提出</h5>
+                                <p class="text-xs text-slate-500 font-bold">企画アイコン画像は現在未提出です</p>
+                            `;
+                        }
+                    } else if(bigImg && imgSrc) {
+                        bigImg.classList.remove('hidden');
+                        bigImg.src = imgSrc;
+                        bigImg.alt = title;
+                    } else {
+                        if (customPlaceholder) {
+                            customPlaceholder.classList.remove('hidden');
+                            customPlaceholder.innerHTML = `<span class="text-4xl font-black font-brush text-[#0052cc]">${group || title}</span>`;
+                        }
+                    }
+                }
+            }
+           
+            if(modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function goToTimetableFromModal() {
+            closeDetail();
+            switchPage('timetable');
+        }
+
+        /* 投票 / 取り消しボタンのUI状態更新 */
+        function updateVoteButtonUI() {
+            const btn = document.getElementById('vote-action-btn');
+            const note = document.getElementById('vote-note-text');
+            if(!btn) return;
+
+            if (isProjectVoted(currentProjectId)) {
+                btn.disabled = false;
+                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-slate-600 hover:bg-slate-700 text-white transition shadow-md flex items-center justify-center gap-2";
+                btn.innerHTML = `<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg><span>投票を取り消す</span>`;
+                if(note) note.innerText = "※現在この企画に投票済みです（クリックで取り消し可能）";
+            } else {
+                btn.disabled = false;
+                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-[#0052cc] hover:bg-[#0070f3] text-white transition shadow-md hover:shadow-lg flex items-center justify-center gap-2";
+                btn.innerHTML = `<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>この企画に投票する</span>`;
+                if(note) note.innerText = "※同一端末から1つの企画につき1票まで投票できます";
+            }
+        }
+
+        /* 投票 / 取り消し実行ハンドラー（API・Supabase連携完全維持） */
+        async function handleVoteAction() {
+            const btn = document.getElementById('vote-action-btn');
+            if (!currentProjectId) return;
+
+            const deviceId = getDeviceId();
+            const isVoted = isProjectVoted(currentProjectId);
+            const actionType = isVoted ? 'unvote' : 'vote';
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span><span>通信中...</span>`;
+
+            try {
+                const res = await fetch('/api/vote', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        projectId: currentProjectId,
+                        deviceId: deviceId,
+                        action: actionType
+                    })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    if (actionType === 'vote') {
+                        markProjectAsVoted(currentProjectId);
+                        alert(`「${currentProjectTitle}」への投票が完了しました！\nご投票ありがとうございました！`);
+                    } else {
+                        unmarkProjectAsVoted(currentProjectId);
+                        alert(`「${currentProjectTitle}」への投票を取り消しました。`);
+                    }
+                    updateVoteButtonUI();
+                } else if (res.status === 409) {
+                    markProjectAsVoted(currentProjectId);
+                    updateVoteButtonUI();
+                    alert('この企画には既に投票済みです。');
+                } else {
+                    alert('処理に失敗しました。電波の良い場所で再度お試しください。');
+                    updateVoteButtonUI();
+                }
+            } catch (err) {
+                console.error('Vote action error:', err);
+                alert('通信エラーが発生しました。ネットワーク接続をご確認ください。');
+                updateVoteButtonUI();
+            }
+        }
+
+        function switchModalVideoTab(mode) {
+            const longWrapper = document.getElementById('long-video-wrapper');
+            const shortWrapper = document.getElementById('short-video-wrapper');
+            const btnLong = document.getElementById('tab-btn-long');
+            const btnShort = document.getElementById('tab-btn-short');
+
+            if(mode === 'long') {
+                if(longWrapper) longWrapper.classList.remove('hidden');
+                if(shortWrapper) shortWrapper.classList.add('hidden');
+                if(btnLong) { btnLong.className = "flex-1 py-1.5 rounded-xl text-xs font-black bg-[#0052cc] text-white transition"; }
+                if(btnShort) { btnShort.className = "flex-1 py-1.5 rounded-xl text-xs font-black bg-slate-100 text-slate-600 transition"; }
+            } else {
+                if(longWrapper) longWrapper.classList.add('hidden');
+                if(shortWrapper) shortWrapper.classList.remove('hidden');
+                if(btnLong) { btnLong.className = "flex-1 py-1.5 rounded-xl text-xs font-black bg-slate-100 text-slate-600 transition"; }
+                if(btnShort) { btnShort.className = "flex-1 py-1.5 rounded-xl text-xs font-black bg-[#0052cc] text-white transition"; }
+            }
+        }
+ 
+        function closeDetail() {
+            const modal = document.getElementById('detail-modal');
+            if(modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+            const if1 = document.getElementById('iframe-long');
+            const if2 = document.getElementById('iframe-short');
+            if(if1) if1.src = "";
+            if(if2) if2.src = "";
+        }
+
+        function switchPage(pageId) {
+            const pages = ['home', 'about', 'timetable', 'groups', 'vote', 'food', 'map', 'examinee'];
+            
+            pages.forEach(p => {
+                const el = document.getElementById('page-' + p);
+                if(el) {
+                    el.classList.add('hidden');
+                    el.classList.remove('page-slide-in');
+                }
+            });
+            
+            const targetEl = document.getElementById('page-' + pageId);
+            if(targetEl) {
+                targetEl.classList.remove('hidden');
+                setTimeout(() => targetEl.classList.add('page-slide-in'), 10);
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn-' + pageId).forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
