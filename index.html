@@ -1,12 +1,482 @@
-<!-- オープニングローダー -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>第85回 城北祭 | 男前 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+--poster-midnight: #040d1a;
+--poster-deep-navy: #081b3a;
+--poster-indigo: #0d3268;
+--poster-blue: #1d4ed8;
+--poster-cyan: #00f0ff;
+--poster-sky: #38bdf8;
+--poster-light: #60a5fa;
+--pure-white: #ffffff;
+--slate-bg: #edf3fa;
+--border-soft: #cbe0f8;
+}
+*, ::before, ::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        background-color: var(--slate-bg);
+        color: #0f172a;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 0;
+    }
+
+    .font-brush {
+        font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    }
+
+    /* ポスターの夜空・星彩・サイバーグリッド背景 */
+    .bg-sky-canvas {
+        background: 
+            radial-gradient(circle at 88% 12%, rgba(0, 240, 255, 0.16) 0%, transparent 45%),
+            radial-gradient(circle at 12% 35%, rgba(29, 78, 216, 0.15) 0%, transparent 55%),
+            radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+            linear-gradient(180deg, #ffffff 0%, #edf5fc 35%, #e1eefa 75%, #d4e7f8 100%);
+        background-attachment: fixed;
+    }
+
+    .custom-page-bg {
+        background: transparent;
+        position: relative;
+    }
+
+    /* 青い花びら・光粒子エフェクト */
+    .petal {
+        position: fixed;
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.85) 0%, rgba(29, 78, 216, 0.85) 100%);
+        border-radius: 80% 0 80% 80%;
+        pointer-events: none;
+        z-index: 1;
+        animation: fall linear infinite;
+        transform-origin: center;
+        opacity: 0.65;
+        will-change: transform, opacity;
+        filter: drop-shadow(0 2px 6px rgba(0, 240, 255, 0.35));
+    }
+    @keyframes fall {
+        0% { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(0.6); opacity: 0; }
+        15% { opacity: 0.85; }
+        85% { opacity: 0.85; }
+        100% { transform: translate3d(130px, 105vh, 0) rotate(480deg) scale(1.05); opacity: 0; }
+    }
+
+    /* オープニングローダー */
+    #opening-loader {
+        position: fixed; inset: 0; z-index: 10000;
+        background: #040d1a;
+        color: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1), transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        will-change: opacity, transform;
+        cursor: pointer;
+    }
+    .loaded #opening-loader {
+        opacity: 0 !important;
+        transform: scale(1.05);
+        pointer-events: none !important;
+    }
+
+    .loader-logo-anim {
+        animation: heroLogoPulse 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+        filter: drop-shadow(0 16px 36px rgba(0, 240, 255, 0.45));
+        will-change: transform, filter;
+    }
+    @keyframes heroLogoPulse {
+        0% { transform: scale(0.92) translateY(0); filter: drop-shadow(0 8px 18px rgba(29, 78, 216, 0.35)); }
+        100% { transform: scale(1.04) translateY(-8px); filter: drop-shadow(0 20px 45px rgba(0, 240, 255, 0.65)); }
+    }
+
+    /* ヒーローエリア */
+    .hero-container {
+        position: relative;
+        width: 100%;
+        min-height: calc(100vh - 76px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        overflow: hidden;
+        background-color: #040d1a;
+    }
+    .hero-bg-img {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: 75% center;
+        opacity: 1;
+        z-index: 2;
+    }
+    .hero-gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(4,13,26,0.92) 0%, rgba(4,13,26,0.72) 48%, rgba(4,13,26,0.2) 85%);
+        z-index: 3;
+    }
+
+    @media (max-width: 768px) {
+        .hero-bg-img {
+            object-position: 68% center;
+        }
+        .hero-gradient-overlay {
+            background: linear-gradient(180deg, rgba(4,13,26,0.88) 0%, rgba(4,13,26,0.5) 50%, rgba(4,13,26,0.92) 100%);
+        }
+    }
+
+    @keyframes pageFadeIn {
+        from { opacity: 0; transform: translate3d(0, 10px, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+    .page-slide-in {
+        animation: pageFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* スクロールアニメーション */
+    .reveal { 
+        opacity: 0; 
+        transform: translate3d(0, 32px, 0);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+    }
+    .reveal.active { 
+        opacity: 1; 
+        transform: translate3d(0, 0, 0); 
+    }
+
+    .nav-btn {
+        position: relative;
+        padding: 0.6rem 0.9rem;
+        font-weight: 800;
+        font-size: 0.92rem;
+        letter-spacing: 0.04em;
+        color: #334155;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+    .nav-btn::after {
+        content: ''; position: absolute; bottom: 0px; left: 50%;
+        width: 0; height: 3px;
+        background: linear-gradient(90deg, #00f0ff, #1d4ed8);
+        border-radius: 2px;
+        transition: width 0.25s ease;
+        transform: translateX(-50%);
+    }
+    .nav-btn:hover { color: #1d4ed8; }
+    .nav-btn:hover::after, .nav-btn.active::after { width: 80%; }
+    .nav-btn.active { color: #1d4ed8; font-weight: 900; }
+
+    #side-menu {
+        position: fixed; top: 0; right: -360px; width: 360px; height: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        z-index: 9000; transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        border-left: 3px solid #1d4ed8;
+        padding: 80px 32px;
+        box-shadow: -12px 0 35px rgba(4, 13, 26, 0.25);
+    }
+    #side-menu.active { right: 0; }
+    .menu-link {
+        display: block; font-size: 1.15rem; font-weight: 800;
+        margin-bottom: 1.25rem; letter-spacing: 0.08em;
+        color: #1e293b; transition: transform 0.2s ease, color 0.2s ease;
+        border: none; background: transparent; cursor: pointer;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 0.6rem;
+    }
+    .menu-link:hover { color: #1d4ed8; transform: translateX(6px); }
+
+    .project-card { 
+        position: relative;
+        background: #ffffff;
+        border: 1px solid var(--border-soft);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(8, 27, 58, 0.06);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+        cursor: pointer;
+        overflow: hidden;
+        will-change: transform;
+    }
+    .project-card::before {
+        content: '';
+        position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+        background: linear-gradient(180deg, #00f0ff 0%, #1d4ed8 100%);
+        transition: width 0.25s ease;
+    }
+    .project-card:hover { 
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(29, 78, 216, 0.18);
+        border-color: #60a5fa;
+    }
+    .project-card:hover::before { width: 6px; }
+
+    .fav-star-btn {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 10;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+        color: #94a3b8;
+        cursor: pointer;
+    }
+    .fav-star-btn:hover {
+        transform: scale(1.15);
+        background: #fef9c3;
+        border-color: #fde047;
+        color: #eab308;
+    }
+    .fav-star-btn.is-fav {
+        background: #fef08a;
+        border-color: #eab308;
+        color: #ca8a04;
+        box-shadow: 0 2px 10px rgba(234, 179, 8, 0.4);
+    }
+
+    .project-icon-placeholder {
+        width: 64px; height: 64px;
+        background: #edf5ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        overflow: hidden;
+        color: #1d4ed8; font-weight: 900;
+    }
+    .project-icon-img {
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center;
+    }
+
+    .card-meta-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 11px;
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 12px;
+    }
+
+    /* タイムテーブル */
+    .timetable-container {
+        display: grid;
+        grid-template-columns: 85px repeat(5, minmax(180px, 1fr));
+        gap: 1px;
+        background: #cbd5e1;
+        border: 1px solid #cbd5e1;
+        min-width: 980px;
+        border-radius: 14px;
+        overflow: visible;
+        box-shadow: 0 6px 24px rgba(4, 13, 26, 0.08);
+    }
+    .timetable-header {
+        background: #081b3a;
+        color: #ffffff;
+        padding: 1.15rem 0.5rem;
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.95rem;
+        position: sticky; top: 0; z-index: 10;
+    }
+    .timetable-header.time-col-head {
+        position: sticky; left: 0; z-index: 25; background: #040d1a;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+    }
+    .time-col {
+        position: sticky; left: 0; z-index: 20;
+        background: #f8fafc;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.06);
+    }
+    .time-label {
+        background: #f8fafc;
+        color: #475569;
+        font-size: 12px;
+        font-weight: 800;
+        height: 100px;
+        display: flex; align-items: flex-start; justify-content: center;
+        padding-top: 6px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .venue-column {
+        background: #ffffff;
+        position: relative;
+        height: 700px;
+    }
+    .event-block {
+        position: absolute;
+        left: 4px; right: 4px;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-left: 4px solid #1d4ed8;
+        border-radius: 8px;
+        padding: 0.55rem;
+        font-size: 12px;
+        box-shadow: 0 2px 8px rgba(29, 78, 216, 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .event-block:hover {
+        background: #ffffff;
+        border-color: #1d4ed8;
+        transform: scale(1.02);
+        z-index: 15;
+        box-shadow: 0 8px 20px rgba(0, 240, 255, 0.25);
+    }
+
+    /* アコーディオン */
+    .group-accordion-header {
+        background: #ffffff;
+        border: 1px solid var(--border-soft);
+        border-radius: 16px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+    .group-accordion-header:hover {
+        border-color: #1d4ed8;
+        background: #f4f8fe;
+    }
+    .group-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group-section.is-open .group-content {
+        max-height: 40000px;
+    }
+    .icon-plus {
+        transition: transform 0.3s ease;
+        font-weight: 700;
+        color: #1d4ed8;
+    }
+    .group-section.is-open .icon-plus {
+        transform: rotate(45deg);
+    }
+
+    .search-input {
+        background: #ffffff;
+        border: 2px solid #cbd5e1;
+        border-radius: 9999px;
+        padding: 0.9rem 1.8rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .search-input:focus {
+        border-color: #1d4ed8;
+        box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.2);
+    }
+
+    .filter-btn {
+        transition: all 0.2s ease;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .schedule-tab-btn.active, .food-tab-btn.active {
+        color: #1d4ed8;
+        border-bottom: 3px solid #1d4ed8;
+    }
+
+    /* 企画プロモーションスライダー */
+    .promo-slider-wrap {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 12px 0;
+    }
+    .promo-slider-track {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+        align-items: stretch;
+    }
+    .promo-card-item {
+        flex: 0 0 310px;
+        width: 310px;
+        height: 220px;
+        background: #ffffff;
+        border: 1px solid var(--border-soft);
+        border-radius: 22px;
+        padding: 18px 20px;
+        cursor: pointer;
+        text-align: left;
+        box-shadow: 0 6px 20px rgba(8, 27, 58, 0.08);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .promo-card-item::before {
+        content: '';
+        position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+        background: linear-gradient(180deg, #00f0ff 0%, #1d4ed8 100%);
+    }
+    .promo-card-item:hover {
+        transform: translateY(-5px);
+        border-color: #60a5fa;
+        box-shadow: 0 14px 32px rgba(29, 78, 216, 0.2);
+    }
+
+    .promo-ad-card {
+        padding: 0 !important;
+        border: 1px solid #60a5fa;
+        background: #040d1a;
+    }
+    .promo-ad-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+    }
+    .promo-ad-card:hover img {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body class="bg-sky-canvas text-slate-900">
+    <!-- オープニングローダー -->
 <div id="opening-loader" onclick="hideLoader()">
     <div class="text-center px-6 flex flex-col items-center justify-center pointer-events-none">
         <div class="relative flex items-center justify-center">
             <img src="最初.png" alt="第85回 城北祭 男前" class="loader-logo-anim w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain mx-auto" onerror="this.onerror=null; this.src='JOHOKU.png';">
         </div>
         <div class="mt-8 flex items-center gap-2 justify-center">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#00e5ff] animate-ping"></span>
-            <span class="text-xs md:text-sm tracking-[0.45em] text-[#00e5ff] uppercase font-black">JOHOKU FESTIVAL 2026</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#00f0ff] animate-ping"></span>
+            <span class="text-xs md:text-sm tracking-[0.45em] text-[#00f0ff] uppercase font-black">JOHOKU FESTIVAL 2026</span>
         </div>
     </div>
 </div>
@@ -67,8 +537,8 @@
         <div class="hero-gradient-overlay"></div>
 
         <div class="relative z-10 text-left px-6 sm:px-12 md:px-16 lg:px-24 py-12 md:py-20 max-w-[1440px] w-full mx-auto">
-            <div class="inline-block bg-[#040d1a]/80 backdrop-blur-md border border-cyan-400/40 px-4 md:px-6 py-1.5 rounded-full mb-4 md:mb-6 shadow-sm">
-                <span class="text-xs md:text-sm text-[#00e5ff] font-black tracking-[0.3em] uppercase whitespace-nowrap">JOHOKU FESTIVAL 2026</span>
+            <div class="inline-block bg-[#040d1a]/85 backdrop-blur-md border border-cyan-400/40 px-4 md:px-6 py-1.5 rounded-full mb-4 md:mb-6 shadow-sm">
+                <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase whitespace-nowrap">JOHOKU FESTIVAL 2026</span>
             </div>
             
             <p class="text-xl sm:text-2xl md:text-4xl tracking-[0.45em] text-cyan-200 mb-2 md:mb-3 font-brush font-bold whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
@@ -90,19 +560,19 @@
                 </div>
                 <div class="text-left pl-0 sm:pl-2">
                     <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block">Opening Hours</span>
-                    <span class="text-base md:text-xl font-black text-[#00e5ff] whitespace-nowrap">09:00 〜 16:00</span>
+                    <span class="text-base md:text-xl font-black text-[#00f0ff] whitespace-nowrap">09:00 〜 16:00</span>
                 </div>
             </div>
         </div>
 
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center pointer-events-none">
-            <span class="text-xs tracking-[0.3em] text-[#00e5ff] font-black block uppercase mb-1">SCROLL</span>
-            <svg class="w-5 h-5 mx-auto text-[#00e5ff] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <span class="text-xs tracking-[0.3em] text-[#00f0ff] font-black block uppercase mb-1">SCROLL</span>
+            <svg class="w-5 h-5 mx-auto text-[#00f0ff] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
     </section>
 
     <!-- テーマ「男前」セクション -->
-    <section class="reveal w-full bg-gradient-to-br from-[#040d1a] via-[#0b1e3b] to-[#08172e] py-16 md:py-24 text-center text-white shadow-xl relative overflow-hidden border-y border-blue-900/40">
+    <section class="reveal w-full bg-gradient-to-br from-[#040d1a] via-[#081b3a] to-[#041026] py-16 md:py-24 text-center text-white shadow-xl relative overflow-hidden border-y border-blue-900/40">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-400/20 via-transparent to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
             <span class="text-xs md:text-sm font-bold tracking-[0.6em] text-cyan-300 uppercase block mb-3">2026 THEME</span>
@@ -282,7 +752,7 @@
             </div>
 
             <!-- 文化祭実行委員長挨拶 -->
-            <div class="bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-sm border-t-4 border-t-[#00e5ff] flex flex-col">
+            <div class="bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-sm border-t-4 border-t-[#00f0ff] flex flex-col">
                 <div class="mb-6 border-b border-slate-100 pb-4">
                     <span class="text-xs md:text-sm text-[#0284c7] font-black tracking-widest uppercase block mb-1">文化祭実行委員会委員長</span>
                     <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush whitespace-nowrap">松本 成生</h4>
@@ -392,7 +862,7 @@
             </div>
 
             <!-- 発行情報 -->
-            <div class="mt-8 bg-gradient-to-br from-[#040d1a] via-[#0b1e3b] to-[#08172e] text-white rounded-3xl p-8 md:p-10 border border-blue-900/50 shadow-xl">
+            <div class="mt-8 bg-gradient-to-br from-[#040d1a] via-[#081b3a] to-[#041026] text-white rounded-3xl p-8 md:p-10 border border-blue-900/50 shadow-xl">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
                         <span class="text-xs text-cyan-300 font-black tracking-[0.3em] uppercase block mb-1">PUBLICATION INFORMATION</span>
@@ -643,7 +1113,7 @@
         </div>
     </section>
 </main>
-    <!-- ========================================================== -->
+   <!-- ========================================================== -->
     <!-- 【企画投票】ページコンテナ -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
@@ -692,14 +1162,14 @@
             </div>
 
             <!-- 投票結果発表告知枠 -->
-            <div class="bg-gradient-to-r from-[#040d1a] via-[#0b1e3b] to-[#08172e] text-white rounded-3xl p-8 md:p-12 mb-10 shadow-xl border border-blue-900/50 text-center max-w-4xl mx-auto">
-                <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/40 text-[#00e5ff] flex items-center justify-center mx-auto mb-4">
+            <div class="bg-gradient-to-r from-[#040d1a] via-[#081b3a] to-[#041026] text-white rounded-3xl p-8 md:p-12 mb-10 shadow-xl border border-blue-900/50 text-center max-w-4xl mx-auto">
+                <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/40 text-[#00f0ff] flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 </div>
                 <span class="text-xs md:text-sm font-bold text-cyan-300 tracking-[0.3em] uppercase block mb-1">Award Announcement</span>
                 <h4 class="text-2xl md:text-4xl font-black mb-4 font-brush text-white">投票結果の発表について</h4>
                 <p class="text-base md:text-xl font-medium text-slate-200 max-w-2xl mx-auto leading-relaxed mb-6">
-                    各部門賞・総合賞の最終結果は、文化祭2日目の<span class="text-[#00e5ff] font-bold">「後夜祭（多目的ホール 14:30〜16:10）」</span>ステージにて堂々発表されます！
+                    各部門賞・総合賞の最終結果は、文化祭2日目の<span class="text-[#00f0ff] font-bold">「後夜祭（多目的ホール 14:30〜16:10）」</span>ステージにて堂々発表されます！
                 </p>
                 <div class="inline-block bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 text-sm font-bold text-cyan-200">
                     栄冠を手にするのはどの企画か？！ ぜひ後夜祭会場へお越しください！
@@ -753,7 +1223,7 @@
                 <div class="bg-blue-50/85 p-6 md:p-10 rounded-3xl border border-blue-200 shadow-sm">
                     <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
                         <div class="flex items-center gap-3">
-                            <span class="w-3 h-7 bg-[#00e5ff] rounded-full"></span>
+                            <span class="w-3 h-7 bg-[#00f0ff] rounded-full"></span>
                             <div>
                                 <h4 class="text-2xl md:text-3xl font-black text-[#1d4ed8] font-brush">Jラウンジ（高校棟3F 会議室）</h4>
                                 <p class="text-sm text-slate-500 font-bold">PTA運営の休憩スペースです。城北グッズ、パン、焼き菓子を販売します。毎年人気の城北グッズ、今年も早々に売り切れるかも？</p>
@@ -830,7 +1300,7 @@
             <div class="bg-white p-6 md:p-10 rounded-3xl border border-slate-200 shadow-sm text-left">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div class="flex items-center gap-3">
-                        <span class="w-3 h-7 bg-[#00e5ff] rounded-full"></span>
+                        <span class="w-3 h-7 bg-[#00f0ff] rounded-full"></span>
                         <div>
                             <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush">棟別フロアマップ</h4>
                             <p class="text-xs md:text-sm text-slate-500 font-bold">各棟・各フロアの詳細案内と該当企画</p>
@@ -944,7 +1414,7 @@
             <!-- 受験生向け案内 -->
             <div class="mb-16">
                 <div class="mb-8 flex items-center gap-3">
-                    <span class="w-3 h-7 bg-[#00e5ff] rounded-full"></span>
+                    <span class="w-3 h-7 bg-[#00f0ff] rounded-full"></span>
                     <h4 class="text-2xl md:text-4xl font-black text-slate-900 font-brush">受験生向け FOR PROSPECTIVE STUDENTS</h4>
                 </div>
 
@@ -1568,7 +2038,7 @@
                 if(jloungeContainer) {
                     jloungeData.forEach(j => {
                         jloungeContainer.insertAdjacentHTML('beforeend', `
-                            <div class="bg-white border border-blue-100 p-6 rounded-2xl flex justify-between items-center shadow-sm hover:border-[#00e5ff] transition">
+                            <div class="bg-white border border-blue-100 p-6 rounded-2xl flex justify-between items-center shadow-sm hover:border-[#00f0ff] transition">
                                 <span class="font-bold text-lg md:text-xl text-slate-900">${j.name}</span>
                                 <span class="font-black text-xl md:text-2xl text-[#1d4ed8] whitespace-nowrap">${j.price}</span>
                             </div>
@@ -1907,7 +2377,7 @@
                 }
             }
             filterProjects();
-        }
+        } 
  
         function filterProjects() {
             const input = document.getElementById('project-search');
