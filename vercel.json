@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/map",
+      "destination": "https://johoku-fes.vercel.app/map"
+    },
+    {
+      "source": "/map/:match*",
+      "destination": "https://johoku-fes.vercel.app/map/:match*"
+    },
+    {
+      "source": "/_next/:match*",
+      "destination": "https://johoku-fes.vercel.app/_next/:match*"
+    }
+  ]
+}
