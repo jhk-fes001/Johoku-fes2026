@@ -627,7 +627,35 @@
                         <h3 class="text-2xl md:text-4xl font-black text-white font-brush">お知らせ</h3>
                     </div>
                 </div>
-                <div class="space-y-4">
+                <div class="space-y-6">
+                    <!-- ① パンフレット訂正 -->
+                    <div class="pb-6 border-b border-slate-800">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-sm font-bold text-amber-400 tracking-wider">2026.09.18</span>
+                            <span class="text-xs md:text-sm font-black text-amber-300 bg-amber-950/80 border border-amber-400/50 px-2.5 py-0.5 rounded-full">[重要 / パンフレット訂正]</span>
+                        </div>
+                        <div class="bg-slate-900/80 border border-amber-500/40 rounded-2xl p-4 md:p-6 space-y-4">
+                            <div>
+                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P23 グリークラブ 公演時間】</strong>
+                                <p class="text-sm md:text-base text-slate-200">
+                                    公演時間：<span class="line-through text-slate-400">12:30～12:45</span> <span class="text-[#00f0ff] font-black">↓ 12:00～12:45 が正しい</span>
+                                </p>
+                            </div>
+                            <div class="border-t border-slate-800/80 pt-3">
+                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ 販売開始時間】</strong>
+                                <p class="text-sm md:text-base text-slate-200">
+                                    販売開始時間：<span class="line-through text-slate-400">9:00～</span> <span class="text-[#00f0ff] font-black">→ 9:30～ が正しい</span>
+                                </p>
+                            </div>
+                            <div class="border-t border-slate-800/80 pt-3">
+                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ MENU】</strong>
+                                <p class="text-sm md:text-base text-slate-200">
+                                    <span class="line-through text-slate-400">焼きそば</span> （販売はございません）
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="pb-4 border-b border-slate-800 last:border-0">
                         <div class="flex items-center gap-2 mb-1.5">
                             <span class="text-sm font-bold text-slate-400 tracking-wider">2026.08.15</span>
@@ -998,11 +1026,43 @@
                 </div>
             </div>
 
-            <!-- 制作メンバーからのご挨拶 -->
+            <!-- ④ 垂れ幕・入場門デザイン（大きく表示） -->
             <div class="mb-20">
                 <div class="text-center mb-12">
-                    <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Website Development Team</span>
-                    <h3 class="text-3xl md:text-5xl font-black text-white font-brush">Webサイト制作メンバーより</h3>
+                    <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Architecture Design</span>
+                    <h3 class="text-3xl md:text-5xl font-black text-white font-brush">垂れ幕・入場門デザイン</h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                    <!-- 垂れ幕完成 -->
+                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl flex flex-col items-center">
+                        <div class="w-full mb-4 text-center border-b border-cyan-500/20 pb-3">
+                            <span class="text-xs text-[#00f0ff] font-black tracking-widest uppercase block mb-1">BANNERS</span>
+                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush">垂れ幕デザイン</h4>
+                        </div>
+                        <div class="w-full flex-grow flex items-center justify-center bg-slate-950/80 rounded-2xl p-4 border border-cyan-500/20 overflow-hidden">
+                            <img src="垂れ幕完成.png" alt="垂れ幕デザイン完成版" class="w-full max-h-[600px] object-contain rounded-xl shadow-lg transition hover:scale-105 duration-300" onerror="this.onerror=null; this.src='ポスター横verBG.png';">
+                        </div>
+                    </div>
+
+                    <!-- 入場門完成 -->
+                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl flex flex-col items-center">
+                        <div class="w-full mb-4 text-center border-b border-cyan-500/20 pb-3">
+                            <span class="text-xs text-[#38bdf8] font-black tracking-widest uppercase block mb-1">MAIN ENTRANCE ARCH</span>
+                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush">入場門デザイン</h4>
+                        </div>
+                        <div class="w-full flex-grow flex items-center justify-center bg-slate-950/80 rounded-2xl p-4 border border-cyan-500/20 overflow-hidden">
+                            <img src="入場門完成.png" alt="入場門デザイン完成版" class="w-full max-h-[600px] object-contain rounded-xl shadow-lg transition hover:scale-105 duration-300" onerror="this.onerror=null; this.src='敷地内地図.png';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③ サイト制作後記 -->
+            <div class="mb-20">
+                <div class="text-center mb-12">
+                    <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Website Development Postscript</span>
+                    <h3 class="text-3xl md:text-5xl font-black text-white font-brush">サイト制作後記</h3>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1261,7 +1321,7 @@
             </div>
         </section>
     </main>
-     <!-- ========================================================== -->
+      <!-- ========================================================== -->
     <!-- 【後夜祭】ページコンテナ（完全復活・紺色ベース＆文字ホワイト） -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
@@ -1700,7 +1760,7 @@
                 <span>Instagram</span>
             </a>
             <a href="https://www.facebook.com/johoku.jp/?locale=ja_JP" target="_blank" class="flex items-center gap-1.5 text-slate-300 hover:text-blue-400 transition">
-                <svg class="w-5 h-5 fill-current text-blue-500" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <svg class="w-4 h-4 fill-current text-blue-500" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span>Facebook</span>
             </a>
             <a href="https://www.johoku.ac.jp/" target="_blank" class="flex items-center gap-1.5 text-slate-300 hover:text-[#00f0ff] transition">
@@ -1950,7 +2010,7 @@
                 `;
             } else if (proj.img) {
                 return `
-                    <img src="${proj.img}" alt="${proj.group || proj.title}" class="project-icon-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="${proj.img}" alt="${proj.group || proj.title}" class="project-icon-img" onerror="this.onerror=null; this.src='JOHOKU.png';">
                     <span class="text-xl font-black font-brush hidden items-center justify-center w-full h-full text-[#00f0ff]">${(proj.group || proj.title).charAt(0)}</span>
                 `;
             } else {
@@ -1989,12 +2049,12 @@
             'H1D': { id: 'c_h1d', title: 'ここからは、お静かに', img: 'ここからは、お静かに.png', loc: '高校棟 3F (H1D)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: 'ある日、興味本位で心霊スポットである廃病院に入って行った。何事もないと思っていたが、様々な恐怖体験に見舞われていく!' },
             'H1E': { id: 'c_h1e', title: 'FRIDAY THE 13TH', img: 'FRIDAY THE 13TH.png', loc: '高校棟 3F (H1E)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: '今、あなたは石神井川付近でキャンプをしています。途中、パトカーや救急車を見かけたけど、一体何があったんだろう…', statusBadge: 'safety_hidden' },
             'H1F': { id: 'c_h1f', title: 'テストを捨てろ！', img: 'テストを捨てろ!.png', loc: '高校棟 3F (H1F)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: '対策不可能なテストからみんなの成績を守るために立ち上がれ!謎を解いてテスト用紙を探し出し、破棄しよう!' },
-            'H1G': { id: 'c_h1g', title: '占いの館 in城北', img: '占いの館　in城北.png', loc: '高校棟 3F (H1G)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: 'H1Gでは色々な占いができます。手相占いや水晶占いなどができます。占いに行ったことがないという人もぜひきてください!' },
+            'H1G': { id: 'c_h1g', title: '占いの館 in城北', img: '占いの館.jpeg', loc: '高校棟 3F (H1G)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: 'H1Gでは色々な占いができます。手相占いや水晶占いなどができます。占いに行ったことがないという人もぜひきてください!' },
             'H1H': { id: 'c_h1h', title: '城北生格付けチェック', img: '城北生格付けチェック.png', loc: '高校棟 3F (H1H)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: 'いろんな勉強に関することや知識などいろいろなクイズで格付けをします!!' },
             'H1I': { id: 'c_h1i', title: 'ブロサバ', img: 'ブロサバ.png', loc: '高校棟 3F (H1I)', floorKey: 'high_3F', groupKey: 'h1', type: 'class', d1: '終日', d2: '終日', desc: 'kill. kill. kill. 敵を倒して勝利をつかみ取れ! 楽しい楽しいサバイバルゲーム!ぜひ来てください!' },
 
             'H2A': { id: 'c_h2a', title: '城北に登校してみよう', img: '城北に登校してみよう.png', loc: '高校棟 3F (H2A)', floorKey: 'high_3F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: '見慣れた電車に乗って、無事に城北へ登校してみよう!シューティングゲーム×トロッコの融合型アトラクションです。' },
-            'H2B': { id: 'c_h2b', title: '忌み家', img: '忌み屋.png', loc: '高校棟 4F (H3A)', floorKey: 'high_4F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: '入ったら最後、生きては帰れない。油断した瞬間に襲いくる、圧倒的な絶望。……全ては自己責任' },
+            'H2B': { id: 'c_h2b', title: '忌み家', img: '忌み家.png', loc: '高校棟 4F (H3A)', floorKey: 'high_4F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: '入ったら最後、生きては帰れない。油断した瞬間に襲いくる、圧倒的な絶望。……全ては自己責任' },
             'H2C': { id: 'c_h2c', title: 'ジャングルシューティング', img: 'ジャングルシューティング.png', loc: '高校棟 3F (H2C)', floorKey: 'high_3F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: 'なぁ…射的で一攫千金、狙わないか…? ジャングルの奥地で待ってるぜ。あ、安全第一で営業中!' },
             'H2D': { id: 'c_h2d', title: '恐怖のD組', img: 'お化け屋敷高校2年D組.png', loc: '高校棟 3F (H2D)', floorKey: 'high_3F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: '謎解きをしながらお化け屋敷を攻略しよう!' },
             'H2E': { id: 'c_h2e', title: 'Eのボードゲーム大全', img: 'Eのボードゲーム大全.png', loc: '高校棟 4F (H2E)', floorKey: 'high_4F', groupKey: 'h2', type: 'class', d1: '終日', d2: '終日', desc: 'みんなが知ってるゲームからちょっとマイナーなゲームまで、クラスから選ばれた5つのゲームを遊べます。ぜひ来てね!' },
@@ -2015,7 +2075,7 @@
             { id: 'stage_rocket', group: '物理部', title: 'Physik Club〜物理学の世界〜', img: 'ペットボトルロケット.png', loc: '校庭・第1,2物理室 (5F)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日(展示)', d2: '12:00 - 12:30(発射)', isStage: true, desc: '今年度の物理部は例年通りの真空砲、パルスジェットエンジンなど、個性的な実験を行いますのでぜひ来てください。' },
             { id: 'club_shogi', group: '将棋部', title: 'それでも歩は寄せてくる', img: 'それでも歩は寄せてくる.png', loc: '予備室３ (中学棟1F)', floorKey: 'junior_1F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '将棋部では部員と対局することができます。初心者も大歓迎です。お菓子など景品も用意しています。' },
             { id: 'club_history', group: '歴史部', title: '名古屋三人衆〜ノブとヤスと、時々、ヒデ〜', img: '名古屋三人衆～ノブとヤスと、時々、ヒデ～.png', loc: 'H3F (高校棟5F)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '歴史部の今年のテーマは信長と家康。ゆかりの地である愛知県を巡り、空母「飛龍」の模型も再現しました。ぜひご来場ください。' },
-            { id: 'club_karuta', group: '百人一首部', title: '畳の上の格闘技 〜継承せし魂〜', img: '畳の上の格闘技　〜継承せし魂〜　百人一首部.png', loc: 'H3H (高校棟5F)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '百人一首部ってthe文化部そうだな。そう思ったそこの君!実際に百人一首を体験して演武を見てみよう！ぜひお待ちしてます!' },
+            { id: 'club_karuta', group: '百人一首部', title: '畳の上の格闘技 〜継承せし魂〜', img: 'かるた部.jpeg', loc: 'H3H (高校棟5F)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '百人一首部ってthe文化部そうだな。そう思ったそこの君!実際に百人一首を体験して演武を見てみよう！ぜひお待ちしてます!' },
             { id: 'club_fishing', group: '釣り部', title: '釣れすぎて滅！', img: '釣れすぎて滅！.png', loc: '国語科ゼミ室 (高校棟3F)', floorKey: 'high_3F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: 'お子様大歓迎!釣り部特製の金魚すくいコーナーだよ。はじめてでも大丈夫!みんなで最高記録を目指そう!' },
             { id: 'club_geo', group: '地理部', title: '地理部', img: '地理部.png', loc: 'H3C (高校棟4F)', floorKey: 'high_4F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: '船を降りるとそこは別世界。東京の離島、伊豆大島の魅力を私たちと一緒に感じてみませんか?' },
             { id: 'club_earth', group: '地学部', title: '地学のセカイへ来ませんか?', img: '地学のセカイへ来ませんか.png', loc: '地学教室・5Fコモンスペース (高校棟5F)', floorKey: 'high_5F', groupKey: 'club', type: 'exhibition', d1: '終日', d2: '終日', desc: 'コモンスペースでプラネタリウムの上映、地学教室で鉱物展示などを行っています。ぜひ来て、幅広い地学のセカイをお楽しみください。' },
@@ -2038,7 +2098,7 @@
             { id: 'stage_dance', group: 'ダンス部', title: 'ダンス部 explosive stage', img: 'ダンス部.png', loc: '講堂 (共通棟2F/正門入って右手)', floorKey: 'common_2F', groupKey: 'club', type: 'performance', d1: '13:10 - 14:10', d2: '12:45 - 13:45', isStage: true, desc: '今年も文化祭の季節がやってきた!新しい仲間たちと作り上げたダンスをご覧あれ！' },
             { id: 'stage_shorinji', group: '少林寺拳法部', title: '少林寺拳法部 演武会', img: '少林寺拳法部 演武会.png', loc: '講堂 (共通棟2F/正門入って右手)', floorKey: 'common_2F', groupKey: 'club', type: 'performance', d1: '12:30 - 13:00', d2: '10:25 - 10:55', isStage: true, desc: '今年度はインターハイ優勝、昨年度は全国選抜大会優勝、全国中学生大会３位となりました。日本一の演武と毎年恒例の劇も行います。' },
 
-            { id: 'other_science', group: '教員企画', title: '中学理科自由研究', img: '教員企画.png', loc: 'ゼミ21 (高校棟2F)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年度の中学1・2年生の理科自由研究で金賞を受賞した研究のポスターを展示しております。是非、ご覧ください!' },
+            { id: 'other_science', group: '教員企画', title: '中学理科自由研究', img: '中学理科自由研究.png', loc: 'ゼミ21 (高校棟2F)', floorKey: 'high_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年度の中学1・2年生の理科自由研究で金賞を受賞した研究のポスターを展示しております。是非、ご覧ください!' },
             { id: 'other_library', group: '図書委員会', title: '古本市', img: '古本一.png', loc: '共通棟2F 図書館', floorKey: 'common_2F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '今年も古本市を開催します。ラノベ/小説/雑誌/海外小説など、沢山取り揃えていますので、ぜひ足を運んでみて下さい。' },
             { id: 'other_shodo_teacher', group: '教員企画', title: '城北書道展', img: '書道展示.png', loc: '書道室 (共通棟4F)', floorKey: 'common_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高校一年生・二年生の書道選択者の作品と教員の作品を展示します。是非ご覧ください。', statusBadge: 'safety_hidden' },
             { id: 'other_rekishi_sogo', group: '歴史総合', title: '歴史総合(2025)', img: '歴史総合(2025).png', loc: 'ゼミ42 (高校棟4F)', floorKey: 'high_4F', groupKey: 'other', type: 'exhibition', d1: '終日', d2: '終日', desc: '高１時の年度末レポートを、知的好奇心溢れる高２の強者達が志願して掲示する特別展。疑問に感じたら、何でもテーマになるぞ。' },
@@ -2068,8 +2128,7 @@
             { name: 'トマトピザ', price: '¥250' },
             { name: '焼きカレー', price: '¥250' },
             { name: 'ボルドー・カヌレ', price: '¥300' },
-            { name: 'ガトーショコラ・クラシック', price: '¥300' },
-            { name: '焼きそば', price: '¥400' }
+            { name: 'ガトーショコラ・クラシック', price: '¥300' }
         ];
  
         const kcarData = [
