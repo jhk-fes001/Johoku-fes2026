@@ -46,7 +46,7 @@
             font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
         }
 
-        /* 紺色の美しい背景・グリッド */
+        /* 紺色の美しい背景・グリッド（スクロール描画軽量化） */
         .bg-sky-canvas {
             background-color: #030a16;
             background-image: 
@@ -57,7 +57,6 @@
                 radial-gradient(circle at 75% 75%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
                 linear-gradient(180deg, #030a16 0%, #06152d 35%, #081d3f 75%, #040d1a 100%);
             background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-            background-attachment: fixed;
         }
 
         .custom-page-bg {
@@ -1222,7 +1221,7 @@
             </div>
         </section>
     </main>
-       <!-- ========================================================== -->
+      <!-- ========================================================== -->
     <!-- 【後夜祭】ページコンテナ（完全復活・紺色ベース＆文字ホワイト） -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
@@ -1861,32 +1860,33 @@
         ];
 
         const videoScheduleData = {
-            'M1A': { date: '9月6日', mode: 'short' },
-            'M1B': { date: '9月6日', mode: 'none' },
+            'M1A': { date: '9月6日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/c1TKxMTFG6w' },
+            'M1B': { date: '9月6日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/gB2qyAqMlug' },
             'M1C': { date: '9月7日', mode: 'both' },
-            'M1D': { date: '9月7日', mode: 'short' },
-            'M1F': { date: '9月8日', mode: 'none' },
+            'M1D': { date: '9月7日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/eQ_t4N8HkXM' },
+            'M1F': { date: '9月8日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/AEzKtXDVv2k' },
             'M1G': { date: '9月8日', mode: 'both' },
-            'M2A': { date: '9月9日', mode: 'long' },
+            'M2A': { date: '9月9日', mode: 'both', longUrl: 'https://www.youtube.com/embed/V_IlqRZfnGw', shortUrl: 'https://www.youtube.com/embed/NHROAzF3h6c' },
             'M2D': { date: '9月9日', mode: 'both' },
-            'M2E': { date: '9月10日', mode: 'short' },
-            'M2F': { date: '9月10日', mode: 'short' },
+            'M2E': { date: '9月10日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/gKHxAacsNkI' },
+            'M2F': { date: '9月10日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/M907Fc6nC7s' },
             'M2G': { date: '9月11日', mode: 'none' },
-            'M3B': { date: '9月11日', mode: 'both' },
+            'M3B': { date: '9月11日', mode: 'both', longUrl: 'https://www.youtube.com/embed/tbZqLQqe5cw', shortUrl: 'https://www.youtube.com/embed/j8Vtxk-mzhc' },
             'M3C': { date: '9月12日', mode: 'short' },
             'H1A': { date: '9月12日', mode: 'both' },
+            'H1C': { date: '9月13日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/lRL7HrFAXcI' },
             'H1D': { date: '9月13日', mode: 'short' },
-            'H2C': { date: '9月13日', mode: 'both' },
+            'H2C': { date: '9月13日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/38HZLkBwS2g' },
             'H2F': { date: '9月14日', mode: 'short' },
             'H2I': { date: '9月14日', mode: 'both' },
-            '百人一首部': { date: '9月15日', mode: 'short' },
-            '釣り部': { date: '9月15日', mode: 'none' },
-            '地学部': { date: '9月16日', mode: 'short' },
-            '生物部': { date: '9月16日', mode: 'both' },
-            '吹奏楽部': { date: '9月17日', mode: 'short' },
-            '語学部': { date: '9月17日', mode: 'none' },
-            '演劇部': { date: '9月18日', mode: 'short' },
-            'ラジオ部': { date: '9月18日', mode: 'short' },
+            '百人一首部': { date: '9月15日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/bo9G2rCyb5k' },
+            '釣り部': { date: '9月15日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/PC2o0qR9c54' },
+            '地学部': { date: '9月16日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/6Q6KWq34rJA' },
+            '生物部': { date: '9月16日', mode: 'both', shortUrl: 'https://www.youtube.com/embed/fgHPTwMRF7I' },
+            '吹奏楽部': { date: '9月17日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/NoGxZ7LDMd8' },
+            '語学部': { date: '9月17日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/Cj7hCH1uJ68' },
+            '演劇部': { date: '9月18日', mode: 'short', shortUrl: 'https://www.youtube.com/embed/LxWs3lPbHFI' },
+            'ラジオ部': { date: '9月18日', mode: 'long', longUrl: 'https://www.youtube.com/embed/znCKulCfJi8' },
             '山岳ワンダーフォーゲル部': { date: '9月18日', mode: 'none' },
             'デジタル創作部': { date: '9月19日', mode: 'both' },
             'グリークラブ': { date: '9月19日', mode: 'short' },
@@ -2434,7 +2434,8 @@
 
         function initPromoInfiniteScroll() {
             const track = document.getElementById('promo-slider-track');
-            if(!track) return;
+            if(!track || track.getAttribute('data-inited') === 'true') return;
+            track.setAttribute('data-inited', 'true');
             const cards = Array.from(track.children);
             cards.forEach(card => {
                 const clone = card.cloneNode(true);
