@@ -508,7 +508,7 @@
         <button class="menu-link text-left w-full" onclick="switchPage('groups'); toggleMenu()">企画紹介</button>
         <button class="menu-link text-left w-full" onclick="switchPage('vote'); toggleMenu()">後夜祭</button>
         <button class="menu-link text-left w-full" onclick="switchPage('food'); toggleMenu()">飲食・グッズ</button>
-        <button class="menu-link text-left w-full" onclick="switchPage('map'); toggleMenu()">校内マップ</button>
+        <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="menu-link text-left w-full block" onclick="toggleMenu()">校内マップ ↗</a>
         <button class="menu-link text-left w-full" onclick="switchPage('examinee'); toggleMenu()">各種ご案内</button>
         
         <div class="mt-8 space-y-3 pt-6 border-t border-cyan-500/20">
@@ -548,7 +548,7 @@
             <button class="nav-btn nav-btn-groups" onclick="switchPage('groups')">企画紹介</button>
             <button class="nav-btn nav-btn-vote" onclick="switchPage('vote')">後夜祭</button>
             <button class="nav-btn nav-btn-food" onclick="switchPage('food')">飲食・グッズ</button>
-            <button class="nav-btn nav-btn-map" onclick="switchPage('map')">校内マップ</button>
+            <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-map inline-flex items-center">校内マップ ↗</a>
             <button class="nav-btn nav-btn-examinee" onclick="switchPage('examinee')">各種ご案内</button>
         </nav>
 
@@ -684,12 +684,12 @@
                     </div>
                     <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] whitespace-nowrap">飲食・グッズ</span>
                 </button>
-                <button onclick="switchPage('map')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-6 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-6 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
                     <div class="w-12 h-12 mb-3 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] whitespace-nowrap">校内マップ</span>
-                </button>
+                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] whitespace-nowrap">校内マップ ↗</span>
+                </a>
                 <button onclick="switchPage('examinee')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-6 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
                     <div class="w-12 h-12 mb-3 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1191,7 +1191,8 @@
                         <div class="py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="container-h2"></div>
                     </div>
                 </div>
-<!-- 部活・同好会 -->
+
+                <!-- 部活・同好会 -->
                 <div class="reveal group-section" id="section-club">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('club')">
                         <div class="flex items-center gap-3">
@@ -1221,8 +1222,7 @@
             </div>
         </section>
     </main>
-
-    <!-- ========================================================== -->
+       <!-- ========================================================== -->
     <!-- 【後夜祭】ページコンテナ（完全復活・紺色ベース＆文字ホワイト） -->
     <!-- ========================================================== -->
     <main id="page-vote" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
@@ -1410,7 +1410,22 @@
         <section class="max-w-[1400px] mx-auto text-center reveal">
             <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Floor Map & Campus Guide</span>
             <h3 class="text-4xl md:text-6xl font-black mb-4 text-white font-brush">校内マップ</h3>
-            <p class="text-sm md:text-base font-bold text-slate-300">※敷地内に高低差があり、高校棟昇降口は2Fです。</p>
+            <p class="text-sm md:text-base font-bold text-slate-300 mb-8">※敷地内に高低差があり、高校棟昇降口は2Fです。</p>
+
+            <!-- 先輩のマップへの特大ジャンプバナー -->
+            <div class="dark-glass-card p-8 md:p-10 rounded-3xl border-2 border-cyan-400 shadow-2xl mb-12 text-center bg-gradient-to-r from-blue-950/90 via-indigo-950/90 to-blue-950/90">
+                <span class="text-xs md:text-sm text-cyan-300 font-black tracking-widest uppercase block mb-2">DIGITAL CAMPUS MAP</span>
+                <h4 class="text-2xl md:text-4xl font-black text-white font-brush mb-3 text-[#00f0ff] drop-shadow-[0_0_10px_rgba(0,240,255,0.6)]">
+                    高機能デジタル校内マップはこちら
+                </h4>
+                <p class="text-sm md:text-base text-slate-300 font-bold max-w-2xl mx-auto mb-6">
+                    各教室の企画配置、フロアごとの詳細をインタラクティブに確認できるデジタルマップをご利用いただけます。
+                </p>
+                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-black text-lg md:text-xl transition shadow-xl shadow-blue-600/40 border border-cyan-300 hover:scale-105 transform">
+                    <span>校内マップを開く（別タブ）</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
 
             <!-- 敷地内全体図 -->
             <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl mb-12 text-left">
@@ -2594,7 +2609,7 @@
                     card.style.display = 'none';
                 }
             });
-        }
+        } 
  
         function openDetail(pId, explicitGroup, explicitTitle, explicitLoc, explicitDesc, explicitType, explicitImg, explicitD1, explicitD2, explicitIsStage) {
             currentProjectId = pId;
