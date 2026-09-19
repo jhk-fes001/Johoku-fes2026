@@ -12,15 +12,15 @@
         :root {
             --poster-midnight: #030a16;
             --poster-deep-navy: #06152d;
-            --poster-navy-card: rgba(10, 30, 62, 0.92);
-            --poster-navy-card-hover: rgba(16, 46, 92, 0.98);
+            --poster-navy-card: #ffffff;
+            --poster-navy-card-hover: #f8fafc;
             --poster-indigo: #0d3268;
             --poster-blue: #1d4ed8;
             --poster-cyan: #00f0ff;
             --poster-sky: #38bdf8;
             --poster-light: #93c5fd;
-            --border-glow: rgba(0, 240, 255, 0.35);
-            --border-glow-hover: rgba(0, 240, 255, 0.8);
+            --border-glow: rgba(0, 240, 255, 0.4);
+            --border-glow-hover: rgba(0, 240, 255, 0.9);
         }
 
         *, ::before, ::after {
@@ -50,7 +50,6 @@
 
         .keep-word {
             display: inline-block;
-            white-space: nowrap;
         }
 
         /* 紺色の美しい背景・グリッド */
@@ -153,13 +152,12 @@
             transform: translate3d(0, 0, 0); 
         }
 
-        /* 紺色グラスUIカード共通 */
-        .dark-glass-card {
-            background: var(--poster-navy-card);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--border-glow);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+        /* 白背景カード共通 */
+        .white-content-card {
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
 
         /* 上部白ベースヘッダーのナビボタン */
@@ -187,7 +185,7 @@
         .nav-btn:hover::after, .nav-btn.active::after { width: 80%; }
         .nav-btn.active { color: #1d4ed8; font-weight: 900; }
 
-        /* サイドメニュー（スマホ時は画面全体、タブレット以上は360px） */
+        /* サイドメニュー（スマホ時は全画面、タブレット以上は360px） */
         #side-menu {
             position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
             background: rgba(6, 18, 38, 0.98);
@@ -219,12 +217,11 @@
 
         .project-card { 
             position: relative;
-            background: var(--poster-navy-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow);
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
             border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
             transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
             cursor: pointer;
             overflow: hidden;
@@ -232,18 +229,17 @@
         }
         .project-card::before {
             content: '';
-            position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            position: absolute; top: 0; left: 0; width: 5px; height: 100%;
             background: linear-gradient(180deg, #00f0ff 0%, #1d4ed8 100%);
             transition: width 0.25s ease;
-            box-shadow: 0 0 10px #00f0ff;
         }
         .project-card:hover { 
             transform: translateY(-4px);
-            background: var(--poster-navy-card-hover);
-            box-shadow: 0 16px 36px rgba(0, 240, 255, 0.25);
-            border-color: var(--border-glow-hover);
+            background: #f8fafc;
+            box-shadow: 0 16px 36px rgba(0, 240, 255, 0.3);
+            border-color: #00f0ff;
         }
-        .project-card:hover::before { width: 6px; }
+        .project-card:hover::before { width: 8px; }
 
         .fav-star-btn {
             position: absolute;
@@ -256,10 +252,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(0, 240, 255, 0.35);
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
             transition: all 0.2s ease;
-            color: #94a3b8;
+            color: #64748b;
             cursor: pointer;
         }
         .fav-star-btn:hover {
@@ -278,14 +274,14 @@
 
         .project-icon-placeholder {
             width: 64px; height: 64px;
-            background: rgba(4, 13, 26, 0.9);
-            border: 1px solid rgba(0, 240, 255, 0.35);
+            background: #0f172a;
+            border: 1px solid #00f0ff;
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             overflow: hidden;
             color: #00f0ff; font-weight: 900;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
         .project-icon-img {
             width: 100%; height: 100%;
@@ -293,8 +289,8 @@
         }
 
         .card-meta-box {
-            background: rgba(4, 13, 26, 0.75);
-            border: 1px solid rgba(0, 240, 255, 0.18);
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 8px 12px;
             font-size: 11px;
@@ -302,6 +298,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px 12px;
+            color: #334155;
         }
 
         /* タイムテーブル */
@@ -309,8 +306,8 @@
             display: grid;
             grid-template-columns: 85px repeat(5, minmax(180px, 1fr));
             gap: 1px;
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(0, 240, 255, 0.4);
             min-width: 980px;
             border-radius: 14px;
             overflow: visible;
@@ -374,18 +371,19 @@
 
         /* アコーディオン */
         .group-accordion-header {
-            background: var(--poster-navy-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow);
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
             border-radius: 16px;
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
         .group-accordion-header:hover {
-            border-color: var(--poster-cyan);
-            background: var(--poster-navy-card-hover);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+            border-color: #1d4ed8;
+            background: #f8fafc;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
         }
         .group-content {
             overflow: hidden;
@@ -398,28 +396,28 @@
         .icon-plus {
             transition: transform 0.3s ease;
             font-weight: 700;
-            color: #00f0ff;
-            text-shadow: 0 0 8px rgba(0,240,255,0.6);
+            color: #1d4ed8;
         }
         .group-section.is-open .icon-plus {
             transform: rotate(45deg);
         }
 
         .search-input {
-            background: rgba(6, 21, 43, 0.85);
-            border: 2px solid rgba(0, 240, 255, 0.3);
+            background: #ffffff;
+            border: 2px solid #00f0ff;
             border-radius: 9999px;
             padding: 0.9rem 1.8rem;
             outline: none;
-            color: #ffffff;
+            color: #0f172a;
+            font-weight: bold;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
         .search-input::placeholder {
             color: #94a3b8;
         }
         .search-input:focus {
-            border-color: #00f0ff;
-            box-shadow: 0 0 16px rgba(0, 240, 255, 0.45);
+            border-color: #1d4ed8;
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
         }
 
         .filter-btn {
@@ -641,61 +639,61 @@
 
         <!-- お知らせセクション -->
         <section id="news-home" class="reveal w-full max-w-[1400px] mx-auto px-5 md:px-10 py-12">
-            <div class="dark-glass-card rounded-3xl p-6 md:p-10 shadow-xl border border-cyan-500/30">
-                <div class="flex justify-between items-end mb-6 border-b border-cyan-500/20 pb-4">
+            <div class="white-content-card rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200">
+                <div class="flex justify-between items-end mb-6 border-b border-slate-200 pb-4">
                     <div>
-                        <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Information</span>
-                        <h3 class="text-2xl md:text-4xl font-black text-white font-brush keep-word">お知らせ</h3>
+                        <span class="text-xs md:text-sm text-blue-600 font-black tracking-[0.3em] uppercase block mb-1">Information</span>
+                        <h3 class="text-2xl md:text-4xl font-black text-slate-900 font-brush keep-word">お知らせ</h3>
                     </div>
                 </div>
                 <div class="space-y-6">
                     <!-- ① パンフレット訂正 -->
-                    <div class="pb-6 border-b border-slate-800">
+                    <div class="pb-6 border-b border-slate-200">
                         <div class="flex items-center gap-2 mb-3 flex-wrap">
-                            <span class="text-sm font-bold text-amber-400 tracking-wider">2026.09.18</span>
-                            <span class="text-xs md:text-sm font-black text-amber-300 bg-amber-950/80 border border-amber-400/50 px-2.5 py-0.5 rounded-full">[重要 / パンフレット訂正]</span>
+                            <span class="text-sm font-bold text-amber-600 tracking-wider">2026.09.18</span>
+                            <span class="text-xs md:text-sm font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full">[重要 / パンフレット訂正]</span>
                         </div>
-                        <div class="bg-slate-900/90 border border-amber-500/40 rounded-2xl p-4 md:p-6 space-y-4">
+                        <div class="bg-slate-50 border border-amber-300 rounded-2xl p-4 md:p-6 space-y-4">
                             <div>
-                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P23 グリークラブ 公演時間】</strong>
-                                <p class="text-sm md:text-base text-slate-200">
-                                    公演時間：<span class="line-through text-slate-400">12:30～12:45</span> <span class="text-[#00f0ff] font-black">12:00～12:45 が正しい</span>
+                                <strong class="text-slate-900 text-base md:text-lg block font-brush mb-1">【P23 グリークラブ 公演時間】</strong>
+                                <p class="text-sm md:text-base text-slate-700">
+                                    公演時間：<span class="line-through text-slate-400">12:30～12:45</span> <span class="text-blue-700 font-black">12:00～12:45 が正しい</span>
                                 </p>
                             </div>
-                            <div class="border-t border-slate-800/80 pt-3">
-                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ 販売開始時間】</strong>
-                                <p class="text-sm md:text-base text-slate-200">
-                                    販売開始時間：<span class="line-through text-slate-400">9:00～</span> <span class="text-[#00f0ff] font-black">9:30～ が正しい</span>
+                            <div class="border-t border-slate-200 pt-3">
+                                <strong class="text-slate-900 text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ 販売開始時間】</strong>
+                                <p class="text-sm md:text-base text-slate-700">
+                                    販売開始時間：<span class="line-through text-slate-400">9:00～</span> <span class="text-blue-700 font-black">9:30～ が正しい</span>
                                 </p>
                             </div>
-                            <div class="border-t border-slate-800/80 pt-3">
-                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ MENU】</strong>
-                                <p class="text-sm md:text-base text-slate-200">
+                            <div class="border-t border-slate-200 pt-3">
+                                <strong class="text-slate-900 text-base md:text-lg block font-brush mb-1">【P31 Jラウンジ MENU】</strong>
+                                <p class="text-sm md:text-base text-slate-700">
                                     <span class="line-through text-slate-400">焼きそば</span> （販売はございません）
                                 </p>
                             </div>
-                            <div class="border-t border-slate-800/80 pt-3">
-                                <strong class="text-white text-base md:text-lg block font-brush mb-1">【文化祭実行委員会 委員名簿】</strong>
-                                <p class="text-sm md:text-base text-slate-200">
-                                    ICT部門：<span class="line-through text-slate-400">H1F 林 毅樺</span> <span class="text-[#00f0ff] font-black">H1E 林 毅樺 が正しい</span>
+                            <div class="border-t border-slate-200 pt-3">
+                                <strong class="text-slate-900 text-base md:text-lg block font-brush mb-1">【文化祭実行委員会 委員名簿】</strong>
+                                <p class="text-sm md:text-base text-slate-700">
+                                    ICT部門：<span class="line-through text-slate-400">H1F 林 毅樺</span> <span class="text-blue-700 font-black">H1E 林 毅樺 が正しい</span>
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="pb-4 border-b border-slate-800 last:border-0">
+                    <div class="pb-4 border-b border-slate-200 last:border-0">
                         <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                            <span class="text-sm font-bold text-slate-400 tracking-wider">2026.08.15</span>
-                            <span class="text-xs md:text-sm font-bold text-[#00f0ff] bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded-full">[更新]</span>
+                            <span class="text-sm font-bold text-slate-500 tracking-wider">2026.08.15</span>
+                            <span class="text-xs md:text-sm font-bold text-blue-700 bg-blue-100 border border-blue-300 px-2 py-0.5 rounded-full">[更新]</span>
                         </div>
-                        <p class="text-base md:text-lg font-bold text-slate-200 leading-relaxed">特設サイトをプレオープンしました！企画一覧やマップをご確認いただけます。</p>
+                        <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">特設サイトをプレオープンしました！企画一覧やマップをご確認いただけます。</p>
                     </div>
-                    <div class="pb-4 border-b border-slate-800 last:border-0">
+                    <div class="pb-4 border-b border-slate-200 last:border-0">
                         <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                            <span class="text-sm font-bold text-slate-400 tracking-wider">2026.08.10</span>
-                            <span class="text-xs md:text-sm font-bold text-[#00f0ff] bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded-full">[更新]</span>
+                            <span class="text-sm font-bold text-slate-500 tracking-wider">2026.08.10</span>
+                            <span class="text-xs md:text-sm font-bold text-blue-700 bg-blue-100 border border-blue-300 px-2 py-0.5 rounded-full">[更新]</span>
                         </div>
-                        <p class="text-base md:text-lg font-bold text-slate-200 leading-relaxed">第85回 城北祭 "男前" 公式ホームページを開設しました。</p>
+                        <p class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">第85回 城北祭 "男前" 公式ホームページを開設しました。</p>
                     </div>
                 </div>
             </div>
@@ -708,69 +706,69 @@
                 <h3 class="text-3xl md:text-5xl font-black text-white font-brush keep-word">サイト案内</h3>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 md:gap-4">
-                <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">ホーム</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">ホーム</span>
                 </button>
-                <button onclick="switchPage('about')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('about')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">ご挨拶</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">ご挨拶</span>
                 </button>
-                <button onclick="switchPage('timetable')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('timetable')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">タイムテーブル</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">タイムテーブル</span>
                 </button>
-                <button onclick="switchPage('groups')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('groups')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2v0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">企画紹介</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">企画紹介</span>
                 </button>
-                <button onclick="switchPage('vote')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('vote')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">後夜祭</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">後夜祭</span>
                 </button>
-                <button onclick="switchPage('food')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('food')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">飲食・グッズ</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">飲食・グッズ</span>
                 </button>
-                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">校内マップ ↗</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">校内マップ ↗</span>
                 </a>
-                <button onclick="switchPage('examinee')" class="dark-glass-card hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
-                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-950/80 border border-cyan-500/30 text-[#00f0ff] flex items-center justify-center group-hover:scale-110 transition shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                <button onclick="switchPage('examinee')" class="white-content-card hover:bg-slate-50 border border-slate-200 hover:border-blue-500 p-5 rounded-2xl text-center transition shadow-md group flex flex-col items-center">
+                    <div class="w-12 h-12 mb-2.5 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-slate-200 group-hover:text-[#00f0ff] keep-word">各種ご案内</span>
+                    <span class="text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-700 keep-word">各種ご案内</span>
                 </button>
             </div>
         </section>
 
-        <!-- ① 注目企画 ピックアップスライダー -->
+        <!-- ① 注目企画 スライダー -->
         <section class="reveal w-full max-w-[1440px] mx-auto px-5 md:px-10 py-12">
-            <div class="dark-glass-card rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden border border-cyan-500/30">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-cyan-500/20 pb-6">
+            <div class="white-content-card rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden border border-slate-200">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-200 pb-6">
                     <div>
-                        <span class="text-xs md:text-sm tracking-[0.35em] text-[#00f0ff] uppercase font-black block mb-2 drop-shadow-[0_0_6px_#00f0ff]">Featured Projects & Ads</span>
-                        <h3 class="text-3xl md:text-5xl font-black text-white font-brush keep-word">注目企画 ピックアップ！</h3>
-                        <p class="text-sm md:text-base text-slate-300 font-bold mt-2">注目の特別公演・広告ポスターをチェック！（クリックで詳細表示）</p>
+                        <span class="text-xs md:text-sm tracking-[0.35em] text-blue-600 uppercase font-black block mb-2">Featured Projects & Ads</span>
+                        <h3 class="text-3xl md:text-5xl font-black text-slate-900 font-brush keep-word">注目企画</h3>
+                        <p class="text-sm md:text-base text-slate-600 font-bold mt-2">注目の特別公演・広告ポスターをチェック！（クリックで詳細表示）</p>
                     </div>
                     <div class="flex items-center gap-3 self-end md:self-auto">
-                        <button onclick="prevPromoSlide()" class="w-12 h-12 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-[#00f0ff] flex items-center justify-center transition border border-cyan-500/30 shadow-sm hover:shadow-md text-lg font-black" title="前へ">❮</button>
-                        <button onclick="nextPromoSlide()" class="w-12 h-12 rounded-2xl bg-[#1d4ed8] hover:bg-[#2563eb] text-white flex items-center justify-center transition border border-cyan-400 shadow-md hover:shadow-lg text-lg font-black" title="次へ">❯</button>
+                        <button onclick="prevPromoSlide()" class="w-12 h-12 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition border border-slate-300 shadow-sm hover:shadow-md text-lg font-black" title="前へ">❮</button>
+                        <button onclick="nextPromoSlide()" class="w-12 h-12 rounded-2xl bg-[#1d4ed8] hover:bg-[#2563eb] text-white flex items-center justify-center transition border border-blue-600 shadow-md hover:shadow-lg text-lg font-black" title="次へ">❯</button>
                     </div>
                 </div>
 
@@ -796,7 +794,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mt-4 text-xs text-slate-400 font-bold">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mt-4 text-xs text-slate-500 font-bold">
                     <span>※広告カードをクリックすると各企画の詳細モーダルが開きます</span>
                     <span>企画紹介が自動で切り替わります。</span>
                 </div>
@@ -805,23 +803,23 @@
 
         <!-- ⑤ アクセス -->
         <section id="access-home" class="reveal w-full max-w-[1400px] mx-auto px-5 md:px-10 mb-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center dark-glass-card border border-cyan-500/30 p-6 md:p-12 rounded-3xl shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center white-content-card border border-slate-200 p-6 md:p-12 rounded-3xl shadow-2xl">
                 <div>
-                    <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-2 drop-shadow-[0_0_6px_#00f0ff]">Location & Access</span>
-                    <h3 class="text-3xl md:text-5xl font-black mb-6 text-white font-brush keep-word">アクセス</h3>
-                    <p class="text-slate-200 mb-6 text-base md:text-lg leading-relaxed">
+                    <span class="text-xs md:text-sm text-blue-600 font-black tracking-[0.3em] uppercase block mb-2">Location & Access</span>
+                    <h3 class="text-3xl md:text-5xl font-black mb-6 text-slate-900 font-brush keep-word">アクセス</h3>
+                    <p class="text-slate-700 mb-6 text-base md:text-lg leading-relaxed">
                         〒174-0074 東京都板橋区東新町２丁目２８−１<br>
-                        <strong class="text-white text-2xl md:text-3xl block mt-2 font-black tracking-wider keep-word">
+                        <strong class="text-slate-900 text-2xl md:text-3xl block mt-2 font-black tracking-wider keep-word">
                             城北中学校・高等学校
                         </strong>
                     </p>
-                    <div class="space-y-4 text-base md:text-lg text-slate-100 border-l-4 border-[#00f0ff] pl-5 font-bold">
+                    <div class="space-y-4 text-base md:text-lg text-slate-800 border-l-4 border-blue-600 pl-5 font-bold">
                         <p>● 東武東上線「上板橋駅」南口より 徒歩10分</p>
                         <p>● 東京メトロ「小竹向原駅」1番出口より 徒歩20分</p>
                     </div>
                 </div>
                
-                <div class="h-[300px] md:h-[360px] rounded-2xl shadow-inner border border-cyan-500/30 overflow-hidden">
+                <div class="h-[300px] md:h-[360px] rounded-2xl shadow-inner border border-slate-300 overflow-hidden">
                     <iframe src="https://maps.google.co.jp/maps?output=embed&q=城北中学校・高等学校+〒174-0074+東京都板橋区東新町２丁目２８−１" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -829,7 +827,7 @@
     </main>
 
     <!-- ========================================================== -->
-    <!-- 【ご挨拶】ページコンテナ -->
+    <!-- 【ご挨拶】ページコンテナ（完全掲載） -->
     <!-- ========================================================== -->
     <main id="page-about" class="w-full pt-[82px] md:pt-[90px] custom-page-bg hidden flex-grow py-14 px-5 md:px-10 relative z-10">
         <section class="max-w-[1400px] mx-auto reveal">
@@ -840,48 +838,48 @@
 
             <!-- 挨拶カード -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-                <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-[#00f0ff] shadow-xl flex flex-col">
-                    <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                        <span class="text-xs text-[#00f0ff] font-black tracking-widest uppercase block mb-1">学校長</span>
-                        <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">清水 団</h4>
+                <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-blue-600 shadow-xl flex flex-col">
+                    <div class="mb-5 border-b border-slate-200 pb-3">
+                        <span class="text-xs text-blue-600 font-black tracking-widest uppercase block mb-1">学校長</span>
+                        <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">清水 団</h4>
                     </div>
-                    <div class="space-y-3.5 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                    <div class="space-y-3.5 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                         <p>第85回城北学園文化祭にお越しいただき、誠にありがとうございます。心より歓迎申し上げます。</p>
                         <p>今年のテーマは「男前」です。この言葉には、困難にも前向きに挑戦し、仲間を思いやりながら最後までやり抜く、生徒たちの強い決意が込められています。研究発表や展示、校内を彩る垂れ幕やアーチ、そしてYouTubeチャンネルでの団体紹介など、生徒たちはそれぞれの個性と創意工夫を生かしながら、この日のために準備を重ねてきました。</p>
                         <p>どうぞ、生徒たちの熱意と創造性、そして仲間とともに創り上げた文化祭ならではの活気を存分にお楽しみください。皆様にとって心に残る一日となれば幸いです。</p>
                     </div>
                 </div>
 
-                <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-[#38bdf8] shadow-xl flex flex-col">
-                    <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                        <span class="text-xs text-[#38bdf8] font-black tracking-widest uppercase block mb-1">文化祭実行委員会委員長</span>
-                        <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">松本 成生</h4>
+                <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-sky-500 shadow-xl flex flex-col">
+                    <div class="mb-5 border-b border-slate-200 pb-3">
+                        <span class="text-xs text-sky-600 font-black tracking-widest uppercase block mb-1">文化祭実行委員会委員長</span>
+                        <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">松本 成生</h4>
                     </div>
-                    <div class="space-y-3.5 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
-                        <p class="font-bold text-[#00f0ff]">城北祭「男前」へようこそ。<br>文化祭実行委員会委員長の松本成生です。<br>城北祭にお越しくださり、誠にありがとうございます。</p>
+                    <div class="space-y-3.5 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
+                        <p class="font-bold text-blue-800">城北祭「男前」へようこそ。<br>文化祭実行委員会委員長の松本成生です。<br>城北祭にお越しくださり、誠にありがとうございます。</p>
                         <p>第85回文化祭実行委員会は、文化祭特設サイトの開設や文化祭2日目の最後に行われる後夜祭など、これまでにない新たな試みに挑戦しています。これらの取り組みを通して、来場してくださる皆様に、より一層文化祭を楽しんでいただけるように実行委員一同、準備を進めてまいりました。生徒一人ひとりの「やってみたい」という思いを形にしてこれまで以上に盛り上がる文化祭を目指し、全力で取り組んできました。</p>
                         <p>最後になりますが、先生方、PTAの皆様、関係者の皆様、そして文化祭のために全力で準備してくださった生徒の皆さんに、この場を借りて心より御礼申し上げます。</p>
-                        <p class="font-bold text-white">俺たちの全力の「男前」な文化祭を最後まで楽しんでください!!</p>
+                        <p class="font-bold text-slate-900">俺たちの全力の「男前」な文化祭を最後まで楽しんでください!!</p>
                     </div>
                 </div>
 
-                <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-teal-400 shadow-xl flex flex-col">
-                    <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                        <span class="text-xs text-teal-300 font-black tracking-widest uppercase block mb-1">文化祭実行委員会副委員長</span>
-                        <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">浅野 友希</h4>
+                <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-teal-500 shadow-xl flex flex-col">
+                    <div class="mb-5 border-b border-slate-200 pb-3">
+                        <span class="text-xs text-teal-600 font-black tracking-widest uppercase block mb-1">文化祭実行委員会副委員長</span>
+                        <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">浅野 友希</h4>
                     </div>
-                    <div class="space-y-3.5 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                    <div class="space-y-3.5 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                         <p>本日は第85回文化祭にお越しいただきありがとうございます。ともに協力してくださった皆さまのおかげでこの日を迎えることができました。</p>
                         <p>これまでの先生方、生徒たちの協力を文化祭実行委員会一同大変嬉しく思います。まだ文化祭は始まったばかり、皆さんの楽しみはたくさんあるでしょう。笑顔と幸せが溢れる最高の文化祭になることを願っています。</p>
                     </div>
                 </div>
 
-                <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-[#1d4ed8] shadow-xl flex flex-col">
-                    <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                        <span class="text-xs text-[#60a5fa] font-black tracking-widest uppercase block mb-1">生徒会長</span>
-                        <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">平山 千紘</h4>
+                <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-indigo-600 shadow-xl flex flex-col">
+                    <div class="mb-5 border-b border-slate-200 pb-3">
+                        <span class="text-xs text-indigo-600 font-black tracking-widest uppercase block mb-1">生徒会長</span>
+                        <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">平山 千紘</h4>
                     </div>
-                    <div class="space-y-3.5 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                    <div class="space-y-3.5 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                         <p>皆さんこんにちは、生徒会長の平山千紘です。</p>
                         <p>今年でついに85回目を迎える城北祭。伝統あるこの行事に参加できることをとても嬉しく思います。まずは、文化祭実行委員会、支えてくださった先生方、PTAの皆様、関係者の皆様、そして生徒の皆さんにこの場をお借りしてお礼申し上げます。</p>
                         <p>この城北祭が非常に楽しく記憶に残るものになるよう、城北学園総出で準備をいたしました。一般の方も、受験生も、城北生も、先生方も、PTAの皆様も、この二日間をぜひお楽しみください!</p>
@@ -897,164 +895,164 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-1">
-                                <h4 class="text-lg font-black text-[#00f0ff]">団体管理部門</h4>
-                                <span class="text-xs bg-cyan-950/80 border border-cyan-500/40 text-[#00f0ff] font-bold px-2 py-0.5 rounded">委員長 松本 成生</span>
+                                <h4 class="text-lg font-black text-blue-800">団体管理部門</h4>
+                                <span class="text-xs bg-blue-50 border border-blue-200 text-blue-700 font-bold px-2 py-0.5 rounded">委員長 松本 成生</span>
                             </div>
-                            <p class="text-[11px] text-slate-400 font-bold mb-4 uppercase tracking-wider">Group Management Division</p>
+                            <p class="text-[11px] text-slate-500 font-bold mb-4 uppercase tracking-wider">Group Management Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30">H2</span>
-                                    <span class="font-bold text-slate-200">松本 成生 / 吉澤 英佑</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">H2</span>
+                                    <span class="font-bold text-slate-800">松本 成生 / 吉澤 英佑</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-500/30">H1</span>
-                                    <span class="font-bold text-slate-200">小塚 誠太 / 今田 直希 / 清水 智文</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-300">H1</span>
+                                    <span class="font-bold text-slate-800">小塚 誠太 / 今田 直希 / 清水 智文</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
-                            <h4 class="text-lg font-black text-[#00f0ff] mb-1">建築部門</h4>
-                            <p class="text-[11px] text-slate-400 font-bold mb-4 uppercase tracking-wider">Architecture Division</p>
+                            <h4 class="text-lg font-black text-blue-800 mb-1">建築部門</h4>
+                            <p class="text-[11px] text-slate-500 font-bold mb-4 uppercase tracking-wider">Architecture Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base mb-4">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30">H2</span>
-                                    <span class="font-bold text-slate-200">武田 遙人 / 狩野 優希</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">H2</span>
+                                    <span class="font-bold text-slate-800">武田 遙人 / 狩野 優希</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-500/30">H1</span>
-                                    <span class="font-bold text-slate-200">高橋 大輝</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-300">H1</span>
+                                    <span class="font-bold text-slate-800">高橋 大輝</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-900/60 text-teal-300 border border-teal-500/30">M3</span>
-                                    <span class="font-bold text-slate-200">石根 優希</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-300">M3</span>
+                                    <span class="font-bold text-slate-800">石根 優希</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">M1</span>
-                                    <span class="font-bold text-slate-200">佐々木 奏太郎 / 町田 蒼太 / 田隝 弘丞</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-cyan-100 text-cyan-800 border border-cyan-300">M1</span>
+                                    <span class="font-bold text-slate-800">佐々木 奏太郎 / 町田 蒼太 / 田隝 弘丞</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-3 border-t border-cyan-500/20">
-                            <span class="text-xs text-[#38bdf8] font-bold">【垂れ幕・アーチデザイン】</span>
-                            <p class="text-xs font-bold text-slate-300 mt-0.5">統括／建築部門長 武田 遙人<br>デザイン／追杉 洋光<br>製作／文実 建築部門</p>
+                        <div class="pt-3 border-t border-slate-200">
+                            <span class="text-xs text-blue-700 font-bold">【垂れ幕・アーチデザイン】</span>
+                            <p class="text-xs font-bold text-slate-700 mt-0.5">統括／建築部門長 武田 遙人<br>デザイン／追杉 洋光<br>製作／文実 建築部門</p>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-1">
-                                <h4 class="text-lg font-black text-[#00f0ff]">広報部門</h4>
-                                <span class="text-xs bg-cyan-950/80 border border-cyan-500/40 text-[#00f0ff] font-bold px-2 py-0.5 rounded">副委員長 浅野 友希</span>
+                                <h4 class="text-lg font-black text-blue-800">広報部門</h4>
+                                <span class="text-xs bg-blue-50 border border-blue-200 text-blue-700 font-bold px-2 py-0.5 rounded">副委員長 浅野 友希</span>
                             </div>
-                            <p class="text-[11px] text-slate-400 font-bold mb-4 uppercase tracking-wider">Public Relations Division</p>
+                            <p class="text-[11px] text-slate-500 font-bold mb-4 uppercase tracking-wider">Public Relations Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base mb-4">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30">H2</span>
-                                    <span class="font-bold text-slate-200">浅野 友希 / 追杉 洋光</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">H2</span>
+                                    <span class="font-bold text-slate-800">浅野 友希 / 追杉 洋光</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-500/30">H1</span>
-                                    <span class="font-bold text-slate-200">小塚 誠太</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-300">H1</span>
+                                    <span class="font-bold text-slate-800">小塚 誠太</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-900/60 text-teal-300 border border-teal-500/30">M3</span>
-                                    <span class="font-bold text-slate-200">砂谷 英希 / 松崎 悠人</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-300">M3</span>
+                                    <span class="font-bold text-slate-800">砂谷 英希 / 松崎 悠人</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-3 border-t border-cyan-500/20 space-y-1.5">
+                        <div class="pt-3 border-t border-slate-200 space-y-1.5">
                             <div>
-                                <span class="text-xs text-[#38bdf8] font-bold">【ポスターイラスト】</span>
-                                <p class="text-xs font-bold text-slate-300 mt-0.5">髙濱 良太</p>
+                                <span class="text-xs text-blue-700 font-bold">【ポスターイラスト】</span>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">髙濱 良太</p>
                             </div>
                             <div>
-                                <span class="text-xs text-[#38bdf8] font-bold">【写真撮影】</span>
-                                <p class="text-xs font-bold text-slate-300 mt-0.5">鎌田 真</p>
+                                <span class="text-xs text-blue-700 font-bold">【写真撮影】</span>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">鎌田 真</p>
                             </div>
                             <div>
-                                <span class="text-xs text-[#38bdf8] font-bold">【案内サインデザイン】</span>
-                                <p class="text-xs font-bold text-slate-300 mt-0.5">石根 優希 / 追杉 洋光</p>
+                                <span class="text-xs text-blue-700 font-bold">【案内サインデザイン】</span>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">石根 優希 / 追杉 洋光</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
-                            <h4 class="text-lg font-black text-[#00f0ff] mb-1">飲食部門</h4>
-                            <p class="text-[11px] text-slate-400 font-bold mb-4 uppercase tracking-wider">Food and Beverage Division</p>
+                            <h4 class="text-lg font-black text-blue-800 mb-1">飲食部門</h4>
+                            <p class="text-[11px] text-slate-500 font-bold mb-4 uppercase tracking-wider">Food and Beverage Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30">H2</span>
-                                    <span class="font-bold text-slate-200">山口 翔</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">H2</span>
+                                    <span class="font-bold text-slate-800">山口 翔</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-500/30">H1</span>
-                                    <span class="font-bold text-slate-200">伊藤 優一</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-300">H1</span>
+                                    <span class="font-bold text-slate-800">伊藤 優一</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-900/60 text-teal-300 border border-teal-500/30">M3</span>
-                                    <span class="font-bold text-slate-200">斎藤 千優路</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-300">M3</span>
+                                    <span class="font-bold text-slate-800">斎藤 千優路</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
-                            <h4 class="text-lg font-black text-[#00f0ff] mb-1">ICT部門</h4>
-                            <p class="text-[11px] text-slate-400 font-bold mb-4 uppercase tracking-wider">ICT Division</p>
+                            <h4 class="text-lg font-black text-blue-800 mb-1">ICT部門</h4>
+                            <p class="text-[11px] text-slate-500 font-bold mb-4 uppercase tracking-wider">ICT Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base mb-4">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30">H2</span>
-                                    <span class="font-bold text-slate-200">鎌田 真 / 山森 拓翔 / 追杉 洋光 / 林 毅樺</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">H2</span>
+                                    <span class="font-bold text-slate-800">鎌田 真 / 山森 拓翔 / 追杉 洋光 / 林 毅樺</span>
                                 </div>
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-500/30">H1</span>
-                                    <span class="font-bold text-slate-200">小塚 誠太 / 五十嵐 隼</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-300">H1</span>
+                                    <span class="font-bold text-slate-800">小塚 誠太 / 五十嵐 隼</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-3 border-t border-cyan-500/20 space-y-1.5">
+                        <div class="pt-3 border-t border-slate-200 space-y-1.5">
                             <div>
-                                <span class="text-xs text-[#38bdf8] font-bold">【サイト作成・デザイン】</span>
-                                <p class="text-xs font-bold text-slate-300">林 毅樺 / 小塚 誠太 / 石根 優希 / 追杉 洋光</p>
+                                <span class="text-xs text-blue-700 font-bold">【サイト作成・デザイン】</span>
+                                <p class="text-xs font-bold text-slate-700">林 毅樺 / 小塚 誠太 / 石根 優希 / 追杉 洋光</p>
                             </div>
                             <div>
-                                <span class="text-xs text-[#38bdf8] font-bold">【YouTube運営・動画編集】</span>
-                                <p class="text-xs font-bold text-slate-300">小塚 誠太 / 五十嵐 隼 / 山森 拓翔</p>
+                                <span class="text-xs text-blue-700 font-bold">【YouTube運営・動画編集】</span>
+                                <p class="text-xs font-bold text-slate-700">小塚 誠太 / 五十嵐 隼 / 山森 拓翔</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-2xl border border-cyan-500/25 shadow-md flex flex-col justify-between">
+                    <div class="white-content-card p-6 rounded-2xl border border-slate-200 shadow-md flex flex-col justify-between">
                         <div>
-                            <h4 class="text-lg font-black text-[#00f0ff] mb-1">補佐部門</h4>
-                            <p class="text-[11px] text-slate-400 font-bold mb-3 uppercase tracking-wider">Assistance Division</p>
+                            <h4 class="text-lg font-black text-blue-800 mb-1">補佐部門</h4>
+                            <p class="text-[11px] text-slate-500 font-bold mb-3 uppercase tracking-wider">Assistance Division</p>
                             
                             <div class="space-y-2 text-sm md:text-base mb-4">
                                 <div class="flex items-start gap-2">
-                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-purple-900/60 text-purple-300 border border-purple-500/30">H3</span>
-                                    <span class="font-bold text-slate-200">石川 文智 / 伏見 仁然 / 武田 優翔</span>
+                                    <span class="text-xs font-black px-2 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-300">H3</span>
+                                    <span class="font-bold text-slate-800">石川 文智 / 伏見 仁然 / 武田 優翔</span>
                                 </div>
                             </div>
 
-                            <div class="pt-3 border-t border-cyan-500/20">
-                                <span class="text-xs text-purple-300 font-black block mb-1">【後夜祭実行委員会】</span>
-                                <p class="text-sm font-bold text-slate-200 leading-relaxed">
+                            <div class="pt-3 border-t border-slate-200">
+                                <span class="text-xs text-purple-700 font-black block mb-1">【後夜祭実行委員会】</span>
+                                <p class="text-sm font-bold text-slate-800 leading-relaxed">
                                     伏見 仁然 / 武田 優翔 / 松本 成生 / 小塚 誠太
                                 </p>
                             </div>
@@ -1072,23 +1070,23 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
                     <!-- 垂れ幕完成 -->
-                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl flex flex-col items-center">
-                        <div class="w-full mb-4 text-center border-b border-cyan-500/20 pb-3">
-                            <span class="text-xs text-[#00f0ff] font-black tracking-widest uppercase block mb-1">BANNERS</span>
-                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">垂れ幕デザイン</h4>
+                    <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 shadow-2xl flex flex-col items-center">
+                        <div class="w-full mb-4 text-center border-b border-slate-200 pb-3">
+                            <span class="text-xs text-blue-600 font-black tracking-widest uppercase block mb-1">BANNERS</span>
+                            <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">垂れ幕デザイン</h4>
                         </div>
-                        <div class="w-full flex-grow flex items-center justify-center bg-slate-950/80 rounded-2xl p-4 border border-cyan-500/20 overflow-hidden">
+                        <div class="w-full flex-grow flex items-center justify-center bg-slate-900 rounded-2xl p-4 border border-slate-200 overflow-hidden">
                             <img src="垂れ幕完成.png" alt="垂れ幕デザイン完成版" class="w-full max-h-[600px] object-contain rounded-xl shadow-lg transition hover:scale-105 duration-300" onerror="this.onerror=null; this.src='ポスター横verBG.png';">
                         </div>
                     </div>
 
                     <!-- 入場門完成 -->
-                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl flex flex-col items-center">
-                        <div class="w-full mb-4 text-center border-b border-cyan-500/20 pb-3">
-                            <span class="text-xs text-[#38bdf8] font-black tracking-widest uppercase block mb-1">MAIN ENTRANCE ARCH</span>
-                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">入場門デザイン</h4>
+                    <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 shadow-2xl flex flex-col items-center">
+                        <div class="w-full mb-4 text-center border-b border-slate-200 pb-3">
+                            <span class="text-xs text-sky-600 font-black tracking-widest uppercase block mb-1">MAIN ENTRANCE ARCH</span>
+                            <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">入場門デザイン</h4>
                         </div>
-                        <div class="w-full flex-grow flex items-center justify-center bg-slate-950/80 rounded-2xl p-4 border border-cyan-500/20 overflow-hidden">
+                        <div class="w-full flex-grow flex items-center justify-center bg-slate-900 rounded-2xl p-4 border border-slate-200 overflow-hidden">
                             <img src="入場門完成.png" alt="入場門デザイン完成版" class="w-full max-h-[600px] object-contain rounded-xl shadow-lg transition hover:scale-105 duration-300" onerror="this.onerror=null; this.src='敷地内地図.png';">
                         </div>
                     </div>
@@ -1103,32 +1101,32 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-[#00f0ff] shadow-xl flex flex-col">
-                        <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                            <span class="text-xs text-[#00f0ff] font-black tracking-widest uppercase block mb-1">H2E</span>
-                            <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">林 毅樺</h4>
+                    <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-blue-600 shadow-xl flex flex-col">
+                        <div class="mb-5 border-b border-slate-200 pb-3">
+                            <span class="text-xs text-blue-600 font-black tracking-widest uppercase block mb-1">H2E</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">林 毅樺</h4>
                         </div>
-                        <div class="space-y-3 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                        <div class="space-y-3 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                             <p>本日は第85回城北学園文化祭「男前」にお越しいただき、誠にありがとうございます。今年の文化祭では新たに公式サイトの制作に挑みました。私は途中から制作に合流いたしましたが、短い期間ながらも「どうすれば見やすく、文化祭をより楽しめるサイトになるか」に重点を置き、試行錯誤を繰り返す非常に充実した時間となりました。途中参加の私を、忙しいながらもサポートしてくれた文化祭実行委員会の仲間、及び関係者の皆様に心より御礼申し上げます。当サイトの目玉機能の１つとして「企画投票機能」を実装しております。是非ご活用ください！それでは、ぜひ当サイトと併せて、第85回城北学園文化祭「男前」を存分にお楽しみください！</p>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-[#38bdf8] shadow-xl flex flex-col">
-                        <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                            <span class="text-xs text-[#38bdf8] font-black tracking-widest uppercase block mb-1">H1C</span>
-                            <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">小塚 誠太</h4>
+                    <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-sky-500 shadow-xl flex flex-col">
+                        <div class="mb-5 border-b border-slate-200 pb-3">
+                            <span class="text-xs text-sky-600 font-black tracking-widest uppercase block mb-1">H1C</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">小塚 誠太</h4>
                         </div>
-                        <div class="space-y-3 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                        <div class="space-y-3 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                             <p>本日は第85回城北学園文化祭「男前」にお越しいただき、誠にありがとうございます。今年度、私は企画投票機能をはじめ、校内マップを除くサイト全体のデザインおよび開発を担当いたしました。制作にあたり、素晴らしいマップを作成してくださった林先輩、ならびにAIでサイトの土台を築いてくれた石根くんには、深く御礼申し上げます。ぜひ当サイトをご活用いただき、文化祭を存分にお楽しみください！</p>
                         </div>
                     </div>
 
-                    <div class="dark-glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 border-t-4 border-t-teal-400 shadow-xl flex flex-col">
-                        <div class="mb-5 border-b border-cyan-500/20 pb-3">
-                            <span class="text-xs text-teal-300 font-black tracking-widest uppercase block mb-1">M3C</span>
-                            <h4 class="text-xl md:text-2xl font-black text-white font-brush keep-word">石根 優希</h4>
+                    <div class="white-content-card rounded-3xl p-6 md:p-8 border border-slate-200 border-t-4 border-t-teal-500 shadow-xl flex flex-col">
+                        <div class="mb-5 border-b border-slate-200 pb-3">
+                            <span class="text-xs text-teal-600 font-black tracking-widest uppercase block mb-1">M3C</span>
+                            <h4 class="text-xl md:text-2xl font-black text-slate-900 font-brush keep-word">石根 優希</h4>
                         </div>
-                        <div class="space-y-3 text-sm md:text-base text-slate-200 leading-relaxed font-medium flex-grow">
+                        <div class="space-y-3 text-sm md:text-base text-slate-700 leading-relaxed font-medium flex-grow">
                             <p>本日は第85回城北学園文化祭にお越しいただき、誠にありがとうございます。今年、私たちは新たに文化祭用公式サイトを立ち上げました。はじめは小さな思いつきにすぎなかったこのアイデアですが、多くの先輩方や先生方にご協力いただき、何度も話し合いと試行錯誤を重ねることで、こうして大きな形として実現することができました。支えてくださったすべての方々に深く感謝申し上げます。どうぞこのサイトをご活用いただき、城北学園文化祭「男前」を存分にお楽しみください！</p>
                         </div>
                     </div>
@@ -1146,7 +1144,7 @@
                 <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-1 drop-shadow-[0_0_6px_#00f0ff]">Timeline & Schedule</span>
                 <h3 class="text-4xl md:text-6xl font-black mb-6 text-white font-brush keep-word">タイムテーブル</h3>
                 
-                <div class="bg-amber-950/80 border border-amber-500/60 text-amber-100 px-5 py-3 rounded-2xl max-w-2xl mx-auto mb-8 font-bold text-sm md:text-base flex items-center justify-center gap-2 shadow-lg backdrop-blur-md">
+                <div class="bg-amber-100 border border-amber-300 text-amber-900 px-5 py-3 rounded-2xl max-w-2xl mx-auto mb-8 font-bold text-sm md:text-base flex items-center justify-center gap-2 shadow-lg">
                     <span>⚠️</span>
                     <span>共通棟3階 体育館は終日「鉄道研究部」が展示中！</span>
                 </div>
@@ -1249,10 +1247,10 @@
                     
                     <div class="flex flex-wrap justify-center gap-2 mt-6">
                         <button class="filter-btn bg-[#00f0ff] text-slate-950 px-5 py-2 text-sm font-bold rounded-full shadow-lg shadow-cyan-500/30" data-filter="all" onclick="setCategory('all', this)">#すべて</button>
-                        <button class="filter-btn dark-glass-card text-amber-300 border border-amber-400/40 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-400/20" data-filter="favorite" onclick="setCategory('favorite', this)">★ 行きたいリスト</button>
-                        <button class="filter-btn dark-glass-card text-slate-200 border border-cyan-500/30 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-800" data-filter="class" onclick="setCategory('class', this)">#クラス部門</button>
-                        <button class="filter-btn dark-glass-card text-slate-200 border border-cyan-500/30 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-800" data-filter="exhibition" onclick="setCategory('exhibition', this)">#展示部門</button>
-                        <button class="filter-btn dark-glass-card text-slate-200 border border-cyan-500/30 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-800" data-filter="performance" onclick="setCategory('performance', this)">#パフォーマンス部門</button>
+                        <button class="filter-btn bg-white text-amber-700 border border-amber-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-50" data-filter="favorite" onclick="setCategory('favorite', this)">★ 行きたいリスト</button>
+                        <button class="filter-btn bg-white text-slate-800 border border-slate-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-50" data-filter="class" onclick="setCategory('class', this)">#クラス部門</button>
+                        <button class="filter-btn bg-white text-slate-800 border border-slate-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-50" data-filter="exhibition" onclick="setCategory('exhibition', this)">#展示部門</button>
+                        <button class="filter-btn bg-white text-slate-800 border border-slate-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-50" data-filter="performance" onclick="setCategory('performance', this)">#パフォーマンス部門</button>
                     </div>
                 </div>
             </div>
@@ -1262,8 +1260,8 @@
                 <div class="reveal group-section" id="section-m1">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('m1')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-sm">M1</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">中学1年 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-sm">M1</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">中学1年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1276,8 +1274,8 @@
                 <div class="reveal group-section" id="section-m2">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('m2')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-sm">M2</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">中学2年 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-sm">M2</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">中学2年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1290,8 +1288,8 @@
                 <div class="reveal group-section" id="section-m3">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('m3')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-sm">M3</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">中学3年 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-sm">M3</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">中学3年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1304,8 +1302,8 @@
                 <div class="reveal group-section" id="section-h1">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('h1')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-sm">H1</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">高校1年 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-sm">H1</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">高校1年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1318,8 +1316,8 @@
                 <div class="reveal group-section" id="section-h2">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('h2')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-sm">H2</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">高校2年 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-sm">H2</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">高校2年 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1332,8 +1330,8 @@
                 <div class="reveal group-section" id="section-club">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('club')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-xs">部活</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">部活・同好会 企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-xs">部活</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">部活・同好会 企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1346,8 +1344,8 @@
                 <div class="reveal group-section" id="section-other">
                     <div class="group-accordion-header p-6 flex justify-between items-center" onclick="toggleGroupSection('other')">
                         <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 rounded-xl bg-blue-900/60 text-[#00f0ff] border border-cyan-500/30 font-black flex items-center justify-center text-xs">他</span>
-                            <h4 class="text-xl md:text-3xl font-black text-white font-brush keep-word">その他（ステージ・教員・PTA・有志）企画一覧</h4>
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 border border-blue-300 font-black flex items-center justify-center text-xs">他</span>
+                            <h4 class="text-xl md:text-3xl font-black text-slate-900 font-brush keep-word">その他（ステージ・教員・PTA・有志）企画一覧</h4>
                         </div>
                         <span class="icon-plus text-2xl font-light">+</span>
                     </div>
@@ -1366,15 +1364,15 @@
         <section class="max-w-[1400px] mx-auto reveal text-center">
             <div class="mb-10">
                 <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-[0.3em] uppercase block mb-2 drop-shadow-[0_0_6px_#00f0ff]">Grand Finale Stage</span>
-                <h3 class="text-5xl md:text-7xl font-black mb-4 text-white font-brush tracking-wider keep-word">後夜祭</h3>
+                <h3 class="text-5xl md:text-7xl font-black mb-4 text-white font-brush tracking-wider">後夜祭</h3>
                 
                 <!-- 後夜祭の時間表示 -->
                 <div class="inline-block bg-gradient-to-r from-blue-950 via-indigo-900 to-purple-950 border-2 border-cyan-400/60 px-6 sm:px-8 py-5 rounded-3xl shadow-2xl my-4 max-w-full">
                     <span class="text-xs md:text-sm text-cyan-300 font-black tracking-widest uppercase block mb-1">Time & Stage</span>
-                    <p class="text-2xl sm:text-4xl md:text-5xl font-black text-[#00f0ff] font-brush tracking-widest keep-word">
-                        Day 02 (9/27 日) 14:30 〜 16:10
+                    <p class="text-2xl sm:text-3xl md:text-5xl font-black text-[#00f0ff] font-brush tracking-widest">
+                        Day 02 (9/27 日)<br class="block sm:hidden"> 14:30 〜 16:10
                     </p>
-                    <p class="text-sm md:text-base text-slate-100 font-bold mt-1">場所：多目的ホール（共通棟4F）</p>
+                    <p class="text-sm md:text-base text-slate-100 font-bold mt-2">場所：多目的ホール（共通棟4F）</p>
                 </div>
 
                 <p class="text-xs md:text-sm text-cyan-300 font-bold mt-2">※保護者の皆様も後夜祭をご観覧いただけます！ぜひ会場へお越しください。</p>
@@ -1382,30 +1380,30 @@
             </div>
 
             <!-- 後夜祭プログラム -->
-            <div class="dark-glass-card rounded-3xl p-6 md:p-12 mb-12 border border-cyan-500/30 shadow-2xl text-left max-w-4xl mx-auto">
-                <h4 class="text-2xl md:text-4xl font-black text-white mb-6 font-brush text-center text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] keep-word">
+            <div class="white-content-card rounded-3xl p-6 md:p-12 mb-12 border border-slate-200 shadow-2xl text-left max-w-4xl mx-auto">
+                <h4 class="text-2xl md:text-4xl font-black text-blue-900 mb-6 font-brush text-center keep-word">
                     後夜祭で最高のフィナーレを！
                 </h4>
-                <div class="space-y-6 text-slate-100 text-base md:text-lg leading-relaxed font-medium">
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/20">
+                <div class="space-y-6 text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                         <span class="text-2xl md:text-3xl">🎸</span>
                         <div>
-                            <strong class="text-white text-lg md:text-xl block mb-1 font-brush">激アツステージ！</strong>
-                            <p class="text-slate-200 text-sm md:text-base">ダンス部や軽音部そしてなんと教員バンドが文化祭の最後を盛り上げます！圧倒的なパフォーマンスをお見逃しなく！</p>
+                            <strong class="text-slate-900 text-lg md:text-xl block mb-1 font-brush">激アツステージ！</strong>
+                            <p class="text-slate-600 text-sm md:text-base">ダンス部や軽音部そしてなんと教員バンドが文化祭の最後を盛り上げます！圧倒的なパフォーマンスをお見逃しなく！</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/20">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                         <span class="text-2xl md:text-3xl">🎤</span>
                         <div>
-                            <strong class="text-white text-lg md:text-xl block mb-1 font-brush">大爆笑必至！文化祭 IPPON グランプリ</strong>
-                            <p class="text-slate-200 text-sm md:text-base">なんと教員も参加して文化祭 IPPON グランプリを文化祭実行委員会が開催！城北一のお笑い男前は誰の手に？！</p>
+                            <strong class="text-slate-900 text-lg md:text-xl block mb-1 font-brush">大爆笑必至！文化祭 IPPON グランプリ</strong>
+                            <p class="text-slate-600 text-sm md:text-base">なんと教員も参加して文化祭 IPPON グランプリを文化祭実行委員会が開催！城北一のお笑い男前は誰の手に？！</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/20">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                         <span class="text-2xl md:text-3xl">🏆</span>
                         <div>
-                            <strong class="text-white text-lg md:text-xl block mb-1 font-brush">栄冠は誰の手に？！ 投票結果発表！</strong>
-                            <p class="text-slate-200 text-sm md:text-base">皆様の清き一票で決定した「人気企画賞」各部門（クラス部門・展示部門・パフォーマンス部門・総合賞）の最終結果をステージ上で堂々発表いたします！</p>
+                            <strong class="text-slate-900 text-lg md:text-xl block mb-1 font-brush">栄冠は誰の手に？！ 投票結果発表！</strong>
+                            <p class="text-slate-600 text-sm md:text-base">皆様の清き一票で決定した「人気企画賞」各部門（クラス部門・展示部門・パフォーマンス部門・総合賞）の最終結果をステージ上で堂々発表いたします！</p>
                         </div>
                     </div>
                 </div>
@@ -1415,45 +1413,45 @@
             <div class="mb-12">
                 <h4 class="text-2xl md:text-4xl font-black text-white mb-6 font-brush keep-word">人気投票 表彰部門</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="dark-glass-card p-6 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-amber-400 flex flex-col items-center">
-                        <div class="w-12 h-12 rounded-2xl bg-amber-950/60 border border-amber-400/40 text-amber-400 flex items-center justify-center mb-3">
+                    <div class="white-content-card p-6 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-amber-500 flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
                             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V4m0 4l-4 4m4-4l4 4M5 3h14a2 2 0 012 2v2a5 5 0 01-5 5h-1.5m-7 0H6a5 5 0 01-5-5V5a2 2 0 012-2h4"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">総合賞</h5>
-                        <p class="text-xs text-slate-200 font-bold leading-relaxed">全企画の中から選ばれる最高栄誉の賞！</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">総合賞</h5>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">全企画の中から選ばれる最高栄誉の賞！</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-emerald-400 flex flex-col items-center">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-950/60 border border-emerald-400/40 text-emerald-400 flex items-center justify-center mb-3">
+                    <div class="white-content-card p-6 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-emerald-500 flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
                             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">クラス部門賞</h5>
-                        <p class="text-xs text-slate-200 font-bold leading-relaxed">全学年クラス企画の中で一番盛り上がった企画！</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">クラス部門賞</h5>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">全学年クラス企画の中で一番盛り上がった企画！</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-[#00f0ff] flex flex-col items-center">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-3">
+                    <div class="white-content-card p-6 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-blue-600 flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
                             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">展示部門賞</h5>
-                        <p class="text-xs text-slate-200 font-bold leading-relaxed">最も知的好奇心を刺激したハイクオリティ展示！</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">展示部門賞</h5>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">最も知的好奇心を刺激したハイクオリティ展示！</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-purple-400 flex flex-col items-center">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-950/60 border border-purple-400/40 text-purple-400 flex items-center justify-center mb-3">
+                    <div class="white-content-card p-6 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-purple-600 flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-3">
                             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">パフォーマンス部門賞</h5>
-                        <p class="text-xs text-slate-200 font-bold leading-relaxed">講堂やホールを熱狂させた圧巻のステージ公演！</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">パフォーマンス部門賞</h5>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">講堂やホールを熱狂させた圧巻のステージ公演！</p>
                     </div>
                 </div>
             </div>
 
-            <div class="dark-glass-card rounded-3xl p-6 md:p-10 border border-cyan-500/25 shadow-xl max-w-3xl mx-auto space-y-3">
-                <p class="text-base md:text-2xl font-bold text-white">
-                    各企画への投票は <button onclick="switchPage('groups')" class="text-[#00f0ff] underline font-black hover:opacity-80 transition">「企画紹介」</button> ページにて行えます！
+            <div class="white-content-card rounded-3xl p-6 md:p-10 border border-slate-200 shadow-xl max-w-3xl mx-auto space-y-3">
+                <p class="text-base md:text-2xl font-bold text-slate-900">
+                    各企画への投票は <button onclick="switchPage('groups')" class="text-blue-700 underline font-black hover:opacity-80 transition">「企画紹介」</button> ページにて行えます！
                 </p>
-                <p class="text-xs text-slate-300 font-medium">（※各企画の詳細モーダルから投票可能です。同一端末から1企画につき1票まで）</p>
+                <p class="text-xs text-slate-500 font-medium">（※各企画の詳細モーダルから投票可能です。同一端末から1企画につき1票まで）</p>
             </div>
         </section>
     </main>
@@ -1479,13 +1477,13 @@
             <!-- 学食・Jラウンジ・売店 -->
             <div id="food-cafe" class="food-content space-y-12 hidden">
                 <!-- 食堂（学食） -->
-                <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl">
+                <div class="white-content-card p-6 md:p-10 rounded-3xl border border-slate-200 shadow-xl">
                     <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
                         <div class="flex items-center gap-3">
-                            <span class="w-3 h-7 bg-[#00f0ff] rounded-full shadow-[0_0_8px_#00f0ff]"></span>
+                            <span class="w-3 h-7 bg-blue-600 rounded-full shadow-[0_0_8px_#2563eb]"></span>
                             <div>
-                                <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">食堂（CAFETERIA / 講堂の下の階 B1F）</h4>
-                                <p class="text-sm text-slate-300 font-bold">10:00〜 営業（※その他売店メニューもあり・飲食関係はなくなり次第終了・入口から見て手前の食券機は新札使用不可）</p>
+                                <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">食堂（CAFETERIA / 講堂の下の階 B1F）</h4>
+                                <p class="text-sm text-slate-600 font-bold">10:00〜 営業（※その他売店メニューもあり・飲食関係はなくなり次第終了・入口から見て手前の食券機は新札使用不可）</p>
                             </div>
                         </div>
                     </div>
@@ -1493,47 +1491,47 @@
                 </div>
 
                 <!-- Jラウンジ（PTAカフェ） -->
-                <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl">
+                <div class="white-content-card p-6 md:p-10 rounded-3xl border border-slate-200 shadow-xl">
                     <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
                         <div class="flex items-center gap-3">
-                            <span class="w-3 h-7 bg-[#38bdf8] rounded-full shadow-[0_0_8px_#38bdf8]"></span>
+                            <span class="w-3 h-7 bg-sky-500 rounded-full shadow-[0_0_8px_#0ea5e9]"></span>
                             <div>
-                                <h4 class="text-2xl md:text-3xl font-black text-[#00f0ff] font-brush keep-word">Jラウンジ（高校棟3F 会議室）</h4>
-                                <p class="text-sm text-slate-300 font-bold">PTA運営の休憩スペースです。城北グッズ、パン、焼き菓子を販売します。毎年人気の城北グッズ、今年も早々に売り切れるかも？</p>
+                                <h4 class="text-2xl md:text-3xl font-black text-blue-900 font-brush keep-word">Jラウンジ（高校棟3F 会議室）</h4>
+                                <p class="text-sm text-slate-600 font-bold">PTA運営の休憩スペースです。城北グッズ、パン、焼き菓子を販売します。毎年人気の城北グッズ、今年も早々に売り切れるかも？</p>
                             </div>
                         </div>
-                        <span class="bg-[#1d4ed8] text-white text-sm font-bold px-4 py-1 rounded-full border border-cyan-400/40 whitespace-nowrap">9:30〜 営業</span>
+                        <span class="bg-[#1d4ed8] text-white text-sm font-bold px-4 py-1 rounded-full border border-blue-600 whitespace-nowrap">9:30〜 営業</span>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="cafe-jlounge-list"></div>
                 </div>
 
                 <!-- 特設売店・グッズ販売 -->
-                <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl">
+                <div class="white-content-card p-6 md:p-10 rounded-3xl border border-slate-200 shadow-xl">
                     <div class="mb-6 flex items-center gap-3">
-                        <span class="w-3 h-7 bg-amber-400 rounded-full shadow-[0_0_8px_#fbbf24]"></span>
+                        <span class="w-3 h-7 bg-amber-500 rounded-full shadow-[0_0_8px_#f59e0b]"></span>
                         <div>
-                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">売店・特設屋台・グッズ販売</h4>
-                            <p class="text-sm text-slate-300 font-bold">生徒の親がつくるうまい飯！毎年大人気の城北オリジナルグッズや熱々グルメ！（※なくなり次第終了）</p>
+                            <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">売店・特設屋台・グッズ販売</h4>
+                            <p class="text-sm text-slate-600 font-bold">生徒の親がつくるうまい飯！毎年大人気の城北オリジナルグッズや熱々グルメ！（※なくなり次第終了）</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="goods-booth-list">
-                        <div class="bg-slate-900/90 border border-cyan-500/20 p-6 rounded-2xl">
-                            <span class="text-sm text-amber-400 font-bold block mb-1">正門入って左側 (10:00〜)</span>
-                            <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">JOY 焼きそば (PTA主催)</h5>
-                            <p class="text-sm text-slate-300 font-medium mb-4">今年もやります。城北文化祭名物JOY焼きそば！保護者が愛情を込めて秘伝のレシピで作る最高に美味しい焼きそばをどうぞ！</p>
-                            <span class="text-2xl font-black text-[#00f0ff]">¥400</span>
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl">
+                            <span class="text-sm text-amber-700 font-bold block mb-1">正門入って左側 (10:00〜)</span>
+                            <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">JOY 焼きそば (PTA主催)</h5>
+                            <p class="text-sm text-slate-600 font-medium mb-4">今年もやります。城北文化祭名物JOY焼きそば！保護者が愛情を込めて秘伝のレシピで作る最高に美味しい焼きそばをどうぞ！</p>
+                            <span class="text-2xl font-black text-blue-700">¥400</span>
                         </div>
-                        <div class="bg-slate-900/90 border border-cyan-500/20 p-6 rounded-2xl">
-                            <span class="text-sm text-amber-400 font-bold block mb-1">高校棟 中庭 (10:00〜)</span>
-                            <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">芋煮 (芋煮汁)</h5>
-                            <p class="text-sm text-slate-300 font-medium mb-4">高校棟中庭で熱々の美味しい芋煮汁をご提供！</p>
-                            <span class="text-2xl font-black text-[#00f0ff]">¥400</span>
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl">
+                            <span class="text-sm text-amber-700 font-bold block mb-1">高校棟 中庭 (10:00〜)</span>
+                            <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">芋煮 (芋煮汁)</h5>
+                            <p class="text-sm text-slate-600 font-medium mb-4">高校棟中庭で熱々の美味しい芋煮汁をご提供！</p>
+                            <span class="text-2xl font-black text-blue-700">¥400</span>
                         </div>
-                        <div class="bg-slate-900/90 border border-cyan-500/20 p-6 rounded-2xl">
-                            <span class="text-sm text-cyan-300 font-bold block mb-1">高校棟3F 会議室 & 売店</span>
-                            <h5 class="text-xl font-black text-white mb-1 font-brush keep-word">城北オリジナルグッズ</h5>
-                            <p class="text-sm text-slate-300 font-medium mb-4">PTA本部役員による相談会コーナーにて限定グッズを販売中！</p>
-                            <span class="text-lg font-black text-[#00f0ff]">売場にて案内</span>
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl">
+                            <span class="text-sm text-blue-700 font-bold block mb-1">高校棟3F 会議室 & 売店</span>
+                            <h5 class="text-xl font-black text-slate-900 mb-1 font-brush keep-word">城北オリジナルグッズ</h5>
+                            <p class="text-sm text-slate-600 font-medium mb-4">PTA本部役員による相談会コーナーにて限定グッズを販売中！</p>
+                            <span class="text-lg font-black text-blue-700">売場にて案内</span>
                         </div>
                     </div>
                 </div>
@@ -1551,30 +1549,30 @@
             <p class="text-sm md:text-base font-bold text-slate-300 mb-8">※敷地内に高低差があり、高校棟昇降口は2Fです。</p>
 
             <!-- 先輩のマップへの特大ジャンプバナー -->
-            <div class="dark-glass-card p-6 md:p-10 rounded-3xl border-2 border-cyan-400 shadow-2xl mb-12 text-center bg-gradient-to-r from-blue-950/90 via-indigo-950/90 to-blue-950/90">
-                <span class="text-xs md:text-sm text-cyan-300 font-black tracking-widest uppercase block mb-2">DIGITAL CAMPUS MAP</span>
-                <h4 class="text-2xl md:text-4xl font-black text-white font-brush mb-3 text-[#00f0ff] drop-shadow-[0_0_10px_rgba(0,240,255,0.6)] keep-word">
+            <div class="white-content-card p-6 md:p-10 rounded-3xl border-2 border-blue-500 shadow-2xl mb-12 text-center bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50">
+                <span class="text-xs md:text-sm text-blue-700 font-black tracking-widest uppercase block mb-2">DIGITAL CAMPUS MAP</span>
+                <h4 class="text-2xl md:text-4xl font-black text-blue-900 font-brush mb-3 keep-word">
                     高機能デジタル校内マップはこちら
                 </h4>
-                <p class="text-sm md:text-base text-slate-300 font-bold max-w-2xl mx-auto mb-6">
+                <p class="text-sm md:text-base text-slate-600 font-bold max-w-2xl mx-auto mb-6">
                     各教室の企画配置、フロアごとの詳細をインタラクティブに確認できるデジタルマップをご利用いただけます。
                 </p>
-                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-black text-lg md:text-xl transition shadow-xl shadow-blue-600/40 border border-cyan-300 hover:scale-105 transform">
+                <a href="https://johoku-fes.vercel.app/map" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-black text-lg md:text-xl transition shadow-xl shadow-blue-600/40 border border-blue-600 hover:scale-105 transform">
                     <span>校内マップを開く（別タブ）</span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 </a>
             </div>
 
             <!-- 敷地内全体図 -->
-            <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl mb-12 text-left">
+            <div class="white-content-card p-6 md:p-10 rounded-3xl border border-slate-200 shadow-xl mb-12 text-left">
                 <div class="flex items-center gap-3 mb-6">
-                    <span class="w-3 h-7 bg-[#00f0ff] rounded-full shadow-[0_0_8px_#00f0ff]"></span>
+                    <span class="w-3 h-7 bg-blue-600 rounded-full shadow-[0_0_8px_#2563eb]"></span>
                     <div>
-                        <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">敷地内全体図</h4>
-                        <p class="text-xs md:text-sm text-slate-400 font-bold">校舎配置・屋外動線マップ（※斜線部は通路です）</p>
+                        <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">敷地内全体図</h4>
+                        <p class="text-xs md:text-sm text-slate-500 font-bold">校舎配置・屋外動線マップ（※斜線部は通路です）</p>
                     </div>
                 </div>
-                <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-slate-950/80 border border-cyan-500/30 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-4">
+                <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-slate-900 border border-slate-200 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-4">
                     <img src="敷地内地図.png" alt="敷地内全体図" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="hidden flex-col items-center justify-center text-slate-400">
                         <svg class="w-12 h-12 mb-2 text-cyan-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -1585,27 +1583,27 @@
             </div>
 
             <!-- 棟別・階数切り替えフロアマップ -->
-            <div class="dark-glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/25 shadow-xl text-left">
+            <div class="white-content-card p-6 md:p-10 rounded-3xl border border-slate-200 shadow-xl text-left">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div class="flex items-center gap-3">
-                        <span class="w-3 h-7 bg-[#38bdf8] rounded-full shadow-[0_0_8px_#38bdf8]"></span>
+                        <span class="w-3 h-7 bg-sky-500 rounded-full shadow-[0_0_8px_#0ea5e9]"></span>
                         <div>
-                            <h4 class="text-2xl md:text-3xl font-black text-white font-brush keep-word">棟別フロアマップ</h4>
-                            <p class="text-xs md:text-sm text-slate-400 font-bold">各棟・各フロアの詳細案内と該当企画</p>
+                            <h4 class="text-2xl md:text-3xl font-black text-slate-900 font-brush keep-word">棟別フロアマップ</h4>
+                            <p class="text-xs md:text-sm text-slate-500 font-bold">各棟・各フロアの詳細案内と該当企画</p>
                         </div>
                     </div>
 
-                    <div class="inline-flex p-1.5 bg-slate-900/80 border border-cyan-500/30 rounded-2xl self-start md:self-auto">
-                        <button class="building-tab-btn active px-5 py-2 rounded-xl text-sm font-black transition bg-[#1d4ed8] text-white shadow-[0_0_12px_rgba(29,78,216,0.6)]" onclick="switchBuilding('high', this)">高校棟</button>
-                        <button class="building-tab-btn px-5 py-2 rounded-xl text-sm font-black transition text-slate-400 hover:text-white" onclick="switchBuilding('common', this)">共通棟</button>
-                        <button class="building-tab-btn px-5 py-2 rounded-xl text-sm font-black transition text-slate-400 hover:text-white" onclick="switchBuilding('junior', this)">中学棟</button>
+                    <div class="inline-flex p-1.5 bg-slate-100 border border-slate-300 rounded-2xl self-start md:self-auto">
+                        <button class="building-tab-btn active px-5 py-2 rounded-xl text-sm font-black transition bg-[#1d4ed8] text-white shadow-md" onclick="switchBuilding('high', this)">高校棟</button>
+                        <button class="building-tab-btn px-5 py-2 rounded-xl text-sm font-black transition text-slate-600 hover:text-slate-900" onclick="switchBuilding('common', this)">共通棟</button>
+                        <button class="building-tab-btn px-5 py-2 rounded-xl text-sm font-black transition text-slate-600 hover:text-slate-900" onclick="switchBuilding('junior', this)">中学棟</button>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap gap-2 mb-6" id="floor-btn-container"></div>
 
-                <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-slate-950/80 border border-cyan-500/30 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-6 text-center mb-8">
-                    <div class="w-16 h-16 rounded-full bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
+                <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-slate-900 border border-slate-200 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-6 text-center mb-8">
+                    <div class="w-16 h-16 rounded-full bg-blue-950 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                     </div>
                     <p id="map-display-title" class="text-white font-black text-xl md:text-2xl font-brush mb-1 keep-word">
@@ -1614,13 +1612,13 @@
                     <p class="text-xs md:text-sm text-slate-400 font-medium">※各フロアの見取り図画像をここに表示</p>
                 </div>
 
-                <div class="pt-6 border-t border-cyan-500/20">
+                <div class="pt-6 border-t border-slate-200">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#00f0ff] shadow-[0_0_6px_#00f0ff]"></span>
-                            <h5 id="floor-projects-title" class="font-black text-lg md:text-xl text-white font-brush keep-word">このフロアにある企画一覧</h5>
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-600 shadow-[0_0_6px_#2563eb]"></span>
+                            <h5 id="floor-projects-title" class="font-black text-lg md:text-xl text-slate-900 font-brush keep-word">このフロアにある企画一覧</h5>
                         </div>
-                        <span class="text-xs text-slate-400 font-bold">※タップで企画詳細を表示</span>
+                        <span class="text-xs text-slate-500 font-bold">※タップで企画詳細を表示</span>
                     </div>
                     <div id="floor-projects-container" class="flex flex-wrap gap-2.5"></div>
                 </div>
@@ -1642,15 +1640,15 @@
             </div>
 
             <!-- パンフレット訂正についての案内カード -->
-            <div class="dark-glass-card p-6 md:p-8 rounded-3xl border border-amber-500/40 bg-amber-950/30 shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="white-content-card p-6 md:p-8 rounded-3xl border border-amber-300 bg-amber-50 shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3.5">
-                    <span class="w-12 h-12 rounded-2xl bg-amber-900/60 border border-amber-400/50 text-amber-300 flex items-center justify-center flex-shrink-0 text-xl font-black">ℹ️</span>
+                    <span class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 text-amber-700 flex items-center justify-center flex-shrink-0 text-xl font-black">ℹ️</span>
                     <div>
-                        <h4 class="text-lg md:text-xl font-black text-amber-300 font-brush mb-1 keep-word">パンフレット訂正について</h4>
-                        <p class="text-sm md:text-base font-bold text-slate-200">パンフレットの訂正はホームのお知らせ欄に掲載しています。</p>
+                        <h4 class="text-lg md:text-xl font-black text-amber-900 font-brush mb-1 keep-word">パンフレット訂正について</h4>
+                        <p class="text-sm md:text-base font-bold text-slate-800">パンフレットの訂正はホームのお知らせ欄に掲載しています。</p>
                     </div>
                 </div>
-                <button onclick="switchPage('home')" class="px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/50 text-amber-200 font-black text-sm whitespace-nowrap transition shadow-sm">
+                <button onclick="switchPage('home')" class="px-5 py-2.5 rounded-xl bg-amber-200 hover:bg-amber-300 border border-amber-400 text-amber-900 font-black text-sm whitespace-nowrap transition shadow-sm">
                     ホームのお知らせを見る ↗
                 </button>
             </div>
@@ -1663,52 +1661,52 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-amber-400 border border-amber-500/40 bg-amber-950/20 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-400/40 text-amber-400 flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-amber-500 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         </div>
-                        <h5 class="text-xl font-black text-amber-200 mb-2 font-brush keep-word">お車でのご来校について</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-bold">車での来校はご遠慮ください。公共交通機関（東武東上線 上板橋駅、東京メトロ 小竹向原駅など）をご利用ください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 font-brush keep-word">お車でのご来校について</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-bold">車での来校はご遠慮ください。公共交通機関（東武東上線 上板橋駅、東京メトロ 小竹向原駅など）をご利用ください。</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-[#00f0ff] border border-cyan-500/25 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-600 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-2 keep-word">飲食について</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-medium">食堂／講堂B1F。高校棟3F会議室の飲食スペース、校庭までの吹き抜け、高校棟中庭は飲食スペースとして使用できます。メニューや販売場所は、飲食ページをご確認ください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 keep-word">飲食について</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">食堂／講堂B1F。高校棟3F会議室の飲食スペース、校庭までの吹き抜け、高校棟中庭は飲食スペースとして使用できます。メニューや販売場所は、飲食ページをご確認ください。</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-[#00f0ff] border border-cyan-500/25 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-600 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-2 keep-word">ごみ捨てのルール</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-medium">ゴミ箱は、全館各階にございます。ごみは道に捨てず、近くにある指定のごみ箱に捨ててください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 keep-word">ごみ捨てのルール</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">ゴミ箱は、全館各階にございます。ごみは道に捨てず、近くにある指定のごみ箱に捨ててください。</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-[#00f0ff] border border-cyan-500/25 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-600 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-2 keep-word">インフォメーション</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-medium">高校棟3F「H2B」は、文化祭実行委員会の本部です。困ったときは上記の場所かお近くの文実委員までお声がけください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 keep-word">インフォメーション</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">高校棟3F「H2B」は、文化祭実行委員会の本部です。困ったときは上記の場所かお近くの文実委員までお声がけください。</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-[#00f0ff] border border-cyan-500/25 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-600 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-2 keep-word">保健室</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-medium">共通棟2F／昇降口付近にございます。怪我をしたとき、気分が悪くなったときは無理をせず、保健室までお越しください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 keep-word">保健室</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">共通棟2F／昇降口付近にございます。怪我をしたとき、気分が悪くなったときは無理をせず、保健室までお越しください。</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-[#00f0ff] border border-cyan-500/25 shadow-xl flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-cyan-500/40 text-[#00f0ff] flex items-center justify-center mb-4">
+                    <div class="white-content-card p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-600 border border-slate-200 shadow-xl flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         </div>
-                        <h5 class="text-xl font-black text-white mb-2 keep-word">お手洗い</h5>
-                        <p class="text-base text-slate-200 leading-relaxed font-medium">全館各所にございます。多目的トイレは高校棟2Fにございます。トイレの場所は各階の地図を参照してください。</p>
+                        <h5 class="text-xl font-black text-slate-900 mb-2 keep-word">お手洗い</h5>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">全館各所にございます。多目的トイレは高校棟2Fにございます。トイレの場所は各階の地図を参照してください。</p>
                     </div>
                 </div>
             </div>
@@ -1721,48 +1719,48 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="dark-glass-card p-6 md:p-8 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-[#00f0ff]">
-                        <span class="text-xs md:text-sm text-[#00f0ff] font-black tracking-widest uppercase block mb-2">学校紹介 (予約不要)</span>
-                        <h5 class="text-xl md:text-2xl font-black text-white mb-3 font-brush keep-word">学校紹介</h5>
-                        <p class="text-slate-200 text-sm md:text-base leading-relaxed mb-6 font-medium">
+                    <div class="white-content-card p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-blue-600">
+                        <span class="text-xs md:text-sm text-blue-600 font-black tracking-widest uppercase block mb-2">学校紹介 (予約不要)</span>
+                        <h5 class="text-xl md:text-2xl font-black text-slate-900 mb-3 font-brush keep-word">学校紹介</h5>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed mb-6 font-medium">
                             受験生対象のブースです。メディアに掲載された城北に関する記事や、実際の入試問題をご覧いただけます。ぜひお越しください!
                         </p>
-                        <p class="text-sm font-bold text-[#00f0ff]">場所: 高校棟2F 数学ゼミ室</p>
+                        <p class="text-sm font-bold text-blue-700">場所: 高校棟2F 数学ゼミ室</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-[#38bdf8]">
-                        <span class="text-xs md:text-sm text-[#38bdf8] font-black tracking-widest uppercase block mb-2">1セット 800円 / 過去問集販売</span>
-                        <h5 class="text-xl md:text-2xl font-black text-white mb-3 font-brush keep-word">過去問題集の販売案内</h5>
-                        <p class="text-slate-200 text-sm md:text-base leading-relaxed mb-6 font-medium">
+                    <div class="white-content-card p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-sky-500">
+                        <span class="text-xs md:text-sm text-sky-600 font-black tracking-widest uppercase block mb-2">1セット 800円 / 過去問集販売</span>
+                        <h5 class="text-xl md:text-2xl font-black text-slate-900 mb-3 font-brush keep-word">過去問題集の販売案内</h5>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed mb-6 font-medium">
                             事務室にて2026年度中学入試過去問実物販売(問題・解答用紙) 1セット 800円。声の教育社発行の過去問題集販売 1セット 2750円(中学) 2450円(高校)。
                         </p>
-                        <p class="text-sm font-bold text-[#38bdf8]">場所: 事務室</p>
+                        <p class="text-sm font-bold text-sky-700">場所: 事務室</p>
                     </div>
 
-                    <div class="dark-glass-card p-6 md:p-8 rounded-3xl border border-cyan-500/25 shadow-xl border-t-4 border-t-indigo-400">
-                        <span class="text-xs md:text-sm text-indigo-400 font-black tracking-widest uppercase block mb-2">PTA 父母による相談会</span>
-                        <h5 class="text-xl md:text-2xl font-black text-white mb-3 font-brush keep-word">\受験生＆在校生/ PTA父母によるなんでも相談会</h5>
-                        <p class="text-slate-200 text-sm md:text-base leading-relaxed mb-6 font-medium">
+                    <div class="white-content-card p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl border-t-4 border-t-indigo-600">
+                        <span class="text-xs md:text-sm text-indigo-600 font-black tracking-widest uppercase block mb-2">PTA 父母による相談会</span>
+                        <h5 class="text-xl md:text-2xl font-black text-slate-900 mb-3 font-brush keep-word">\受験生＆在校生/ PTA父母によるなんでも相談会</h5>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed mb-6 font-medium">
                             城北への受験を考える親子や在校生親子に対し、PTA本部役員の父母が何でも相談に乗るコーナーです。城北グッズも販売します。
                         </p>
-                        <p class="text-sm font-bold text-indigo-300">場所: 高校棟3F 会議室 (★城北グッズ販売中★)</p>
+                        <p class="text-sm font-bold text-indigo-700">場所: 高校棟3F 会議室 (★城北グッズ販売中★)</p>
                     </div>
                 </div>
 
-                <div class="dark-glass-card rounded-3xl p-6 md:p-12 mb-12 border border-cyan-500/25 shadow-xl">
-                    <h5 class="text-2xl md:text-3xl font-black text-white mb-6 border-b border-cyan-500/20 pb-4 font-brush keep-word">今後の受験生向けイベントの案内</h5>
+                <div class="white-content-card rounded-3xl p-6 md:p-12 mb-12 border border-slate-200 shadow-xl">
+                    <h5 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 border-b border-slate-200 pb-4 font-brush keep-word">今後の受験生向けイベントの案内</h5>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
-                            <h6 class="text-lg md:text-xl font-bold text-[#00f0ff] mb-3">中学受験生向け (要予約)</h6>
-                            <ul class="space-y-2 text-base text-slate-200 font-medium">
+                            <h6 class="text-lg md:text-xl font-bold text-blue-700 mb-3">中学受験生向け (要予約)</h6>
+                            <ul class="space-y-2 text-base text-slate-700 font-medium">
                                 <li>● 学校説明会：10/17(土)・11/7(土)</li>
                                 <li>● 学校見学ツアー：10/10(土)・11/14(土)など</li>
                                 <li>● 入試説明会(小6限定)：11/23(月祝)・29(日)</li>
                             </ul>
                         </div>
                         <div>
-                            <h6 class="text-lg md:text-xl font-bold text-[#38bdf8] mb-3">高校受験生向け (要予約)</h6>
-                            <ul class="space-y-2 text-base text-slate-200 font-medium">
+                            <h6 class="text-lg md:text-xl font-bold text-sky-700 mb-3">高校受験生向け (要予約)</h6>
+                            <ul class="space-y-2 text-base text-slate-700 font-medium">
                                 <li>● 学校説明会：10/24(土)</li>
                                 <li>● 学校見学ツアー：10/31(土)・12/26(土)</li>
                                 <li>● 入試説明会(中3限定)：11/23(月祝)</li>
@@ -1817,9 +1815,9 @@
  
     <!-- 企画詳細モーダル -->
     <div id="detail-modal" class="fixed inset-0 z-[10000] bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4" onclick="closeDetail()">
-        <div id="detail-modal-card" class="bg-[#06152d] border border-cyan-500/40 w-full max-w-4xl p-5 sm:p-8 relative overflow-y-auto max-h-[92vh] rounded-3xl shadow-2xl text-slate-100" onclick="event.stopPropagation()">
+        <div id="detail-modal-card" class="bg-white border border-slate-300 w-full max-w-4xl p-5 sm:p-8 relative overflow-y-auto max-h-[92vh] rounded-3xl shadow-2xl text-slate-900" onclick="event.stopPropagation()">
             <!-- 固定ヘッダー（閉じるボタンの埋没防止） -->
-            <button onclick="closeDetail()" class="absolute top-3 right-4 sm:top-4 sm:right-5 text-2xl text-slate-300 hover:text-white transition p-2 z-20" aria-label="閉じる">✕</button>
+            <button onclick="closeDetail()" class="absolute top-3 right-4 sm:top-4 sm:right-5 text-2xl text-slate-500 hover:text-slate-900 transition p-2 z-20" aria-label="閉じる">✕</button>
             
             <div id="modal-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start pt-2">
                 
@@ -1829,11 +1827,11 @@
                     <!-- 動画表示エリア -->
                     <div id="modal-video-section" class="w-full flex flex-col items-center">
                         <div id="modal-video-tabs" class="hidden w-full flex space-x-2 mb-3">
-                            <button id="tab-btn-long" class="flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-cyan-400/40" onclick="switchModalVideoTab('long')">長編動画</button>
-                            <button id="tab-btn-short" class="flex-1 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 transition" onclick="switchModalVideoTab('short')">ショート動画</button>
+                            <button id="tab-btn-long" class="flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-blue-600" onclick="switchModalVideoTab('long')">長編動画</button>
+                            <button id="tab-btn-short" class="flex-1 py-2 rounded-xl text-xs font-black bg-slate-100 text-slate-700 transition" onclick="switchModalVideoTab('short')">ショート動画</button>
                         </div>
 
-                        <div id="long-video-wrapper" class="w-full aspect-video bg-gradient-to-br from-[#030a16] to-[#081d3f] rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center text-white p-4 text-center border border-cyan-500/30 relative">
+                        <div id="long-video-wrapper" class="w-full aspect-video bg-slate-950 rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center text-white p-4 text-center border border-slate-300 relative">
                             <iframe id="iframe-long" class="hidden w-full h-full border-0 rounded-2xl" src="" allowfullscreen></iframe>
                             <div id="placeholder-long" class="flex flex-col items-center justify-center">
                                 <svg class="w-12 h-12 text-cyan-400 mb-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1842,7 +1840,7 @@
                             </div>
                         </div>
 
-                        <div id="short-video-wrapper" class="hidden w-full max-w-[260px] aspect-[9/16] bg-gradient-to-br from-[#030a16] to-[#081d3f] rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center text-white p-4 text-center border border-cyan-500/30 relative mx-auto">
+                        <div id="short-video-wrapper" class="hidden w-full max-w-[260px] aspect-[9/16] bg-slate-950 rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center text-white p-4 text-center border border-slate-300 relative mx-auto">
                             <iframe id="iframe-short" class="hidden w-full h-full border-0 rounded-2xl" src="" allowfullscreen></iframe>
                             <div id="placeholder-short" class="flex flex-col items-center justify-center">
                                 <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center mb-2 shadow-md">
@@ -1856,7 +1854,7 @@
                     </div>
 
                     <!-- 動画なし団体専用：画像表示枠 -->
-                    <div id="modal-image-box" class="hidden w-full aspect-video md:aspect-square bg-slate-950/90 border border-cyan-500/30 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-4">
+                    <div id="modal-image-box" class="hidden w-full aspect-video md:aspect-square bg-slate-900 border border-slate-300 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-4">
                         <img id="modal-big-img" src="" alt="" class="w-full h-full object-contain">
                         <div id="modal-custom-placeholder" class="hidden w-full h-full flex flex-col items-center justify-center text-center p-6"></div>
                     </div>
@@ -1866,50 +1864,50 @@
                 <div class="flex flex-col h-full justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-3 pr-8 sm:pr-0">
-                            <span id="modal-tag" class="inline-block bg-blue-950 text-[#00f0ff] border border-cyan-500/40 text-xs md:text-sm px-3 py-1 font-bold rounded-lg"></span>
-                            <button id="modal-fav-btn" onclick="toggleFavoriteFromModal()" class="flex items-center gap-1.5 text-xs md:text-sm font-black px-3 py-1 rounded-full border border-amber-400/50 bg-amber-950/60 text-amber-300 hover:bg-amber-900/60 transition">
+                            <span id="modal-tag" class="inline-block bg-blue-100 text-blue-800 border border-blue-300 text-xs md:text-sm px-3 py-1 font-bold rounded-lg"></span>
+                            <button id="modal-fav-btn" onclick="toggleFavoriteFromModal()" class="flex items-center gap-1.5 text-xs md:text-sm font-black px-3 py-1 rounded-full border border-amber-400 bg-amber-50 text-amber-800 hover:bg-amber-100 transition">
                                 <span id="modal-fav-star">☆</span>
                                 <span id="modal-fav-text">行きたい！</span>
                             </button>
                         </div>
 
-                        <h4 id="modal-title" class="text-2xl md:text-3xl font-black mb-2 text-white font-brush leading-snug"></h4>
-                        <p id="modal-location" class="text-xs md:text-sm text-slate-300 mb-3 font-bold border-l-2 border-[#00f0ff] pl-2.5"></p>
+                        <h4 id="modal-title" class="text-2xl md:text-3xl font-black mb-2 text-slate-900 font-brush leading-snug"></h4>
+                        <p id="modal-location" class="text-xs md:text-sm text-slate-600 mb-3 font-bold border-l-2 border-blue-600 pl-2.5"></p>
                         
-                        <div id="modal-time-box" class="bg-slate-950/90 border border-cyan-500/20 rounded-xl p-3 mb-4 text-xs font-bold text-slate-300 space-y-1">
+                        <div id="modal-time-box" class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-xs font-bold text-slate-700 space-y-1">
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-400">Day1 (9/26 土):</span>
-                                <span id="modal-time-day1" class="text-white font-black">終日 (09:00 - 16:00)</span>
+                                <span class="text-slate-500">Day1 (9/26 土):</span>
+                                <span id="modal-time-day1" class="text-slate-900 font-black">終日 (09:00 - 16:00)</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-400">Day2 (9/27 日):</span>
-                                <span id="modal-time-day2" class="text-white font-black">終日 (09:00 - 16:00)</span>
+                                <span class="text-slate-500">Day2 (9/27 日):</span>
+                                <span id="modal-time-day2" class="text-slate-900 font-black">終日 (09:00 - 16:00)</span>
                             </div>
                         </div>
 
-                        <p id="modal-desc" class="text-sm md:text-base text-slate-200 leading-relaxed mb-4 font-medium"></p>
+                        <p id="modal-desc" class="text-sm md:text-base text-slate-700 leading-relaxed mb-4 font-medium"></p>
 
-                        <button id="modal-koyasai-btn" onclick="goToKoyasaiFromModal()" class="hidden w-full mb-3 py-3 px-4 bg-gradient-to-r from-purple-900 to-indigo-900 hover:from-purple-800 hover:to-indigo-800 text-cyan-200 border border-purple-400/50 rounded-xl text-sm font-black transition flex items-center justify-center gap-2 shadow-lg shadow-purple-900/40">
+                        <button id="modal-koyasai-btn" onclick="goToKoyasaiFromModal()" class="hidden w-full mb-3 py-3 px-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-xl text-sm font-black transition flex items-center justify-center gap-2 shadow-lg">
                             <span>後夜祭についてはこちら（詳細ページへ） ↗</span>
                         </button>
 
-                        <button id="modal-timetable-btn" onclick="goToTimetableFromModal()" class="hidden w-full mb-4 py-2.5 px-4 bg-indigo-950/80 hover:bg-indigo-900/80 text-cyan-300 border border-cyan-500/30 rounded-xl text-xs md:text-sm font-black transition flex items-center justify-center gap-1.5 shadow-md">
+                        <button id="modal-timetable-btn" onclick="goToTimetableFromModal()" class="hidden w-full mb-4 py-2.5 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs md:text-sm font-black transition flex items-center justify-center gap-1.5 shadow-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span>タイムテーブルで詳細時間を見る ↗</span>
                         </button>
                     </div>
 
-                    <div class="pt-4 border-t border-cyan-500/20">
+                    <div class="pt-4 border-t border-slate-200">
                         <button id="vote-action-btn" onclick="handleVoteAction()" class="w-full py-4 rounded-xl font-bold text-base md:text-lg transition shadow-lg flex items-center justify-center gap-2">
                             <span>この企画に投票する</span>
                         </button>
-                        <p id="vote-note-text" class="text-center text-xs text-slate-400 mt-2 font-medium">※同一端末から1つの企画につき1票まで投票できます</p>
+                        <p id="vote-note-text" class="text-center text-xs text-slate-500 mt-2 font-medium">※同一端末から1つの企画につき1票まで投票できます</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<script>
+    <script>
         let currentProjectId = "";
         let currentProjectTitle = "";
         let currentFilterCategory = "all";
@@ -2039,13 +2037,6 @@
                     <div class="w-full h-full bg-slate-900 flex flex-col items-center justify-center p-1 text-center border border-amber-500/40 rounded-xl">
                         <svg class="w-5 h-5 text-amber-400 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         <span class="text-[9px] font-black text-amber-300 leading-tight">安全上<br>非表示</span>
-                    </div>
-                `;
-            } else if (proj.statusBadge === 'not_submitted') {
-                return `
-                    <div class="w-full h-full bg-slate-900 flex flex-col items-center justify-center p-1 text-center border border-slate-700 rounded-xl">
-                        <svg class="w-5 h-5 text-slate-500 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        <span class="text-[9px] font-black text-slate-400 leading-tight">未提出</span>
                     </div>
                 `;
             } else if (proj.img) {
@@ -2296,29 +2287,30 @@
                         card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
                         card.setAttribute('data-category', cardType);
                         card.setAttribute('data-project-id', pId);
+                        card.setAttribute('data-group-key', gKey);
                         card.onclick = () => openDetail(pId);
                         
                         card.innerHTML = `
                             <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
                             <div>
                                 <div class="flex justify-between items-center mb-3 pr-10">
-                                    <span class="inline-block bg-blue-950 text-[#00f0ff] border border-cyan-500/40 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
-                                    <span class="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-wider">${loc}</span>
+                                    <span class="inline-block bg-blue-50 text-blue-700 border border-blue-200 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
+                                    <span class="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">${loc}</span>
                                 </div>
                                 <div class="flex justify-between items-start gap-4 mb-2">
                                     <div>
-                                        <p class="text-2xl md:text-3xl font-black text-[#00f0ff] tracking-wide mb-1 font-brush keep-word">${className}</p>
+                                        <p class="text-2xl md:text-3xl font-black text-blue-900 tracking-wide mb-1 font-brush keep-word">${className}</p>
                                     </div>
                                     <div class="project-icon-placeholder">
                                         ${getIconHtml(projObj)}
                                     </div>
                                 </div>
-                                <h5 class="text-lg md:text-xl font-black text-white leading-snug font-brush">${title}</h5>
+                                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${title}</h5>
                             </div>
                             
                             <div class="card-meta-box">
-                                <div><span class="text-slate-400 block">Day1:</span><strong class="text-slate-200">${d1}</strong></div>
-                                <div><span class="text-slate-400 block">Day2:</span><strong class="text-slate-200">${d2}</strong></div>
+                                <div><span class="text-slate-500 block">Day1:</span><strong class="text-slate-800">${d1}</strong></div>
+                                <div><span class="text-slate-500 block">Day2:</span><strong class="text-slate-800">${d2}</strong></div>
                             </div>
                         `;
                         targetContainer.appendChild(card);
@@ -2345,29 +2337,30 @@
                         card.className = "project-card p-6 flex flex-col justify-between min-h-[250px]";
                         card.setAttribute('data-category', proj.type);
                         card.setAttribute('data-project-id', pId);
+                        card.setAttribute('data-group-key', gKey);
                         card.onclick = () => openDetail(pId);
         
                         card.innerHTML = `
                             <button class="fav-star-btn ${isFavorite(pId) ? 'is-fav' : ''}" data-project-id="${pId}" onclick="toggleFavorite('${pId}', event)" title="行きたいリストに追加">${isFavorite(pId) ? '★' : '☆'}</button>
                             <div>
                                 <div class="flex justify-between items-center mb-3 pr-10">
-                                    <span class="inline-block bg-blue-950 text-[#00f0ff] border border-cyan-500/40 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
-                                    <span class="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-wider">${proj.loc}</span>
+                                    <span class="inline-block bg-blue-50 text-blue-700 border border-blue-200 text-xs md:text-sm px-3 py-0.5 font-bold rounded-full">#${label}</span>
+                                    <span class="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">${proj.loc}</span>
                                 </div>
                                 <div class="flex justify-between items-start gap-4 mb-2">
                                     <div>
-                                        <p class="text-xl md:text-2xl font-black text-[#00f0ff] tracking-wide mb-1 font-brush keep-word">${proj.group}</p>
+                                        <p class="text-xl md:text-2xl font-black text-blue-900 tracking-wide mb-1 font-brush keep-word">${proj.group}</p>
                                     </div>
                                     <div class="project-icon-placeholder">
                                         ${getIconHtml(projObj)}
                                     </div>
                                 </div>
-                                <h5 class="text-lg md:text-xl font-black text-white leading-snug font-brush">${proj.title}</h5>
+                                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-snug font-brush">${proj.title}</h5>
                             </div>
                             
                             <div class="card-meta-box">
-                                <div><span class="text-slate-400 block">Day1:</span><strong class="text-slate-200">${d1}</strong></div>
-                                <div><span class="text-slate-400 block">Day2:</span><strong class="text-slate-200">${d2}</strong></div>
+                                <div><span class="text-slate-500 block">Day1:</span><strong class="text-slate-800">${d1}</strong></div>
+                                <div><span class="text-slate-500 block">Day2:</span><strong class="text-slate-800">${d2}</strong></div>
                             </div>
                         `;
                         targetContainer.appendChild(card);
@@ -2389,9 +2382,9 @@
                 if(generalContainer) {
                     generalCafeData.forEach(c => {
                         generalContainer.insertAdjacentHTML('beforeend', `
-                            <div class="bg-slate-900/90 border border-cyan-500/25 p-5 rounded-2xl flex justify-between items-center shadow-md hover:border-[#00f0ff] transition">
-                                <span class="font-bold text-base md:text-lg text-white">${c.name}</span>
-                                <span class="font-black text-xl md:text-2xl text-[#00f0ff] whitespace-nowrap ml-3">${c.price}</span>
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex justify-between items-center shadow-sm hover:border-blue-500 transition">
+                                <span class="font-bold text-base md:text-lg text-slate-900">${c.name}</span>
+                                <span class="font-black text-xl md:text-2xl text-blue-700 whitespace-nowrap ml-3">${c.price}</span>
                             </div>
                         `);
                     });
@@ -2400,9 +2393,9 @@
                 if(jloungeContainer) {
                     jloungeData.forEach(j => {
                         jloungeContainer.insertAdjacentHTML('beforeend', `
-                            <div class="bg-slate-900/90 border border-cyan-500/25 p-5 rounded-2xl flex justify-between items-center shadow-md hover:border-[#38bdf8] transition">
-                                <span class="font-bold text-base md:text-lg text-white">${j.name}</span>
-                                <span class="font-black text-xl md:text-2xl text-[#38bdf8] whitespace-nowrap ml-3">${j.price}</span>
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex justify-between items-center shadow-sm hover:border-sky-500 transition">
+                                <span class="font-bold text-base md:text-lg text-slate-900">${j.name}</span>
+                                <span class="font-black text-xl md:text-2xl text-sky-700 whitespace-nowrap ml-3">${j.price}</span>
                             </div>
                         `);
                     });
@@ -2411,18 +2404,18 @@
                 if(kcarContainer) {
                     kcarData.forEach((k, idx) => {
                         const menuHtml = k.menuList.map(m => `
-                            <div class="bg-slate-900/90 border border-cyan-500/20 p-3.5 rounded-xl mb-2">
+                            <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl mb-2">
                                 <div class="flex justify-between items-center gap-2">
-                                    <span class="font-bold text-white text-sm md:text-base">${m.title}</span>
-                                    <span class="font-black text-[#00f0ff] text-sm md:text-base whitespace-nowrap">${m.price}</span>
+                                    <span class="font-bold text-slate-900 text-sm md:text-base">${m.title}</span>
+                                    <span class="font-black text-blue-700 text-sm md:text-base whitespace-nowrap">${m.price}</span>
                                 </div>
-                                ${m.options ? `<p class="text-xs text-slate-300 mt-1 leading-relaxed font-medium">${m.options}</p>` : ''}
+                                ${m.options ? `<p class="text-xs text-slate-600 mt-1 leading-relaxed font-medium">${m.options}</p>` : ''}
                             </div>
                         `).join('');
 
                         kcarContainer.insertAdjacentHTML('beforeend', `
-                            <div class="dark-glass-card border border-cyan-500/25 rounded-3xl overflow-hidden shadow-xl hover:border-[#00f0ff] transition flex flex-col">
-                                <div class="w-full aspect-video bg-gradient-to-br from-[#030a16] to-[#081d3f] border-b border-cyan-500/20 flex flex-col items-center justify-center text-slate-400 p-2 overflow-hidden relative">
+                            <div class="white-content-card border border-slate-200 rounded-3xl overflow-hidden shadow-xl hover:border-blue-500 transition flex flex-col">
+                                <div class="w-full aspect-video bg-slate-950 border-b border-slate-200 flex flex-col items-center justify-center text-slate-400 p-2 overflow-hidden relative">
                                     <img src="${k.file}" alt="${k.name}" class="w-full h-full object-cover rounded-t-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                     <div class="hidden flex-col items-center justify-center p-4 text-center">
                                         <svg class="w-12 h-12 mb-1 text-cyan-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -2432,17 +2425,17 @@
                                 <div class="p-6 md:p-8 flex-grow flex flex-col justify-between">
                                     <div>
                                         <div class="flex items-center justify-between mb-3">
-                                            <h4 class="font-black text-2xl md:text-3xl text-[#00f0ff] font-brush keep-word">${k.name}</h4>
-                                            <span class="text-xs bg-blue-950 text-[#38bdf8] border border-cyan-500/40 px-3 py-1 rounded-full font-black uppercase tracking-wider">${k.category}</span>
+                                            <h4 class="font-black text-2xl md:text-3xl text-blue-900 font-brush keep-word">${k.name}</h4>
+                                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1 rounded-full font-black uppercase tracking-wider">${k.category}</span>
                                         </div>
-                                        <div class="mb-4 p-2.5 rounded-xl bg-amber-950/50 border border-amber-500/40">
-                                            <span class="text-xs font-black text-amber-300 block mb-0.5">アレルギー（主要９品目）</span>
-                                            <span class="text-xs text-amber-100 font-bold">${k.allergy}</span>
+                                        <div class="mb-4 p-2.5 rounded-xl bg-amber-50 border border-amber-300">
+                                            <span class="text-xs font-black text-amber-800 block mb-0.5">アレルギー（主要９品目）</span>
+                                            <span class="text-xs text-amber-900 font-bold">${k.allergy}</span>
                                         </div>
-                                        <p class="text-sm md:text-base text-slate-200 leading-relaxed font-medium mb-6">${k.desc}</p>
+                                        <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mb-6">${k.desc}</p>
                                         
                                         <!-- メニュー開閉ボタン＆アコーディオン -->
-                                        <button onclick="toggleFoodMenu('kmenu-${idx}', this)" class="w-full py-2.5 px-4 rounded-xl bg-blue-950/80 hover:bg-blue-900/80 border border-cyan-500/30 text-[#00f0ff] font-black text-sm flex items-center justify-between transition shadow-sm mb-2">
+                                        <button onclick="toggleFoodMenu('kmenu-${idx}', this)" class="w-full py-2.5 px-4 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-black text-sm flex items-center justify-between transition shadow-sm mb-2">
                                             <span>メニューを見る・閉じる</span>
                                             <span class="menu-arrow transform transition-transform duration-200">▼</span>
                                         </button>
@@ -2484,12 +2477,12 @@
         function switchBuilding(bKey, btnEl) {
             currentBuilding = bKey;
             document.querySelectorAll('.building-tab-btn').forEach(b => {
-                b.classList.remove('bg-[#1d4ed8]', 'text-white', 'shadow-[0_0_12px_rgba(29,78,216,0.6)]');
-                b.classList.add('text-slate-400');
+                b.classList.remove('bg-[#1d4ed8]', 'text-white', 'shadow-md');
+                b.classList.add('text-slate-600');
             });
             if(btnEl) {
-                btnEl.classList.remove('text-slate-400');
-                btnEl.classList.add('bg-[#1d4ed8]', 'text-white', 'shadow-[0_0_12px_rgba(29,78,216,0.6)]');
+                btnEl.classList.remove('text-slate-600');
+                btnEl.classList.add('bg-[#1d4ed8]', 'text-white', 'shadow-md');
             }
             renderFloorButtons();
         }
@@ -2503,7 +2496,7 @@
 
             bData.floors.forEach((f, idx) => {
                 const btn = document.createElement('button');
-                btn.className = `floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition ${idx === 0 ? 'bg-blue-950 border-[#00f0ff] text-[#00f0ff] font-black shadow-[0_0_10px_rgba(0,240,255,0.3)]' : 'bg-slate-900/80 border-cyan-500/20 text-slate-400 hover:bg-slate-800'}`;
+                btn.className = `floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition ${idx === 0 ? 'bg-blue-600 border-blue-600 text-white font-black shadow-sm' : 'bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200'}`;
                 btn.innerText = f;
                 btn.onclick = () => selectFloor(f, btn);
                 container.appendChild(btn);
@@ -2514,10 +2507,10 @@
         function selectFloor(floor, btnEl) {
             currentFloor = floor;
             document.querySelectorAll('.floor-select-btn').forEach(b => {
-                b.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition bg-slate-900/80 border-cyan-500/20 text-slate-400 hover:bg-slate-800';
+                b.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-bold border transition bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200';
             });
             if(btnEl) {
-                btnEl.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-black border transition bg-blue-950 border-[#00f0ff] text-[#00f0ff] shadow-[0_0_10px_rgba(0,240,255,0.3)]';
+                btnEl.className = 'floor-select-btn px-4 py-1.5 rounded-xl text-xs md:text-sm font-black border transition bg-blue-600 border-blue-600 text-white shadow-sm';
             }
             updateMapDisplay();
         }
@@ -2540,17 +2533,17 @@
                 const matchedProjects = Object.values(allProjectsLookup).filter(p => p.floorKey === floorKey);
 
                 if(matchedProjects.length === 0) {
-                    pContainer.innerHTML = `<span class="text-sm font-bold text-slate-400 py-2">このフロアには登録された企画がありません（特別教室・管理施設等）</span>`;
+                    pContainer.innerHTML = `<span class="text-sm font-bold text-slate-500 py-2">このフロアには登録された企画がありません（特別教室・管理施設等）</span>`;
                 } else {
                     matchedProjects.forEach(p => {
                         const tag = document.createElement('button');
-                        tag.className = "group bg-slate-900/90 hover:bg-blue-950 border border-cyan-500/25 hover:border-[#00f0ff] px-3.5 py-2 rounded-xl text-left transition flex items-center gap-2.5 shadow-md";
+                        tag.className = "group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-500 px-3.5 py-2 rounded-xl text-left transition flex items-center gap-2.5 shadow-sm";
                         tag.onclick = () => openDetail(p.id);
                         tag.innerHTML = `
-                            <span class="w-2 h-2 rounded-full bg-[#00f0ff] shadow-[0_0_6px_#00f0ff]"></span>
-                            <span class="text-xs font-black text-[#00f0ff] whitespace-nowrap">${p.group}</span>
-                            <span class="text-xs font-bold text-slate-200 group-hover:text-[#00f0ff] whitespace-nowrap">${p.title}</span>
-                            <span class="text-[10px] text-slate-400 bg-slate-950 border border-cyan-500/20 px-1.5 py-0.5 rounded ml-1 whitespace-nowrap">${p.loc}</span>
+                            <span class="w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_6px_#2563eb]"></span>
+                            <span class="text-xs font-black text-blue-800 whitespace-nowrap">${p.group}</span>
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-blue-700 whitespace-nowrap">${p.title}</span>
+                            <span class="text-[10px] text-slate-500 bg-white border border-slate-200 px-1.5 py-0.5 rounded ml-1 whitespace-nowrap">${p.loc}</span>
                         `;
                         pContainer.appendChild(tag);
                     });
@@ -2702,9 +2695,9 @@
             document.querySelectorAll('.filter-btn').forEach(b => {
                 b.classList.remove('bg-[#00f0ff]', 'text-slate-950', 'bg-amber-400');
                 if (b.getAttribute('data-filter') === 'favorite') {
-                    b.className = 'filter-btn dark-glass-card text-amber-300 border border-amber-400/40 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-400/20';
+                    b.className = 'filter-btn bg-white text-amber-700 border border-amber-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-amber-50';
                 } else {
-                    b.className = 'filter-btn dark-glass-card text-slate-200 border border-cyan-500/30 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-800';
+                    b.className = 'filter-btn bg-white text-slate-800 border border-slate-300 px-5 py-2 text-sm font-bold rounded-full hover:bg-slate-50';
                 }
             });
             if(btnEl) {
@@ -2720,11 +2713,13 @@
         function filterProjects() {
             const input = document.getElementById('project-search');
             const query = input ? input.value.toLowerCase().trim() : '';
+            const sectionsWithVisibleCards = new Set();
             
             document.querySelectorAll('.project-card').forEach(card => {
                 const content = card.textContent.toLowerCase();
                 const cardCat = card.getAttribute('data-category');
                 const pId = card.getAttribute('data-project-id');
+                const groupKey = card.getAttribute('data-group-key');
                 
                 let matchQuery = content.includes(query);
                 if (!matchQuery && query === 'ミスコン' && (pId === 'stage_misscon' || content.includes('johoku contest'))) {
@@ -2742,10 +2737,28 @@
                 
                 if (matchQuery && matchCat) {
                     card.style.display = 'flex';
+                    if (groupKey) {
+                        sectionsWithVisibleCards.add(groupKey);
+                    }
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            // 検索や絞り込み時にヒットした企画があるアコーディオンを自動で展開
+            const allGroupKeys = ['m1', 'm2', 'm3', 'h1', 'h2', 'club', 'other'];
+            if (query !== "" || currentFilterCategory !== 'all') {
+                allGroupKeys.forEach(gKey => {
+                    const sec = document.getElementById('section-' + gKey);
+                    if (sec) {
+                        if (sectionsWithVisibleCards.has(gKey)) {
+                            sec.classList.add('is-open');
+                        } else {
+                            sec.classList.remove('is-open');
+                        }
+                    }
+                });
+            }
         } 
  
         function openDetail(pId, explicitGroup, explicitTitle, explicitLoc, explicitDesc, explicitType, explicitImg, explicitD1, explicitD2, explicitIsStage) {
@@ -2893,22 +2906,11 @@
                         if (customPlaceholder) {
                             customPlaceholder.classList.remove('hidden');
                             customPlaceholder.innerHTML = `
-                                <div class="w-16 h-16 rounded-full bg-amber-950/60 border border-amber-400/40 text-amber-400 flex items-center justify-center mb-3">
+                                <div class="w-16 h-16 rounded-full bg-amber-50 border border-amber-300 text-amber-600 flex items-center justify-center mb-3">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                                 </div>
-                                <h5 class="text-xl font-black text-amber-300 font-brush mb-1">安全上非表示</h5>
-                                <p class="text-xs text-slate-300 font-bold">著作権・規約配慮のためアイコン表示を制限しています</p>
-                            `;
-                        }
-                    } else if (statusBadge === 'not_submitted') {
-                        if (customPlaceholder) {
-                            customPlaceholder.classList.remove('hidden');
-                            customPlaceholder.innerHTML = `
-                                <div class="w-16 h-16 rounded-full bg-slate-900 border border-slate-700 text-slate-500 flex items-center justify-center mb-3">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                                </div>
-                                <h5 class="text-xl font-black text-slate-300 font-brush mb-1">未提出</h5>
-                                <p class="text-xs text-slate-400 font-bold">企画アイコン画像は現在未提出です</p>
+                                <h5 class="text-xl font-black text-amber-900 font-brush mb-1">安全上非表示</h5>
+                                <p class="text-xs text-slate-600 font-bold">著作権・規約配慮のためアイコン表示を制限しています</p>
                             `;
                         }
                     } else if(bigImg && imgSrc) {
@@ -2918,7 +2920,7 @@
                     } else {
                         if (customPlaceholder) {
                             customPlaceholder.classList.remove('hidden');
-                            customPlaceholder.innerHTML = `<span class="text-4xl font-black font-brush text-[#00f0ff]">${group || title}</span>`;
+                            customPlaceholder.innerHTML = `<span class="text-4xl font-black font-brush text-blue-900">${group || title}</span>`;
                         }
                     }
                 }
@@ -2952,8 +2954,8 @@
                 if(note) note.innerText = "※現在この企画に投票済みです（クリックで取り消し可能）";
             } else {
                 btn.disabled = false;
-                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-[#1d4ed8] hover:bg-[#2563eb] text-white transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 border border-cyan-400/40";
-                btn.innerHTML = `<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span>この企画に投票する</span>`;
+                btn.className = "w-full py-4 rounded-xl font-bold text-base md:text-lg bg-[#1d4ed8] hover:bg-[#2563eb] text-white transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 border border-blue-600";
+                btn.innerHTML = `<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>この企画に投票する</span>`;
                 if(note) note.innerText = "※同一端末から1つの企画につき1票まで投票できます";
             }
         }
@@ -3015,13 +3017,13 @@
             if(mode === 'long') {
                 if(longWrapper) longWrapper.classList.remove('hidden');
                 if(shortWrapper) shortWrapper.classList.add('hidden');
-                if(btnLong) { btnLong.className = "flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-cyan-400/40"; }
-                if(btnShort) { btnShort.className = "flex-1 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 transition"; }
+                if(btnLong) { btnLong.className = "flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-blue-600"; }
+                if(btnShort) { btnShort.className = "flex-1 py-2 rounded-xl text-xs font-black bg-slate-100 text-slate-700 transition"; }
             } else {
                 if(longWrapper) longWrapper.classList.add('hidden');
                 if(shortWrapper) shortWrapper.classList.remove('hidden');
-                if(btnLong) { btnLong.className = "flex-1 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 transition"; }
-                if(btnShort) { btnShort.className = "flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-cyan-400/40"; }
+                if(btnLong) { btnLong.className = "flex-1 py-2 rounded-xl text-xs font-black bg-slate-100 text-slate-700 transition"; }
+                if(btnShort) { btnShort.className = "flex-1 py-2 rounded-xl text-xs font-black bg-[#1d4ed8] text-white transition border border-blue-600"; }
             }
         }
  
